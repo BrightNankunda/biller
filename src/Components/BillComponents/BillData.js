@@ -1,13 +1,18 @@
 import React from 'react';
 import {Row, Button } from 'reactstrap' 
 
-const BillData = ({total}) => {
+const BillData = ({total, onSaveBill}) => {
+   
+   const saveBill = () => {
+      onSaveBill()
+   }
+
    return (
       <Row>
          <div>
             <h4 className="text-center">{total}</h4>
             <div className="d-flex justify-content-center">
-               <Button outline color="primary" className="">Save Bill</Button>
+               <Button outline color="primary" onClick={saveBill} className="">Save Bill</Button>
             </div>
          </div>
       </Row>

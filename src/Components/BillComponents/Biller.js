@@ -1,4 +1,6 @@
 import React, { useState, useReducer } from 'react';
+import {useDispatch} from 'react-redux'
+import { SaveBill } from '../../Actions/BillActions';
 
 import Advocate from './Advocate';
 import BillData from './BillData';
@@ -25,7 +27,7 @@ const reducer = (state, action) => {
          return {...state, showFront: false, showScale: false, showAdvocate: false, showCalculation: false, calculatedValue: true}
 
       default:
-         throw new Error()
+         return state
    }
 }
 
@@ -42,14 +44,13 @@ const Biller = ( ) => {
 
    //USEREDUCER
    const [state, dispatch] = useReducer(reducer, initialState)
-
+   const ReducerDispatch = useDispatch()
    //USESTATE
    const [propertyType, setPropertyType] = useState(null)
    const [landValue, setLandValue] = useState(null)
    const [scale, setScale] = useState(null)
    const [advocate, setAdvocate] = useState(null)
 
-   const [calculate, setCalculate] = useState(null)
    const [total, setTotal] = useState(null)
 
    //FUNCTIONS
@@ -83,7 +84,6 @@ const Biller = ( ) => {
          const total = a + b;
          console.log(total)
          setTotal(total)
-         setCalculate(5000)
          dispatch({type: 'SHOWCALCULATEDVALUE'})
       } else {
          const a = 1000000 * 0.15  
@@ -93,10 +93,12 @@ const Biller = ( ) => {
          const total = (a + b + d)
          console.log(total)
          setTotal(total)
-         setCalculate(3400000)
          dispatch({type: 'SHOWCALCULATEDVALUE'})
       }
-      // dispatch({type: 'FINISHCALCULATION'})
+   }
+
+   const handleSaveBill = () => {
+      ReducerDispatch(SaveBill({propertyType,landValue,scale,advocate, total}))
    }
 
    //CANCELLINGS
@@ -120,7 +122,7 @@ const Biller = ( ) => {
          {state.showCalculation && 
             <Calculation 
             onCalculate={handleCalculate} total={total}/>}
-         {state.calculatedValue && <BillData total={total}/>}
+         {state.calculatedValue && <BillData total={total} onSaveBill={handleSaveBill}/>}
       </div>
    );
 }
