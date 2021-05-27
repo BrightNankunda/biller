@@ -50,8 +50,10 @@ const Biller = ( ) => {
    const [landValue, setLandValue] = useState(null)
    const [scale, setScale] = useState(null)
    const [advocate, setAdvocate] = useState(null)
+   const [registered, setRegistered] = useState(null)
 
    const [total, setTotal] = useState(null)
+   
 
    //FUNCTIONS
    const handleSetProperty = (property) => {
@@ -64,6 +66,7 @@ const Biller = ( ) => {
       setScale(scaleValue)
       
       console.log(scaleValue)
+      
       dispatch({type: 'SHOWADVOCATE'})
    }
 
@@ -74,29 +77,63 @@ const Biller = ( ) => {
    }
    
    //CALCULATOR
-   const handleCalculate = (landValue) => {
+   const handleCalculate = (landValue, registeredValue) => {
       setLandValue(landValue)
+      setRegistered(registeredValue)
+      if(propertyType === 'land') {
+         if(parseInt(scale) === 1) {
+            if(parseInt(advocate) === 1) {
+               if(landValue < 11000000) {
+                  const y = landValue - 1000000  
+                  const b = 0.10 * y
+                  const a = 1000000 * 0.15  
+                  const total = a + b;
+                  console.log(total);
+                  if(parseInt(registered) === 1) {
 
-      if(landValue < 11000000) {
-         const y = landValue - 1000000  
-         const b = 0.10 * y
-         const a = 1000000 * 0.15  
-         const total = a + b;
-         console.log(total)
-         setTotal(total)
-         dispatch({type: 'SHOWCALCULATEDVALUE'})
+                     console.log(total)
+                     setTotal(total)
+                     dispatch({type: 'SHOWCALCULATEDVALUE'})
+                  } else if (parseInt(registered) === 2) {
+                     const newtotal = total + 600000
+                     console.log(newtotal)
+                     setTotal(newtotal)
+                     dispatch({type: 'SHOWCALCULATEDVALUE'})
+                  }
+               } else {
+                  const a = 1000000 * 0.15  
+                  const y = landValue - 11000000  
+                  const b = 0.10 * y
+                  const d = (.05 * y)
+                  const total = (a + b + d)
+                  if(parseInt(registered) === 1) {
+
+                     console.log(total)
+                     setTotal(total)
+                     dispatch({type: 'SHOWCALCULATEDVALUE'})
+                  } else {
+                     const newtotal = total + 600000
+                     console.log(newtotal)
+                     setTotal(newtotal)
+                     dispatch({type: 'SHOWCALCULATEDVALUE'})
+                  }
+               }
+            } else if(parseInt(advocate) === 2) {
+               console.log('Advocate is 2')
+            } else if(parseInt(advocate) === 3) {
+               console.log('Advocate is 3')
+            } else if(parseInt(advocate) === 4) {
+               console.log('Advocate is 4')
+            }
+         } else if(parseInt(scale) === 2) {
+            console.log('Scale is 2')
+         }
       } else {
-         const a = 1000000 * 0.15  
-         const y = landValue - 11000000  
-         const b = 0.10 * y
-         const d = (.05 * y)
-         const total = (a + b + d)
-         console.log(total)
-         setTotal(total)
-         dispatch({type: 'SHOWCALCULATEDVALUE'})
+         console.log('Another Land Type')
       }
    }
 
+   //REDUX DISPATCHER
    const handleSaveBill = () => {
       ReducerDispatch(SaveBill({propertyType,landValue,scale,advocate, total}))
    }
@@ -110,7 +147,7 @@ const Biller = ( ) => {
    return (
       <div className="mt-1">
          {propertyType && 
-         <Title propertyType={propertyType}  
+         <Title propertyType={propertyType} registered={registered}
          scaleHeading={scale} advocateHeading={advocate}/>}
          {state.showFront && 
             <Front onSetProperty={handleSetProperty}/> }
@@ -122,7 +159,8 @@ const Biller = ( ) => {
          {state.showCalculation && 
             <Calculation 
             onCalculate={handleCalculate} total={total}/>}
-         {state.calculatedValue && <BillData total={total} onSaveBill={handleSaveBill}/>}
+         {state.calculatedValue && 
+            <BillData total={total} onSaveBill={handleSaveBill}/>}
       </div>
    );
 }

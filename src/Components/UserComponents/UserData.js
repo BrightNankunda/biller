@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { Row, Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
 const UserData = (props) => {

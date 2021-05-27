@@ -9,7 +9,7 @@ const BillData = ({total, onSaveBill}) => {
 
    return (
       <Row>
-         <div>
+         <div className="container">
             <h4 className="text-center">{total}</h4>
             <div className="d-flex justify-content-center">
                <Button outline color="primary" onClick={saveBill} className="">Save Bill</Button>

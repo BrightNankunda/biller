@@ -1,54 +1,63 @@
 import React, {useState} from 'react'
 import {Row, Label, Input, Form, FormGroup, Button, InputGroup, InputGroupAddon} from 'reactstrap'
 
-const Calculation = ({calculate, onCalculate, total}) => {
+const Calculation = ({calculate, onCalculate}) => {
 
    //STATE
-   const [landValue, setLandValue] = useState("")
+   const [landValue, setLandValue] = useState('')
+   const [registered, setRegistered] = useState('')
 
    //FUNCTIONS
-   const calc = (e) => {
-
+   const handleSubmit = (e) => {
       e.preventDefault();
-      onCalculate(landValue)
-      
+      onCalculate(landValue, registered)
+      // onRegister()   
    }
-  
 
    //COMPONENTS
    return ( 
       <div>
          <Row className="my-2 ">
-         <div className="container col-6">
-         
-         <Form>
-            <FormGroup>
-               <Label for="landValue" size="sm">Value of Land</Label>
-               <InputGroup>
-                  <InputGroupAddon addonType="prepend">UGX:</InputGroupAddon>
-                  <Input placeholder="Value of land" 
-                     min={100000} max={1000000000} type="number" 
-                     id="landValue" 
-                     value={landValue}
-                     onChange={(e) => setLandValue(e.target.value)}
-                     name="landValue" />
+            <div className="container col-6">
+            
+            <Form onSubmit={handleSubmit}>
 
-                  <InputGroupAddon addonType="append">
-                     <Button color="primary" onClick={calc} className="">Calculate</Button>
-                  </InputGroupAddon>
-               </InputGroup>
+               <FormGroup>
+                  <Label for="registered">Property Registration</Label>
+                  <Input type="select" id="registered" 
+                     name="registered" value={registered} 
+                     onChange={(e)=>setRegistered(e.target.value)}>
+                     
+                     <option disabled value="">Registration Status</option>  
+                     <option value="1">Registered</option> 
+                     <option value="2">Not Registered</option>
+                  </Input>
                </FormGroup>
-            </Form>
-         
 
-            {calculate}
+               <FormGroup>
+                  <Label for="landValue">Value of Land</Label>
+                  <InputGroup>
+                     <InputGroupAddon addonType="prepend">UGX:</InputGroupAddon>
+                     <Input placeholder="Value of land" 
+                        min={100000} max={1000000000} type="number" 
+                        id="landValue" 
+                        value={landValue}
+                        onChange={(e) => setLandValue(e.target.value)}
+                        name="landValue" />
+                  </InputGroup>
+                  </FormGroup>
 
-            <div className="d-flex justify-content-between">
-               <Button outline color="secondary" className="">Cancel</Button>
-               
+                  <div className="d-flex justify-content-between">
+                     <Button outline color="secondary" className="">Cancel</Button>
+                     <Button color="primary" type="submit" className="">Calculate</Button>
+                  </div>
+               </Form>
+            
+
+               {calculate}
+
             </div>
-         </div>
-      </Row>
+         </Row>
       </div>
     );
 }
