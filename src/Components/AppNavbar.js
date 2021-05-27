@@ -25,26 +25,19 @@ const AppNavbar = (props) => {
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto" navbar>
-            <NavItem>
-              <NavLink>
-                <Link to="/bill" className="text-white mx-2">Create Bill</Link>
-              </NavLink>
+            <NavItem className="mt-2">
+              <Link to="/bill" className="text-white mx-2">Create Bill</Link>
             </NavItem>
-            <NavItem>
-              <NavLink>
-                <Link to="/signin" className="text-white mx-2">Sign In</Link>
-              </NavLink>
+            <NavItem className="mt-2">
+              <Link to="/signin" className="text-white mx-2">Sign In</Link>
             </NavItem>
-            <NavItem>
-              <NavLink>
-                <Link to="/login" className="text-white mx-2">Log In</Link>
-              </NavLink>
+            <NavItem className="mt-2">
+              <Link to="/login" className="text-white mx-2">Log In</Link>
             </NavItem>
             <NavItem>
               <NavLink 
               href="https://github.com/BrightNankunda/billing-back-end" 
-              className="text-white">GitHub Billing</NavLink>
-            
+              className="text-white" target="blank">GitHub Billing</NavLink>
             </NavItem>
           </Nav>
         </Collapse>

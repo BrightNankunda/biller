@@ -19,13 +19,13 @@ const Title = ({propertyType, scaleHeading, advocateHeading, registered}) => {
 
    useEffect(() => {
       if(parseInt(advocateHeading) === 1) {
-         setAdvocateHeader('Vendor\'s Advocate: For deducting title to freehold or leasehold property and perusing and completing conveyance')
+         setAdvocateHeader('Vendor\'s Advocate')
       } else if (parseInt(advocateHeading) === 2) {
-         setAdvocateHeader('Purchase\'s Advocate: For investigating title to freehold or leasehold property and preparing and completing conveyance')
+         setAdvocateHeader('Purchase\'s Advocate')
       } else if (parseInt(advocateHeading) === 3) {
-         setAdvocateHeader('Mortgagor\'s Advocate: For deducting title to freehold or lease property, perusing mortagage and completing')
+         setAdvocateHeader('Mortgagor\'s Advocate')
       } else if (parseInt(advocateHeading) === 4) {
-         setAdvocateHeader('Mortgagee\'s Advocate: For investigating title to freehold or lease hold property and completing')
+         setAdvocateHeader('Mortgagee\'s Advocate')
       }
       return () => {
          // cleanup

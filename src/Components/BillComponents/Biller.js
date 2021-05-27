@@ -75,11 +75,27 @@ const Biller = ( ) => {
       console.log(advocateValue)
       dispatch({type: 'SHOWCALCULATION'})
    }
-   
+   //REGISTRATION CHECK
+   const checkRegistrationStatus = (total, registered) => {
+      if(parseInt(registered) === 1) {
+         console.log(total)
+         console.log(total)
+         return setTotal(total)
+      } else if (parseInt(registered) === 2) {
+         total += 600000
+         console.log(total)
+         return setTotal(total)
+      }
+   }
+
+   //TOTAL FUNCTION
+
+
    //CALCULATOR
    const handleCalculate = (landValue, registeredValue) => {
       setLandValue(landValue)
       setRegistered(registeredValue)
+
       if(propertyType === 'land') {
          if(parseInt(scale) === 1) {
             if(parseInt(advocate) === 1) {
@@ -88,54 +104,223 @@ const Biller = ( ) => {
                   const b = 0.10 * y
                   const a = 1000000 * 0.15  
                   const total = a + b;
-                  console.log(total);
-                  if(parseInt(registered) === 1) {
-
-                     console.log(total)
-                     setTotal(total)
-                     dispatch({type: 'SHOWCALCULATEDVALUE'})
-                  } else if (parseInt(registered) === 2) {
-                     const newtotal = total + 600000
-                     console.log(newtotal)
-                     setTotal(newtotal)
-                     dispatch({type: 'SHOWCALCULATEDVALUE'})
-                  }
+                  checkRegistrationStatus(total, registeredValue)
+                  dispatch({type: 'SHOWCALCULATEDVALUE'})
                } else {
                   const a = 1000000 * 0.15  
                   const y = landValue - 11000000  
                   const b = 0.10 * y
                   const d = (.05 * y)
                   const total = (a + b + d)
-                  if(parseInt(registered) === 1) {
-
-                     console.log(total)
-                     setTotal(total)
-                     dispatch({type: 'SHOWCALCULATEDVALUE'})
-                  } else {
-                     const newtotal = total + 600000
-                     console.log(newtotal)
-                     setTotal(newtotal)
-                     dispatch({type: 'SHOWCALCULATEDVALUE'})
-                  }
+                  checkRegistrationStatus(total)
+                  dispatch({type: 'SHOWCALCULATEDVALUE'})
                }
             } else if(parseInt(advocate) === 2) {
-               console.log('Advocate is 2')
+               
+               if(landValue < 11000000) {
+                  const y = landValue - 1000000  
+                  const b = 0.10 * y
+                  const a = 1000000 * 0.15  
+                  const total = a + b;
+                  checkRegistrationStatus(total)
+                  dispatch({type: 'SHOWCALCULATEDVALUE'})
+               } else {
+                  const a = 10000000 * 0.15  
+                  const y = landValue - 11000000  
+                  const b = 0.10 * y
+                  const d = (.05 * y)
+                  const total = (a + b + d)
+                  checkRegistrationStatus(total)
+                  dispatch({type: 'SHOWCALCULATEDVALUE'})
+               }
             } else if(parseInt(advocate) === 3) {
-               console.log('Advocate is 3')
+               if(landValue < 11000000) {
+                  const y = landValue - 1000000  
+                  const b = 0.10 * y
+                  const a = 1000000 * 0.15  
+                  const total = a + b;
+                  checkRegistrationStatus(total)
+                  dispatch({type: 'SHOWCALCULATEDVALUE'})
+               } else {
+                  
+                  const a = 1000000 * 0.15  
+                  const y = landValue - 11000000  
+                  const b = 0.10 * 10000000
+                  const d = (.05 * y)
+                  const total = (a + b + d)
+                  checkRegistrationStatus(total)
+                  dispatch({type: 'SHOWCALCULATEDVALUE'})
+               }
             } else if(parseInt(advocate) === 4) {
-               console.log('Advocate is 4')
+               if(landValue < 11000000) {
+                  const y = landValue - 1000000  
+                  const b = 0.10 * y
+                  const a = 1000000 * 0.15  
+                  const total = a + b;
+                  checkRegistrationStatus(total)
+                  dispatch({type: 'SHOWCALCULATEDVALUE'})
+               } else {
+                  const a = 1000000 * 0.15  
+                  const y = landValue - 11000000  
+                  const b = 0.10 * 10000000
+                  const d = (.05 * y)
+                  const total = (a + b + d)
+                  checkRegistrationStatus(total)
+                  dispatch({type: 'SHOWCALCULATEDVALUE'})
+               }
             }
          } else if(parseInt(scale) === 2) {
-            console.log('Scale is 2')
+   //          if choice == 1:
+   //      print("Vendor's advocate")
+   //      if valueofland < 21000000:
+   //          a = (.15 * 1000000)
+   //          b = (valueofland -1000000)
+   //          c = (.10 * b)
+   //          total = (a+c)
+   //          print(total)
+
+   //      else:
+   //          a = (.15 * 1000000)
+   //          b = (.10 * 20000000)
+   //          c = (valueofland - 21000000)
+   //          d = (c * .05)
+   //          total = (a+b+d)
+   //          print(total)
+
+   //  elif choice == 2:
+   //      print("Purchaser's advocate")
+   //      if valueofland < 21000000 :
+   //          a = (.15 * 1000000)
+   //          b = (valueofland - 1000000)
+   //          c = (.10 * b)
+   //          total = (a + c)
+   //          print(total)
+
+   //      else :
+   //          a = (.15 * 1000000)
+   //          b = (.10 * 20000000)
+   //          c = (valueofland - 21000000)
+   //          d = (c * .05)
+   //          total = (a + b + d)
+   //          print(total)
+
+   //  elif choice == 3 :
+   //      print("Mortgagor's advocate")
+   //      if valueofland < 21000000 :
+   //          a = (.15 * 1000000)
+   //          b= (valueofland - 1000000)
+   //          c = (.10 * b)
+   //          total = (a + c)
+   //          print(total)
+
+   //      else :
+   //          a = (.15 * 1000000)
+   //          b = (.10 * 20000000)
+   //          c = (valueofland - 21000000)
+   //          d = (c * .05)
+   //          total = (a + b + d)
+   //          print(total)
+
+   //  elif choice == 4 :
+   //      print("Mortgagee's advocate")
+   //      if valueofland < 21000000 :
+   //          a = (.15 * 1000000)
+   //          b = (valueofland - 1000000)
+   //          c = (.10 * b)
+   //          total = (a + c)
+   //          print(total)
+
+   //      else :
+   //          a = (.15 * 1000000)
+   //          b = (.10 * 20000000)
+   //          c = (valueofland - 21000000)
+   //          d = (c * .05)
+   //          total = (a + b + d)
+   //          print(total)
+
+
+   //  else:
+   //      print("Invalid input")
+            if(parseInt(advocate) === 1) {
+               if(landValue < 11000000) {
+                  const y = landValue - 1000000  
+                  const b = 0.10 * y
+                  const a = 1000000 * 0.15  
+                  const total = a + b;
+                  checkRegistrationStatus(total)
+                  dispatch({type: 'SHOWCALCULATEDVALUE'})
+               } else {
+                  const a = 1000000 * 0.15  
+                  const y = landValue - 11000000  
+                  const b = 0.10 * y
+                  const d = (.05 * y)
+                  const total = (a + b + d)
+                  checkRegistrationStatus(total)
+                  dispatch({type: 'SHOWCALCULATEDVALUE'})
+               }
+            } else if(parseInt(advocate) === 2) {
+               
+               if(landValue < 11000000) {
+                  const y = landValue - 1000000  
+                  const b = 0.10 * y
+                  const a = 1000000 * 0.15  
+                  const total = a + b;
+                  checkRegistrationStatus(total)
+                  dispatch({type: 'SHOWCALCULATEDVALUE'})
+               } else {
+                  const a = 10000000 * 0.15  
+                  const y = landValue - 11000000  
+                  const b = 0.10 * y
+                  const d = (.05 * y)
+                  const total = (a + b + d)
+                  checkRegistrationStatus(total)
+                  dispatch({type: 'SHOWCALCULATEDVALUE'})
+               }
+            } else if(parseInt(advocate) === 3) {
+               if(landValue < 11000000) {
+                  const y = landValue - 1000000  
+                  const b = 0.10 * y
+                  const a = 1000000 * 0.15  
+                  const total = a + b;
+                  checkRegistrationStatus(total)
+                  dispatch({type: 'SHOWCALCULATEDVALUE'})
+               } else {
+                  
+                  const a = 1000000 * 0.15  
+                  const y = landValue - 11000000  
+                  const b = 0.10 * 10000000
+                  const d = (.05 * y)
+                  const total = (a + b + d)
+                  checkRegistrationStatus(total)
+                  dispatch({type: 'SHOWCALCULATEDVALUE'})
+               }
+            } else if(parseInt(advocate) === 4) {
+               if(landValue < 11000000) {
+                  const y = landValue - 1000000  
+                  const b = 0.10 * y
+                  const a = 1000000 * 0.15  
+                  const total = a + b;
+                  checkRegistrationStatus(total)
+                  dispatch({type: 'SHOWCALCULATEDVALUE'})
+               } else {
+                  const a = 1000000 * 0.15  
+                  const y = landValue - 11000000  
+                  const b = 0.10 * 10000000
+                  const d = (.05 * y)
+                  const total = (a + b + d)
+                  checkRegistrationStatus(total)
+                  dispatch({type: 'SHOWCALCULATEDVALUE'})
+               }
+            }
          }
       } else {
-         console.log('Another Land Type')
+         console.log('Type is Rent')
       }
    }
 
    //REDUX DISPATCHER
    const handleSaveBill = () => {
-      ReducerDispatch(SaveBill({propertyType,landValue,scale,advocate, total}))
+      ReducerDispatch(SaveBill({propertyType,landValue,scale,advocate,registered,total}))
    }
 
    //CANCELLINGS
