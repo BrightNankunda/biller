@@ -1,17 +1,28 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import {Row, Label, Input, Form, FormGroup, Button, InputGroup, InputGroupAddon} from 'reactstrap'
 
-const Calculation = ({calculate, onCalculate}) => {
+const Calculation = ({calculate, onCalculate, scale}) => {
 
    //STATE
    const [landValue, setLandValue] = useState('')
    const [registered, setRegistered] = useState('')
+   const [showRegistered, setShowRegistered] = useState(null)
+
+   useEffect(() => {
+      checkedRegisteredStatus()
+      return () => {
+         // cleanup
+      }
+   }, [scale])
 
    //FUNCTIONS
    const handleSubmit = (e) => {
       e.preventDefault();
-      onCalculate(landValue, registered)
-      // onRegister()   
+      onCalculate(landValue, registered)  
+   }
+
+   const checkedRegisteredStatus = () => {
+      return (parseInt(scale) === 1) ? setShowRegistered(true) : setShowRegistered(false) 
    }
 
    //COMPONENTS
@@ -22,7 +33,7 @@ const Calculation = ({calculate, onCalculate}) => {
             
             <Form onSubmit={handleSubmit}>
 
-               <FormGroup>
+               {showRegistered && <FormGroup>
                   <Label for="registered">Property Registration</Label>
                   <Input type="select" id="registered" 
                      name="registered" value={registered} 
@@ -32,7 +43,7 @@ const Calculation = ({calculate, onCalculate}) => {
                      <option value="1">Registered</option> 
                      <option value="2">Not Registered</option>
                   </Input>
-               </FormGroup>
+               </FormGroup> }
 
                <FormGroup>
                   <Label for="landValue">Value of Land</Label>
@@ -52,9 +63,6 @@ const Calculation = ({calculate, onCalculate}) => {
                      <Button color="primary" type="submit" className="">Calculate</Button>
                   </div>
                </Form>
-            
-
-               {calculate}
 
             </div>
          </Row>

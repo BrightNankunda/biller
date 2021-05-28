@@ -64,7 +64,6 @@ const Biller = ( ) => {
 
    const handleScale = (scaleValue) => {
       setScale(scaleValue)
-      
       console.log(scaleValue)
       
       dispatch({type: 'SHOWADVOCATE'})
@@ -77,6 +76,7 @@ const Biller = ( ) => {
    }
    //REGISTRATION CHECK
    const checkRegistrationStatus = (total, registered) => {
+      
       if(parseInt(registered) === 1) {
          console.log(total)
          console.log(total)
@@ -170,145 +170,74 @@ const Biller = ( ) => {
                }
             }
          } else if(parseInt(scale) === 2) {
-   //          if choice == 1:
-   //      print("Vendor's advocate")
-   //      if valueofland < 21000000:
-   //          a = (.15 * 1000000)
-   //          b = (valueofland -1000000)
-   //          c = (.10 * b)
-   //          total = (a+c)
-   //          print(total)
-
-   //      else:
-   //          a = (.15 * 1000000)
-   //          b = (.10 * 20000000)
-   //          c = (valueofland - 21000000)
-   //          d = (c * .05)
-   //          total = (a+b+d)
-   //          print(total)
-
-   //  elif choice == 2:
-   //      print("Purchaser's advocate")
-   //      if valueofland < 21000000 :
-   //          a = (.15 * 1000000)
-   //          b = (valueofland - 1000000)
-   //          c = (.10 * b)
-   //          total = (a + c)
-   //          print(total)
-
-   //      else :
-   //          a = (.15 * 1000000)
-   //          b = (.10 * 20000000)
-   //          c = (valueofland - 21000000)
-   //          d = (c * .05)
-   //          total = (a + b + d)
-   //          print(total)
-
-   //  elif choice == 3 :
-   //      print("Mortgagor's advocate")
-   //      if valueofland < 21000000 :
-   //          a = (.15 * 1000000)
-   //          b= (valueofland - 1000000)
-   //          c = (.10 * b)
-   //          total = (a + c)
-   //          print(total)
-
-   //      else :
-   //          a = (.15 * 1000000)
-   //          b = (.10 * 20000000)
-   //          c = (valueofland - 21000000)
-   //          d = (c * .05)
-   //          total = (a + b + d)
-   //          print(total)
-
-   //  elif choice == 4 :
-   //      print("Mortgagee's advocate")
-   //      if valueofland < 21000000 :
-   //          a = (.15 * 1000000)
-   //          b = (valueofland - 1000000)
-   //          c = (.10 * b)
-   //          total = (a + c)
-   //          print(total)
-
-   //      else :
-   //          a = (.15 * 1000000)
-   //          b = (.10 * 20000000)
-   //          c = (valueofland - 21000000)
-   //          d = (c * .05)
-   //          total = (a + b + d)
-   //          print(total)
-
-
-   //  else:
-   //      print("Invalid input")
+            setRegistered('1')
             if(parseInt(advocate) === 1) {
-               if(landValue < 11000000) {
+               if(landValue < 21000000) {
                   const y = landValue - 1000000  
                   const b = 0.10 * y
                   const a = 1000000 * 0.15  
                   const total = a + b;
-                  checkRegistrationStatus(total)
-                  dispatch({type: 'SHOWCALCULATEDVALUE'})
-               } else {
-                  const a = 1000000 * 0.15  
-                  const y = landValue - 11000000  
-                  const b = 0.10 * y
-                  const d = (.05 * y)
-                  const total = (a + b + d)
-                  checkRegistrationStatus(total)
-                  dispatch({type: 'SHOWCALCULATEDVALUE'})
-               }
-            } else if(parseInt(advocate) === 2) {
-               
-               if(landValue < 11000000) {
-                  const y = landValue - 1000000  
-                  const b = 0.10 * y
-                  const a = 1000000 * 0.15  
-                  const total = a + b;
-                  checkRegistrationStatus(total)
-                  dispatch({type: 'SHOWCALCULATEDVALUE'})
-               } else {
-                  const a = 10000000 * 0.15  
-                  const y = landValue - 11000000  
-                  const b = 0.10 * y
-                  const d = (.05 * y)
-                  const total = (a + b + d)
-                  checkRegistrationStatus(total)
-                  dispatch({type: 'SHOWCALCULATEDVALUE'})
-               }
-            } else if(parseInt(advocate) === 3) {
-               if(landValue < 11000000) {
-                  const y = landValue - 1000000  
-                  const b = 0.10 * y
-                  const a = 1000000 * 0.15  
-                  const total = a + b;
-                  checkRegistrationStatus(total)
+                  setTotal(total)
                   dispatch({type: 'SHOWCALCULATEDVALUE'})
                } else {
                   
                   const a = 1000000 * 0.15  
-                  const y = landValue - 11000000  
-                  const b = 0.10 * 10000000
+                  const y = landValue - 21000000  
+                  const b = 0.10 * 20000000
                   const d = (.05 * y)
                   const total = (a + b + d)
-                  checkRegistrationStatus(total)
+                  setTotal(total)
                   dispatch({type: 'SHOWCALCULATEDVALUE'})
                }
-            } else if(parseInt(advocate) === 4) {
-               if(landValue < 11000000) {
+            } else if(parseInt(advocate) === 2) {
+               if(landValue < 21000000) {
                   const y = landValue - 1000000  
                   const b = 0.10 * y
                   const a = 1000000 * 0.15  
                   const total = a + b;
-                  checkRegistrationStatus(total)
+                  setTotal(total)
                   dispatch({type: 'SHOWCALCULATEDVALUE'})
                } else {
                   const a = 1000000 * 0.15  
-                  const y = landValue - 11000000  
-                  const b = 0.10 * 10000000
+                  const y = landValue - 21000000  
+                  const b = 0.10 * 20000000
                   const d = (.05 * y)
                   const total = (a + b + d)
-                  checkRegistrationStatus(total)
+                  setTotal(total)
+                  dispatch({type: 'SHOWCALCULATEDVALUE'})
+               }
+            } else if(parseInt(advocate) === 3) {
+               if(landValue < 21000000) {
+                  const y = landValue - 1000000  
+                  const b = 0.10 * y
+                  const a = 1000000 * 0.15  
+                  const total = a + b;
+                  setTotal(total)
+                  dispatch({type: 'SHOWCALCULATEDVALUE'})
+               } else {
+                  const a = 1000000 * 0.15  
+                  const y = landValue - 21000000  
+                  const b = 0.10 * 20000000
+                  const d = (.05 * y)
+                  const total = (a + b + d)
+                  setTotal(total)
+                  dispatch({type: 'SHOWCALCULATEDVALUE'})
+               }
+            } else if(parseInt(advocate) === 4) {
+               if(landValue < 21000000) {
+                  const y = landValue - 1000000  
+                  const b = 0.10 * y
+                  const a = 1000000 * 0.15  
+                  const total = a + b;
+                  setTotal(total)
+                  dispatch({type: 'SHOWCALCULATEDVALUE'})
+               } else {
+                  const a = 1000000 * 0.15  
+                  const y = landValue - 21000000  
+                  const b = 0.10 * 20000000
+                  const d = (.05 * y)
+                  const total = (a + b + d)
+                  setTotal(total)
                   dispatch({type: 'SHOWCALCULATEDVALUE'})
                }
             }
@@ -342,10 +271,10 @@ const Biller = ( ) => {
             <Advocate onAdvocate={handleAdvocate} 
             onCancelAdvocate={handleCancel}/>}
          {state.showCalculation && 
-            <Calculation 
+            <Calculation scale={scale}
             onCalculate={handleCalculate} total={total}/>}
          {state.calculatedValue && 
-            <BillData total={total} onSaveBill={handleSaveBill}/>}
+            <BillData  total={total} onSaveBill={handleSaveBill}/>}
       </div>
    );
 }

@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
-import {Link} from 'react-router-dom'
+import {NavLink} from 'react-router-dom'
 import {
   Collapse,
   Navbar,
   NavbarToggler,
   NavbarBrand,
   Nav,
-  NavItem,
-  NavLink,
+  NavItem
 } from 'reactstrap';
 
 const AppNavbar = (props) => {
@@ -19,24 +18,27 @@ const AppNavbar = (props) => {
   return (
     <div>
       <Navbar color="primary"  expand="md">
-        <NavbarBrand >
-          <Link to="/" className="text-white mx-2">Law Biller</Link>
+        <NavbarBrand to="/" exact={true} activeClassName="active" 
+        className="text-white mx-2">
+        Law Biller
+          {/* <Link to="/" className="text-white mx-2">Law Biller</Link> */}
         </NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto" navbar>
-            <NavItem className="mt-2">
-              <Link to="/bill" className="text-white mx-2">Create Bill</Link>
+            <NavItem>
+              <NavLink activeClassName="active" to="/bill" 
+              className="text-white mx-2">Create Bill</NavLink>
             </NavItem>
-            <NavItem className="mt-2">
-              <Link to="/signin" className="text-white mx-2">Sign In</Link>
+            <NavItem>
+              <NavLink activeClassName="active" to="/signin" className="text-white mx-2">Sign In</NavLink>
             </NavItem>
-            <NavItem className="mt-2">
-              <Link to="/login" className="text-white mx-2">Log In</Link>
+            <NavItem>
+              <NavLink activeClassName="active" to="/login" className="text-white mx-2">Log In</NavLink>
             </NavItem>
             <NavItem>
               <NavLink 
-              href="https://github.com/BrightNankunda/billing-back-end" 
+              to="https://github.com/BrightNankunda/billing-back-end" 
               className="text-white" target="blank">GitHub Billing</NavLink>
             </NavItem>
           </Nav>

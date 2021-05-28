@@ -27,8 +27,11 @@
 .App-link {
   color: #61dafb;
 }
-Nav {
-
+.active {
+  background: white;
+  padding: 5px;
+  color:blue !important;
+  border-radius: 10px;
 }
 
 @keyframes App-logo-spin {
