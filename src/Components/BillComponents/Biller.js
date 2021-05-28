@@ -8,24 +8,26 @@ import Calculation from './Calculation';
 import Front from './Front'
 import Scale from './Scale';
 import Title from './Title';
+import Rental from './Rental'
  
 
 const reducer = (state, action) => {
    switch(action.type) {
       case 'SHOWFRONT':
-         return {...state, showFront: true, showScale: false, showAdvocate: false, showCalculation: false, calculatedValue: false}
+         return {...state, showFront: true, showScale: false, showAdvocate: false, showCalculation: false, calculatedValue: false, showRental: false}
 
       case 'SHOWSCALE':
-         return {...state, showFront: false, showScale: true, showAdvocate: false, showCalculation: false, calculatedValue: false}
+         return {...state, showFront: false, showScale: true, showAdvocate: false, showCalculation: false, calculatedValue: false, showRental: false}
 
       case 'SHOWADVOCATE':
-         return {...state, showFront: false, showScale: false, showAdvocate: true, showCalculation: false, calculatedValue: false}
+         return {...state, showFront: false, showScale: false, showAdvocate: true, showCalculation: false, calculatedValue: false, showRental: false}
 
       case 'SHOWCALCULATION':
-         return {...state, showFront: false, showScale: false, showAdvocate: false, showCalculation: true, calculatedValue: false}
+         return {...state, showFront: false, showScale: false, showAdvocate: false, showCalculation: true, calculatedValue: false, showRental: false}
       case 'SHOWCALCULATEDVALUE':
-         return {...state, showFront: false, showScale: false, showAdvocate: false, showCalculation: false, calculatedValue: true}
-
+         return {...state, showFront: false, showScale: false, showAdvocate: false, showCalculation: false, calculatedValue: true, showRental: false}
+      case 'SHOWRENTAL':
+         return {...state, showFront: false, showScale: false, showAdvocate: false, showCalculation: false, calculatedValue: false, showRental: true}
       default:
          return state
    }
@@ -37,7 +39,8 @@ const initialState = {
    showScale: false, 
    showAdvocate: false, 
    showCalculation: false,
-   calculatedValue: false
+   calculatedValue: false,
+   showRental: false
 }
 
 const Biller = ( ) => {
@@ -51,6 +54,7 @@ const Biller = ( ) => {
    const [scale, setScale] = useState(null)
    const [advocate, setAdvocate] = useState(null)
    const [registered, setRegistered] = useState(null)
+   const [rentalType, setRentalType] = useState(null)
 
    const [total, setTotal] = useState(null)
    
@@ -59,7 +63,18 @@ const Biller = ( ) => {
    const handleSetProperty = (property) => {
       setPropertyType(property)
       console.log(property)
-      dispatch({type: 'SHOWSCALE'})
+      if(property === 'rent') {
+         dispatch({type: 'SHOWRENTAL'})
+      } else if(property === 'land') {
+         dispatch({type: 'SHOWSCALE'})
+      }
+   }
+
+   const handleSetRental = (rentalTypeValue) => {
+      console.log('Setting rental', rentalTypeValue)
+      setRentalType(rentalTypeValue)
+      dispatch({type: 'SHOWADVOCATE'})
+      
    }
 
    const handleScale = (scaleValue) => {
@@ -74,6 +89,7 @@ const Biller = ( ) => {
       console.log(advocateValue)
       dispatch({type: 'SHOWCALCULATION'})
    }
+
    //REGISTRATION CHECK
    const checkRegistrationStatus = (total, registered) => {
       
@@ -262,17 +278,27 @@ const Biller = ( ) => {
       <div className="mt-1">
          {propertyType && 
          <Title propertyType={propertyType} registered={registered}
-         scaleHeading={scale} advocateHeading={advocate}/>}
+
+            scaleHeading={scale} advocateHeading={advocate}/>}
+
+
          {state.showFront && 
             <Front onSetProperty={handleSetProperty}/> }
-         {state.showScale && 
+
+         {state.showRental && 
+         <Rental onSetRental={handleSetRental} propertyType={propertyType}/>}
+         
+         {state.showScale &&  
             <Scale onScale={handleScale} />}
+            
          {state.showAdvocate && 
-            <Advocate onAdvocate={handleAdvocate} 
+            <Advocate onAdvocate={handleAdvocate}  propertyType={propertyType}
             onCancelAdvocate={handleCancel}/>}
+
          {state.showCalculation && 
             <Calculation scale={scale}
             onCalculate={handleCalculate} total={total}/>}
+
          {state.calculatedValue && 
             <BillData  total={total} onSaveBill={handleSaveBill}/>}
       </div>

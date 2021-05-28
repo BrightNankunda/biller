@@ -7,15 +7,28 @@ const Title = ({propertyType, scaleHeading, advocateHeading, registered}) => {
    const [registeredHeader, setRegisteredHeader] = useState(null)
 
    useEffect(() => {
-      if(parseInt(scaleHeading) === 1) {
+      // if(propertyType === 'land') {
+
+      // } else if (propertyType === 'rent') {
+      //    if (parseInt(advocateHeading) === 2) {
+      //       setScaleHeader('An advocate for preparing and perusing')
+      //    } else if (parseInt(advocateHeading) === 2) {
+      //       (parseInt(advocateHeading) === 2
+      //    }
+      // }
+      if((parseInt(scaleHeading) === 1) && (propertyType === 'land')) {
          setScaleHeader('Scale of charges on sales, purchases, mortgages and debentures')
-      } else if (parseInt(scaleHeading) === 2) {
+      } else if ((parseInt(scaleHeading) === 2) && (propertyType === 'land')) {
          setScaleHeader('Scale of charges for commission on sales, purchases and loans affecting land registered in the land titles registry or unregistered')
+      } else if((parseInt(advocateHeading) === 1) && (propertyType === 'rent')) {
+         setScaleHeader('An advocate for preparing and perusing')
+      } else if ((parseInt(advocateHeading) === 2) && (propertyType === 'rent')) {
+         setScaleHeader('An advocate for perusing and completing')
       }
       return () => {
          // cleanup
       }
-   }, [scaleHeading])
+   }, [scaleHeading, propertyType, advocateHeading])
 
    useEffect(() => {
       if(parseInt(advocateHeading) === 1) {

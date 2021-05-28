@@ -1,4 +1,4 @@
-import {applyMiddleware, createStore, compose, combineReducer, combineReducers} from 'redux'
+import {applyMiddleware, createStore, compose, combineReducers} from 'redux'
 import thunk from 'redux-thunk'
 import { FetchBillsReducer, SaveBillReducer } from './Reducers/BillReducers'
 

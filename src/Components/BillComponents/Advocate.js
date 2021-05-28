@@ -1,10 +1,22 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Row, Label, Input, FormGroup, Button} from 'reactstrap'
  
-const Advocate = ({onAdvocate, onCancelAdvocate}) => {
+const Advocate = ({onAdvocate, onCancelAdvocate, propertyType}) => {
 
    //STATE
    const [advocate, setAdvocate] = useState('')
+
+   useEffect(() => {
+      if(propertyType === 'rent') {
+         setOptions([{value: '', disabled: true, name: 'Select The advocate\'s Regard'},
+            {value: '1', disabled: false, name: 'An advocate for preparing and perusing'},
+            {value: '2', disabled: false, name: 'An advocate for perusing and completing'},
+         ])
+      }
+      return () => {
+         // cleanup
+      }
+   }, [propertyType])
 
    const [options, setOptions] = useState([
       {value: '', disabled: true, name: 'Select The advocate\'s Regard'},
