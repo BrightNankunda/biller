@@ -258,7 +258,7 @@ const Biller = ( ) => {
                }
             }
          }
-      } else {
+      } else if(propertyType === 'rent') {
          console.log('BILLER COMPONENT The total is being calculated', rentalType, advocate)
          if(parseInt(rentalType) === 1) {
             //RACK RENT
@@ -269,12 +269,13 @@ const Biller = ( ) => {
                   // if(parseInt(registered) === 1) {
                      const total = parseInt(landValue) *  0.15
                      setTotal(total)
+                     // THEN DISPATCH
                   // } else if(parseInt(registered) === 2) {
                      // const total = parseInt(landValue) *  0.15 + 100000
                      // setTotal(total)
+                     // THEN DISPATCH
                   // }
                }
-               console.log('RCAK RENT PREPARING ADVOCATE')
             } else if(parseInt(advocate) === 22) {
                //COMPLETING ADVOCATE
                console.log(landValue)
