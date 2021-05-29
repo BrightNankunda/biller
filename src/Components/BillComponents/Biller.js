@@ -259,7 +259,31 @@ const Biller = ( ) => {
             }
          }
       } else {
-         console.log('Type is Rent')
+         console.log('BILLER COMPONENT The total is being calculated', rentalType, advocate)
+         if(parseInt(rentalType) === 1) {
+            //RACK RENT
+            if(parseInt(advocate) === 21) {
+               //PREPARING ADVOCATE
+               if(parseInt(landValue) < 10000000) {
+                  console.log('Register', registered)
+                  // if(parseInt(registered) === 1) {
+                     const total = parseInt(landValue) *  0.15
+                     setTotal(total)
+                  // } else if(parseInt(registered) === 2) {
+                     // const total = parseInt(landValue) *  0.15 + 100000
+                     // setTotal(total)
+                  // }
+               }
+               console.log('RCAK RENT PREPARING ADVOCATE')
+            } else if(parseInt(advocate) === 22) {
+               //COMPLETING ADVOCATE
+               console.log(landValue)
+               console.log('RACK RENT COMPLETING ADVOCATE')
+            }
+         }else if(parseInt(rentalType) === 2) {
+            //GROUND RENT
+            console.log('GROUND RENT NOT YET CALCULATED')
+         }
       }
    }
 
@@ -296,7 +320,7 @@ const Biller = ( ) => {
             onCancelAdvocate={handleCancel}/>}
 
          {state.showCalculation && 
-            <Calculation scale={scale}
+            <Calculation scale={scale} propertyType={propertyType}
             onCalculate={handleCalculate} total={total}/>}
 
          {state.calculatedValue && 

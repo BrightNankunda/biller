@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import {Row, Label, Input, Form, FormGroup, Button, InputGroup, InputGroupAddon} from 'reactstrap'
 
-const Calculation = ({calculate, onCalculate, scale}) => {
+const Calculation = ({calculate, onCalculate, scale, propertyType}) => {
 
    //STATE
    const [landValue, setLandValue] = useState('')
@@ -9,11 +9,12 @@ const Calculation = ({calculate, onCalculate, scale}) => {
    const [showRegistered, setShowRegistered] = useState(null)
 
    useEffect(() => {
+      console.log('Calculation component', propertyType);
       checkedRegisteredStatus()
       return () => {
          // cleanup
       }
-   }, [scale])
+   }, [scale, propertyType])
 
    //FUNCTIONS
    const handleSubmit = (e) => {
@@ -22,7 +23,8 @@ const Calculation = ({calculate, onCalculate, scale}) => {
    }
 
    const checkedRegisteredStatus = () => {
-      return (parseInt(scale) === 1) ? setShowRegistered(true) : setShowRegistered(false) 
+      return ((parseInt(scale) === 1) || (propertyType === 'rent')) 
+      ? setShowRegistered(true) : setShowRegistered(false) 
    }
 
    //COMPONENTS
