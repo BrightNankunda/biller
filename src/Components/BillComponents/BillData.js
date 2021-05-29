@@ -1,8 +1,15 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Row, Button } from 'reactstrap' 
 
 const BillData = ({total, onSaveBill}) => {
-   
+
+   useEffect(() => {
+      console.log('BillData component says', 'total')
+      return () => {
+         // cleanup
+      }
+   })
+
    const saveBill = () => {
       onSaveBill()
    }

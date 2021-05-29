@@ -277,7 +277,7 @@ const Biller = ( ) => {
    return (
       <div className="mt-1">
          {propertyType && 
-         <Title propertyType={propertyType} registered={registered}
+         <Title propertyType={propertyType} registered={registered} rentalType={rentalType}
 
             scaleHeading={scale} advocateHeading={advocate}/>}
 
@@ -292,7 +292,7 @@ const Biller = ( ) => {
             <Scale onScale={handleScale} />}
             
          {state.showAdvocate && 
-            <Advocate onAdvocate={handleAdvocate}  propertyType={propertyType}
+            <Advocate onAdvocate={handleAdvocate}  propertyType={propertyType} rentalType={rentalType}
             onCancelAdvocate={handleCancel}/>}
 
          {state.showCalculation && 
