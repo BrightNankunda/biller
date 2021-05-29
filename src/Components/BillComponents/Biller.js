@@ -265,16 +265,18 @@ const Biller = ( ) => {
             if(parseInt(advocate) === 21) {
                //PREPARING ADVOCATE
                if(parseInt(landValue) < 10000000) {
-                  console.log('Register', registered)
-                  // if(parseInt(registered) === 1) {
+                  console.log('Register', registeredValue)
+                  if(parseInt(registeredValue) === 1) {
                      const total = parseInt(landValue) *  0.15
                      setTotal(total)
+                     console.log(total)
                      // THEN DISPATCH
-                  // } else if(parseInt(registered) === 2) {
-                     // const total = parseInt(landValue) *  0.15 + 100000
-                     // setTotal(total)
+                  } else if(parseInt(registeredValue) === 2) {
+                     const total = parseInt(landValue) *  0.15 + 100000
+                     setTotal(total)
+                     console.log(total)
                      // THEN DISPATCH
-                  // }
+                  }
                }
             } else if(parseInt(advocate) === 22) {
                //COMPLETING ADVOCATE
