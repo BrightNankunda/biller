@@ -8,16 +8,22 @@ const Advocate = ({onAdvocate, onCancelAdvocate, propertyType, rentalType}) => {
 
    useEffect(() => {
       console.log('Advocate component', rentalType, propertyType)
-      if(propertyType === 'rent') {
+      if(propertyType === 'rent' && (parseInt(rentalType) === 1)) {
          setOptions([{value: '', disabled: true, name: 'Select The advocate\'s Regard'},
             {value: '21', disabled: false, name: 'An advocate for preparing and perusing'},
             {value: '22', disabled: false, name: 'An advocate for perusing and completing'},
+         ])
+      } else if(propertyType === 'rent' && (parseInt(rentalType) === 2)) {
+         setOptions([
+            {value: '', disabled: true, name: 'Select The advocate\'s Regard'},
+            {value: '23', disabled: false, name: 'An advocate for preparing , settling'},
+            {value: '24', disabled: false, name: 'An advocate for perusing draft and completing'}
          ])
       }
       return () => {
          // cleanup
       }
-   }, [propertyType])
+   }, [propertyType, rentalType])
 
    const [options, setOptions] = useState([
       {value: '', disabled: true, name: 'Select The advocate\'s Regard'},

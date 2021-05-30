@@ -269,23 +269,231 @@ const Biller = ( ) => {
                   if(parseInt(registeredValue) === 1) {
                      const total = parseInt(landValue) *  0.15
                      setTotal(total)
-                     console.log(total)
+                     dispatch({type: 'SHOWCALCULATEDVALUE'})
                      // THEN DISPATCH
                   } else if(parseInt(registeredValue) === 2) {
                      const total = parseInt(landValue) *  0.15 + 100000
                      setTotal(total)
-                     console.log(total)
+                     dispatch({type: 'SHOWCALCULATEDVALUE'})
+                     // THEN DISPATCH
+                  }
+               } else if(parseInt(landValue) < 20000000) {
+                 if(parseInt(registeredValue) === 1) {
+                     const total = parseInt(landValue) *  0.1
+                     setTotal(total)
+                     dispatch({type: 'SHOWCALCULATEDVALUE'})
+                     // THEN DISPATCH
+                  } else if(parseInt(registeredValue) === 2) {
+                     const total = parseInt(landValue) *  0.1 + 100000
+                     setTotal(total)
+                     dispatch({type: 'SHOWCALCULATEDVALUE'})
+                     // THEN DISPATCH
+                  }
+
+               } else {
+                  if(parseInt(registeredValue) === 1) {
+                        const total = parseInt(landValue) *  0.05
+                        setTotal(total)
+                        dispatch({type: 'SHOWCALCULATEDVALUE'})
+                        // THEN DISPATCH
+                     } else if(parseInt(registeredValue) === 2) {
+                        const total = parseInt(landValue) *  0.05 + 100000
+                        setTotal(total)
+                        dispatch({type: 'SHOWCALCULATEDVALUE'})
+                        // THEN DISPATCH
+                     }
+                  }
+            } else if(parseInt(advocate) === 22) {
+               if(parseInt(landValue) < 10000000) {
+                  if(parseInt(registeredValue) === 1) {
+                     const total = (parseInt(landValue) *  0.15 * 1.5)
+                     if(total < 100000) {
+                        setTotal(100000)
+                        dispatch({type: 'SHOWCALCULATEDVALUE'})
+                     } else {
+
+                        setTotal(total)
+                        dispatch({type: 'SHOWCALCULATEDVALUE'})
+                     } 
+                     // THEN DISPATCH
+                  } else if(parseInt(registeredValue) === 2) {
+                     const total = (parseInt(landValue) *  0.15 * 1.5) 
+                     if(total < 100000) {
+                        setTotal(100000)
+                        dispatch({type: 'SHOWCALCULATEDVALUE'})
+                     } else {
+
+                        setTotal(total + 100000)
+                        dispatch({type: 'SHOWCALCULATEDVALUE'})
+                     }
+                     // THEN DISPATCH
+                  }
+               } else if(parseInt(landValue) < 20000000) {
+                  if(parseInt(registeredValue) === 1) {
+                     const total = (parseInt(landValue) *  0.1 * 1.5)
+                     if(total < 100000) {
+                        setTotal(100000)
+                        dispatch({type: 'SHOWCALCULATEDVALUE'})
+                     } else {
+
+                        setTotal(total)
+                        dispatch({type: 'SHOWCALCULATEDVALUE'})
+                     } 
+                     // THEN DISPATCH
+                  } else if(parseInt(registeredValue) === 2) {
+                     const total = (parseInt(landValue) *  0.1 * 1.5) 
+                     if(total < 100000) {
+                        setTotal(100000)
+                        dispatch({type: 'SHOWCALCULATEDVALUE'})
+                     } else {
+
+                        setTotal(total + 100000)
+                        dispatch({type: 'SHOWCALCULATEDVALUE'})
+                     }
+                     // THEN DISPATCH
+                  }
+               } else {
+                  if(parseInt(registeredValue) === 1) {
+                     const total = (parseInt(landValue) *  0.05 * 1.5)
+                     if(total < 100000) {
+                        setTotal(100000)
+                        dispatch({type: 'SHOWCALCULATEDVALUE'})
+                     } else {
+
+                        setTotal(total)
+                        dispatch({type: 'SHOWCALCULATEDVALUE'})
+                     } 
+                     // THEN DISPATCH
+                  } else if(parseInt(registeredValue) === 2) {
+                     const total = (parseInt(landValue) *  0.05 * 1.5) 
+                     if(total < 100000) {
+                        setTotal(100000)
+                        dispatch({type: 'SHOWCALCULATEDVALUE'})
+                     } else {
+
+                        setTotal(total + 100000)
+                        dispatch({type: 'SHOWCALCULATEDVALUE'})
+                     }
                      // THEN DISPATCH
                   }
                }
-            } else if(parseInt(advocate) === 22) {
-               //COMPLETING ADVOCATE
-               console.log(landValue)
-               console.log('RACK RENT COMPLETING ADVOCATE')
             }
          }else if(parseInt(rentalType) === 2) {
             //GROUND RENT
-            console.log('GROUND RENT NOT YET CALCULATED')
+            if(parseInt(advocate) === 23) {
+               //PREPARING ADVOCATE
+               if(parseInt(landValue) < 1500000) {
+                  if(parseInt(registeredValue) === 1) {
+                     const total = parseInt(landValue) *  0.3
+                     setTotal(total)
+                     dispatch({type: 'SHOWCALCULATEDVALUE'})
+                     // THEN DISPATCH
+                  } else if(parseInt(registeredValue) === 2) {
+                     const total = parseInt(landValue) *  0.3 + 100000
+                     setTotal(total)
+                     dispatch({type: 'SHOWCALCULATEDVALUE'})
+                     // THEN DISPATCH
+                  }
+               } else if(parseInt(landValue) < 4500000) {
+                  if(parseInt(registeredValue) === 1) {
+                     const r1 = 1500000 * 0.3
+                     const r2 = parseInt(landValue) - 1500000
+                     const r3 = (r2 * 0.05)
+                     const total = r1 + r3
+                     setTotal(total)
+                     dispatch({type: 'SHOWCALCULATEDVALUE'})
+                     // THEN DISPATCH
+                  } else if(parseInt(registeredValue) === 2) {
+                     const r1 = 1500000 * 0.3
+                     const r2 = parseInt(landValue) - 1500000
+                     const r3 = (r2 * 0.05)
+                     const total = r1 + r3 + 100000
+                     setTotal(total)
+                     dispatch({type: 'SHOWCALCULATEDVALUE'})
+                     // THEN DISPATCH
+                  }
+
+               } else {
+                  if(parseInt(registeredValue) === 1) {
+                     if(parseInt(registeredValue) === 1) {
+                     const rt1 = 1500000 * 0.3
+                     const r2 = parseInt(landValue) - 1500000
+                     const rt2 = r2 * 0.05 
+                     const r3 = parseInt(landValue - 4500000)
+                     const rt3 = r3 * 0.02
+                     const total = rt1 + rt2 + rt3
+                     setTotal(total)
+                     dispatch({type: 'SHOWCALCULATEDVALUE'})
+                     // THEN DISPATCH
+                  } else if(parseInt(registeredValue) === 2) {
+                     const rt1 = 1500000 * 0.3
+                     const r2 = parseInt(landValue) - 1500000
+                     const rt2 = r2 * 0.05 
+                     const r3 = parseInt(landValue - 4500000)
+                     const rt3 = r3 * 0.02
+                     const total = rt1 + rt2 + rt3 + 100000
+                     setTotal(total)
+                     dispatch({type: 'SHOWCALCULATEDVALUE'})
+                     // THEN DISPATCH
+                  }
+               }
+            }
+            }else if(parseInt(advocate) === 24) {
+               if(parseInt(landValue) < 1500000) {
+                  if(parseInt(registeredValue) === 1) {
+                     const total = parseInt(landValue) *  0.3 * 0.5
+                     setTotal(total)
+                     dispatch({type: 'SHOWCALCULATEDVALUE'})
+                     // THEN DISPATCH
+                  } else if(parseInt(registeredValue) === 2) {
+                     const total = parseInt(landValue) *  0.3 * 0.5 + 100000
+                     setTotal(total)
+                     dispatch({type: 'SHOWCALCULATEDVALUE'})
+                     // THEN DISPATCH
+                  }
+               } else if(parseInt(landValue) < 4500000) {
+                  if(parseInt(registeredValue) === 1) {
+                     const r1 = 1500000 * 0.3
+                     const r2 = parseInt(landValue) - 1500000
+                     const r3 = (r2 * 0.05)
+                     const total = ((r1 + r3) * 0.5)
+                     setTotal(total)
+                     dispatch({type: 'SHOWCALCULATEDVALUE'})
+                     // THEN DISPATCH
+                  } else if(parseInt(registeredValue) === 2) {
+                     const r1 = 1500000 * 0.3
+                     const r2 = parseInt(landValue) - 1500000
+                     const r3 = (r2 * 0.05)
+                     const total = ((r1 + r3) * 0.05) + 100000
+                     setTotal(total)
+                     dispatch({type: 'SHOWCALCULATEDVALUE'})
+                     // THEN DISPATCH
+                  }
+
+               } else {
+                  if(parseInt(registeredValue) === 1) {
+                     const rt1 = 1500000 * 0.3
+                     const r2 = parseInt(landValue) - 1500000
+                     const rt2 = r2 * 0.05 
+                     const r3 = parseInt(landValue - 4500000)
+                     const rt3 = r3 * 0.02
+                     const total = ((rt1 + rt2 + rt3) * 0.5)
+                     setTotal(total)
+                     dispatch({type: 'SHOWCALCULATEDVALUE'})
+                     // THEN DISPATCH
+                  } else if(parseInt(registeredValue) === 2) {
+                     const rt1 = 1500000 * 0.3
+                     const r2 = parseInt(landValue) - 1500000
+                     const rt2 = r2 * 0.05 
+                     const r3 = parseInt(landValue - 4500000)
+                     const rt3 = r3 * 0.02
+                     const total = ((rt1 + rt2 + rt3) * 0.5) + 100000
+                     setTotal(total)
+                     dispatch({type: 'SHOWCALCULATEDVALUE'})
+                     // THEN DISPATCH
+                  }
+               }
+            }
          }
       }
    }
