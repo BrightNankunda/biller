@@ -58,7 +58,6 @@ const Biller = ( ) => {
 
    const [total, setTotal] = useState(null)
    
-
    //FUNCTIONS
    const handleSetProperty = (property) => {
       setPropertyType(property)
@@ -500,7 +499,12 @@ const Biller = ( ) => {
 
    //REDUX DISPATCHER
    const handleSaveBill = () => {
-      ReducerDispatch(SaveBill({propertyType,landValue,scale,advocate,registered,total}))
+      if(propertyType === 'land') {
+         ReducerDispatch(SaveBill({propertyType,landValue,scale,advocate,registered,total}))
+      } else if(propertyType === 'rent') {
+         console.log('SAVEBill says', propertyType, advocate, scale, rentalType, registered, total)
+         ReducerDispatch(SaveBill({propertyType,landValue,rentalType,advocate,registered,total}))
+      }
    }
 
    //CANCELLINGS

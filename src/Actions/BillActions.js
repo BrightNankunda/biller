@@ -4,11 +4,15 @@ import {
    BILLS_FETCH_REQUEST, BILLS_FETCH_SUCCESS, BILLS_FETCH_ERROR
 } from '../Constants/BillConstants'
 
-const SaveBill = ({propertyType,landValue,scale,advocate,registered,total}) => async (dispatch) => {
+const SaveBill = ({propertyType,landValue,scale,rentalType,advocate,registered,total}) => async (dispatch) => {
    // console.log(landValue, scale, total)
    try {
-      dispatch({type: BILL_SAVE_REQUEST, payload: {propertyType,landValue,scale,advocate,registered,total} })
-      const {data} = await axios.post('http://localhost:7000/api/bill', {propertyType,landValue,scale,advocate,registered,total})
+      dispatch({type: BILL_SAVE_REQUEST, payload: {
+         propertyType,landValue,scale,rentalType,advocate,registered,total
+      } })
+      const {data} = await axios.post('http://localhost:7000/api/bill', {
+         propertyType,landValue,scale,rentalType,advocate,registered,total
+      })
       console.log(data)
       dispatch({type: BILL_SAVE_SUCCESS, payload: data})
    } catch(error) {
