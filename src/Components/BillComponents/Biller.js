@@ -499,12 +499,7 @@ const Biller = ( ) => {
 
    //REDUX DISPATCHER
    const handleSaveBill = () => {
-      if(propertyType === 'land') {
-         ReducerDispatch(SaveBill({propertyType,landValue,scale,advocate,registered,total}))
-      } else if(propertyType === 'rent') {
-         console.log('SAVEBill says', propertyType, advocate, scale, rentalType, registered, total)
-         ReducerDispatch(SaveBill({propertyType,landValue,rentalType,advocate,registered,total}))
-      }
+      ReducerDispatch(SaveBill({propertyType,landValue,rentalType,scale,advocate,registered,total}))
    }
 
    //CANCELLINGS
