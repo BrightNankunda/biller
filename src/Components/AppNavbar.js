@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import {NavLink} from 'react-router-dom'
+import {ArrowLeft} from 'react-bootstrap-icons'
 import {
   Collapse,
   Navbar,
@@ -39,7 +40,9 @@ const AppNavbar = (props) => {
             <NavItem>
               <NavLink 
               to="https://github.com/BrightNankunda/billing-back-end" 
-              className="text-white" target="blank">GitHub Billing</NavLink>
+              className="text-white" target="blank">
+              <ArrowLeft />
+              GitHub Billing</NavLink>
             </NavItem>
           </Nav>
         </Collapse>
