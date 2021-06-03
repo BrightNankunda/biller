@@ -10,8 +10,8 @@ import Scale from './Scale';
 import Title from './Title';
 import Rental from './Rental'
 import SideBar from './SideBar'
+import AllBills from './AllBills'
  
-
 const reducer = (state, action) => {
    switch(action.type) {
       case 'SHOWFRONT':
@@ -514,7 +514,7 @@ const Biller = ( ) => {
       <div className="col-lg-3 blue" style={{"min-height": "95vh"}}>
          <SideBar />
       </div>
-      <div className="col-lg-9">
+      <div className="col-lg-8">
          {propertyType && 
             <Title propertyType={propertyType} registered={registered} rentalType={rentalType}
 
@@ -540,7 +540,10 @@ const Biller = ( ) => {
 
             {state.calculatedValue && 
                <BillData  total={total} onSaveBill={handleSaveBill}/>}
+
+            <AllBills />
          </div>
+         
       </div>
    );
 }

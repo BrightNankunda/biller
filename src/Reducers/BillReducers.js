@@ -15,6 +15,7 @@ function SaveBillReducer(state={}, action) {
          return state
    }
 }
+
 function FetchBillsReducer(state={bills: []}, action) {
    switch(action.type) {
       case BILLS_FETCH_REQUEST:

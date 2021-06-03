@@ -1,5 +1,5 @@
 import React from 'react';
-import { Calendar, Calendar2DateFill, CurrencyBitcoin, CurrencyDollar, GearFill, GiftFill, HouseDoorFill } from 'react-bootstrap-icons';
+import { Calendar2DateFill, CurrencyBitcoin, GearFill, GiftFill, HouseDoorFill } from 'react-bootstrap-icons';
  
 const SideBar = () => {
    return (
