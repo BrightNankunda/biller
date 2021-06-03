@@ -1,5 +1,5 @@
 import React from 'react'
-import {ArrowRight} from 'react-bootstrap-icons'
+import {ArrowRight, ForwardFill} from 'react-bootstrap-icons'
 
 export default function Login() {
    return (
@@ -28,7 +28,7 @@ export default function Login() {
          <div className="create-an-account d-flex justify-content-center w-100 text-white">
             <p>
                Create an account
-               <ArrowRight className="ml-2 " style={{"width" :"20px", "height": "40px"}}/>
+               <ForwardFill className="ml-0 " style={{"width" :"50px", "height": "20px"}}/>
             </p>
          </div>
       </div>

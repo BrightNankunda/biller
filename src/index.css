@@ -46,6 +46,25 @@ Button:hover {
   border-top-right-radius: 30px;
   border-bottom-right-radius: 30px;
 }
-.signup {
+.blue, .signup {
   background: #002b80 !important;
+
+}
+.btn-outline {
+  position: relative;
+  border: none !important;
+  background: white !important;
+  color: black !important;
+  min-height: 50px !important;
+  border-bottom-left-radius: 30px !important;
+  border-top-left-radius: 30px !important;
+  border-top-right-radius: 30px !important;
+  border-bottom-right-radius: 30px !important;
+}
+.dashboard-icons {
+  position: absolute;
+  left: 40px;
+}
+.btn:hover {
+  opacity: 0.9 !important;
 }

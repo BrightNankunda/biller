@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import {BoxArrowLeft} from 'react-bootstrap-icons'
  
 const Title = ({propertyType, scaleHeading, advocateHeading, registered, rentalType}) => {
 
@@ -61,8 +62,13 @@ const Title = ({propertyType, scaleHeading, advocateHeading, registered, rentalT
    
    return (
       <div className="container">
-         <div className="">
-            <h3 className="text-center text-success">{propertyType.charAt(0).toUpperCase() + propertyType.slice(1)}</h3>
+         <div className="bg-white">
+            <div className="w-100 d-flex">
+               <span><BoxArrowLeft className=""/></span>
+               <h3 className="text-center mx-auto">
+                  {propertyType.charAt(0).toUpperCase() + propertyType.slice(1)}
+               </h3>
+            </div>
             <h4 className="text-center text-primary">{scaleHeader}</h4>
             <h4 className="text-center text-primary">{rentalHeader}</h4>
             <h5 className="text-center text-primary">{advocateHeader}</h5>

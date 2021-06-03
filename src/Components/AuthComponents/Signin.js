@@ -11,7 +11,7 @@ export default function Signin() {
             <div className="form d-flex justify-content-center">
             <form className=" p-2 mt-3 " style={{"width": "40vw"}}>
                <div className="form-group">
-                  <imput type="email" className="email form-control" placeholder="Email"/>
+                  <input type="email" className="email form-control" placeholder="Email"/>
                </div>
                <div className="form-group">
                   <input type="password" className="password form-control" placeholder="Password"/>

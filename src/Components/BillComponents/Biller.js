@@ -9,6 +9,7 @@ import Front from './Front'
 import Scale from './Scale';
 import Title from './Title';
 import Rental from './Rental'
+import SideBar from './SideBar'
  
 
 const reducer = (state, action) => {
@@ -509,32 +510,37 @@ const Biller = ( ) => {
 
    //COMPONENTS
    return (
-      <div className="mt-1">
+      <div className="d-flex">
+      <div className="col-lg-3 blue" style={{"min-height": "95vh"}}>
+         <SideBar />
+      </div>
+      <div className="col-lg-9">
          {propertyType && 
-         <Title propertyType={propertyType} registered={registered} rentalType={rentalType}
+            <Title propertyType={propertyType} registered={registered} rentalType={rentalType}
 
-            scaleHeading={scale} advocateHeading={advocate}/>}
+               scaleHeading={scale} advocateHeading={advocate}/>}
 
 
-         {state.showFront && 
-            <Front onSetProperty={handleSetProperty}/> }
+            {state.showFront && 
+               <Front onSetProperty={handleSetProperty}/> }
 
-         {state.showRental && 
-         <Rental onSetRental={handleSetRental} propertyType={propertyType}/>}
-         
-         {state.showScale &&  
-            <Scale onScale={handleScale} />}
+            {state.showRental && 
+            <Rental onSetRental={handleSetRental} propertyType={propertyType}/>}
             
-         {state.showAdvocate && 
-            <Advocate onAdvocate={handleAdvocate}  propertyType={propertyType} rentalType={rentalType}
-            onCancelAdvocate={handleCancel}/>}
+            {state.showScale &&  
+               <Scale onScale={handleScale} />}
+               
+            {state.showAdvocate && 
+               <Advocate onAdvocate={handleAdvocate}  propertyType={propertyType} rentalType={rentalType}
+               onCancelAdvocate={handleCancel}/>}
 
-         {state.showCalculation && 
-            <Calculation scale={scale} propertyType={propertyType}
-            onCalculate={handleCalculate} total={total}/>}
+            {state.showCalculation && 
+               <Calculation scale={scale} propertyType={propertyType}
+               onCalculate={handleCalculate} total={total}/>}
 
-         {state.calculatedValue && 
-            <BillData  total={total} onSaveBill={handleSaveBill}/>}
+            {state.calculatedValue && 
+               <BillData  total={total} onSaveBill={handleSaveBill}/>}
+         </div>
       </div>
    );
 }
