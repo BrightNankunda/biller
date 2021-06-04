@@ -68,3 +68,26 @@ Button:hover {
 .btn:hover {
   opacity: 0.9 !important;
 }
+.biller-wrapper {
+  min-height: 90vh !important;
+}
+.bill-input {
+  border: none !important;
+  min-height: 40px;
+}
+.bill-btn {
+  border: none !important;
+  background: white;
+  border-radius: 0 !important;
+}
+.rental {
+  min-height: 85vh;
+}
+.cancel:hover {
+  color: red;
+  opacity: 1 !important;
+}
+.next:hover {
+  color:green;
+  opacity: 1 !important;
+}

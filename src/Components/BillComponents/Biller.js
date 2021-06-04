@@ -514,13 +514,13 @@ const Biller = ( ) => {
       <div className="col-lg-3 blue" style={{"min-height": "95vh"}}>
          <SideBar />
       </div>
-      <div className="col-lg-8">
+      <div className="col-lg-9 biller-wrapper">
          {propertyType && 
             <Title propertyType={propertyType} registered={registered} rentalType={rentalType}
 
                scaleHeading={scale} advocateHeading={advocate}/>}
 
-
+            <div className="bg-light">
             {state.showFront && 
                <Front onSetProperty={handleSetProperty}/> }
 
@@ -540,8 +540,9 @@ const Biller = ( ) => {
 
             {state.calculatedValue && 
                <BillData  total={total} onSaveBill={handleSaveBill}/>}
-
-            <AllBills />
+            
+            </div>
+            {/* <AllBills /> */}
          </div>
          
       </div>

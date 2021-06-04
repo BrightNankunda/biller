@@ -61,12 +61,12 @@ const Title = ({propertyType, scaleHeading, advocateHeading, registered, rentalT
    }, [registered])
    
    return (
-      <div className="container">
+      <div className="fluid-container">
          <div className="bg-white">
             <div className="w-100 d-flex">
                <span><BoxArrowLeft className=""/></span>
                <h3 className="text-center mx-auto">
-                  {propertyType.charAt(0).toUpperCase() + propertyType.slice(1)}
+                  {propertyType.toUpperCase()}
                </h3>
             </div>
             <h4 className="text-center text-primary">{scaleHeader}</h4>

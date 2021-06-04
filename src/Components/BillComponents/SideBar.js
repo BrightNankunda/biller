@@ -1,5 +1,7 @@
 import React from 'react';
-import { Calendar2DateFill, CurrencyBitcoin, GearFill, GiftFill, HouseDoorFill } from 'react-bootstrap-icons';
+import { BookFill, 
+   Calendar2DateFill, CurrencyBitcoin, GearFill, GiftFill, 
+   HouseDoorFill, Lock } from 'react-bootstrap-icons';
  
 const SideBar = () => {
    return (
@@ -17,12 +19,19 @@ const SideBar = () => {
             CALENDAR</button>
 
          <button className="btn btn-outline my-3">
+            <span className="dashboard-icons"><BookFill /></span>
+            REPORTS</button>
+
+         <button className="btn btn-outline my-3">
             <span className="dashboard-icons"><CurrencyBitcoin /></span> 
             BILLING</button>
 
          <button className="btn btn-outline my-3">
             <span className="dashboard-icons"><GearFill /></span>
             SETTINGS</button>
+         <button className="btn btn-outline my-3">
+            <span className="dashboard-icons"><Lock/></span> 
+            LOG OUT</button>
       </div>
    );
 }

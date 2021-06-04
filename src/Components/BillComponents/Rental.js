@@ -1,5 +1,5 @@
 import React, { useState} from 'react';
-import {Row, Label, Input, FormGroup, Button} from 'reactstrap'
+import {Button} from 'reactstrap'
  
 const Rental = ({onSetRental}) => {
 
@@ -17,11 +17,11 @@ const Rental = ({onSetRental}) => {
    }
    
    return (
-      <Row className="my-2">
-         <div className="container col-6">
-            <FormGroup>
-               <Label for="rental">Rental Type</Label>
-               <Input type="select" id="rental" 
+      <div className="rental my-2">
+         <div className="container col-7">
+            <div className="form-group mt-2">
+               <label htmlFor="rental">Rental Type</label>
+               <select type="select" className="bill-input px-2" id="rental" 
                value={rent}
                onChange={(e) => setRent(e.target.value)}
                name="rental"
@@ -31,15 +31,15 @@ const Rental = ({onSetRental}) => {
                         <option disabled={option.disabled} value={option.value} key={option.value}>{option.type}</option>
                      ))
                   }
-               </Input>
-            </FormGroup>
+               </select>
+            </div>
 
-            <div className="d-flex justify-content-between">
-               <Button outline color="secondary" className="">Cancel</Button>
-               <Button color="primary" onClick={setRentalType} className="ml-2">Next</Button>
+            <div className="d-flex justify-content-between my-5">
+               <button className="bill-btn py-2 px-3 cancel">Cancel</button>
+               <button onClick={setRentalType} className="bill-btn ml-2 py-2 px-3 next">Next</button>
             </div>
          </div>
-      </Row>
+      </div>
       
    );
 }

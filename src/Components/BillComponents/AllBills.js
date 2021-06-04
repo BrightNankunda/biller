@@ -21,7 +21,7 @@ const AllBills = () => {
    return ( 
       <div className="w-100">
          <h4 className="text-center">ALL BILLS</h4>
-         {loading && <h2 className="text-center">Loading...</h2>}
+         {loading && !error && <h2 className="text-center">Loading...</h2>}
          {bills && bills.map(bill => 
             <div className="list-group">
                <h5 className="list-group-item text-center">{capitalize(bill.propertyType)}</h5>
@@ -31,7 +31,8 @@ const AllBills = () => {
             </div>
          )}
          {error && <div className="alert alert-danger">
-            {error}
+            <p className="text-danger">Erorr While loading Bills</p>
+            <p>{error}</p>
          </div>}
       </div>
    );
