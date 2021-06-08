@@ -1,6 +1,11 @@
-import {USER_LOGIN_FAILURE, USER_LOGIN_REQUEST, USER_LOGIN_SUCCESS} from '../Constants/UserConstants'
+import {USER_LOGIN_FAILURE, 
+   USER_LOGIN_REQUEST, 
+   USER_LOGIN_SUCCESS, 
+   USER_SIGNIN_FAILURE, 
+   USER_SIGNIN_REQUEST,
+   USER_SIGNIN_SUCCESS} from '../Constants/UserConstants'
 
-function loginUser(state={}, action) {
+function UserLoginReducer(state={}, action) {
    switch (action.type) {
       case USER_LOGIN_REQUEST:
          return {...state, loading: true}
@@ -13,10 +18,17 @@ function loginUser(state={}, action) {
    }
 }
 
-function signinUser(state={}, action) {
+function UserSigninReducer(state={}, action) {
    switch (action.type) {
-      case:
+      case USER_SIGNIN_REQUEST:
+         return {...state, loading: true}
+      case USER_SIGNIN_SUCCESS:
+         return {...state, loading: false, user: action.payload}
+      case USER_SIGNIN_FAILURE:
+         return {...state, loading: false, error: action.payload}
+      default:
+         return state;
    }
 }
 
-export {loginUser}
+export {UserLoginReducer, UserSigninReducer}
