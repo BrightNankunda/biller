@@ -12,7 +12,11 @@ const UserLogin = ({email, password}) => async (dispatch) => {
    try {
       dispatch({type: USER_LOGIN_REQUEST, payload: {email, password}})
       const {data} = await axios.post('http://localhost:7000/api/user/login', {email, password})
-      localStorage.setItem('UgBillToken', data.token)
+      if(typeof(data.token) != null) {
+         localStorage.setItem('UgBillToken', data.token)
+         console.log(data.token)
+         window.location.push('/bill')
+      }
       dispatch({type: USER_LOGIN_SUCCESS, payload: data})
    } catch(err) {
       console.log(err.message)
@@ -26,7 +30,11 @@ const UserSignin = ({email, password}) => async (dispatch) => {
    try {
       dispatch({type: USER_SIGNIN_REQUEST, payload: {email, password}})
       const {data} = await axios.post('http://localhost:7000/api/user/signin', {email, password})
-      localStorage.setItem('UgBillToken', JSON.stringify(data.token))
+      if(typeof(data.token) != null) {
+         localStorage.setItem('UgBillToken', data.token)
+         console.log(data.token)
+         window.location.push('/bill')
+      }
       dispatch({type: USER_SIGNIN_SUCCESS, payload: data})
    } catch(err) {
       console.log(err.message)

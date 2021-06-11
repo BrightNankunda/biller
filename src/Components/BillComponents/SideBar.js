@@ -1,43 +1,66 @@
 import React from 'react';
-import {useSelector} from 'react-redux'
+import {useSelector, useDispatch} from 'react-redux'
+import {Link, NavLink} from 'react-router-dom'
 
 import { BookFill, 
    Calendar2DateFill, CurrencyBitcoin, GearFill, GiftFill, 
    HouseDoorFill, Lock, PersonFill } from 'react-bootstrap-icons';
+import jwtDecode from 'jwt-decode';
  
 const SideBar = () => {
-   const token = useSelector(state => state.user)
-   console.log(token)
+   
+   const dispatch = useDispatch()
+
+   const userToken = useSelector(state => state.user)
+   console.log('userToken', userToken)
+
+   if(userToken === null) {
+      window.location = '/login'
+   }
+
+   const logged = localStorage.getItem('UgBillToken')
+   const loggedInUserEmail = jwtDecode(logged)
+   const loggedInUser = loggedInUserEmail.user.email
+
+   const logout = () => {
+      // dispatch({type: logoutUser})
+      localStorage.removeItem('UgBillToken')
+      if(localStorage.getItem('UgBillToken') === undefined) {
+         // window.location = '/login'
+         history.push('/login')
+      }
+   }
 
    return (
       <div className="w-100 d-flex flex-col" >
-      <button className="btn btn-outline my-3">
+         <NavLink className="btn btn-outline my-3" to={"/profile/" + loggedInUser}>
             <span className="dashboard-icons"><PersonFill /></span>
-            PERSON</button>
-         <button className="btn btn-outline my-3">
+            {loggedInUser}</NavLink>
+
+         <NavLink className="btn btn-outline my-3" to="/dashboard">
             <span className="dashboard-icons"><HouseDoorFill /></span>
-            DASHBORAD</button>
+            DASHBORAD</NavLink>
 
-         <button className="btn btn-outline my-3">
+         <NavLink className="btn btn-outline my-3" to="/schedules">
             <span className="dashboard-icons"><GiftFill/></span> 
-         SHEDULES</button>
+         SHEDULES</NavLink>
 
-         <button className="btn btn-outline my-3">
+         <NavLink className="btn btn-outline my-3" to="/calendar">
             <span className="dashboard-icons"><Calendar2DateFill /></span>
-            CALENDAR</button>
+            CALENDAR</NavLink>
 
-         <button className="btn btn-outline my-3">
+         <NavLink className="btn btn-outline my-3" to="/reports">
             <span className="dashboard-icons"><BookFill /></span>
-            REPORTS</button>
+            REPORTS</NavLink>
 
-         <button className="btn btn-outline my-3">
+         <NavLink className="btn btn-outline my-3" to="/billing">
             <span className="dashboard-icons"><CurrencyBitcoin /></span> 
-            BILLING</button>
+            BILLING</NavLink>
 
-         <button className="btn btn-outline my-3">
+         <NavLink className="btn btn-outline my-3" to="/settings">
             <span className="dashboard-icons"><GearFill /></span>
-            SETTINGS</button>
-         <button className="btn btn-outline my-3">
+            SETTINGS</NavLink>
+         <button className="btn btn-outline my-3" onClick={logout}>
             <span className="dashboard-icons"><Lock/></span> 
             LOG OUT</button>
       </div>

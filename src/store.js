@@ -4,7 +4,8 @@ import thunk from 'redux-thunk'
 import { FetchBillsReducer, SaveBillReducer } from './Reducers/BillReducers'
 import { UserLoginReducer, UserSigninReducer } from './Reducers/UserReducers'
 
-const initialState = {token: localStorage.getItem('UgBillToken') || null}
+// const userInfo = localStorage.getItem("UgBillToken") || null;
+const initialState = { user: localStorage.getItem("UgBillToken") || null};
 
 const reducer = combineReducers({
    newBill: SaveBillReducer,
