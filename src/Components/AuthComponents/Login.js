@@ -22,8 +22,8 @@ export default function Login() {
          </div>
          <div className="form d-flex justify-content-center">
          <form className="rounded p-2 mt-3 " 
-         onSubmit={handleSubmit}
-         style={{"width": "40vw"}}>
+            onSubmit={handleSubmit}
+            style={{"width": "40vw"}}>
 
             <div className="form-group">
                <input type="email" 

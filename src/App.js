@@ -39,8 +39,8 @@ function App() {
         <Route path="/reports" component={Reports} />
         <Route path="/schedules" component={Schedules} />
         <Route path="/calendar" component={Calendar} />
-        <Route path="/billing" component={Billing} />
-        <Route path="/bill" component={Biller} />
+        {/* <Route path="/billing" component={Billing} /> */}
+        <Route path="/billing" component={Biller} />
       </div> 
     </div>}
 

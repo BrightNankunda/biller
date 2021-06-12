@@ -91,3 +91,7 @@ Button:hover {
   color:green;
   opacity: 1 !important;
 }
+.submit:hover {
+  background: green;
+  color: white;
+}
