@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {useSelector, useDispatch} from 'react-redux'
 import {Link, NavLink} from 'react-router-dom'
 
@@ -6,29 +6,35 @@ import { BookFill,
    Calendar2DateFill, CurrencyBitcoin, GearFill, GiftFill, 
    HouseDoorFill, Lock, PersonFill } from 'react-bootstrap-icons';
 import jwtDecode from 'jwt-decode';
+import { LogoutUser } from '../../Actions/UserActions';
  
-const SideBar = () => {
+const SideBar = (props) => {
    
    const dispatch = useDispatch()
 
    const userToken = useSelector(state => state.user)
    console.log('userToken', userToken)
+   console.log('props', props)
 
-   if(userToken === null) {
-      window.location = '/login'
-   }
+   useEffect(() => {
+      if(userToken === null) {
+         window.location = '/login'
+      }
+      
+      return () => {
+         // cleanup
+      }
+   })
 
-   const logged = localStorage.getItem('UgBillToken')
-   const loggedInUserEmail = jwtDecode(logged)
+   const loggedIn = localStorage.getItem('userLoggedIn')
+   console.log(loggedIn)
+   const loggedInUserEmail = jwtDecode(userToken)
    const loggedInUser = loggedInUserEmail.user.email
 
+
+
    const logout = () => {
-      // dispatch({type: logoutUser})
-      localStorage.removeItem('UgBillToken')
-      if(localStorage.getItem('UgBillToken') === undefined) {
-         // window.location = '/login'
-         history.push('/login')
-      }
+      dispatch(LogoutUser())
    }
 
    return (

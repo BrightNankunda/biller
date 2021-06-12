@@ -15,7 +15,7 @@ export default function Signin() {
    }
 
    return (
-      <div className="row d-flex justify-content-center  " style={{"min-height" :"90vh"}}>
+      <div className="row d-flex justify-content-center  " style={{"min-height" :"100vh"}}>
          <div className="col-lg-6 signup">
             <div className="">
                <h2 className="text-center text-white my-4">Sign Up</h2>

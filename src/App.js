@@ -14,24 +14,39 @@ import Calendar from './Components/DashboardComponents/Calendar'
 import Schedules from './Components/DashboardComponents/schedules'
 import Reports from './Components/DashboardComponents/reports'
 import Settings from './Components/DashboardComponents/Settings'
+import SideBar from './Components/BillComponents/SideBar';
+import { useSelector } from 'react-redux';
 
 function App() {
+
+  const userLoggedIn = useSelector(state => state.userLoggedIn)
+  console.log(userLoggedIn)
+
   return (
     <Router>
-    <AppNavbar/>
-    <div className="main">
-      <Route exact path="/" component={User} />
-      <Route path="/dashboard" component={Dashboard} />
-      <Route path="/settings" component={Settings} />
-      <Route path="/reports" component={Reports} />
-      <Route path="/schedules" component={Schedules} />
-      <Route path="/calendar" component={Calendar} />
-      <Route path="/billing" component={Billing} />
-      <Route path="/bill" component={Biller} />
-      <Route path="/signin" component={Signin} />
-      <Route path="/login" component={LoginComponent} />
-    </div>
+    {/* <AppNavbar/> */}
+    {userLoggedIn &&
+    <div className="d-flex">
+      <div className="col-lg-3 blue" style={{"min-height": "95vh"}}>
+          <SideBar />
+      </div> 
+       
+      <div className="main col-lg-9">
 
+        <Route exact path="/" component={User} />
+        <Route path="/dashboard" component={Dashboard} />
+        <Route path="/settings" component={Settings} />
+        <Route path="/reports" component={Reports} />
+        <Route path="/schedules" component={Schedules} />
+        <Route path="/calendar" component={Calendar} />
+        <Route path="/billing" component={Billing} />
+        <Route path="/bill" component={Biller} />
+      </div> 
+    </div>}
+
+      {!userLoggedIn && 
+      <Route path="/signin" component={Signin} /> }
+      {!userLoggedIn && <Route path="/login" component={LoginComponent} /> }
     </Router>
   );
 }

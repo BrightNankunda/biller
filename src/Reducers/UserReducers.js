@@ -1,4 +1,4 @@
-import {USER_LOGIN_FAILURE, 
+import {LOGOUT_USER_FAILURE, LOGOUT_USER_REQUEST, LOGOUT_USER_SUCCESS, USER_LOGIN_FAILURE, 
    USER_LOGIN_REQUEST, 
    USER_LOGIN_SUCCESS, 
    USER_SIGNIN_FAILURE, 
@@ -31,4 +31,17 @@ function UserSigninReducer(state={}, action) {
    }
 }
 
-export {UserLoginReducer, UserSigninReducer}
+function LogoutUserReducer(state={}, action) {
+   switch(action.type) {
+      case LOGOUT_USER_REQUEST:
+         return {...state, loading: true}
+      case LOGOUT_USER_SUCCESS:
+         return {...state, loading: false, loggedIn: false}
+      case LOGOUT_USER_FAILURE:
+         return {...state, loading: false, loggedIn: false}
+      default:
+         return state
+   }
+}
+
+export {UserLoginReducer, UserSigninReducer, LogoutUserReducer}

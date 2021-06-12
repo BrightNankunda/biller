@@ -5,12 +5,16 @@ import { FetchBillsReducer, SaveBillReducer } from './Reducers/BillReducers'
 import { UserLoginReducer, UserSigninReducer } from './Reducers/UserReducers'
 
 // const userInfo = localStorage.getItem("UgBillToken") || null;
-const initialState = { user: localStorage.getItem("UgBillToken") || null};
+const initialState = { user: localStorage.getItem("UgBillToken") || null,
+   userSignedIn:  localStorage.getItem("userLoggedIn") || false,
+   userLoggedIn: localStorage.getItem("userLoggedIn") || false};
 
 const reducer = combineReducers({
    newBill: SaveBillReducer,
    bills: FetchBillsReducer,
-   user: UserLoginReducer || UserSigninReducer,
+   user:  UserLoginReducer || UserSigninReducer,
+   userLoggedIn: UserLoginReducer,
+   userSignedIn: UserSigninReducer
 })
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose

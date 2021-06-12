@@ -511,9 +511,7 @@ const Biller = ( ) => {
    //COMPONENTS
    return (
       <div className="d-flex">
-      <div className="col-lg-3 blue" style={{"min-height": "95vh"}}>
-         <SideBar />
-      </div>
+      
       <div className="col-lg-9 biller-wrapper">
          {propertyType && 
             <Title propertyType={propertyType} registered={registered} rentalType={rentalType}

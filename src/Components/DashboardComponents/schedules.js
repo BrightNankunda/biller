@@ -1,9 +1,10 @@
 import React from 'react';
+import CreateClient from './ClientComponents/CreateClient';
  
 const Schedules = () => {
    return (
       <div>
-         Schedules
+         <CreateClient />
       </div>
    );
 }

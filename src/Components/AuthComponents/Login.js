@@ -16,7 +16,7 @@ export default function Login() {
    }
 
    return (
-      <div className="login row d-flex flex-col bg-primary " style={{"min-height" :"90vh"}}>
+      <div className="login row d-flex flex-col bg-primary " style={{"min-height" :"100vh"}}>
          <div className="">
             <h2 className="text-center text-white my-4">Login</h2>
          </div>
