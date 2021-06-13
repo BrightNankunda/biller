@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { CreateNewClient } from '../../../Actions/ClientActions';
+import ClientsLink from './ClientsLink';
  
 const CreateClient = () => {
 
@@ -36,6 +37,7 @@ const CreateClient = () => {
                      className="bill-btn submit ml-2 py-2 px-3 next">Submit</button>
                   </div>
                </form>
+               <ClientsLink />
             </div>
             <div>
 

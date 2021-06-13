@@ -38,7 +38,9 @@ const Calculation = ({calculate, onCalculate, scale, propertyType}) => {
                {showRegistered && <FormGroup>
                   <Label for="registered">Property Registration</Label>
                   <Input type="select" id="registered" 
-                     name="registered" value={registered} 
+                     name="registered" 
+                     className="bill-input"
+                     value={registered} 
                      onChange={(e)=>setRegistered(e.target.value)}>
                      
                      <option disabled value="">Registration Status</option>  
@@ -52,7 +54,8 @@ const Calculation = ({calculate, onCalculate, scale, propertyType}) => {
                   <InputGroup>
                      <InputGroupAddon addonType="prepend">UGX:</InputGroupAddon>
                      <Input placeholder="Value of land" 
-                        min={100000} max={1000000000} type="number" 
+                        min={100000} max={1000000000} type="number"
+                        className="bill-input" 
                         id="landValue" 
                         value={landValue}
                         onChange={(e) => setLandValue(e.target.value)}

@@ -1,4 +1,5 @@
 import axios from 'axios'
+// import {useHistory} from 'react-router-dom'
 import {
    USER_LOGIN_REQUEST, 
    USER_LOGIN_SUCCESS, 
@@ -10,7 +11,9 @@ import {
    LOGOUT_USER_FAILURE
 } from '../Constants/UserConstants'
 
+
 const UserLogin = ({email, password}) => async (dispatch) => {
+   // const history = useHistory()
 
    try {
       dispatch({type: USER_LOGIN_REQUEST, payload: {email, password}})
@@ -19,6 +22,7 @@ const UserLogin = ({email, password}) => async (dispatch) => {
          localStorage.setItem('UgBillToken', data.token)
          localStorage.setItem('userLoggedIn', true)
          console.log(data.token)
+         // history.replace('/bill')
          window.location = '/bill'
       }
       dispatch({type: USER_LOGIN_SUCCESS, payload: data})
@@ -38,6 +42,7 @@ const UserSignin = ({email, password}) => async (dispatch) => {
          localStorage.setItem('UgBillToken', data.token)
          localStorage.setItem('userLoggedIn', true)
          console.log(data.token)
+         // history.replace('/bill')
          window.location = '/bill'
       }
       dispatch({type: USER_SIGNIN_SUCCESS, payload: data})
@@ -56,6 +61,7 @@ const LogoutUser = () => (dispatch, getState) => {
       dispatch({type: LOGOUT_USER_REQUEST})
       localStorage.removeItem('UgBillToken')
       localStorage.removeItem('userLoggedIn')
+      // history.replace('/login')
       window.location = '/login'
       dispatch({type: LOGOUT_USER_SUCCESS})
 

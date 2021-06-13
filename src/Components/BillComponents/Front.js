@@ -12,19 +12,19 @@ const Front = ({onSetProperty, onRental}) => {
    }
 
    return (
-      <Row className="my-2">
+      <Row className="my-2 w-100">
          <div className="container">
-            <div className="d-flex justify-content-center">
-               <Button color="danger" className="mr-2">Back</Button>
-               <Button color="primary"
+            <div className="d-flex justify-content-center my-3">
+               <button className="bill-btn front-back-btn mr-2 px-3">Back</button>
+               <button
                name="land" 
                value={propertyType}
                onClick={() => setProperty('land')}
-               className="mr-2" >Land</Button>
+               className="bill-btn front-btn mr-2 px-3" >Land</button>
 
-               <Button color="primary" className=""
+               <button className="bill-btn front-btn px-3"
                value={propertyType} name="rent" onClick={()=>setProperty('rent')} 
-               >Rent</Button>
+               >Rent</button>
             </div>
          </div>
       </Row>

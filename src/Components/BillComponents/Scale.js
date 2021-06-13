@@ -22,7 +22,7 @@ const Scale = ({onScale}) => {
          <div className="container col-6">
             <FormGroup>
                <Label for="scale">Scale</Label>
-               <Input type="select" id="scale" 
+               <Input type="select" id="scale" className="bill-input" 
                name="scale" value={scale} 
                onChange={(e)=>setScale(e.target.value)}>
                   {

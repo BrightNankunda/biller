@@ -49,7 +49,7 @@ const Advocate = ({onAdvocate, onCancelAdvocate, propertyType, rentalType}) => {
          <div className="container col-6">
             <FormGroup>
                <Label for="advocate">Advocate</Label>
-               <Input type="select" id="advocate" name="advocate" 
+               <Input type="select" id="advocate" className="bill-btn" name="advocate" 
                   value={advocate} onChange={(e) => setAdvocate(e.target.value)}
                   >
                   {options.map(option => (

@@ -73,6 +73,7 @@ Button:hover {
 }
 .bill-input {
   border: none !important;
+  border-radius: none !important;
   min-height: 40px;
 }
 .bill-btn {
@@ -94,4 +95,22 @@ Button:hover {
 .submit:hover {
   background: green;
   color: white;
+}
+.front-btn:hover {
+  color: white;
+  background: blue !important;
+}
+
+.front-back-btn:hover {
+  color: white;
+  background: red !important;
+}
+.bill-reset-btn{
+  border: none !important;
+  background: white;
+  border-radius: 0 !important;
+}
+.bill-reset-btn:hover {
+  color: white;
+  background: red !important;
 }

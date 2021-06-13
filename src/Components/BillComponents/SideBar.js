@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import {useSelector, useDispatch} from 'react-redux'
-import {Link, NavLink} from 'react-router-dom'
+import {Link, NavLink, useHistory} from 'react-router-dom'
 
 import { BookFill, 
    Calendar2DateFill, CurrencyBitcoin, GearFill, GiftFill, 
@@ -11,6 +11,7 @@ import { LogoutUser } from '../../Actions/UserActions';
 const SideBar = (props) => {
    
    const dispatch = useDispatch()
+   const history = useHistory()
 
    const userToken = useSelector(state => state.user)
    console.log('userToken', userToken)
@@ -18,7 +19,7 @@ const SideBar = (props) => {
 
    useEffect(() => {
       if(userToken === null) {
-         window.location = '/login'
+         history.replace('/login')
       }
       
       return () => {

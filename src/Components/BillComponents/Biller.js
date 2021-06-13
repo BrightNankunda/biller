@@ -11,6 +11,7 @@ import Title from './Title';
 import Rental from './Rental'
 import SideBar from './SideBar'
 import AllBills from './AllBills'
+import Btns from './Btns';
  
 const reducer = (state, action) => {
    switch(action.type) {
@@ -540,7 +541,7 @@ const Biller = ( ) => {
                <BillData  total={total} onSaveBill={handleSaveBill}/>}
             
             </div>
-            {/* <AllBills /> */}
+            <Btns />
          </div>
          
       </div>
