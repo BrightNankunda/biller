@@ -1,6 +1,7 @@
 import {React} from 'react';
 import {BrowserRouter as Router, Route} from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { useSelector } from 'react-redux';
 
 import './App.css'
 import AppNavbar from './Components/AppNavbar';
@@ -15,7 +16,7 @@ import Schedules from './Components/DashboardComponents/schedules'
 import Reports from './Components/DashboardComponents/reports'
 import Settings from './Components/DashboardComponents/Settings'
 import SideBar from './Components/BillComponents/SideBar';
-import { useSelector } from 'react-redux';
+import Logout from './Components/AuthComponents/Logout';
 
 function App() {
 
@@ -41,6 +42,7 @@ function App() {
         <Route path="/calendar" component={Calendar} />
         {/* <Route path="/billing" component={Billing} /> */}
         <Route path="/billing" component={Biller} />
+        <Route path="/logout" component={Logout} />
       </div> 
     </div>}
 

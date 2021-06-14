@@ -7,11 +7,13 @@ import {UserLogin} from '../../Actions/UserActions'
 export default function Login() {
    const dispatch = useDispatch()
 
+   const [loading, setLoading] = useState(false)
    const [email, setEmail] = useState('')
    const [password, setPassword] = useState('')
 
    const handleSubmit = (e) => {
       e.preventDefault()
+      setLoading(true)
       dispatch(UserLogin({email, password}))
    }
 
@@ -42,7 +44,12 @@ export default function Login() {
             </div>
 
             <div className="d-flex justify-content-center mt-5">
-               <button type="submit" className="btn login-btn btn-primary">Login</button>
+               {!loading && <button type="submit" className="btn login-btn btn-primary">Login</button>}
+               {loading && <button className="btn btn-logout text-dark logout-cursor" type="button" disabled>
+                  <span className="spinner-border spinner-border-sm logout-cursor" 
+                  role="status" aria-hidden="true"></span>
+                  Loading...
+               </button> }
             </div>
          </form>
 

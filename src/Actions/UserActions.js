@@ -13,16 +13,15 @@ import {
 
 
 const UserLogin = ({email, password}) => async (dispatch) => {
-   // const history = useHistory()
 
    try {
       dispatch({type: USER_LOGIN_REQUEST, payload: {email, password}})
       const {data} = await axios.post('http://localhost:7000/api/user/login', {email, password})
-      if(typeof(data.token) != null) {
+      if(data.token != undefined) {
          localStorage.setItem('UgBillToken', data.token)
+         localStorage.setItem('userLoggedOut', false)
          localStorage.setItem('userLoggedIn', true)
          console.log(data.token)
-         // history.replace('/bill')
          window.location = '/bill'
       }
       dispatch({type: USER_LOGIN_SUCCESS, payload: data})
@@ -38,11 +37,11 @@ const UserSignin = ({email, password}) => async (dispatch) => {
    try {
       dispatch({type: USER_SIGNIN_REQUEST, payload: {email, password}})
       const {data} = await axios.post('http://localhost:7000/api/user/signin', {email, password})
-      if(typeof(data.token) != null) {
+      if(data.token != undefined) {
          localStorage.setItem('UgBillToken', data.token)
+         localStorage.setItem('userLoggedOut', false)
          localStorage.setItem('userLoggedIn', true)
          console.log(data.token)
-         // history.replace('/bill')
          window.location = '/bill'
       }
       dispatch({type: USER_SIGNIN_SUCCESS, payload: data})
@@ -55,20 +54,18 @@ const UserSignin = ({email, password}) => async (dispatch) => {
 
 const LogoutUser = () => (dispatch, getState) => {
    // const user = getState()
-   // console.log('user', user)
 
    try {
       dispatch({type: LOGOUT_USER_REQUEST})
       localStorage.removeItem('UgBillToken')
-      localStorage.removeItem('userLoggedIn')
-      // history.replace('/login')
-      window.location = '/login'
+      localStorage.setItem('userLoggedIn', false)
+      localStorage.setItem('userLoggedOut', true)
       dispatch({type: LOGOUT_USER_SUCCESS})
 
    } catch(error) {
       localStorage.removeItem('UgBillToken')
-      localStorage.removeItem('userLoggedIn')
-      window.location = '/login'
+      localStorage.setItem('userLoggedIn', false)
+      localStorage.setItem('userLoggedOut', true)
       dispatch({type: LOGOUT_USER_FAILURE, payload: error.message})
    }
 }

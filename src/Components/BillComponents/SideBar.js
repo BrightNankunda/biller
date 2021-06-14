@@ -14,14 +14,16 @@ const SideBar = (props) => {
    const history = useHistory()
 
    const userToken = useSelector(state => state.user)
+   const userLoggedIn = useSelector(state => state.userLoggedIn)
+   const userLoggedOut = useSelector(state => state.userLoggedOut)
    console.log('userToken', userToken)
    console.log('props', props)
-
+   
    useEffect(() => {
+
       if(userToken === null) {
          history.replace('/login')
       }
-      
       return () => {
          // cleanup
       }
@@ -30,12 +32,16 @@ const SideBar = (props) => {
    const loggedIn = localStorage.getItem('userLoggedIn')
    console.log(loggedIn)
    const loggedInUserEmail = jwtDecode(userToken)
-   const loggedInUser = loggedInUserEmail.user.email
+   console.log(loggedInUserEmail)
+   const loggedInUser = loggedInUserEmail.email
 
 
 
    const logout = () => {
       dispatch(LogoutUser())
+      if(localStorage.getItem('UgBillToken') === null) {
+         props.history.replace('/login')
+      }
    }
 
    return (
@@ -67,9 +73,9 @@ const SideBar = (props) => {
          <NavLink className="btn btn-outline my-3" to="/settings">
             <span className="dashboard-icons"><GearFill /></span>
             SETTINGS</NavLink>
-         <button className="btn btn-outline my-3" onClick={logout}>
+         <NavLink className="btn btn-outline my-3" to="/logout">
             <span className="dashboard-icons"><Lock/></span> 
-            LOG OUT</button>
+            LOG OUT</NavLink>
       </div>
    );
 }

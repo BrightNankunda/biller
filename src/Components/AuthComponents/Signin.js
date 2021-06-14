@@ -6,14 +6,16 @@ export default function Signin() {
 
    const dispatch = useDispatch()
 
+   const [loading, setLoading] = useState(false)
    const [email, setEmail] = useState('')
    const [password, setPassword] = useState('')
 
    const submitHandler = (e) => {
       e.preventDefault()
+      setLoading(true)
       dispatch(UserSignin({email, password}))
    }
-
+   
    return (
       <div className="row d-flex justify-content-center  " style={{"min-height" :"100vh"}}>
          <div className="col-lg-6 signup">
@@ -42,7 +44,13 @@ export default function Signin() {
                </div>
 
                <div className="d-flex justify-content-center mt-5">
-                  <button className="btn login-btn btn-primary" type="submit">Sign Up</button>
+                  {!loading && 
+                  <button className="btn login-btn btn-primary" type="submit">Sign Up</button>}
+                  {loading && <button className="btn login-btn btn-primary logout-cursor"disabled>
+                     <span className="spinner-border spinner-border-sm logout-cursor" 
+                     role="status" aria-hidden="true"></span>
+                     Loading...
+                  </button>}
                </div>
             </form>
 

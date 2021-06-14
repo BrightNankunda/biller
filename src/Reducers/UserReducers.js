@@ -36,9 +36,9 @@ function LogoutUserReducer(state={}, action) {
       case LOGOUT_USER_REQUEST:
          return {...state, loading: true}
       case LOGOUT_USER_SUCCESS:
-         return {...state, loading: false, loggedIn: false}
+         return {...state, loading: false, userLoggedOut: true}
       case LOGOUT_USER_FAILURE:
-         return {...state, loading: false, loggedIn: false, error: action.payload}
+         return {...state, loading: false, userLoggedOut: true, error: action.payload}
       default:
          return state
    }

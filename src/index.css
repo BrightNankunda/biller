@@ -114,3 +114,15 @@ Button:hover {
   color: white;
   background: red !important;
 }
+.full-height {
+  min-height: 95vh;
+}
+.logout, .logout-cursor {
+  cursor: not-allowed;
+}
+.logout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
