@@ -10,10 +10,10 @@ const Schedules = () => {
    return (
       <div>
          <div className="main">
-            <Route exact path="/schedules" component={ScheduleHome} />
+            <Route exact path="/schedules/client/:clientId" component={SingleClient} />
+            <Route path="/schedules" component={ScheduleHome} />
             <Route path="/schedules/addClient" component={CreateClient} />
             <Route path="/schedules/clients" component={Clients} />
-            <Route Path="/schedules/client/:clientId" component={SingleClient} />
          </div>
          
       </div>

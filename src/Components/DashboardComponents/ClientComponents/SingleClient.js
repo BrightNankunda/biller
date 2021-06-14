@@ -12,6 +12,8 @@ const SingleClient = (props) => {
          // cleanup
       }
    })
+   console.log(props.match.params.clientId)
+   console.log(clientId);
 
    return (
       <div>

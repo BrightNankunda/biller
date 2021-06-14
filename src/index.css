@@ -126,3 +126,6 @@ Button:hover {
   align-items: center;
   align-content: center;
 }
+.clientScreen {
+  background: #E5E5E5 !important; 
+}
