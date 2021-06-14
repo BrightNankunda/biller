@@ -1,21 +1,44 @@
-import React, {useState} from 'react'
-import {useDispatch} from 'react-redux'
+import React, {useEffect, useState} from 'react'
+import {useDispatch, useSelector} from 'react-redux'
 import { ForwardFill} from 'react-bootstrap-icons'
 
 import {UserLogin} from '../../Actions/UserActions'
+import { useHistory } from 'react-router'
 
-export default function Login() {
+export default function Login(props) {
    const dispatch = useDispatch()
+   const history = useHistory()
 
-   const [loading, setLoading] = useState(false)
+   const [loggingIn, setLoggingIn] = useState(false)
    const [email, setEmail] = useState('')
    const [password, setPassword] = useState('')
 
    const handleSubmit = (e) => {
       e.preventDefault()
-      setLoading(true)
+      
       dispatch(UserLogin({email, password}))
    }
+   const userLoggingIn = useSelector(state => state.userLoggingIn)
+   const {loading, user} = userLoggingIn
+   const {foundUser, token} = user
+   console.log('Found User', foundUser, 'token', token)
+
+   useEffect(() => {
+      if(loading) {
+         setLoggingIn(true)
+      } else if(!loading && (foundUser !== null) && token !== null ) {
+         setLoggingIn(false)
+         changeRoute()
+      }
+      return () => {
+         // cleanup
+      }
+   }, [foundUser, token, loading])
+   
+   const changeRoute = () => {
+      history.replace('/bill')
+   }
+   console.log('USER LOGGING IN', userLoggingIn)
 
    return (
       <div className="login row d-flex flex-col bg-primary " style={{"min-height" :"100vh"}}>
@@ -44,8 +67,8 @@ export default function Login() {
             </div>
 
             <div className="d-flex justify-content-center mt-5">
-               {!loading && <button type="submit" className="btn login-btn btn-primary">Login</button>}
-               {loading && <button className="btn btn-logout text-dark logout-cursor" type="button" disabled>
+               {!loggingIn && <button type="submit" className="btn login-btn btn-primary">Login</button>}
+               {loggingIn && <button className="btn btn-logout text-dark logout-cursor" type="button" disabled>
                   <span className="spinner-border spinner-border-sm logout-cursor" 
                   role="status" aria-hidden="true"></span>
                   Loading...

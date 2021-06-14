@@ -4,8 +4,13 @@ import {LOGOUT_USER_FAILURE, LOGOUT_USER_REQUEST, LOGOUT_USER_SUCCESS, USER_LOGI
    USER_SIGNIN_FAILURE, 
    USER_SIGNIN_REQUEST,
    USER_SIGNIN_SUCCESS} from '../Constants/UserConstants'
-
-function UserLoginReducer(state={}, action) {
+   
+const initialState = {
+   loading: false,
+   user: {foundUser: null, SavedUser: null, token: null},
+   error: null
+}
+function UserLoginReducer(state=initialState, action) {
    switch (action.type) {
       case USER_LOGIN_REQUEST:
          return {...state, loading: true}
@@ -18,7 +23,7 @@ function UserLoginReducer(state={}, action) {
    }
 }
 
-function UserSigninReducer(state={}, action) {
+function UserSigninReducer(state=initialState, action) {
    switch (action.type) {
       case USER_SIGNIN_REQUEST:
          return {...state, loading: true}

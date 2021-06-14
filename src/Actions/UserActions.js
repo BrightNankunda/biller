@@ -22,7 +22,6 @@ const UserLogin = ({email, password}) => async (dispatch) => {
          localStorage.setItem('userLoggedOut', false)
          localStorage.setItem('userLoggedIn', true)
          console.log(data.token)
-         window.location = '/bill'
       }
       dispatch({type: USER_LOGIN_SUCCESS, payload: data})
    } catch(err) {
@@ -42,7 +41,6 @@ const UserSignin = ({email, password}) => async (dispatch) => {
          localStorage.setItem('userLoggedOut', false)
          localStorage.setItem('userLoggedIn', true)
          console.log(data.token)
-         window.location = '/bill'
       }
       dispatch({type: USER_SIGNIN_SUCCESS, payload: data})
    } catch(err) {

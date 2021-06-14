@@ -17,8 +17,8 @@ const reducer = combineReducers({
    newBill: SaveBillReducer,
    bills: FetchBillsReducer,
    user:  UserLoginReducer || UserSigninReducer,
-   userLoggedIn: UserLoginReducer,
-   userSignedIn: UserSigninReducer,
+   userLoggingIn: UserLoginReducer,
+   userSigningIn: UserSigninReducer,
    clients: FetchAllClientsReducer,
    userLoggedOut: LogoutUserReducer
 })

@@ -20,7 +20,7 @@ import Logout from './Components/AuthComponents/Logout';
 
 function App() {
 
-  const userLoggedIn = useSelector(state => state.userLoggedIn)
+  const userLoggedIn = localStorage.getItem('userLoggedIn')
   console.log(userLoggedIn)
 
   return (

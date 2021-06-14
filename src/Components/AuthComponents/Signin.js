@@ -1,18 +1,39 @@
-import React, {useState} from 'react'
-import {useDispatch} from 'react-redux'
+import React, {useEffect, useState} from 'react'
+import {useDispatch, useSelector} from 'react-redux'
+import { useHistory } from 'react-router'
 import { UserSignin } from '../../Actions/UserActions'
 
 export default function Signin() {
-
    const dispatch = useDispatch()
+   const history = useHistory()
 
-   const [loading, setLoading] = useState(false)
+   const [signingIn, setSigningIn] = useState(false)
    const [email, setEmail] = useState('')
    const [password, setPassword] = useState('')
 
+   const userSigningIn = useSelector(state => state.userSigningIn)
+   const {loading, user} = userSigningIn
+   const {SavedUser, token} = user
+   console.log('Saved User', SavedUser, 'token', token)
+
+   useEffect(() => {
+      if(loading) {
+         setSigningIn(true)
+      } else if(!loading && (SavedUser !== null) && token !== null ) {
+         setSigningIn(false)
+         changeRoute()
+      }
+      return () => {
+         // cleanup
+      }
+   }, [SavedUser, token, loading])
+   
+   const changeRoute = () => {
+      history.replace('/bill')
+   }
+
    const submitHandler = (e) => {
       e.preventDefault()
-      setLoading(true)
       dispatch(UserSignin({email, password}))
    }
    
