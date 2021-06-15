@@ -1,9 +1,10 @@
 import React, {useEffect, useState} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import { useHistory } from 'react-router'
+import { Link } from 'react-router-dom'
 import { UserSignin } from '../../Actions/UserActions'
 
-export default function Signin() {
+export default function Signin(props) {
    const dispatch = useDispatch()
    const history = useHistory()
 
@@ -29,7 +30,7 @@ export default function Signin() {
    }, [SavedUser, token, loading])
    
    const changeRoute = () => {
-      history.replace('/bill')
+      props.history.replace('/bill')
    }
 
    const submitHandler = (e) => {
@@ -38,43 +39,45 @@ export default function Signin() {
    }
    
    return (
-      <div className="row d-flex justify-content-center  " style={{"min-height" :"100vh"}}>
-         <div className="col-lg-6 signup">
-            <div className="">
+      <div className="row d-flex justify-content-center full-height" >
+         <div className="col-lg-6 signup ">
+            <div className="d-flex justify-content-center">
                <h2 className="text-center text-white my-4">Sign Up</h2>
             </div>
-            <div className="form d-flex justify-content-center">
+            <div className="form d-flex justify-content-center flex-col">
 
-            <form className=" p-2 mt-3 " style={{"width": "40vw"}} onSubmit={submitHandler}>
-               <div className="form-group">
-                  <input type="email" 
-                  value={email}
-                  onChange={(e)=>setEmail(e.target.value)}
-                  className="email form-control" 
-                  placeholder="Email"/>
-               </div>
-               <div className="form-group">
-                  <input type="password" 
-                  className="password form-control" 
-                  value={password}
-                  onChange={(e)=>setPassword(e.target.value)}
-                  placeholder="Password"/>
-               </div>
-               <div className="form-group">
-                  <input type="password" className="password form-control mb-5" placeholder="Confirm Password"/>
-               </div>
+               <form className=" p-2 mt-3 mx-auto" style={{"width": "40vw"}} onSubmit={submitHandler}>
+                  <div className="form-group">
+                     <input type="email" 
+                     value={email}
+                     onChange={(e)=>setEmail(e.target.value)}
+                     className="email form-control" 
+                     placeholder="Email"/>
+                  </div>
+                  <div className="form-group">
+                     <input type="password" 
+                     className="password form-control" 
+                     value={password}
+                     onChange={(e)=>setPassword(e.target.value)}
+                     placeholder="Password"/>
+                  </div>
+                  <div className="form-group">
+                     <input type="password" className="password form-control mb-5" placeholder="Confirm Password"/>
+                  </div>
 
-               <div className="d-flex justify-content-center mt-5">
-                  {!loading && 
-                  <button className="btn login-btn btn-primary" type="submit">Sign Up</button>}
-                  {loading && <button className="btn login-btn btn-primary logout-cursor"disabled>
-                     <span className="spinner-border spinner-border-sm logout-cursor" 
-                     role="status" aria-hidden="true"></span>
-                     Loading...
-                  </button>}
+                  <div className="d-flex justify-content-center mt-5">
+                     {!loading && 
+                     <button className="btn login-btn btn-primary" type="submit">Sign Up</button>}
+                     {loading && <button className="btn login-btn btn-primary logout-cursor"disabled>
+                        <span className="spinner-border spinner-border-sm logout-cursor" 
+                        role="status" aria-hidden="true"></span>
+                        Loading...
+                     </button>}
+                  </div>
+               </form>
+               <div className="d-flex justify-content-center my-2">
+                  <Link to="/login" className="text-white">Already Have An Account? Log In</Link>
                </div>
-            </form>
-
             </div>
          </div>
       </div>

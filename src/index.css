@@ -76,6 +76,11 @@ Button:hover {
   border-radius: none !important;
   min-height: 40px;
 }
+.bill-sm-input {
+  border: none !important;
+  border-radius: none !important;
+  min-height: 25px;
+}
 .bill-btn {
   border: none !important;
   background: white;
@@ -128,4 +133,11 @@ Button:hover {
 }
 .clientScreen {
   background: #E5E5E5 !important; 
+}
+.bill-sm-label {
+  font-size: 90%;
+}
+.align-content-center {
+  display: flex;
+  align-content: center;
 }

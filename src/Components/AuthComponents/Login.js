@@ -4,6 +4,7 @@ import { ForwardFill} from 'react-bootstrap-icons'
 
 import {UserLogin} from '../../Actions/UserActions'
 import { useHistory } from 'react-router'
+import { Link } from 'react-router-dom'
 
 export default function Login(props) {
    const dispatch = useDispatch()
@@ -18,28 +19,26 @@ export default function Login(props) {
       
       dispatch(UserLogin({email, password}))
    }
-   const userLoggingIn = useSelector(state => state.userLoggingIn)
-   const {loading, user} = userLoggingIn
-   const {foundUser, token} = user
-   console.log('Found User', foundUser, 'token', token)
 
-   useEffect(() => {
-      if(loading) {
-         setLoggingIn(true)
-      } else if(!loading && (foundUser !== null) && token !== null ) {
-         setLoggingIn(false)
-         changeRoute()
-      }
-      return () => {
-         // cleanup
-      }
-   }, [foundUser, token, loading])
+   const userLoggedOut = useSelector(state => state.userLoggedOut)
+   console.log('userLoggedOut', userLoggedOut)
+
+   // useEffect(() => {
+   //    if(loading) {
+   //       setLoggingIn(true)
+   //    } else if(!loading && foundUser) {
+   //       setLoggingIn(false)
+   //       changeRoute()
+   //    }
+   //    return () => {
+   //       // cleanup
+   //    }
+   // }, [foundUser, loading])
    
    const changeRoute = () => {
-      history.replace('/bill')
+      props.history.replace('/bill')
    }
-   console.log('USER LOGGING IN', userLoggingIn)
-
+   
    return (
       <div className="login row d-flex flex-col bg-primary " style={{"min-height" :"100vh"}}>
          <div className="">
@@ -81,10 +80,10 @@ export default function Login(props) {
             <p>Forgot Email/Password?</p>
          </div>
          <div className="create-an-account d-flex justify-content-center w-100 text-white">
-            <p>
+            <Link to="/signin" className="text-white">
                Create an account
                <ForwardFill className="ml-0 " style={{"width" :"50px", "height": "20px"}}/>
-            </p>
+            </Link>
          </div>
       </div>
    )

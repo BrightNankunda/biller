@@ -7,7 +7,7 @@ const CreateNewClient = ({firstName, lastName, middleName, email, phoneNumber, o
       dispatch({type: CREATE_CLIENT_REQUEST, payload: firstName, lastName, middleName, email, phoneNumber, occupation, address})
       const {user} = getState()
       const {data} = await axios.post("http://localhost:7000/api/client", {firstName, lastName, middleName, email, phoneNumber, occupation, address}, {
-         headers: {'Authorization': 'Bearer ' + user}
+         headers: {'Authorization': 'Bearer ' + user.token}
       })
       console.log(data);
       // window.location = "/schedules/clients"
@@ -24,7 +24,7 @@ const FetchClients = () => async (dispatch, getState) => {
       dispatch({type: FETCH_CLIENTS_REQUEST})
       const {user} = getState()
       const {data} = await axios.get("http://localhost:7000/api/client", {
-         headers: {'Authorization': 'Bearer ' + user}
+         headers: {'Authorization': 'Bearer ' + user.token}
       })
       console.log(data)
       dispatch({type: FETCH_CLIENTS_SUCCESS, payload: data})

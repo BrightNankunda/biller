@@ -3,19 +3,21 @@ import { useDispatch, useSelector } from 'react-redux';
 import { LogoutUser } from '../../Actions/UserActions';
  
 const Logout = (props) => {
-   const {loading, userLoggedOut} = useSelector(state => state.userLoggedOut)
-   const userLoggedIn = localStorage.getItem('userLoggedIn')
+   const {loading, loggedOut} = useSelector(state => state.userLoggedOut)
+   console.log('loggedOut', loggedOut)
+   const userLoggedIn = JSON.parse(localStorage.getItem('UgBillUser'))
    const dispatch = useDispatch()
 
    useEffect(() => {
       dispatch(LogoutUser())
-      
+      if(!loggedOut) {
          props.history.push('/login')
+      }
       
       return () => {
          // cleanup
       }
-   }, [userLoggedOut])
+   }, [loggedOut])
 
    return (
       <div className="col-lg-12 full-height logout" >

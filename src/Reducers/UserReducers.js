@@ -7,7 +7,7 @@ import {LOGOUT_USER_FAILURE, LOGOUT_USER_REQUEST, LOGOUT_USER_SUCCESS, USER_LOGI
    
 const initialState = {
    loading: false,
-   user: {foundUser: null, SavedUser: null, token: null},
+   user: {AuthedUser: null, token: null},
    error: null
 }
 function UserLoginReducer(state=initialState, action) {
@@ -41,9 +41,9 @@ function LogoutUserReducer(state={}, action) {
       case LOGOUT_USER_REQUEST:
          return {...state, loading: true}
       case LOGOUT_USER_SUCCESS:
-         return {...state, loading: false, userLoggedOut: true}
+         return {...state, loading: false, loggedOut: true}
       case LOGOUT_USER_FAILURE:
-         return {...state, loading: false, userLoggedOut: true, error: action.payload}
+         return {...state, loading: false, loggedOut: true, error: action.payload}
       default:
          return state
    }

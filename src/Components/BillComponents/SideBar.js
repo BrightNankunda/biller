@@ -1,40 +1,28 @@
 import React, { useEffect } from 'react';
 import {useSelector} from 'react-redux'
 import {NavLink} from 'react-router-dom'
-import {useHistory} from 'react-router'
 
 import { BookFill, 
    Calendar2DateFill, CurrencyBitcoin, GearFill, GiftFill, 
    HouseDoorFill, Lock, PersonFill } from 'react-bootstrap-icons';
-import jwtDecode from 'jwt-decode';
+// import jwtDecode from 'jwt-decode';
  
 const SideBar = () => {
-   const history = useHistory()
 
-   const userToken = localStorage.getItem('UgBillToken')
-   console.log('userToken', userToken)
-   
+   const loggedIn = JSON.parse(localStorage.getItem('UgBillUser'))
+   console.log(loggedIn);
    useEffect(() => {
-
-      if(userToken === null) {
-         history.replace('/login')
-      }
+      console.log('SIDE BAR');
       return () => {
          // cleanup
       }
    })
 
-   const loggedIn = localStorage.getItem('userLoggedIn')
-   console.log('SIDE BAR',loggedIn)
-   const loggedInUserEmail = jwtDecode(userToken)
-   console.log('SIDE BAR',loggedInUserEmail)
-   const loggedInUser = loggedInUserEmail.email
-
    return (
-      <div className="w-100 d-flex flex-col" >
-         <NavLink className="btn btn-outline my-3" to={"/profile/" + loggedInUser}>
+      <div className="w-100 d-flex flex-col full-height" >
+         {/* <NavLink className="btn btn-outline my-3" to={"/profile/" + loggedIn.AuthedUser.email}>
             <span className="dashboard-icons"><PersonFill /></span>
-            {loggedInUser}</NavLink>
+            {loggedIn.AuthedUser.email}</NavLink> */}
 
          <NavLink className="btn btn-outline my-3" to="/dashboard">
             <span className="dashboard-icons"><HouseDoorFill /></span>

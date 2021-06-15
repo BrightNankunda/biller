@@ -117,18 +117,24 @@ const Biller = ( ) => {
          if(parseInt(scale) === 1) {
             if(parseInt(advocate) === 1) {
                if(landValue < 11000000) {
+                  // DETERMINE TOTAL
                   const y = landValue - 1000000  
                   const b = 0.10 * y
                   const a = 1000000 * 0.15  
                   const total = a + b;
+                  
+                  // REGISTRATION FUNCTION TAKES TOTAL AND REGISTRATION VALUE AND SETS TOTAL
                   checkRegistrationStatus(total, registeredValue)
                   dispatch({type: 'SHOWCALCULATEDVALUE'})
                } else {
+                  // DETERMINE TOTAL
                   const a = 1000000 * 0.15  
                   const y = landValue - 11000000  
                   const b = 0.10 * y
                   const d = (.05 * y)
                   const total = (a + b + d)
+
+                  // REGISTRATION FUNCTION TAKES TOTAL AND REGISTRATION VALUE AND SETS TOTAL
                   checkRegistrationStatus(total)
                   dispatch({type: 'SHOWCALCULATEDVALUE'})
                }
@@ -194,6 +200,7 @@ const Biller = ( ) => {
                   const b = 0.10 * y
                   const a = 1000000 * 0.15  
                   const total = a + b;
+                  console.log(total)
                   setTotal(total)
                   dispatch({type: 'SHOWCALCULATEDVALUE'})
                } else {
@@ -203,6 +210,7 @@ const Biller = ( ) => {
                   const b = 0.10 * 20000000
                   const d = (.05 * y)
                   const total = (a + b + d)
+                  console.log(total)
                   setTotal(total)
                   dispatch({type: 'SHOWCALCULATEDVALUE'})
                }
@@ -212,6 +220,7 @@ const Biller = ( ) => {
                   const b = 0.10 * y
                   const a = 1000000 * 0.15  
                   const total = a + b;
+                  console.log(total)
                   setTotal(total)
                   dispatch({type: 'SHOWCALCULATEDVALUE'})
                } else {
@@ -220,6 +229,7 @@ const Biller = ( ) => {
                   const b = 0.10 * 20000000
                   const d = (.05 * y)
                   const total = (a + b + d)
+                  console.log(total)
                   setTotal(total)
                   dispatch({type: 'SHOWCALCULATEDVALUE'})
                }
@@ -229,6 +239,7 @@ const Biller = ( ) => {
                   const b = 0.10 * y
                   const a = 1000000 * 0.15  
                   const total = a + b;
+                  console.log(total)
                   setTotal(total)
                   dispatch({type: 'SHOWCALCULATEDVALUE'})
                } else {
@@ -237,6 +248,7 @@ const Biller = ( ) => {
                   const b = 0.10 * 20000000
                   const d = (.05 * y)
                   const total = (a + b + d)
+                  console.log(total)
                   setTotal(total)
                   dispatch({type: 'SHOWCALCULATEDVALUE'})
                }
@@ -246,6 +258,7 @@ const Biller = ( ) => {
                   const b = 0.10 * y
                   const a = 1000000 * 0.15  
                   const total = a + b;
+                  console.log(total)
                   setTotal(total)
                   dispatch({type: 'SHOWCALCULATEDVALUE'})
                } else {
@@ -512,7 +525,9 @@ const Biller = ( ) => {
    //COMPONENTS
    return (
       <div className="d-flex">
-      
+      <div className="col-lg-3 blue">
+         <SideBar />
+      </div>
       <div className="col-lg-9 biller-wrapper">
          {propertyType && 
             <Title propertyType={propertyType} registered={registered} rentalType={rentalType}

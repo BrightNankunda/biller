@@ -17,38 +17,35 @@ import Reports from './Components/DashboardComponents/reports'
 import Settings from './Components/DashboardComponents/Settings'
 import SideBar from './Components/BillComponents/SideBar';
 import Logout from './Components/AuthComponents/Logout';
+import ProtectedRoute from './ProtectedRoute/ProtectedRoute';
+import ProtectedComponent from './ProtectedRoute/ProtectedComponent'
+import PageNotFound from './Components/PageNotFound';
 
 function App() {
-
-  const userLoggedIn = localStorage.getItem('userLoggedIn')
-  console.log(userLoggedIn)
+  
+const userLoggedIn = () => {
+  if(JSON.parse(localStorage.getItem('UgBillUser'))) {
+    return true
+  }
+}
 
   return (
     <Router>
-    {/* <AppNavbar/> */}
-    {userLoggedIn &&
-    <div className="d-flex">
-      <div className="col-lg-3 blue" style={{"min-height": "95vh"}}>
-          <SideBar />
-      </div> 
-       
-      <div className="main col-lg-9">
-
         <Route exact path="/" component={User} />
-        <Route path="/dashboard" component={Dashboard} />
-        <Route path="/settings" component={Settings} />
-        <Route path="/reports" component={Reports} />
-        <Route path="/schedules" component={Schedules} />
-        <Route path="/calendar" component={Calendar} />
-        {/* <Route path="/billing" component={Billing} /> */}
-        <Route path="/billing" component={Biller} />
-        <Route path="/logout" component={Logout} />
-      </div> 
-    </div>}
+        <ProtectedRoute exact={true} path="/protectedRoute" component={ProtectedComponent} />
+        <Route exact path="/dashboard" component={Dashboard}/>
 
-      {!userLoggedIn && 
-      <Route path="/signin" component={Signin} /> }
-      {!userLoggedIn && <Route path="/login" component={LoginComponent} /> }
+        <Route path="/settings" component={Settings}/>
+        <Route path="/reports" component={Reports}/>
+        <Route path="/schedules" component={Schedules}/>
+        <Route path="/calendar" component={Calendar}/>
+        <Route path="/billing" component={Biller}/>
+        <Route path="/bill" component={Biller}/>
+        <Route path="/logout" component={Logout} />
+
+        <Route path="/signin" component={Signin} /> 
+        <Route path="/login" component={LoginComponent} /> 
+        {/* <Route component={PageNotFound} /> */}
     </Router>
   );
 }

@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 
 import { FetchClients } from '../../../Actions/ClientActions';
  
-const Clients = (props) => {
+const Clients = () => {
 
    const dispatch = useDispatch()
    
@@ -15,29 +15,25 @@ const Clients = (props) => {
       }
    }, [])
 
-   const {clients} = useSelector(state => state.clients)
+   const {loading, clients} = useSelector(state => state.clients)
+   console.log(clients)
 
-   const handleClick = () => {
-      props.history.replace('/schedules')
-   }
    return (
       <div className="bg-light">
-      <div className="w-100">
+         <div className="w-100">
 
-         {clients && clients.map(client => 
+            {clients && clients.map(client => 
 
-            <div className="card col-lg-3 m-1" key={client._id}>
-               <div className="card-body">
-                  {client.clientName}
+               <div className="card col-lg-3 m-1" key={client._id}>
+                  <div className="card-body">
+                     {client.clientName}
+                  </div>
+                  <div className="card-footer">
+                     <Link to={"/schedules/client/" + client._id} >{client._id}</Link>
+                  </div>
                </div>
-               <div className="card-footer">
-                  <Link to={"/schedules/client/" + client._id} >{client._id}</Link>
-                  <button onClick={handleClick} className="btn btn-primary">To Link</button>
-                  
-               </div>
-            </div>
-         )}
-      </div>
+            )}
+         </div>
       </div>
    );
 }

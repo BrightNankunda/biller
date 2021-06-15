@@ -7,10 +7,7 @@ import { LogoutUserReducer, UserLoginReducer, UserSigninReducer } from './Reduce
 
 // const userInfo = localStorage.getItem("UgBillToken") || null;
 const initialState = { 
-   user: localStorage.getItem("UgBillToken") || null,
-   userSignedIn:  localStorage.getItem("userLoggedIn") || false,
-   userLoggedIn: localStorage.getItem("userLoggedIn") || false,
-   userLoggedOut: localStorage.getItem("userLoggedOut") || true
+   user: JSON.parse(localStorage.getItem("UgBillUser")) || null
 }
 
 const reducer = combineReducers({
