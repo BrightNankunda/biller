@@ -35,7 +35,7 @@ const userLoggedIn = () => {
         <Route exact path="/" component={User} />
         <ProtectedRoute exact={true} path="/protectedRoute" component={ProtectedComponent} />
         <ProtectedRoute exact={true} path="/settings" component={Settings} />
-        <ProtectedRoute exact={true} path="/schedules" component={Schedules} />
+        {/* <ProtectedRoute exact={true} path="/schedules" component={SchedulesHome} /> */}
         <ProtectedRoute exact={true} path="/reports" component={Reports} />
         <ProtectedRoute exact={true} path="/dashboard" component={Dashboard}/>
         <ProtectedRoute exact={true} path="/calendar" component={Calendar} />
