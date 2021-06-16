@@ -51,7 +51,7 @@ const LogoutUser = () => (dispatch, getState) => {
 
    try {
       dispatch({type: LOGOUT_USER_REQUEST})
-      localStorage.setItem('UgBillUser', JSON.stringify({AuthedUser: {email: null}}))
+      localStorage.setItem('UgBillUser', null)
       dispatch({type: LOGOUT_USER_SUCCESS})
 
    } catch(error) {

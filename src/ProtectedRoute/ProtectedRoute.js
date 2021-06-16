@@ -3,13 +3,11 @@ import {Redirect, Route} from 'react-router-dom'
  
 const ProtectedRoute = (props) => {
 
-   const Component = props.component
+   const isAuthenticated = (JSON.parse(localStorage.getItem('UgBillUser')) === null || undefined) ? false : true
+   
+   console.log('ISAUTHENTICATED', isAuthenticated);
 
-   const isAuthenticated = () => {
-      return (JSON.parse(localStorage.getItem('UgBillUser')) === null || undefined) ? false : true
-   }
-
-   return isAuthenticated ? (<Route {...props} />) : (<Redirect to={{pathname: '/login'}} />);
+   return isAuthenticated  ? (<Route {...props} />) : (<Redirect to={{pathname: '/login'}} />);
 }
  
 export default ProtectedRoute;

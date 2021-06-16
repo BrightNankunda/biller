@@ -7,31 +7,24 @@ import { UserSignin } from '../../Actions/UserActions'
 export default function Signin(props) {
    const dispatch = useDispatch()
    const history = useHistory()
-
-   const [signingIn, setSigningIn] = useState(false)
    const [email, setEmail] = useState('')
    const [password, setPassword] = useState('')
 
-   const userSigningIn = useSelector(state => state.userSigningIn)
-   const {loading, user} = userSigningIn
-   const {SavedUser, token} = user
-   console.log('Saved User', SavedUser, 'token', token)
+   // CHECKING FOR STATE CHANGE AND RESPONDING WITH ROUTE CHANGE
+   const {loading} = useSelector(state => state.userSigningIn)
+   const isAuthenticated = (JSON.parse(localStorage.getItem('UgBillUser')) === null || undefined) ? false : true
+   console.log('LOADING FROM SIGNIN', loading)
 
+   // CHECK FUNCTION
    useEffect(() => {
-      if(loading) {
-         setSigningIn(true)
-      } else if(!loading && (SavedUser !== null) && token !== null ) {
-         setSigningIn(false)
-         changeRoute()
+      if(isAuthenticated) {
+         history.replace('/bill')
+         console.log('AUTHENTICATED FROM SIGNIN COMPONENT');
       }
       return () => {
          // cleanup
       }
-   }, [SavedUser, token, loading])
-   
-   const changeRoute = () => {
-      props.history.replace('/bill')
-   }
+   }, [loading, isAuthenticated])
 
    const submitHandler = (e) => {
       e.preventDefault()

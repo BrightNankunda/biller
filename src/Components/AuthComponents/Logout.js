@@ -3,21 +3,21 @@ import { useDispatch, useSelector } from 'react-redux';
 import { LogoutUser } from '../../Actions/UserActions';
  
 const Logout = (props) => {
-   const {loading, loggedOut} = useSelector(state => state.userLoggedOut)
-   console.log('loggedOut', loggedOut)
-   const userLoggedIn = JSON.parse(localStorage.getItem('UgBillUser'))
+   const {loading} = useSelector(state => state.userLoggedOut)
+   const isAuthenticated = (JSON.parse(localStorage.getItem('UgBillUser')) === null || undefined) ? false : true
+   console.log('isauthenticated in logout component', isAuthenticated)
    const dispatch = useDispatch()
 
    useEffect(() => {
       dispatch(LogoutUser())
-      if(!loggedOut) {
+      if(!isAuthenticated) {
          props.history.push('/login')
       }
       
       return () => {
          // cleanup
       }
-   }, [loggedOut])
+   }, [isAuthenticated])
 
    return (
       <div className="col-lg-12 full-height logout" >

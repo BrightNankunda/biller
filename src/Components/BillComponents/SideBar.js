@@ -10,6 +10,8 @@ import { BookFill,
 const SideBar = () => {
 
    const loggedIn = JSON.parse(localStorage.getItem('UgBillUser'))
+   const isAuthenticated = (JSON.parse(localStorage.getItem('UgBillUser')) === null || undefined) ? false : true
+
    console.log(loggedIn);
    useEffect(() => {
       console.log('SIDE BAR');
@@ -20,9 +22,9 @@ const SideBar = () => {
 
    return (
       <div className="w-100 d-flex flex-col full-height" >
-         {/* <NavLink className="btn btn-outline my-3" to={"/profile/" + loggedIn.AuthedUser.email}>
+         {isAuthenticated && <NavLink className="btn btn-outline my-3" to={"/profile/" + loggedIn.AuthedUser.email}>
             <span className="dashboard-icons"><PersonFill /></span>
-            {loggedIn.AuthedUser.email}</NavLink> */}
+            {loggedIn.AuthedUser.email}</NavLink>}
 
          <NavLink className="btn btn-outline my-3" to="/dashboard">
             <span className="dashboard-icons"><HouseDoorFill /></span>

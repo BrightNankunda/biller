@@ -36,7 +36,7 @@ function UserSigninReducer(state=initialState, action) {
    }
 }
 
-function LogoutUserReducer(state={}, action) {
+function LogoutUserReducer(state={loading: false}, action) {
    switch(action.type) {
       case LOGOUT_USER_REQUEST:
          return {...state, loading: true}

@@ -20,27 +20,23 @@ export default function Login(props) {
       dispatch(UserLogin({email, password}))
    }
 
-   const userLoggedOut = useSelector(state => state.userLoggedOut)
-   console.log('userLoggedOut', userLoggedOut)
-
-   // useEffect(() => {
-   //    if(loading) {
-   //       setLoggingIn(true)
-   //    } else if(!loading && foundUser) {
-   //       setLoggingIn(false)
-   //       changeRoute()
-   //    }
-   //    return () => {
-   //       // cleanup
-   //    }
-   // }, [foundUser, loading])
+   const isAuthenticated = (JSON.parse(localStorage.getItem('UgBillUser')) === null || undefined) ? false : true
+   const {loading} = useSelector(state => state.userLoggingIn)
+   console.log('LOADING FROM LOGIN', loading)
    
-   const changeRoute = () => {
-      props.history.replace('/bill')
-   }
+   useEffect(() => {
+      if(isAuthenticated) {
+         history.replace('/bill')
+         console.log('AUTHENTICATED FROM LOGIN COMPONENT');
+      }
+      return () => {
+         // cleanup
+      }
+   }, [loading, isAuthenticated])
+   
    
    return (
-      <div className="login row d-flex flex-col bg-primary " style={{"min-height" :"100vh"}}>
+      <div className="login row d-flex flex-col bg-primary full-height">
          <div className="">
             <h2 className="text-center text-white my-4">Login</h2>
          </div>
@@ -66,8 +62,8 @@ export default function Login(props) {
             </div>
 
             <div className="d-flex justify-content-center mt-5">
-               {!loggingIn && <button type="submit" className="btn login-btn btn-primary">Login</button>}
-               {loggingIn && <button className="btn btn-logout text-dark logout-cursor" type="button" disabled>
+               {!loading && <button type="submit" className="btn login-btn btn-primary">Login</button>}
+               {loading && <button className="btn login-btn text-dark logout-cursor" type="button" disabled>
                   <span className="spinner-border spinner-border-sm logout-cursor" 
                   role="status" aria-hidden="true"></span>
                   Loading...
