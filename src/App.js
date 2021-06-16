@@ -20,6 +20,7 @@ import Logout from './Components/AuthComponents/Logout';
 import ProtectedRoute from './ProtectedRoute/ProtectedRoute';
 import ProtectedComponent from './ProtectedRoute/ProtectedComponent'
 import PageNotFound from './Components/PageNotFound';
+import ScheduleHome from './Components/DashboardComponents/ScheduleHome';
 
 function App() {
   
@@ -33,15 +34,15 @@ const userLoggedIn = () => {
     <Router>
         <Route exact path="/" component={User} />
         <ProtectedRoute exact={true} path="/protectedRoute" component={ProtectedComponent} />
-        <Route exact path="/dashboard" component={Dashboard}/>
-
-        <Route path="/settings" component={Settings}/>
-        <Route path="/reports" component={Reports}/>
-        <Route path="/schedules" component={Schedules}/>
-        <Route path="/calendar" component={Calendar}/>
-        <Route path="/billing" component={Biller}/>
-        <Route path="/bill" component={Biller}/>
-        <Route path="/logout" component={Logout} />
+        <ProtectedRoute exact={true} path="/settings" component={Settings} />
+        <ProtectedRoute exact={true} path="/schedules" component={Schedules} />
+        <ProtectedRoute exact={true} path="/reports" component={Reports} />
+        <ProtectedRoute exact={true} path="/dashboard" component={Dashboard}/>
+        <ProtectedRoute exact={true} path="/calendar" component={Calendar} />
+        <ProtectedRoute exact={true} path="/calendar" component={Calendar} />
+        <ProtectedRoute exact={true} path="/billing" component={Billing} />
+        <ProtectedRoute exact={true} path="/logout" component={Logout} />
+        <ProtectedRoute exact={true} path="/bill" component={Biller} />
 
         <Route path="/signin" component={Signin} /> 
         <Route path="/login" component={LoginComponent} /> 
