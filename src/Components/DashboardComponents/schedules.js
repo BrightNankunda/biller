@@ -15,7 +15,7 @@ const Schedules = () => {
                <SideBar />
             </div>
             <div className="col-lg-9">
-               <ProtectedRoute exact={true} path="/schedules/client/:clientId" component={SingleClient} />
+               <ProtectedRoute exact={true} path="/schedule/client/:clientId" component={SingleClient} />
                <ProtectedRoute exact={true} path="/schedules/addClient" component={CreateClient} />
                <ProtectedRoute exact={true} path="/schedules/clients" component={Clients} />
             </div>

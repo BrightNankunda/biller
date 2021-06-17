@@ -24,6 +24,7 @@ import ScheduleHome from './Components/DashboardComponents/ScheduleHome';
 import SingleClient from './Components/DashboardComponents/ClientComponents/SingleClient';
 import CreateClient from './Components/DashboardComponents/ClientComponents/CreateClient';
 import Clients from './Components/DashboardComponents/ClientComponents/Clients';
+import SingleSchedule from './Components/DashboardComponents/SingleSchedule';
 
 function App() {
   
@@ -35,6 +36,9 @@ const userLoggedIn = () => {
 
   return (
     <Router>
+        <ProtectedRoute exact={true} path="/schedule/:scheduleId" component={SingleSchedule} />
+        <ProtectedRoute exact={true} path="/schedule/client/:clientId" component={SingleClient} />
+        <ProtectedRoute exact={true} path="/schedules/addClient" component={CreateClient} />
         <Route exact path="/" component={User} />
         <ProtectedRoute exact={true} path="/protectedRoute" component={ProtectedComponent} />
         <ProtectedRoute exact={true} path="/settings" component={Settings} />
@@ -46,8 +50,6 @@ const userLoggedIn = () => {
         <ProtectedRoute exact={true} path="/bill" component={Billing} />
         <ProtectedRoute exact={true} path="/logout" component={Logout} />
         <ProtectedRoute exact={true} path="/billing" component={Biller} />
-        <ProtectedRoute exact={true} path="/schedules/client/:clientId" component={SingleClient} />
-        <ProtectedRoute exact={true} path="/schedules/addClient" component={CreateClient} />
         <ProtectedRoute exact={true} path="/schedules/clients" component={Clients} />
 
         <Route path="/signin" component={Signin} /> 

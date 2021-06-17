@@ -9,9 +9,9 @@ const ScheduleHome = () => {
          <div className="col-lg-3 blue full-height">
             <SideBar />
          </div>
-         <div className="col-lg-9 full-height d-flex flex-col">
+         <div className="col-lg-9 bg-light d-flex flex-col">
             <AllSchedules />
-            <div className="w-100 bg-light">
+            <div className="w-100 ">
                <h3 className="d-flex justify-content-center p-4 bg-white">
                   <Link to="/schedules/addClient">CREATE CLIENT</Link>
                </h3>
