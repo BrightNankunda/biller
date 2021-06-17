@@ -24,11 +24,11 @@ const Clients = () => {
 
             {clients && clients.map(client => 
 
-               <div className="card col-lg-3 m-1" key={client._id}>
-                  <div className="card-body">
-                     {client.clientName}
+               <div className="col-lg-3 m-1" key={client._id}>
+                  <div className="">
+                     {client.firstName + ' ' + client.lastName}
                   </div>
-                  <div className="card-footer">
+                  <div className="">
                      <Link to={"/schedules/client/" + client._id} >{client._id}</Link>
                   </div>
                </div>

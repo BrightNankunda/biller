@@ -21,6 +21,9 @@ import ProtectedRoute from './ProtectedRoute/ProtectedRoute';
 import ProtectedComponent from './ProtectedRoute/ProtectedComponent'
 import PageNotFound from './Components/PageNotFound';
 import ScheduleHome from './Components/DashboardComponents/ScheduleHome';
+import SingleClient from './Components/DashboardComponents/ClientComponents/SingleClient';
+import CreateClient from './Components/DashboardComponents/ClientComponents/CreateClient';
+import Clients from './Components/DashboardComponents/ClientComponents/Clients';
 
 function App() {
   
@@ -35,14 +38,17 @@ const userLoggedIn = () => {
         <Route exact path="/" component={User} />
         <ProtectedRoute exact={true} path="/protectedRoute" component={ProtectedComponent} />
         <ProtectedRoute exact={true} path="/settings" component={Settings} />
-        {/* <ProtectedRoute exact={true} path="/schedules" component={SchedulesHome} /> */}
+        <ProtectedRoute exact={true} path="/schedules" component={ScheduleHome} />
         <ProtectedRoute exact={true} path="/reports" component={Reports} />
         <ProtectedRoute exact={true} path="/dashboard" component={Dashboard}/>
         <ProtectedRoute exact={true} path="/calendar" component={Calendar} />
         <ProtectedRoute exact={true} path="/calendar" component={Calendar} />
-        <ProtectedRoute exact={true} path="/billing" component={Billing} />
+        <ProtectedRoute exact={true} path="/bill" component={Billing} />
         <ProtectedRoute exact={true} path="/logout" component={Logout} />
-        <ProtectedRoute exact={true} path="/bill" component={Biller} />
+        <ProtectedRoute exact={true} path="/billing" component={Biller} />
+        <ProtectedRoute exact={true} path="/schedules/client/:clientId" component={SingleClient} />
+        <ProtectedRoute exact={true} path="/schedules/addClient" component={CreateClient} />
+        <ProtectedRoute exact={true} path="/schedules/clients" component={Clients} />
 
         <Route path="/signin" component={Signin} /> 
         <Route path="/login" component={LoginComponent} /> 

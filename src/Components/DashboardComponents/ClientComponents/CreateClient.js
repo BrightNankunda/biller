@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { CreateNewClient } from '../../../Actions/ClientActions';
+import SideBar from '../../BillComponents/SideBar';
 import ClientsLink from './ClientsLink';
  
 const CreateClient = () => {
@@ -23,7 +24,11 @@ const CreateClient = () => {
    }
 
    return (
-      <div className="col-lg-12 my-2 clientScreen full-height">
+      <div className="d-flex">
+         <div className="col-lg-3 blue">
+            <SideBar />
+         </div>
+         <div className="col-lg-9 my-2 clientScreen full-height">
          <div className="clientScreen w-100 rounded border">
             <div className="client-header my-2">
                <h3 className="text-center">CLIENTS INFORMATION</h3>
@@ -119,6 +124,7 @@ const CreateClient = () => {
             </div>
             <div>
 
+            </div>
             </div>
          </div>
       </div>

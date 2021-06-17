@@ -1,5 +1,5 @@
 import React from 'react';
-import ProtectedRoute from '../../../ProtectedRoute/ProtectedRoute'
+import ProtectedRoute from '../../ProtectedRoute/ProtectedRoute'
 import SideBar from '../BillComponents/SideBar';
 import Clients from './ClientComponents/Clients';
 import ClientsLink from './ClientComponents/ClientsLink';
@@ -16,7 +16,6 @@ const Schedules = () => {
             </div>
             <div className="col-lg-9">
                <ProtectedRoute exact={true} path="/schedules/client/:clientId" component={SingleClient} />
-               <ProtectedRoute exact={true} path="/schedules" component={ScheduleHome} />
                <ProtectedRoute exact={true} path="/schedules/addClient" component={CreateClient} />
                <ProtectedRoute exact={true} path="/schedules/clients" component={Clients} />
             </div>
