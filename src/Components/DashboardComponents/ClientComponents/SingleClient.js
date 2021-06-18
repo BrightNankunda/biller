@@ -29,20 +29,21 @@ const SingleClient = (props) => {
                   <span className="sr-only">Loading...</span>
                </div>
             </div>}
-      
-         {!loading && client && <div className="w-100">
-         
-            <div className="">
-               <h4 className="text-center">{client.firstName + ' ' + client.lastName}</h4>
-               <h4 className="text-center">{client.email}</h4>
-               <h4 className="text-center">{client.phoneNumber}</h4>
-               <h4 className="text-center">{client.occupation}</h4>
+            <div className="w-60 d-flex justify-content-center">
+               {!loading && client && <div className=" w-100">
+               
+                  <div className="bg light list-group">
+                     <h4 className="text-center list-group-item">{client.firstName + ' ' + client.lastName}</h4>
+                     <h4 className="text-center list-group-item">{client.email}</h4>
+                     <h4 className="text-center list-group-item">{client.phoneNumber}</h4>
+                     <h4 className="text-center list-group-item">{client.occupation}</h4>
+                  </div>
+                  <div className="actions w-60 d-flex justify-content-between">
+                     <button className="bill-btn update-btn">UPDATE</button>
+                     <button className="bill-btn delete-btn text-danger">DELETE</button>
+                  </div>
+                  </div>}
             </div>
-            <div className="actions d-flex justify-content-between">
-               <button className="bill-btn">DELETE</button>
-               <button className="bill-btn">UPDATE</button>
-            </div>
-            </div>}
          </div>
       </div>
    )

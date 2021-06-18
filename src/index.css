@@ -146,3 +146,15 @@ Button:hover {
   min-height: 150px;
   min-width: 200px;
 }
+.delete-btn, .update-btn {
+  color: black !important;
+}
+.delete-btn:hover {
+  color: white !important;
+  background: red !important;
+}
+
+.update-btn:hover {
+  color: white !important;
+  background: blue !important;
+}

@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { CreateNewClient } from '../../../Actions/ClientActions';
 import SideBar from '../../BillComponents/SideBar';
 import ClientsLink from './ClientsLink';
  
-const CreateClient = () => {
+const CreateClient = (props) => {
 
    const [firstName, setFirstName] = useState('')
    const [middleName, setMiddleName] = useState('')
@@ -15,6 +15,20 @@ const CreateClient = () => {
    const [address, setAddress] = useState('')
 
    const dispatch = useDispatch()
+
+   const {loading, client} = useSelector(state => state.createdClient)
+   console.log('LOADING CREATE CLIENT', loading, 'CREATED CLIENT', client)
+
+   // useEffect(() => {
+   //    if(!loading && client != undefined && changeRoute) {
+   //       props.history.push('/schedules/clients')
+   //    }
+   //    console.log('LOADING CREATE CLIENT', loading, 'CREATED CLIENT', client)
+   //    return () => {
+   //       // cleanup
+   //    }
+   // }, [loading])
+
    const submitHandler = (e) => {
 
       e.preventDefault();

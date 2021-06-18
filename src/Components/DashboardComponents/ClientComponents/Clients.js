@@ -36,8 +36,8 @@ const Clients = () => {
                   <h4 className="text-center">{client.occupation.toUpperCase()}</h4>
                   </div>
                   <div className="my-auto mr-3">
-                     <Trash className=" mr-3"/>
-                     <PencilFill />
+                     <PencilFill className="update-btn px-2 mr-3"/>
+                     <Trash className="delete-btn px-2 "/>
                   </div>
                </div>
             )}

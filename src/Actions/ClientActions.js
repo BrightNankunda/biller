@@ -64,11 +64,11 @@ const DeleteSingleClient = ({clientId}) => async (dispatch, getState) => {
    }
 }
 
-const UpdateSingleClient = ({clientId}) => async (dispatch, getState) => {
+const UpdateSingleClient = ({clientId, firstName, lastName, middleName, email, phoneNumber, occupation, address}) => async (dispatch, getState) => {
    try {
       dispatch({type: UPDATE_SINGLE_CLIENT_REQUEST})
       const {user} = getState()
-      const {data} = await axios.put("http://localhost:7000/api/client/" + clientId, {}, {
+      const {data} = await axios.put("http://localhost:7000/api/client/" + clientId, {firstName, lastName, middleName, email, phoneNumber, occupation, address}, {
          headers: {'Authorization': 'Bearer ' + user.token}
       })
       console.log('UPDATE SINGLE CLIENT REDUX', data)
