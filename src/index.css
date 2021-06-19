@@ -184,3 +184,6 @@ Button:hover {
 .two-times {
   font-size: 140%;
 }
+.z-index-ten {
+  z-index: 10;
+}

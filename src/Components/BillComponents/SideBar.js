@@ -22,6 +22,10 @@ const SideBar = () => {
 
    return (
       <div className="w-100 d-flex flex-col full-height" >
+         <div>
+            <h3 className="text-center border-bottom text-white">UG BILL</h3>
+         </div>
+
          {isAuthenticated && <NavLink className="btn btn-outline my-3" to={"/profile/" + loggedIn.AuthedUser.email}>
             <span className="dashboard-icons"><PersonFill /></span>
             {loggedIn.AuthedUser.email}</NavLink>}
@@ -38,9 +42,9 @@ const SideBar = () => {
             <span className="dashboard-icons"><Calendar2DateFill /></span>
             CALENDAR</NavLink>
 
-         <NavLink className="btn btn-outline my-3" to="/reports">
+         {/* <NavLink className="btn btn-outline my-3" to="/reports">
             <span className="dashboard-icons"><BookFill /></span>
-            REPORTS</NavLink>
+            REPORTS</NavLink> */}
 
          <NavLink className="btn btn-outline my-3" to="/billing">
             <span className="dashboard-icons"><CurrencyBitcoin /></span> 

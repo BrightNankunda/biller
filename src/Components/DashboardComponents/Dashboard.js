@@ -1,5 +1,5 @@
 import React from 'react';
-import { ForwardFill, PersonFill } from 'react-bootstrap-icons';
+import { Files, ForwardFill, People, PeopleFill, PersonFill } from 'react-bootstrap-icons';
 import SideBar from '../BillComponents/SideBar';
 import Calendar from './Calendar';
 import LineGraph from './LineGraph';
@@ -13,21 +13,24 @@ const Dashboard = (props) => {
 
          </div>
          <div className="col-lg-9 w-100 bg-light">
-            <div className="w-100 m-1">
-               <div className="col-lg-12 bg-white row top-bar w-100 d-flex justify-content-end align-content-center">
+            <div className="w-100">
+               <div className="w-105 bg-white z-index-ten row top-bar d-flex justify-content-end align-content-center">
 
                   <PersonFill className="my-auto mx-2 two-times"/>
                   <h3 className="lead mx-1 my-2" >ADMIN DASHBOARD</h3>
                   <ForwardFill className="my-auto mx-2 two-times"/>
                </div>
                <div className="d-flex w-100">
-                  <div className="clients-count col-lg-4 m-2 rounded bg-white">
+                  <div className="clients-count col-lg-4 m-2 bg-white d-flex flex-col">
+                     <PeopleFill className="my-2 two-times"/>
                      <h4>21 CLIENTS</h4>
                   </div>
-                  <div className="projects col-lg-4 m-2 rounded bg-white">
+                  <div className="projects col-lg-4 m-2 bg-white d-flex flex-col">
+                     <Files className="my-2 two-times"/>
                      <h4>31 PROJECTS</h4>
                   </div>
-                  <div className="advocates col-lg-4 m-2 rounded bg-white">
+                  <div className="advocates col-lg-4 m-2 bg-white d-flex flex-col">
+                     <People className="my-2 two-times"/>
                      <h4>42 ADVOCATES</h4>
                   </div>
                </div>
