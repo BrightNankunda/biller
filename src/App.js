@@ -25,6 +25,7 @@ import SingleClient from './Components/DashboardComponents/ClientComponents/Sing
 import CreateClient from './Components/DashboardComponents/ClientComponents/CreateClient';
 import Clients from './Components/DashboardComponents/ClientComponents/Clients';
 import SingleSchedule from './Components/DashboardComponents/SingleSchedule';
+import UpdateClient from './Components/DashboardComponents/ClientComponents/UpdateClient';
 
 function App() {
   
@@ -36,6 +37,7 @@ const userLoggedIn = () => {
 
   return (
     <Router>
+        <ProtectedRoute exact={true} path="/schedules/clientToUpdate?Update=:clientId" component={UpdateClient} />
         <ProtectedRoute exact={true} path="/schedule/:scheduleId" component={SingleSchedule} />
         <ProtectedRoute exact={true} path="/schedule/client/:clientId" component={SingleClient} />
         <ProtectedRoute exact={true} path="/schedules/addClient" component={CreateClient} />

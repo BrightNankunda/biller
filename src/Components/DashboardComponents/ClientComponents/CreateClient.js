@@ -16,18 +16,18 @@ const CreateClient = (props) => {
 
    const dispatch = useDispatch()
 
-   const {loading, client} = useSelector(state => state.createdClient)
+   const {loading, client, redirectCreator} = useSelector(state => state.createdClient)
    console.log('LOADING CREATE CLIENT', loading, 'CREATED CLIENT', client)
 
-   // useEffect(() => {
-   //    if(!loading && client != undefined && changeRoute) {
-   //       props.history.push('/schedules/clients')
-   //    }
-   //    console.log('LOADING CREATE CLIENT', loading, 'CREATED CLIENT', client)
-   //    return () => {
-   //       // cleanup
-   //    }
-   // }, [loading])
+   useEffect(() => {
+      if(redirectCreator) {
+         props.history.push('/schedules/clients')
+      }
+      console.log('LOADING CREATE CLIENT', loading, 'CREATED CLIENT', client)
+      return () => {
+         // cleanup
+      }
+   }, [redirectCreator])
 
    const submitHandler = (e) => {
 

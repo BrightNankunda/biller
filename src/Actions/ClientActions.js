@@ -1,6 +1,21 @@
 import axios from 'axios'
 
-import { CREATE_CLIENT_FAILURE, CREATE_CLIENT_REQUEST, CREATE_CLIENT_SUCCESS, DELETE_SINGLE_CLIENT_FAILURE, DELETE_SINGLE_CLIENT_REQUEST, DELETE_SINGLE_CLIENT_SUCCESS, FETCH_CLIENTS_FAILURE, FETCH_CLIENTS_REQUEST, FETCH_CLIENTS_SUCCESS, FETCH_SINGLE_CLIENT_FAILURE, FETCH_SINGLE_CLIENT_REQUEST, FETCH_SINGLE_CLIENT_SUCCESS, UPDATE_SINGLE_CLIENT_FAILURE, UPDATE_SINGLE_CLIENT_REQUEST, UPDATE_SINGLE_CLIENT_SUCCESS } from '../Constants/ClientConstants'
+import { CREATE_CLIENT_FAILURE, 
+   CREATE_CLIENT_FINISHED, 
+   CREATE_CLIENT_REQUEST, 
+   CREATE_CLIENT_SUCCESS, 
+   DELETE_SINGLE_CLIENT_FAILURE, 
+   DELETE_SINGLE_CLIENT_REQUEST, 
+   DELETE_SINGLE_CLIENT_SUCCESS, 
+   FETCH_CLIENTS_FAILURE, 
+   FETCH_CLIENTS_REQUEST, 
+   FETCH_CLIENTS_SUCCESS, 
+   FETCH_SINGLE_CLIENT_FAILURE, 
+   FETCH_SINGLE_CLIENT_REQUEST, 
+   FETCH_SINGLE_CLIENT_SUCCESS, 
+   UPDATE_SINGLE_CLIENT_FAILURE, 
+   UPDATE_SINGLE_CLIENT_REQUEST, 
+   UPDATE_SINGLE_CLIENT_SUCCESS } from '../Constants/ClientConstants'
 
 const CreateNewClient = ({firstName, lastName, middleName, email, phoneNumber, occupation, address}) => async (dispatch, getState) => {
    try {
@@ -12,6 +27,7 @@ const CreateNewClient = ({firstName, lastName, middleName, email, phoneNumber, o
       console.log(data);
       // window.location = "/schedules/clients"
       dispatch({type: CREATE_CLIENT_SUCCESS, payload: data})
+      dispatch({type: CREATE_CLIENT_FINISHED})
    } catch (error) {
       console.log(error.message)
       dispatch({type: CREATE_CLIENT_FAILURE, payload: error.message})

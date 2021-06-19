@@ -1,5 +1,6 @@
 import { 
    CREATE_CLIENT_FAILURE, 
+   CREATE_CLIENT_FINISHED, 
    CREATE_CLIENT_REQUEST, 
    CREATE_CLIENT_SUCCESS, 
    FETCH_CLIENTS_FAILURE, 
@@ -10,14 +11,16 @@ import {
    FETCH_SINGLE_CLIENT_SUCCESS
 } from "../Constants/ClientConstants"
 
-const CreateNewClientReducer = (state={loading: false, changeRoute: false}, action) => {
+const CreateNewClientReducer = (state={loading: false, redirectCreator: false}, action) => {
    switch(action.type) {
       case CREATE_CLIENT_REQUEST:
-         return { ...state, loading: true, changeRoute: false}
+         return { ...state, loading: true, redirectCreator: false}
       case CREATE_CLIENT_SUCCESS:
-         return {...state, loading: false, client: action.payload, changeRoute: true}
+         return {...state, loading: false, client: action.payload, redirectCreator: true}
+      case CREATE_CLIENT_FINISHED:
+         return {...state, loading: false, client: null, redirectCreator: false}
       case CREATE_CLIENT_FAILURE:
-         return {...state, loading:  false, error: action.payload, changeRoute: false}
+         return {...state, loading:  false, error: action.payload, redirectCreator: false}
       default:
          return state;
    }

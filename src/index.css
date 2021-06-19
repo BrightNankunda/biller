@@ -146,15 +146,32 @@ Button:hover {
   min-height: 150px;
   min-width: 200px;
 }
-.delete-btn, .update-btn {
-  color: black !important;
+.delete-btn {
+  font-size: 130%;
+  margin: 5px;
+  padding: 10px;
+  border-radius: 5px;
 }
 .delete-btn:hover {
   color: white !important;
   background: red !important;
+  margin: 5px;
+  padding: 10px;
+  border-radius: 5px;
 }
 
-.update-btn:hover {
+
+.update-link:hover {
   color: white !important;
   background: blue !important;
+  padding: 10px;
+  margin: 5px; 
+  border-radius: 5px;
+}
+.update-link {
+  font-size: 130%;
+  color: blue !important;
+  padding: 10px;
+  margin: 5px; 
+  border-radius: 5px;
 }

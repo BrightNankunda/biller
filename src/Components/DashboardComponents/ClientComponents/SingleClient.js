@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import {useDispatch, useSelector} from 'react-redux'
+import { Link } from 'react-router-dom'
 import { FetchSingleClient } from '../../../Actions/ClientActions'
 import SideBar from '../../BillComponents/SideBar'
 
@@ -15,6 +16,14 @@ const SingleClient = (props) => {
 
    const {loading, client} = useSelector(state => state.singleClient)
    console.log('LOADING', loading, 'CLIENT', client)
+
+   const updateClient = (clientId) => {
+      console.log('UPDATE FUNCTION', clientId)
+   }
+
+   const deleteClient = (clientId) => {
+      console.log('DELETE FUNCTION', clientId)
+   }
 
    return (
       <div className="d-flex">
@@ -39,8 +48,8 @@ const SingleClient = (props) => {
                      <h4 className="text-center list-group-item">{client.occupation}</h4>
                   </div>
                   <div className="actions w-60 d-flex justify-content-between">
-                     <button className="bill-btn update-btn">UPDATE</button>
-                     <button className="bill-btn delete-btn text-danger">DELETE</button>
+                     <Link className="bill-btn update-btn" to={"/schedules/clientToUpdate?Update=" + client._id}>UPDATE</Link>
+                     <button className="bill-btn delete-btn text-danger" onClick={deleteClient(() => client._id)}>DELETE</button>
                   </div>
                   </div>}
             </div>

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { PencilFill, Trash } from 'react-bootstrap-icons';
+import { BookFill, PencilFill, Trash } from 'react-bootstrap-icons';
 import { useDispatch, useSelector } from 'react-redux';
 import {Link} from 'react-router-dom'
 
@@ -20,6 +20,9 @@ const Clients = () => {
    const {loading, clients} = useSelector(state => state.clients)
    console.log(clients)
 
+   const deleteClient = (clientId) => {
+      console.log('DELETE FUNCTION', clientId)
+   }
    return (
       <div className="d-flex">
          <div className="col-lg-3 blue">
@@ -30,14 +33,18 @@ const Clients = () => {
             {clients && clients.map(client => 
                <div className="m-2 rounded bg-white w-95 d-flex justify-content-between" key={client._id}>
                   <div className="col-lg-6 m-1" >
-                  <Link to={"/schedule/client/" + client._id}><h4 className="text-center p-2">{client.firstName.toUpperCase() + ' ' + client.lastName.toUpperCase()}</h4></Link>
-                  
-                  <h4 className="text-center">{client.phoneNumber}</h4>
-                  <h4 className="text-center">{client.occupation.toUpperCase()}</h4>
+                     <Link to={"/schedule/client/" + client._id}><h4 className="text-center p-2">{client.firstName.toUpperCase() + ' ' + client.lastName.toUpperCase()}</h4></Link>
+                     
+                     <h4 className="text-center">{client.phoneNumber}</h4>
+                     <h4 className="text-center">{client.occupation.toUpperCase()}</h4>
                   </div>
                   <div className="my-auto mr-3">
-                     <PencilFill className="update-btn px-2 mr-3"/>
-                     <Trash className="delete-btn px-2 "/>
+                     <Link className="update-link" to={"/schedules/clientToUpdate?Update=" + client._id}>
+                        <PencilFill />
+                     </Link>
+                     <span  className="delete-btn text-danger">
+                       <Trash onClick={() => deleteClient(client._id)}/>
+                     </span>   
                   </div>
                </div>
             )}
