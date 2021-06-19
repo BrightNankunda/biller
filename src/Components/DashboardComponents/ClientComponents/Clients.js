@@ -23,6 +23,7 @@ const Clients = () => {
    const deleteClient = (clientId) => {
       console.log('DELETE FUNCTION', clientId)
    }
+   
    return (
       <div className="d-flex">
          <div className="col-lg-3 blue">
@@ -39,9 +40,12 @@ const Clients = () => {
                      <h4 className="text-center">{client.occupation.toUpperCase()}</h4>
                   </div>
                   <div className="my-auto mr-3">
-                     <Link className="update-link" to={"/schedules/clientToUpdate?Update=" + client._id}>
+                     <Link className="update-link" to={"/schedules/clientToUpdate/" + client._id}>
                         <PencilFill />
                      </Link>
+                     {/* <Link className="update-link" to={"/schedules/clientToUpdate?Update=" + client._id}>
+                        <PencilFill />
+                     </Link> */}
                      <span  className="delete-btn text-danger">
                        <Trash onClick={() => deleteClient(client._id)}/>
                      </span>   

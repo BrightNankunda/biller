@@ -37,7 +37,7 @@ const userLoggedIn = () => {
 
   return (
     <Router>
-        <ProtectedRoute exact={true} path="/schedules/clientToUpdate?Update=:clientId" component={UpdateClient} />
+        <ProtectedRoute exact={true} path="/schedules/clientToUpdate/:clientId" component={UpdateClient} />
         <ProtectedRoute exact={true} path="/schedule/:scheduleId" component={SingleSchedule} />
         <ProtectedRoute exact={true} path="/schedule/client/:clientId" component={SingleClient} />
         <ProtectedRoute exact={true} path="/schedules/addClient" component={CreateClient} />

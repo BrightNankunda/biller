@@ -131,7 +131,7 @@ const CreateClient = (props) => {
                   <button
                      className="bill-reset-btn submit ml-2 py-2 px-3 next">RESET</button>
                      <button type="submmit" 
-                     className="bill-btn submit ml-2 py-2 px-3 next">Submit</button>
+                     className="bill-btn submit ml-2 py-2 px-3 next">SUBMIT</button>
                   </div>
                </form>
                <ClientsLink />

@@ -48,7 +48,8 @@ const SingleClient = (props) => {
                      <h4 className="text-center list-group-item">{client.occupation}</h4>
                   </div>
                   <div className="actions w-60 d-flex justify-content-between">
-                     <Link className="bill-btn update-btn" to={"/schedules/clientToUpdate?Update=" + client._id}>UPDATE</Link>
+                     <Link className="bill-btn text-success py-2 px-4" to={"/schedules/clientToUpdate/" + client._id}>UPDATE</Link>
+                     {/* <Link className="bill-btn update-btn" to={"/schedules/clientToUpdate?Update=" + client._id}>UPDATE</Link> */}
                      <button className="bill-btn delete-btn text-danger" onClick={deleteClient(() => client._id)}>DELETE</button>
                   </div>
                   </div>}
