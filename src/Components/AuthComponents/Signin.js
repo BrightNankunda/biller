@@ -18,7 +18,7 @@ export default function Signin(props) {
    // CHECK FUNCTION
    useEffect(() => {
       if(isAuthenticated) {
-         history.replace('/bill')
+         history.replace('/dashboard')
          console.log('AUTHENTICATED FROM SIGNIN COMPONENT');
       }
       return () => {

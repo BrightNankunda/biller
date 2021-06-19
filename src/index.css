@@ -145,6 +145,9 @@ Button:hover {
 .clients-count, .advocates, .projects {
   min-height: 150px;
   min-width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .delete-btn {
   font-size: 130%;
@@ -174,4 +177,10 @@ Button:hover {
   padding: 10px;
   margin: 5px; 
   border-radius: 5px;
+}
+.forty-height {
+  min-height: calc(100vh - 40vh);
+}
+.two-times {
+  font-size: 140%;
 }
