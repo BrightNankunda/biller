@@ -44,8 +44,10 @@ const CreateClient = (props) => {
          </div>
          <div className="col-lg-9 my-2 clientScreen full-height">
          <div className="clientScreen w-100 rounded border">
-            <div className="client-header my-2">
+            <div className="client-header my-2 d-flex justify-content-center">
+               <Link to="/schedules/clients" className="two-times">BACK</Link>
                <h3 className="text-center">UPDATE CLIENTS INFORMATION</h3>
+               
                <div className="alert alert-danger w-100 d-flex justify-content-center">
                   <h4 className="text-danger text-center">NOT YET ACTIVATED</h4>
                </div>

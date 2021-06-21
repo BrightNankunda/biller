@@ -3,6 +3,7 @@ import {
    CREATE_CLIENT_FINISHED, 
    CREATE_CLIENT_REQUEST, 
    CREATE_CLIENT_SUCCESS, 
+   DELETE_SINGLE_CLIENT_FAILURE, 
    FETCH_CLIENTS_FAILURE, 
    FETCH_CLIENTS_REQUEST, 
    FETCH_CLIENTS_SUCCESS, 
@@ -51,5 +52,17 @@ const FetchSingleClientReducer = (state={loading: false}, action) => {
          return state;
    }
 }
+const DeleteClientReducer = (state={loading: false}, action) => {
+   switch(action.type) {
+      case DELETE_SINGLE_CLIENT_REQUEST:
+         return {...state, loading: true}
+      case DELETE_SINGLE_CLIENT_SUCCESS:
+         return {...state, loading: false, deletedClient: true}
+      case DELETE_SINGLE_CLIENT_FAILURE:
+         return {...state, loading: false, error: action.payload}
+      default:
+         return state;
+   }
+}
 
-export {CreateNewClientReducer, FetchAllClientsReducer, FetchSingleClientReducer}
+export {CreateNewClientReducer, FetchAllClientsReducer, FetchSingleClientReducer, DeleteClientReducer}

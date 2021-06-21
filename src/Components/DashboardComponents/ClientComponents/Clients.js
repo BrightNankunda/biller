@@ -3,7 +3,7 @@ import { BookFill, PencilFill, Trash } from 'react-bootstrap-icons';
 import { useDispatch, useSelector } from 'react-redux';
 import {Link} from 'react-router-dom'
 
-import { FetchClients } from '../../../Actions/ClientActions';
+import { DeleteSingleClient, FetchClients } from '../../../Actions/ClientActions';
 import SideBar from '../../BillComponents/SideBar';
  
 const Clients = () => {
@@ -22,6 +22,7 @@ const Clients = () => {
 
    const deleteClient = (clientId) => {
       console.log('DELETE FUNCTION', clientId)
+      // dispatch(DeleteSingleClient(clientId))
    }
    
    return (

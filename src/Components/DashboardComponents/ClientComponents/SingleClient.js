@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import { Link } from 'react-router-dom'
-import { FetchSingleClient } from '../../../Actions/ClientActions'
+import { DeleteSingleClient, FetchSingleClient } from '../../../Actions/ClientActions'
 import SideBar from '../../BillComponents/SideBar'
 
 const SingleClient = (props) => {
@@ -23,6 +23,7 @@ const SingleClient = (props) => {
 
    const deleteClient = (clientId) => {
       console.log('DELETE FUNCTION', clientId)
+      // dispatch(DeleteSingleClient(clientId))
    }
 
    return (
