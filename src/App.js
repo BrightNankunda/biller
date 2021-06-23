@@ -26,6 +26,8 @@ import CreateClient from './Components/DashboardComponents/ClientComponents/Crea
 import Clients from './Components/DashboardComponents/ClientComponents/Clients';
 import SingleSchedule from './Components/DashboardComponents/SingleSchedule';
 import UpdateClient from './Components/DashboardComponents/ClientComponents/UpdateClient';
+import UpdateBill from './Components/BillComponents/UpdateBill';
+import SingleBill from './Components/BillComponents/SingleBill';
 
 function App() {
   
@@ -38,7 +40,8 @@ const userLoggedIn = () => {
   return (
     <Router>
         <ProtectedRoute exact={true} path="/schedules/clientToUpdate/:clientId" component={UpdateClient} />
-        <ProtectedRoute exact={true} path="/schedule/:scheduleId" component={SingleSchedule} />
+        <ProtectedRoute exact={true} path="/schedules/billToUpdate/:billId" component={UpdateBill} />
+        <ProtectedRoute exact={true} path="/schedule/bill/:billId" component={SingleBill} />
         <ProtectedRoute exact={true} path="/schedule/client/:clientId" component={SingleClient} />
         <ProtectedRoute exact={true} path="/schedules/addClient" component={CreateClient} />
         <Route exact path="/" component={User} />

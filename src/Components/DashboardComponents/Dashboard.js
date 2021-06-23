@@ -1,10 +1,22 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Files, ForwardFill, People, PeopleFill, PersonFill } from 'react-bootstrap-icons';
+import { useDispatch, useSelector } from 'react-redux';
+import { AllBills } from '../../Actions/BillActions';
 import SideBar from '../BillComponents/SideBar';
 import Calendar from './Calendar';
 import LineGraph from './LineGraph';
  
 const Dashboard = (props) => {
+   const {billsCount} = useSelector(state => state.bills)
+
+   const dispatch = useDispatch()
+
+   useEffect(() => {
+      dispatch(AllBills())
+      return () => {
+         // cleanup
+      }
+   }, [])
 
    return (
       <div className="d-flex">
@@ -27,7 +39,7 @@ const Dashboard = (props) => {
                   </div>
                   <div className="projects col-lg-4 m-2 bg-white d-flex flex-col">
                      <Files className="my-2 two-times"/>
-                     <h4>31 PROJECTS</h4>
+                     <h4>{billsCount} PROJECTS</h4>
                   </div>
                   <div className="advocates col-lg-4 m-2 bg-white d-flex flex-col">
                      <People className="my-2 two-times"/>

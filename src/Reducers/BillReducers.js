@@ -16,14 +16,15 @@ function SaveBillReducer(state={}, action) {
    }
 }
 
-function FetchBillsReducer(state={bills: []}, action) {
+function FetchBillsReducer(state={bills: [], loading: false, billsCount: 0}, action) {
    switch(action.type) {
       case BILLS_FETCH_REQUEST:
-         return {loading: true}
+         return {...state, loading: true}
       case BILLS_FETCH_SUCCESS:
-         return {loading: false, bills: action.payload}
+         return {...state, loading: false, bills: action.payload, billsCount: action.payload.length}
+         
       case BILLS_FETCH_ERROR:
-         return {loading: true, error: action.payload}
+         return {...state, loading: true, error: action.payload}
       default:
          return state
    }
