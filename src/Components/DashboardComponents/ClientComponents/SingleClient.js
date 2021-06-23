@@ -17,14 +17,14 @@ const SingleClient = (props) => {
    const {loading, client} = useSelector(state => state.singleClient)
    console.log('LOADING', loading, 'CLIENT', client)
 
-   const updateClient = (clientId) => {
-      console.log('UPDATE FUNCTION', clientId)
-   }
+
 
    const deleteClient = (clientId) => {
-      console.log('DELETE FUNCTION', clientId)
-      // dispatch(DeleteSingleClient(clientId))
+      dispatch(DeleteSingleClient({clientId}))
    }
+
+   const isClientEmpty = client === null ? true : false
+   
 
    return (
       <div className="d-flex">
@@ -47,13 +47,18 @@ const SingleClient = (props) => {
                      <h4 className="text-center list-group-item">{client.email}</h4>
                      <h4 className="text-center list-group-item">{client.phoneNumber}</h4>
                      <h4 className="text-center list-group-item">{client.occupation}</h4>
+                     <h4 className="text-center list-group-item">{client.address.toUpperCase()}</h4>
                   </div>
                   <div className="actions w-60 d-flex justify-content-between">
                      <Link className="bill-btn text-success py-2 px-4" to={"/schedules/clientToUpdate/" + client._id}>UPDATE</Link>
                      {/* <Link className="bill-btn update-btn" to={"/schedules/clientToUpdate?Update=" + client._id}>UPDATE</Link> */}
-                     <button className="bill-btn delete-btn text-danger" onClick={deleteClient(() => client._id)}>DELETE</button>
+                     <button className="bill-btn delete-btn text-danger" onClick={() => deleteClient(client._id)}>DELETE</button>
                   </div>
                   </div>}
+               {!loading && isClientEmpty && <div className="alert alert-danger align-items-center w-100 full-height d-flex justify-content-center">
+
+                  <h4 className="text-danger text-center">CLIENT NOT FOUND</h4>
+               </div>}
             </div>
          </div>
       </div>

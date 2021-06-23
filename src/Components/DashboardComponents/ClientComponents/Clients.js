@@ -10,6 +10,7 @@ const Clients = () => {
 
    const dispatch = useDispatch()
    
+   // DISPATCH GET CLIENTS ON INITIAL RENDER
    useEffect(() => {
       dispatch(FetchClients())
       return () => {
@@ -17,12 +18,18 @@ const Clients = () => {
       }
    }, [])
 
+   // LOADING CLIENTS STATE GETTER FUNCTION
    const {loading, clients} = useSelector(state => state.clients)
+
+   // FRONT END DELETE FUNCTION
+   // clients.filter(client => client.id != clientId)
+   // ON DELETE WE UPDATE THE DELETE BUTTON TO A LOADING BUTTON AND DISABLE THE ENTIRE CLIENT SCREEN
+   
    console.log(clients)
 
+   // DELETE A SINGLE CLIENT FUNCTION ON CLICKING DELETE BUTTON
    const deleteClient = (clientId) => {
-      console.log('DELETE FUNCTION', clientId)
-      // dispatch(DeleteSingleClient(clientId))
+      dispatch(DeleteSingleClient({clientId}))
    }
    
    return (

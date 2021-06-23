@@ -1,40 +1,53 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { UpdateSingleClient } from '../../../Actions/ClientActions';
+import { Link } from 'react-router-dom';
+import { UpdateSingleClient, FetchSingleClient } from '../../../Actions/ClientActions';
 import SideBar from '../../BillComponents/SideBar';
 import ClientsLink from './ClientsLink';
  
 const CreateClient = (props) => {
+   
+   const {loading, client} = useSelector(state => state.singleClient)
+   console.log('LOADING', loading, 'CLIENT', client)
 
-   const [firstName, setFirstName] = useState('NANKUNDA')
-   const [middleName, setMiddleName] = useState('')
-   const [lastName, setLastName] = useState('')
-   const [email, setEmail] = useState('')
-   const [phoneNumber, setPhoneNumber] = useState('')
-   const [occupation, setOccupation] = useState('')
-   const [address, setAddress] = useState('')
+   const [firstName, setFirstName] = useState(client.firstName)
+   const [middleName, setMiddleName] = useState(client.middleName)
+   const [lastName, setLastName] = useState(client.lastName)
+   const [email, setEmail] = useState(client.email)
+   const [phoneNumber, setPhoneNumber] = useState(client.phoneNumber)
+   const [occupation, setOccupation] = useState(client.occupation)
+   const [address, setAddress] = useState(client.address)
 
    const dispatch = useDispatch()
 
-   // const {loading, client, redirectCreator} = useSelector(state => state.createdClient)
-   // console.log('LOADING CREATE CLIENT', loading, 'CREATED CLIENT', client)
+   const {loading: loadingUpdate, message, redirectUpdator} = useSelector(state => state.updatedClient)
+   console.log('LOADING UPDATED CLIENT', loadingUpdate, 'UPDATED CLIENT MESSAGE', message, 'REDIRECT UPDATEOR ', redirectUpdator)
 
-   // useEffect(() => {
-   //    if(redirectCreator) {
-   //       props.history.push('/schedules/clients')
-   //    }
-   //    console.log('LOADING CREATE CLIENT', loading, 'CREATED CLIENT', client)
-   //    return () => {
-   //       // cleanup
-   //    }
-   // }, [redirectCreator])
+   useEffect(() => {
+      if(redirectUpdator) {
+         props.history.push(`/schedule/client/${client._id}`)
+      }
+      console.log('LOADING UPDATE CLIENT', loading, 'CREATED CLIENT', client)
+      return () => {
+         // cleanup
+      }
+   }, [redirectUpdator])
+
+   const id = client._id
+
+   useEffect(() => {
+      dispatch(FetchSingleClient(props.match.params.clientId))
+      return () => {
+         // cleanup
+      }
+   }, [])
+
 
    const submitHandler = (e) => {
 
       e.preventDefault();
       if(firstName.trim() === '' && middleName.trim() === '' && lastName.trim() === '' && email.trim() === '' && phoneNumber.trim() === '' && occupation.trim() === '' && address.trim() === '') return;
-      console.log(firstName, lastName, middleName, email, phoneNumber, occupation, address)
-      // dispatch(UpdateSingleClient({firstName, lastName, middleName, email, phoneNumber, occupation, address}))
+      dispatch(UpdateSingleClient({id, firstName, lastName, middleName, email, phoneNumber, occupation, address}))
    }
 
    return (
@@ -44,13 +57,9 @@ const CreateClient = (props) => {
          </div>
          <div className="col-lg-9 my-2 clientScreen full-height">
          <div className="clientScreen w-100 rounded border">
-            <div className="client-header my-2 d-flex justify-content-center">
+            <div className="client-header my-2 d-flex justify-content-between">
                <Link to="/schedules/clients" className="two-times">BACK</Link>
                <h3 className="text-center">UPDATE CLIENTS INFORMATION</h3>
-               
-               <div className="alert alert-danger w-100 d-flex justify-content-center">
-                  <h4 className="text-danger text-center">NOT YET ACTIVATED</h4>
-               </div>
             </div>
             <div className="client-body my-auto">
                <form className="w-100 my-4 p-4" onSubmit={submitHandler}>

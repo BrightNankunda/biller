@@ -14,6 +14,7 @@ import { CREATE_CLIENT_FAILURE,
    FETCH_SINGLE_CLIENT_REQUEST, 
    FETCH_SINGLE_CLIENT_SUCCESS, 
    UPDATE_SINGLE_CLIENT_FAILURE, 
+   UPDATE_SINGLE_CLIENT_FINISHED, 
    UPDATE_SINGLE_CLIENT_REQUEST, 
    UPDATE_SINGLE_CLIENT_SUCCESS } from '../Constants/ClientConstants'
 
@@ -72,27 +73,30 @@ const DeleteSingleClient = ({clientId}) => async (dispatch, getState) => {
       const {data} = await axios.delete("http://localhost:7000/api/client/" + clientId, {
          headers: {'Authorization': 'Bearer ' + user.token}
       })
-      console.log('FETCH SINGLE CLIENT REDUX', data)
+      console.log('DELETE SINGLE CLIENT REDUX', data)
       dispatch({type: DELETE_SINGLE_CLIENT_SUCCESS, payload: data})
    } catch(error) {
       console.log(error.message)
       dispatch({type: DELETE_SINGLE_CLIENT_FAILURE, payload: error.message})
    }
+
 }
 
-const UpdateSingleClient = ({clientId, firstName, lastName, middleName, email, phoneNumber, occupation, address}) => async (dispatch, getState) => {
+const UpdateSingleClient = ({id, firstName, lastName, middleName, email, phoneNumber, occupation, address}) => async (dispatch, getState) => {
    try {
       dispatch({type: UPDATE_SINGLE_CLIENT_REQUEST})
       const {user} = getState()
-      const {data} = await axios.put("http://localhost:7000/api/client/" + clientId, {firstName, lastName, middleName, email, phoneNumber, occupation, address}, {
+      const {data} = await axios.put("http://localhost:7000/api/client/" + id, {firstName, lastName, middleName, email, phoneNumber, occupation, address}, {
          headers: {'Authorization': 'Bearer ' + user.token}
       })
       console.log('UPDATE SINGLE CLIENT REDUX', data)
       dispatch({type: UPDATE_SINGLE_CLIENT_SUCCESS, payload: data})
+      dispatch({type: UPDATE_SINGLE_CLIENT_FINISHED})
    } catch(error) {
       console.log(error.message)
       dispatch({type: UPDATE_SINGLE_CLIENT_FAILURE, payload: error.message})
    }
+   
 }
 
 export {CreateNewClient, FetchClients, FetchSingleClient, DeleteSingleClient, UpdateSingleClient}

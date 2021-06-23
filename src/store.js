@@ -2,7 +2,7 @@ import {applyMiddleware, createStore, compose, combineReducers} from 'redux'
 import thunk from 'redux-thunk'
 
 import { FetchBillsReducer, SaveBillReducer } from './Reducers/BillReducers'
-import { CreateNewClientReducer, FetchAllClientsReducer, FetchSingleClientReducer } from './Reducers/ClientsReducers';
+import { CreateNewClientReducer, FetchAllClientsReducer, FetchSingleClientReducer, UpdateClientReducer } from './Reducers/ClientsReducers';
 import { LogoutUserReducer, UserLoginReducer, UserSigninReducer } from './Reducers/UserReducers'
 
 // const userInfo = localStorage.getItem("UgBillToken") || null;
@@ -19,7 +19,8 @@ const reducer = combineReducers({
    clients: FetchAllClientsReducer,
    userLoggedOut: LogoutUserReducer,
    singleClient: FetchSingleClientReducer,
-   createdClient: CreateNewClientReducer
+   createdClient: CreateNewClientReducer,
+   updatedClient: UpdateClientReducer
 })
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
