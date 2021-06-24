@@ -5,6 +5,7 @@ import { CREATE_CLIENT_FAILURE,
    CREATE_CLIENT_REQUEST, 
    CREATE_CLIENT_SUCCESS, 
    DELETE_SINGLE_CLIENT_FAILURE, 
+   DELETE_SINGLE_CLIENT_FINISHED, 
    DELETE_SINGLE_CLIENT_REQUEST, 
    DELETE_SINGLE_CLIENT_SUCCESS, 
    FETCH_CLIENTS_FAILURE, 
@@ -76,6 +77,7 @@ const DeleteSingleClient = ({clientId}) => async (dispatch, getState) => {
       })
       console.log('DELETE SINGLE CLIENT REDUX', data)
       dispatch({type: DELETE_SINGLE_CLIENT_SUCCESS, payload: data})
+      dispatch({type: DELETE_SINGLE_CLIENT_FINISHED})
    } catch(error) {
       console.log(error.message)
       dispatch({type: DELETE_SINGLE_CLIENT_FAILURE, payload: error.message})

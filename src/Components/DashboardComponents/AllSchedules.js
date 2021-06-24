@@ -3,6 +3,7 @@ import { PencilFill, Trash, Trash2Fill } from 'react-bootstrap-icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { AllBills } from '../../Actions/BillActions';
+import SideBar from '../BillComponents/SideBar';
  
 const AllSchedules = () => {
 
@@ -22,29 +23,34 @@ const AllSchedules = () => {
    }
 
    return (
-      <div className="bg-light w-100">
-         {loading && <div className="d-flex justify-content-center w-100 align-content-center">
-            <div className="spinner-border text-primary" role="status">
-               <span className="sr-only">Loading...</span>
-            </div>
-         </div>}
-         {bills && bills.map(bill => (
-            <div className="m-2 rounded bg-white w-95 d-flex justify-content-between" key={bill._id}>
-               <Link to={"/schedule/bill/" + bill._id }><h4 className="p-2">{bill.propertyType.toUpperCase()} SCHEDULE</h4></Link>
-               <div className="my-auto mr-3 my-1">
-                  <Link className="update-link" to={"/schedules/billToUpdate/" + bill._id}>
-                     <PencilFill />
-                  </Link>
-                     {/* <Link className="update-link" to={"/schedules/scheduleToUpdate?Update=" + bill._id}>
-                        <PencilFill />
-                     </Link> */}
-                  <span  className="delete-btn text-danger">
-                     <Trash onClick={() => deleteBill(bill._id)}/>
-                  </span>
+      <div className="bg-light w-100 d-flex">
+         <div className="col-lg-3 blue">
+            <SideBar />
+         </div>
+         <div className="col-lg-9 bg-light">
+            {loading && <div className="d-flex justify-content-center w-100 align-content-center">
+               <div className="spinner-border text-primary" role="status">
+                  <span className="sr-only">Loading...</span>
                </div>
-            </div>
+            </div>}
+            {bills && bills.map(bill => (
+               <div className="m-2 rounded bg-white w-95 d-flex justify-content-between" key={bill._id}>
+                  <Link to={"/schedule/bill/" + bill._id }><h4 className="p-2">{bill.propertyType.toUpperCase()} SCHEDULE</h4></Link>
+                  <div className="my-auto mr-3 my-1">
+                     <Link className="update-link" to={"/schedules/billToUpdate/" + bill._id}>
+                        <PencilFill />
+                     </Link>
+                        {/* <Link className="update-link" to={"/schedules/scheduleToUpdate?Update=" + bill._id}>
+                           <PencilFill />
+                        </Link> */}
+                     <span  className="delete-btn text-danger">
+                        <Trash onClick={() => deleteBill(bill._id)}/>
+                     </span>
+                  </div>
+               </div>
 
-         ))}
+            ))}
+         </div>
       </div>
    );
 }

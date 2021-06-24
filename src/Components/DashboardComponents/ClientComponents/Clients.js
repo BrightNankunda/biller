@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BookFill, PencilFill, Trash } from 'react-bootstrap-icons';
 import { useDispatch, useSelector } from 'react-redux';
 import {Link} from 'react-router-dom'
@@ -6,13 +6,15 @@ import {Link} from 'react-router-dom'
 import { DeleteSingleClient, FetchClients } from '../../../Actions/ClientActions';
 import SideBar from '../../BillComponents/SideBar';
  
-const Clients = () => {
+const Clients = (props) => {
 
    const dispatch = useDispatch()
+   const [deletedId, setDeletedId] = useState(null)
    
    // DISPATCH GET CLIENTS ON INITIAL RENDER
    useEffect(() => {
       dispatch(FetchClients())
+      console.log('FETCHING')
       return () => {
          // cleanup
       }
@@ -25,11 +27,29 @@ const Clients = () => {
    // clients.filter(client => client.id != clientId)
    // ON DELETE WE UPDATE THE DELETE BUTTON TO A LOADING BUTTON AND DISABLE THE ENTIRE CLIENT SCREEN
    
-   console.log(clients)
+   console.log('CLIENTS',clients)
+
+   // DELETE CLIENT STATE
+   const {loading: loadingDelete, redirectDeletor} = useSelector(state => state.deletedClient)
+
+   useEffect(() => {
+      if(redirectDeletor) {
+         removeDeletedClient(deletedId)
+      }
+      return () => {
+         // cleanup
+      }
+   }, [redirectDeletor])
 
    // DELETE A SINGLE CLIENT FUNCTION ON CLICKING DELETE BUTTON
    const deleteClient = (clientId) => {
+      setDeletedId(clientId)
       dispatch(DeleteSingleClient({clientId}))
+   }
+
+   const removeDeletedClient = (deletedId) => {
+      console.log('DELETE ID', deletedId)
+      // clients.filter(client => client._id != deletedId)
    }
    
    return (
@@ -37,7 +57,7 @@ const Clients = () => {
          <div className="col-lg-3 blue">
             <SideBar />
          </div>
-         <div className="w-100 bg-light col-lg-9">
+         <div className="w-100 bg-light col-lg-9 full-height">
 
             {clients && clients.map(client => 
                <div className="m-2 rounded bg-white w-95 d-flex justify-content-between" key={client._id}>
@@ -54,12 +74,22 @@ const Clients = () => {
                      {/* <Link className="update-link" to={"/schedules/clientToUpdate?Update=" + client._id}>
                         <PencilFill />
                      </Link> */}
-                     <span  className="delete-btn text-danger">
-                       <Trash onClick={() => deleteClient(client._id)}/>
-                     </span>   
+                        {!loadingDelete && <span  className="delete-btn text-danger">
+                        <Trash onClick={() => deleteClient(client._id)}/>
+                        </span> }
+
+                       {loadingDelete && <button className="btn btn-danger" type="button" disabled>
+                           <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                           <span className="sr-only">Loading...</span>
+                        </button>}
                   </div>
                </div>
             )}
+            {/* {clients.length === 0 || clients === undefined && 
+            <div 
+            className="alert alert-danger d-flex justify-content-center my-auto">
+               <h6 className="text-center text-danger">YOU HAVE NO CLIENTS!</h6>
+            </div>} */}
          </div>
       </div>
    );

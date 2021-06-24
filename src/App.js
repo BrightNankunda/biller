@@ -28,6 +28,7 @@ import SingleSchedule from './Components/DashboardComponents/SingleSchedule';
 import UpdateClient from './Components/DashboardComponents/ClientComponents/UpdateClient';
 import UpdateBill from './Components/BillComponents/UpdateBill';
 import SingleBill from './Components/BillComponents/SingleBill';
+import AllSchedules from './Components/DashboardComponents/AllSchedules';
 
 function App() {
   
@@ -39,22 +40,23 @@ const userLoggedIn = () => {
 
   return (
     <Router>
-        <ProtectedRoute exact={true} path="/schedules/clientToUpdate/:clientId" component={UpdateClient} />
-        <ProtectedRoute exact={true} path="/schedules/billToUpdate/:billId" component={UpdateBill} />
-        <ProtectedRoute exact={true} path="/schedule/bill/:billId" component={SingleBill} />
-        <ProtectedRoute exact={true} path="/schedule/client/:clientId" component={SingleClient} />
-        <ProtectedRoute exact={true} path="/schedules/addClient" component={CreateClient} />
-        <ProtectedRoute exact={true} path="/protectedRoute" component={ProtectedComponent} />
-        <ProtectedRoute exact={true} path="/settings" component={Settings} />
-        <ProtectedRoute exact={true} path="/schedules" component={ScheduleHome} />
-        <ProtectedRoute exact={true} path="/reports" component={Reports} />
-        <ProtectedRoute exact={true} path="/dashboard" component={Dashboard}/>
-        <ProtectedRoute exact={true} path="/calendar" component={Calendar} />
-        <ProtectedRoute exact={true} path="/calendar" component={Calendar} />
-        <ProtectedRoute exact={true} path="/bill" component={Billing} />
-        <ProtectedRoute exact={true} path="/logout" component={Logout} />
-        <ProtectedRoute exact={true} path="/billing" component={Biller} />
-        <ProtectedRoute exact={true} path="/schedules/clients" component={Clients} />
+        <ProtectedRoute path="/schedules/clientToUpdate/:clientId" component={UpdateClient} />
+        <ProtectedRoute path="/schedules/billToUpdate/:billId" component={UpdateBill} />
+        <ProtectedRoute path="/schedule/bill/:billId" component={SingleBill} />
+        <ProtectedRoute path="/schedule/client/:clientId" component={SingleClient} />
+        <ProtectedRoute path="/schedules/addClient" component={CreateClient} />
+        <ProtectedRoute path="/protectedRoute" component={ProtectedComponent} />
+        <ProtectedRoute path="/settings" component={Settings} />
+        <ProtectedRoute path="/schedules" component={ScheduleHome} />
+        <ProtectedRoute path="/allschedules" component={AllSchedules} />
+        <ProtectedRoute path="/reports" component={Reports} />
+        <ProtectedRoute path="/dashboard" component={Dashboard}/>
+        <ProtectedRoute path="/calendar" component={Calendar} />
+        <ProtectedRoute path="/calendar" component={Calendar} />
+        <ProtectedRoute path="/bill" component={Billing} />
+        <ProtectedRoute path="/logout" component={Logout} />
+        <ProtectedRoute path="/billing" component={Biller} />
+        <ProtectedRoute path="/schedules/clients" component={Clients} />
         {/* <Route exact path="/not-found" component={PageNotFound} /> */}
         <Route exact path="/" component={User} />
 

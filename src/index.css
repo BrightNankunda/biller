@@ -196,3 +196,13 @@ Button:hover {
   min-height: 30px !important;
   border-radius: none !important;
 }
+.rounded-mid {
+  border-bottom-left-radius: 20px !important;
+  border-bottom-right-radius: 20px !important;
+  border-top-right-radius: 20px !important;
+  border-top-left-radius: 20px !important;
+}
+.rounded-mid:hover {
+  color: blue;
+  opacity: 0.9;
+}

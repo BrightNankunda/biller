@@ -15,7 +15,8 @@ import {
    UPDATE_SINGLE_CLIENT_REQUEST,
    UPDATE_SINGLE_CLIENT_SUCCESS,
    UPDATE_SINGLE_CLIENT_FAILURE,
-   UPDATE_SINGLE_CLIENT_FINISHED
+   UPDATE_SINGLE_CLIENT_FINISHED,
+   DELETE_SINGLE_CLIENT_FINISHED
 } from "../Constants/ClientConstants"
 
 const CreateNewClientReducer = (state={loading: false, redirectCreator: false}, action) => {
@@ -74,12 +75,14 @@ const UpdateClientReducer = (state={loading: false, redirectUpdator: false}, act
          return state;
    }
 }
-const DeleteClientReducer = (state={loading: false}, action) => {
+const DeleteClientReducer = (state={loading: false, deleteClient: false, redirectDeletor: false}, action) => {
    switch(action.type) {
       case DELETE_SINGLE_CLIENT_REQUEST:
          return {...state, loading: true}
       case DELETE_SINGLE_CLIENT_SUCCESS:
-         return {...state, loading: false, deletedClient: true}
+         return {...state, loading: false, deletedClient: true, redirectDeletor: true}
+      case DELETE_SINGLE_CLIENT_FINISHED:
+         return {...state, loading: false, deleteClient: false, redirectDeletor: false}
       case DELETE_SINGLE_CLIENT_FAILURE:
          return {...state, loading: false, error: action.payload}
       default:
