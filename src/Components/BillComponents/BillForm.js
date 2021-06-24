@@ -1,13 +1,16 @@
 import React from 'react';
-import { BagCheck } from 'react-bootstrap-icons';
  
 const BillForm = () => {
    const submitHandler = (e) => {
       e.preventDefault();
       console.log('Submitted')
    }
+   
    return (
-      <div className="w-100 bg-light">
+      <div className="w-100 bg-light p-4">
+         <div className="alert alert-danger ">
+            <h5 className="text-center text-danger">NOT ACTIVE YET, TOMOX!</h5>
+         </div>
          <form onSubmit={submitHandler}>
             <div className="d-flex advanced-input-wrapper flex-col w-90 m-2">
                <div className="d-flex flex-col m-2">

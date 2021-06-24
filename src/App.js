@@ -1,4 +1,4 @@
-import {React} from 'react';
+import {React, useEffect, useState} from 'react';
 import {BrowserRouter as Router, Route, Redirect} from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useSelector } from 'react-redux';
@@ -31,39 +31,49 @@ import SingleBill from './Components/BillComponents/SingleBill';
 import AllSchedules from './Components/DashboardComponents/AllSchedules';
 
 function App() {
-  
-const userLoggedIn = () => {
-  if(JSON.parse(localStorage.getItem('UgBillUser'))) {
-    return true
-  }
-}
-
+  const [loggedOut, setLoggedOut] = useState(false)
+  const isAuthenticated = (JSON.parse(localStorage.getItem('UgBillUser')) === null || undefined) ? false : true
+  useEffect(() => {
+    if(isAuthenticated) {
+      setLoggedOut(false)
+    } else if(!isAuthenticated) {
+      setLoggedOut(true)
+    }
+    return () => {
+      // cleanup
+    }
+  })
+  console.log('NAVBAR SAYS IS AUTHENTICATED', isAuthenticated)
   return (
-    <Router>
-        <ProtectedRoute path="/schedules/clientToUpdate/:clientId" component={UpdateClient} />
-        <ProtectedRoute path="/schedules/billToUpdate/:billId" component={UpdateBill} />
-        <ProtectedRoute path="/schedule/bill/:billId" component={SingleBill} />
-        <ProtectedRoute path="/schedule/client/:clientId" component={SingleClient} />
-        <ProtectedRoute path="/schedules/addClient" component={CreateClient} />
-        <ProtectedRoute path="/protectedRoute" component={ProtectedComponent} />
-        <ProtectedRoute path="/settings" component={Settings} />
-        <ProtectedRoute path="/schedules" component={ScheduleHome} />
-        <ProtectedRoute path="/allschedules" component={AllSchedules} />
-        <ProtectedRoute path="/reports" component={Reports} />
-        <ProtectedRoute path="/dashboard" component={Dashboard}/>
-        <ProtectedRoute path="/calendar" component={Calendar} />
-        <ProtectedRoute path="/calendar" component={Calendar} />
-        <ProtectedRoute path="/bill" component={Billing} />
-        <ProtectedRoute path="/logout" component={Logout} />
-        <ProtectedRoute path="/billing" component={Biller} />
-        <ProtectedRoute path="/schedules/clients" component={Clients} />
-        {/* <Route exact path="/not-found" component={PageNotFound} /> */}
-        <Route exact path="/" component={User} />
+    <div>
+      <Router>
+        {/* {!loggedOut && <AppNavbar />} */}
 
-        <Route path="/signin" component={Signin} /> 
-        <Route path="/login" component={LoginComponent} /> 
-        {/* <Redirect to="/not-found" /> */}
-    </Router>
+          <ProtectedRoute path="/schedules/clientToUpdate/:clientId" component={UpdateClient} />
+          <ProtectedRoute path="/schedules/billToUpdate/:billId" component={UpdateBill} />
+          <ProtectedRoute path="/schedule/bill/:billId" component={SingleBill} />
+          <ProtectedRoute path="/schedule/client/:clientId" component={SingleClient} />
+          <ProtectedRoute path="/schedules/addClient" component={CreateClient} />
+          <ProtectedRoute path="/protectedRoute" component={ProtectedComponent} />
+          <ProtectedRoute path="/settings" component={Settings} />
+          <ProtectedRoute path="/schedules" component={ScheduleHome} />
+          <ProtectedRoute path="/allschedules" component={AllSchedules} />
+          <ProtectedRoute path="/reports" component={Reports} />
+          <ProtectedRoute path="/dashboard" component={Dashboard}/>
+          <ProtectedRoute path="/calendar" component={Calendar} />
+          <ProtectedRoute path="/calendar" component={Calendar} />
+          <ProtectedRoute path="/bill" component={Billing} />
+          <ProtectedRoute path="/logout" component={Logout} />
+          <ProtectedRoute path="/billing" component={Biller} />
+          <ProtectedRoute path="/schedules/clients" component={Clients} />
+          {/* <Route exact path="/not-found" component={PageNotFound} /> */}
+          <Route exact path="/" component={User} />
+
+          <Route path="/signin" component={Signin} /> 
+          <Route path="/login" component={LoginComponent} /> 
+          {/* <Redirect to="/not-found" /> */}
+      </Router>
+    </div>
   );
 }
 

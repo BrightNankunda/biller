@@ -21,14 +21,16 @@ const SideBar = () => {
    })
 
    return (
-      <div className="w-100 d-flex flex-col full-height" >
-         <div>
-            <h3 className="text-center border-bottom text-white">UG BILL</h3>
-         </div>
+      <div className="w-100 d-flex flex-col full-height">
 
-         {isAuthenticated && <NavLink className="btn btn-outline my-3" to={"/profile/" + loggedIn.AuthedUser.email}>
-            <span className="dashboard-icons"><PersonFill /></span>
-            {loggedIn.AuthedUser.email}</NavLink>}
+         {isAuthenticated && 
+            <div className="d-flex justify-content-center my-3">
+               <div className="circle user-icon my-auto mr-2">
+                  <span ><PersonFill className="my-auto blue"/></span>
+               </div>
+               <h6 className="text-white my-3 my-auto" >
+               {loggedIn.AuthedUser.email}</h6>
+            </div>}
 
          <NavLink className="btn btn-outline my-3" to="/dashboard">
             <span className="dashboard-icons"><HouseDoorFill /></span>

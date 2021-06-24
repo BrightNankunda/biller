@@ -206,3 +206,23 @@ Button:hover {
   color: blue;
   opacity: 0.9;
 }
+.nav-icon {
+  font-size: 120%;
+}
+.cursor-pointer {
+  cursor: pointer;
+}
+.circle {
+  border-radius: 50%;
+}
+.user-icon-wrapper {
+  height: 35px;
+  width: 35px;
+  background: black;
+}
+.create-client {
+  border-bottom-left-radius: 11px !important;
+  border-bottom-right-radius: 11px !important;
+  border-top-right-radius: 11px !important;
+  border-top-left-radius: 11px !important;
+}
