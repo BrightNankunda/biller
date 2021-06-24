@@ -42,6 +42,10 @@ const CreateClient = (props) => {
       }
    }, [])
 
+   const goBack = () => {
+      props.history.goBack()
+   }
+
 
    const submitHandler = (e) => {
 
@@ -58,7 +62,7 @@ const CreateClient = (props) => {
          <div className="col-lg-9 my-2 clientScreen full-height">
          <div className="clientScreen w-100 rounded border">
             <div className="client-header my-2 d-flex justify-content-between">
-               <Link to="/schedules/clients" className="two-times">BACK</Link>
+               <button className="btn btn-primary" onClick={goBack}>BACK</button>
                <h3 className="text-center">UPDATE CLIENTS INFORMATION</h3>
             </div>
             <div className="client-body my-auto">

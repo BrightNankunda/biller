@@ -51,7 +51,8 @@ const FetchClients = () => async (dispatch, getState) => {
    }
 }
 
-const FetchSingleClient = ({clientId}) => async (dispatch, getState) => {
+const FetchSingleClient = (clientId) => async (dispatch, getState) => {
+   
    try {
       dispatch({type: FETCH_SINGLE_CLIENT_REQUEST})
       const {user} = getState()

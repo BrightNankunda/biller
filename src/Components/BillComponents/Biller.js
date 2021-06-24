@@ -12,6 +12,7 @@ import Rental from './Rental'
 import SideBar from './SideBar'
 import AllBills from './AllBills'
 import Btns from './Btns';
+import BillForm from './BillForm';
  
 const reducer = (state, action) => {
    switch(action.type) {
@@ -528,14 +529,15 @@ const Biller = ( ) => {
       <div className="col-lg-3 blue">
          <SideBar />
       </div>
-      <div className="col-lg-9 biller-wrapper">
+      <div className="col-lg-9 biller-wrapper bg-light">
          {propertyType && 
             <Title propertyType={propertyType} registered={registered} rentalType={rentalType}
 
                scaleHeading={scale} advocateHeading={advocate}/>}
 
-            <div className="bg-light">
-            {state.showFront && 
+            <div className="bg-danger p-2 mt-2 w-100">
+               <BillForm />
+            {/* {state.showFront && 
                <Front onSetProperty={handleSetProperty}/> }
 
             {state.showRental && 
@@ -553,7 +555,7 @@ const Biller = ( ) => {
                onCalculate={handleCalculate} total={total}/>}
 
             {state.calculatedValue && 
-               <BillData  total={total} onSaveBill={handleSaveBill}/>}
+               <BillData  total={total} onSaveBill={handleSaveBill}/>} */}
             
             </div>
             <Btns />

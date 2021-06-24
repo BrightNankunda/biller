@@ -1,5 +1,5 @@
 import {React} from 'react';
-import {BrowserRouter as Router, Route} from 'react-router-dom'
+import {BrowserRouter as Router, Route, Redirect} from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useSelector } from 'react-redux';
 
@@ -44,7 +44,6 @@ const userLoggedIn = () => {
         <ProtectedRoute exact={true} path="/schedule/bill/:billId" component={SingleBill} />
         <ProtectedRoute exact={true} path="/schedule/client/:clientId" component={SingleClient} />
         <ProtectedRoute exact={true} path="/schedules/addClient" component={CreateClient} />
-        <Route exact path="/" component={User} />
         <ProtectedRoute exact={true} path="/protectedRoute" component={ProtectedComponent} />
         <ProtectedRoute exact={true} path="/settings" component={Settings} />
         <ProtectedRoute exact={true} path="/schedules" component={ScheduleHome} />
@@ -56,10 +55,12 @@ const userLoggedIn = () => {
         <ProtectedRoute exact={true} path="/logout" component={Logout} />
         <ProtectedRoute exact={true} path="/billing" component={Biller} />
         <ProtectedRoute exact={true} path="/schedules/clients" component={Clients} />
+        {/* <Route exact path="/not-found" component={PageNotFound} /> */}
+        <Route exact path="/" component={User} />
 
         <Route path="/signin" component={Signin} /> 
         <Route path="/login" component={LoginComponent} /> 
-        {/* <Route component={PageNotFound} /> */}
+        {/* <Redirect to="/not-found" /> */}
     </Router>
   );
 }
