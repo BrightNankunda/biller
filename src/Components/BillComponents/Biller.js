@@ -13,6 +13,7 @@ import SideBar from './SideBar'
 import AllBills from './AllBills'
 import Btns from './Btns';
 import BillForm from './BillForm';
+import AppNavbar from '../AppNavbar';
  
 const reducer = (state, action) => {
    switch(action.type) {
@@ -525,6 +526,9 @@ const Biller = ( ) => {
 
    //COMPONENTS
    return (
+      // <div className="col-lg-12">
+      // <AppNavbar />
+      
       <div className="d-flex">
       <div className="col-lg-3 blue">
          <SideBar />
@@ -562,6 +566,7 @@ const Biller = ( ) => {
          </div>
          
       </div>
+      // </div>
    );
 }
  

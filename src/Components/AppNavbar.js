@@ -1,7 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {PlusLg,  ArrowRightSquare} from 'react-bootstrap-icons'
 
 const AppNavbar = (props) => {
+
+  const [loggedOut, setLoggedOut] = useState(false)
+  
+  const isAuthenticated = () => {
+    console.log('RUNNING AUTHENTICATED FUNCTION')
+    return (JSON.parse(localStorage.getItem('UgBillUser')) === null || undefined) ? false : true
+  }
+  // DETERMING LOGGED IN STATE AND DISPLAYING THE NAVBAR ACCORDINGLY
+  useEffect(() => {
+    console.log('APP NAV BAR');
+    return () => {
+      // cleanup
+    }
+  })
+  console.log('APP JS SAYS IS AUTHENTICATED FUNCTION', isAuthenticated())
+  
 
   const goHome = () => {
     props.history.push('/')

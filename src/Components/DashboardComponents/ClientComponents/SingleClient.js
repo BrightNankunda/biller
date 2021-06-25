@@ -17,7 +17,16 @@ const SingleClient = (props) => {
    const {loading, client} = useSelector(state => state.singleClient)
    console.log('LOADING', loading, 'CLIENT', client)
 
+   const {loading: loadingDelete, redirectDeletor} = useSelector(state => state.deletedClient)
 
+   useEffect(() => {
+      if(redirectDeletor) {
+         props.history.replace('/schedules/clients')
+      }
+      return () => {
+         // cleanup
+      }
+   }, [redirectDeletor])
 
    const deleteClient = (clientId) => {
       dispatch(DeleteSingleClient({clientId}))
@@ -52,7 +61,14 @@ const SingleClient = (props) => {
                   <div className="actions w-60 d-flex justify-content-between">
                      <Link className="bill-btn text-success py-2 px-4" to={"/schedules/clientToUpdate/" + client._id}>UPDATE</Link>
                      {/* <Link className="bill-btn update-btn" to={"/schedules/clientToUpdate?Update=" + client._id}>UPDATE</Link> */}
-                     <button className="bill-btn delete-btn text-danger" onClick={() => deleteClient(client._id)}>DELETE</button>
+                     {!loadingDelete && <span >
+                        <button className="bill-btn delete-btn text-danger" onClick={() => deleteClient(client._id)}>DELETE</button>
+                        </span> }
+
+                       {loadingDelete && <button className="btn btn-danger" type="button" disabled>
+                           <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                           <span className="sr-only">Loading...</span>
+                        </button>}
                   </div>
                   </div>}
                {!loading && isClientEmpty && <div className="alert alert-danger align-items-center w-100 full-height d-flex justify-content-center">

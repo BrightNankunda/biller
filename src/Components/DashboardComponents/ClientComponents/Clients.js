@@ -34,7 +34,8 @@ const Clients = (props) => {
 
    useEffect(() => {
       if(redirectDeletor) {
-         removeDeletedClient(deletedId)
+         dispatch(FetchClients())
+         // removeDeletedClient(deletedId)
       }
       return () => {
          // cleanup

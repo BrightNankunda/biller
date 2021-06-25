@@ -1,7 +1,6 @@
-import {React, useEffect, useState} from 'react';
+import {React} from 'react';
 import {BrowserRouter as Router, Route, Redirect} from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { useSelector } from 'react-redux';
 
 import './App.css'
 import AppNavbar from './Components/AppNavbar';
@@ -15,7 +14,6 @@ import Calendar from './Components/DashboardComponents/Calendar'
 import Schedules from './Components/DashboardComponents/schedules'
 import Reports from './Components/DashboardComponents/reports'
 import Settings from './Components/DashboardComponents/Settings'
-import SideBar from './Components/BillComponents/SideBar';
 import Logout from './Components/AuthComponents/Logout';
 import ProtectedRoute from './ProtectedRoute/ProtectedRoute';
 import ProtectedComponent from './ProtectedRoute/ProtectedComponent'
@@ -31,23 +29,11 @@ import SingleBill from './Components/BillComponents/SingleBill';
 import AllSchedules from './Components/DashboardComponents/AllSchedules';
 
 function App() {
-  const [loggedOut, setLoggedOut] = useState(false)
-  const isAuthenticated = (JSON.parse(localStorage.getItem('UgBillUser')) === null || undefined) ? false : true
-  useEffect(() => {
-    if(isAuthenticated) {
-      setLoggedOut(false)
-    } else if(!isAuthenticated) {
-      setLoggedOut(true)
-    }
-    return () => {
-      // cleanup
-    }
-  })
-  console.log('NAVBAR SAYS IS AUTHENTICATED', isAuthenticated)
+  
+
   return (
     <div>
       <Router>
-        {/* {!loggedOut && <AppNavbar />} */}
 
           <ProtectedRoute path="/schedules/clientToUpdate/:clientId" component={UpdateClient} />
           <ProtectedRoute path="/schedules/billToUpdate/:billId" component={UpdateBill} />
