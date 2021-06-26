@@ -226,3 +226,29 @@ Button:hover {
   border-top-right-radius: 11px !important;
   border-top-left-radius: 11px !important;
 }
+.report-divs {
+  min-height: 150px;
+  min-width: 175px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.report-divs:hover {
+  border: 2px solid #002b80 !important;
+  color: #002b80 !important;
+}
+.search-client-input {
+  border: none !important;
+  border-radius: 15px !important;
+  max-height: 50px !important;
+}
+.search-client-input::focus {
+  border: none !important;
+  border-radius: 15px !important;
+}
+.light-color {
+  background: #C4C4C4;
+;
+}

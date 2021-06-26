@@ -68,9 +68,6 @@ const ScheduleHome = (props) => {
                   <Link to="/schedules/clients">CLIENTS</Link>
                </h6>
                <h6 className="d-flex justify-content-center p-4 bg-white">
-                  <Link to="/billing">CREATE BILL</Link>
-               </h6>
-               <h6 className="d-flex justify-content-center p-4 bg-white">
                   <Link to="/allschedules">ALL BILLS</Link>
                </h6>
                {/* <h3 className="d-flex justify-content-center p-4 bg-white">

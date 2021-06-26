@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { CreateNewClient } from '../../../Actions/ClientActions';
+import AppNavbar from '../../AppNavbar';
 import SideBar from '../../BillComponents/SideBar';
 import ClientsLink from './ClientsLink';
  
@@ -38,6 +39,9 @@ const CreateClient = (props) => {
    }
 
    return (
+      <div>
+         <AppNavbar />
+      
       <div className="d-flex">
          <div className="col-lg-3 blue">
             <SideBar />
@@ -141,6 +145,7 @@ const CreateClient = (props) => {
             </div>
             </div>
          </div>
+      </div>
       </div>
 
    );
