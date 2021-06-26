@@ -1,25 +1,33 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import AppNavbar from '../AppNavbar';
 import SideBar from '../BillComponents/SideBar';
 import AllSchedules from './AllSchedules';
  
-const ScheduleHome = () => {
+const ScheduleHome = (props) => {
+
+   const goToRoute = (routeName) => {
+      props.history.push('/billing' + routeName)
+   }
+
    return (
+      <div>
+      <AppNavbar />
       <div className="d-flex">
          <div className="col-lg-3 blue full-height">
             <SideBar />
          </div>
          <div className="col-lg-9 bg-light d-flex flex-col w-100">
             <div className="schedules d-flex flex-col justify-content-center">
-               <div className="row rounded-mid m-2 my-2 py-2 bg-white d-flex w-100 px-3">
-                  <div className="col-lg-4">
+               <div onClick={() => goToRoute('/land')} className="row rounded-mid m-2 my-2 cursor-pointer py-2 bg-white d-flex w-100 px-3">
+                  <div className="col-lg-4"  >
                      <h4 className="mx-2">FIRST SCHEDULE</h4>
                   </div>
                   <div className="col-lg-8 ">
                      <h4>LAND</h4>
                   </div>
                </div>
-               <div className="rounded-mid m-2 my-2 py-2 bg-white d-flex w-100 px-3">
+               <div  onClick={() => goToRoute('/rent')} className="rounded-mid m-2 my-2 cursor-pointer py-2 bg-white d-flex w-100 px-3">
                   <div className="col-lg-4">
                      <h4 className="mx-2">SECOND SCHEDULE</h4>
                   </div>
@@ -27,15 +35,15 @@ const ScheduleHome = () => {
                      <h4>RENT</h4>
                   </div>
                </div>
-               <div className="rounded-mid m-2 my-2 py-2 bg-white d-flex w-100 px-3">
-                  <div className="col-lg-4">
+               <div onClick={() => goToRoute('/companies')} className="rounded-mid m-2 my-2 cursor-pointer py-2 bg-white d-flex w-100 px-3">
+                  <div className="col-lg-4" >
                      <h4 className="mx-2">THIRD SCHEDULE</h4>
                   </div>
                   <div className="col-lg-8 ">
                      <h4>COMPANIES</h4>
                   </div>
                </div>
-               <div className="rounded-mid m-2 my-2 py-2 bg-white d-flex w-100 px-3">
+               <div onClick={() => goToRoute('/tradeMarks')} className="rounded-mid m-2 my-2 cursor-pointer py-2 bg-white d-flex w-100 px-3">
                   <div className="col-lg-4">
                      <h4 className="mx-2">FORTH SCHEDULE</h4>
                   </div>
@@ -43,7 +51,7 @@ const ScheduleHome = () => {
                      <h4>TRADEMARKS, PATENTS AND CHATTELS TRANSFER</h4>
                   </div>
                </div>
-               <div className="rounded-mid m-2 my-2 py-2 bg-white d-flex w-100 px-3">
+               <div onClick={() => goToRoute('/business')} className="rounded-mid m-2 my-2 cursor-pointer py-2 bg-white d-flex w-100 px-3">
                   <div className="col-lg-4">
                      <h4 className="mx-2">FIFTH SCHEDULE</h4>
                   </div>
@@ -70,6 +78,7 @@ const ScheduleHome = () => {
                </h3> */}
             </div>
          </div>
+      </div>
       </div>
    );
 }

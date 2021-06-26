@@ -526,21 +526,21 @@ const Biller = ( ) => {
 
    //COMPONENTS
    return (
-      // <div className="col-lg-12">
-      // <AppNavbar />
-      
+      <div>
+         <AppNavbar />
       <div className="d-flex">
       <div className="col-lg-3 blue">
          <SideBar />
       </div>
-      <div className="col-lg-9 biller-wrapper bg-light">
+      <div className="col-lg-9 bg-light">
+         
          {propertyType && 
             <Title propertyType={propertyType} registered={registered} rentalType={rentalType}
 
                scaleHeading={scale} advocateHeading={advocate}/>}
 
-            <div className="bg-danger p-2 mt-2 w-100">
-               <BillForm />
+            <div className=" p-2 my-2 w-100">
+               <BillForm scheduleType="Land" />
             {/* {state.showFront && 
                <Front onSetProperty={handleSetProperty}/> }
 
@@ -562,11 +562,10 @@ const Biller = ( ) => {
                <BillData  total={total} onSaveBill={handleSaveBill}/>} */}
             
             </div>
-            <Btns />
          </div>
          
       </div>
-      // </div>
+      </div>
    );
 }
  

@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {Link} from 'react-router-dom'
 
 import { DeleteSingleClient, FetchClients } from '../../../Actions/ClientActions';
+import AppNavbar from '../../AppNavbar';
 import SideBar from '../../BillComponents/SideBar';
  
 const Clients = (props) => {
@@ -54,12 +55,20 @@ const Clients = (props) => {
    }
    
    return (
+      <div>
+      <AppNavbar />
       <div className="d-flex">
          <div className="col-lg-3 blue">
             <SideBar />
          </div>
          <div className="w-100 bg-light col-lg-9 full-height">
-
+            {loading && <div className="w-100">
+               <div className="d-flex justify-content-center my-auto align-content-center">
+                  <div class="spinner-border text-primary" role="status">
+                     <span class="sr-only">Loading...</span>
+                  </div>
+               </div>
+            </div>}
             {clients && clients.map(client => 
                <div className="m-2 rounded bg-white w-95 d-flex justify-content-between" key={client._id}>
                   <div className="col-lg-6 m-1" >
@@ -92,6 +101,7 @@ const Clients = (props) => {
                <h6 className="text-center text-danger">YOU HAVE NO CLIENTS!</h6>
             </div>} */}
          </div>
+      </div>
       </div>
    );
 }

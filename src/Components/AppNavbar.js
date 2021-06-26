@@ -26,7 +26,7 @@ const AppNavbar = (props) => {
   return (
     <div className="col-lg-12 blue d-flex justify-content-between align-content-center align-items-center">
       <div className="col-lg-2 mr-2 justify-content-center align-content-center align-items-center" onClick={goHome}>
-        <h3 className="cursor-pointer text-center border-bottom text-white" >UG BILL</h3>
+        <h3 className="cursor-pointer text-center text-white" >UG BILL</h3>
       </div>
 
       <div className="col-lg-3 py-1 create-client bg-light d-flex my-3 justify-content-center align-content-center align-items-center">

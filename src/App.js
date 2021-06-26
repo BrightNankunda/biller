@@ -27,6 +27,12 @@ import UpdateClient from './Components/DashboardComponents/ClientComponents/Upda
 import UpdateBill from './Components/BillComponents/UpdateBill';
 import SingleBill from './Components/BillComponents/SingleBill';
 import AllSchedules from './Components/DashboardComponents/AllSchedules';
+import RentBilling from './Components/BillComponents/RentBilling';
+import LandBilling from './Components/BillComponents/LandBilling';
+import ClientsReport from './Components/Reports/ClientsReport';
+import AdvocatesReport from './Components/Reports/AdvocatesReport';
+import BillsReport from './Components/Reports/BillsReport';
+import ProjectsReport from './Components/Reports/ProjectsReport';
 
 function App() {
   
@@ -39,6 +45,12 @@ function App() {
           <ProtectedRoute path="/schedules/billToUpdate/:billId" component={UpdateBill} />
           <ProtectedRoute path="/schedule/bill/:billId" component={SingleBill} />
           <ProtectedRoute path="/schedule/client/:clientId" component={SingleClient} />
+          <ProtectedRoute path="/billing/land" component={LandBilling} />
+          <ProtectedRoute path="/billing/rent" component={RentBilling} />
+          <ProtectedRoute path="/reports/clients" component={ClientsReport} />
+          <ProtectedRoute path="/reports/advocates" component={AdvocatesReport} />
+          <ProtectedRoute path="/reports/bills" component={BillsReport} />
+          <ProtectedRoute path="/reports/projects" component={ProjectsReport} />
           <ProtectedRoute path="/schedules/addClient" component={CreateClient} />
           <ProtectedRoute path="/protectedRoute" component={ProtectedComponent} />
           <ProtectedRoute path="/settings" component={Settings} />

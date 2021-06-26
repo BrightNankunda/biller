@@ -44,9 +44,9 @@ const SideBar = () => {
             <span className="dashboard-icons"><Calendar2DateFill /></span>
             CALENDAR</NavLink>
 
-         {/* <NavLink className="btn btn-outline my-3" to="/reports">
+         <NavLink className="btn btn-outline my-3" to="/reports">
             <span className="dashboard-icons"><BookFill /></span>
-            REPORTS</NavLink> */}
+            REPORTS</NavLink>
 
          <NavLink className="btn btn-outline my-3" to="/billing">
             <span className="dashboard-icons"><CurrencyBitcoin /></span> 

@@ -1,5 +1,6 @@
 import React from 'react';
 import ProtectedRoute from '../../ProtectedRoute/ProtectedRoute'
+import AppNavbar from '../AppNavbar';
 import SideBar from '../BillComponents/SideBar';
 import Clients from './ClientComponents/Clients';
 import ClientsLink from './ClientComponents/ClientsLink';
@@ -10,7 +11,8 @@ import ScheduleHome from './ScheduleHome';
 const Schedules = () => {
    return (
       <div>
-         <div className="main d-flex">
+      <AppNavbar />
+         <div className="d-flex">
             <div className="col-lg-3 blue">
                <SideBar />
             </div>

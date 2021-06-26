@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { Files, ForwardFill, People, PeopleFill, PersonFill } from 'react-bootstrap-icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { AllBills } from '../../Actions/BillActions';
+import AppNavbar from '../AppNavbar';
 import SideBar from '../BillComponents/SideBar';
 import Calendar from './Calendar';
 import LineGraph from './LineGraph';
@@ -19,6 +20,8 @@ const Dashboard = (props) => {
    }, [])
 
    return (
+      <div>
+      <AppNavbar />
       <div className="d-flex">
          <div className="col-lg-3 blue">
             <SideBar />
@@ -56,6 +59,7 @@ const Dashboard = (props) => {
                </div>
             </div>
          </div>
+      </div>
       </div>
    );
 }
