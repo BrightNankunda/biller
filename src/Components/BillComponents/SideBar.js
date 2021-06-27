@@ -3,8 +3,9 @@ import {useSelector} from 'react-redux'
 import {NavLink} from 'react-router-dom'
 
 import { BookFill, 
-   Calendar2DateFill, CurrencyBitcoin, GearFill, GiftFill, 
-   HouseDoorFill, Lock, PersonFill } from 'react-bootstrap-icons';
+   Calendar2DateFill, 
+   CurrencyBitcoin, GearFill, GiftFill, 
+   HouseDoorFill, PersonFill } from 'react-bootstrap-icons';
 // import jwtDecode from 'jwt-decode';
  
 const SideBar = () => {

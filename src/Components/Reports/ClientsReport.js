@@ -70,10 +70,11 @@ const ClientsReport = (props) => {
                      placeholder="SEARCH A CLIENT "
                      type="text"/>
 
-                     <div className="light-color col-lg-4 py-1 create-client d-flex my-3 justify-content-center align-content-center align-items-center">
-                        <PlusLg className="my-auto nav-icon mx-2"/>
-                        <h5 className="text-center">CREATE NEW CLIENT</h5>
-                     </div>
+                     <button 
+                        onClick={() => createClientLink()}
+                        className="col-lg-3 py-1 create-client bg-light d-flex my-3 justify-content-center align-content-center align-items-center">
+                        <PlusLg className="my-auto nav-icon mx-2"/>CREATE NEW CLIENT
+                     </button>
                   </div>
                   {loading && 
                      <div className="w-100">
@@ -84,6 +85,7 @@ const ClientsReport = (props) => {
                         </div>
                      </div>
                   }
+
                   {!loading && <div className="light-color clients-table my-1 pb-3 pt-3 px-4">
                      <table className="w-100 ">
                         <thead>
@@ -91,6 +93,7 @@ const ClientsReport = (props) => {
                               <th>#</th>
                               <th>FIRST NAME</th>
                               <th>LAST NAME</th>
+                              <th></th>
                               <th></th>
                               <th></th>
                            </tr>
@@ -103,11 +106,17 @@ const ClientsReport = (props) => {
                               <td>{client.firstName}</td>
                               <td>{client.lastName}</td>
                               <td>
-                                 <Link className="update-link" to={"/schedules/clientToUpdate/" + client._id}>
+                                 <Link to="/schedules/addClient" title="ADD A SCHEDULE"  className="add-schedule-icon px-2">
+                                 <PlusLg className="two-times" 
+                                  /></Link>
+                                 
+                              </td>
+                              <td>
+                                 <Link className="update-link-client" to={"/schedules/clientToUpdate/" + client._id}>
                                  <PencilFill />
                                  </Link>
                               </td>
-                              <td className="mb-2">{!loadingDelete && <span  className="delete-btn text-danger">
+                              <td className="mb-2">{!loadingDelete && <span  className="delete-btn-client text-danger">
                               <Trash onClick={() => deleteClient(client._id)}/>
                               </span> }
 
@@ -117,6 +126,7 @@ const ClientsReport = (props) => {
                               </button>}
                         </td>
                            </tr>
+            
                         ))}
                         </tbody>
 

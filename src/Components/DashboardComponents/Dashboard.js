@@ -55,7 +55,7 @@ const Dashboard = (props) => {
                   <LineGraph />
                </div>
                <div className="col-lg-5 bg-white m-2 forty-height">
-                  <Calendar />
+                  <h3>CALENDAR</h3>
                </div>
             </div>
          </div>

@@ -149,17 +149,24 @@ Button:hover {
   justify-content: center;
   align-items: center;
 }
-.delete-btn {
+.delete-btn, .delete-btn-client {
   font-size: 130%;
   margin: 5px;
-  padding: 10px;
+  padding: 2px;
   border-radius: 5px;
 }
 .delete-btn:hover {
   color: white !important;
   background: red !important;
   margin: 5px;
-  padding: 10px;
+  padding: 2px;
+  border-radius: 5px;
+}
+.delete-btn-client:hover {
+  color: white !important;
+  background: red !important;
+  margin: 5px;
+  padding: 2px;
   border-radius: 5px;
 }
 
@@ -167,14 +174,21 @@ Button:hover {
 .update-link:hover {
   color: white !important;
   background: blue !important;
-  padding: 10px;
+  padding: 2px;
   margin: 5px; 
   border-radius: 5px;
 }
-.update-link {
+.update-link-client:hover {
+  color: white !important;
+  background: blue !important;
+  padding: 2px;
+  margin: 5px;
+  border-radius: 5px;
+}
+.update-link, .update-link-client {
   font-size: 130%;
   color: blue !important;
-  padding: 10px;
+  padding:2px;
   margin: 5px; 
   border-radius: 5px;
 }
@@ -261,4 +275,18 @@ Button:hover {
 }
 .clients-table, .bills-table, .advocates-table, .projects-table {
   min-height: calc(100vh - 200px);
+}
+.add-schedule-icon {
+  font-weight:800;
+  padding: 2px;
+  margin: 5px;
+  border-radius: 5px;
+}
+
+.add-schedule-icon:hover {
+  color: white !important;
+  background: green !important;
+  padding: 2px;
+  margin: 5px;
+  border-radius: 5px;
 }

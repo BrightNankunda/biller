@@ -1,9 +1,28 @@
 import React from 'react';
 import { PlusLg } from 'react-bootstrap-icons';
+import { useDispatch } from 'react-redux';
+import { AllBills } from '../../Actions/BillActions';
 import AppNavbar from '../AppNavbar';
 import SideBar from '../BillComponents/SideBar';
  
 const BillsReport = () => {
+   const dispatch = useDispatch()
+
+   const {loading, bills, billsCount} = useSelector(state => state.bills)
+   
+   console.log(billsCount)
+   useEffect(() => {
+      dispatch(AllBills())
+      return () => {
+         // cleanup
+      }
+   }, [])
+
+   console.log('LOADING', loading, 'BILLS', bills, 'NUMBER OF BILLS', billsCount)
+
+   const deleteBill = (billId) => {
+      console.log('DELETE BUTTON BILL ID', billId)
+   }
    return (
       <div>
          <AppNavbar />

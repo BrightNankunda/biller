@@ -10,6 +10,7 @@ const AllSchedules = () => {
    const dispatch = useDispatch()
 
    const {loading, bills, billsCount} = useSelector(state => state.bills)
+   
    console.log(billsCount)
    useEffect(() => {
       dispatch(AllBills())
