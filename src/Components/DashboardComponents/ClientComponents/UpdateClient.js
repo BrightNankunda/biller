@@ -70,7 +70,16 @@ const CreateClient = (props) => {
                <h3 className="text-center">UPDATE CLIENTS INFORMATION</h3>
             </div>
             <div className="client-body my-auto">
-               <form className="w-100 my-4 p-4" onSubmit={submitHandler}>
+               {loading && 
+                     <div className="w-100">
+                        <div className="d-flex justify-content-center my-auto align-content-center">
+                           <div class="spinner-border text-primary" role="status">
+                              <span class="sr-only">Loading...</span>
+                           </div>
+                        </div>
+                     </div>
+                  }
+               {client && !loading && <form className="w-100 my-4 p-4" onSubmit={submitHandler}>
 
                   <div className="col-lg-10 d-flex justify-content-center form-group mt-2 d-flex mx-auto">
                      <label htmlFor="firstName" 
@@ -153,7 +162,7 @@ const CreateClient = (props) => {
                      <button type="submmit" 
                      className="bill-btn submit ml-2 py-2 px-3 next">UPDATE</button>
                   </div>
-               </form>
+               </form> }
                <ClientsLink />
             </div>
             <div>

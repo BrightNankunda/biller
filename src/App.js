@@ -25,7 +25,6 @@ import Clients from './Components/DashboardComponents/ClientComponents/Clients';
 import SingleSchedule from './Components/DashboardComponents/SingleSchedule';
 import UpdateClient from './Components/DashboardComponents/ClientComponents/UpdateClient';
 import UpdateBill from './Components/BillComponents/UpdateBill';
-import SingleBill from './Components/BillComponents/SingleBill';
 import AllSchedules from './Components/DashboardComponents/AllSchedules';
 import RentBilling from './Components/BillComponents/RentBilling';
 import LandBilling from './Components/BillComponents/LandBilling';
@@ -43,7 +42,7 @@ function App() {
 
           <ProtectedRoute path="/schedules/clientToUpdate/:clientId" component={UpdateClient} />
           <ProtectedRoute path="/schedules/billToUpdate/:billId" component={UpdateBill} />
-          <ProtectedRoute path="/schedule/bill/:billId" component={SingleBill} />
+          <ProtectedRoute path="/schedule/bill/:billId" component={SingleSchedule} />
           <ProtectedRoute path="/schedule/client/:clientId" component={SingleClient} />
           <ProtectedRoute path="/billing/land" component={LandBilling} />
           <ProtectedRoute path="/billing/rent" component={RentBilling} />

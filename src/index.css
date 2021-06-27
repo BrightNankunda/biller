@@ -208,6 +208,7 @@ Button:hover {
 }
 .nav-icon {
   font-size: 120%;
+  font-weight: bold;
 }
 .cursor-pointer {
   cursor: pointer;
@@ -221,10 +222,17 @@ Button:hover {
   background: black;
 }
 .create-client {
+  border: none;
   border-bottom-left-radius: 11px !important;
   border-bottom-right-radius: 11px !important;
   border-top-right-radius: 11px !important;
   border-top-left-radius: 11px !important;
+}
+.create-client:hover {
+  border: none;
+  color: blue !important;
+  background: white !important;
+  opacity: 1 !important;
 }
 .report-divs {
   min-height: 150px;
@@ -242,7 +250,7 @@ Button:hover {
 .search-client-input {
   border: none !important;
   border-radius: 15px !important;
-  max-height: 50px !important;
+  max-height: 45px !important;
 }
 .search-client-input::focus {
   border: none !important;
@@ -250,5 +258,7 @@ Button:hover {
 }
 .light-color {
   background: #C4C4C4;
-;
+}
+.clients-table, .bills-table, .advocates-table, .projects-table {
+  min-height: calc(100vh - 200px);
 }
