@@ -55,9 +55,6 @@ const SideBar = () => {
          <NavLink className="btn btn-outline my-3" to="/settings">
             <span className="dashboard-icons"><GearFill /></span>
             SETTINGS</NavLink>
-         <NavLink className="btn btn-outline my-3" to="/logout">
-            <span className="dashboard-icons"><Lock/></span> 
-            LOG OUT</NavLink>
       </div>
    );
 }

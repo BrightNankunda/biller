@@ -5,7 +5,7 @@ import {
 } from '../Constants/BillConstants'
 
 const SaveBill = ({propertyType,landValue,scale,rentalType,advocate,registered,total}) => async (dispatch, getState) => {
-   // console.log(landValue, scale, total)
+   console.log(propertyType,landValue,scale,rentalType,advocate,registered,total)
    const {user} = getState()
    try {
       dispatch({type: BILL_SAVE_REQUEST, payload: {
