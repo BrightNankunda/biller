@@ -22,7 +22,7 @@ const CreateClient = (props) => {
 
    useEffect(() => {
       if(redirectCreator) {
-         props.history.push('/schedules/clients')
+         props.history.push('/reports/clients')
       }
       console.log('LOADING CREATE CLIENT', loading, 'CREATED CLIENT', client)
       return () => {
@@ -46,7 +46,7 @@ const CreateClient = (props) => {
          <div className="col-lg-3 blue">
             <SideBar />
          </div>
-         <div className="col-lg-9 my-2 clientScreen full-height">
+         <div className="col-lg-9 clientScreen full-height">
          <div className="clientScreen w-100 rounded border">
             <div className="client-header my-2">
                <h3 className="text-center">CLIENTS INFORMATION</h3>

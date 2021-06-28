@@ -120,7 +120,7 @@ Button:hover {
   background: red !important;
 }
 .full-height {
-  min-height: 95vh;
+  min-height: 90vh;
 }
 .logout, .logout-cursor {
   cursor: not-allowed;

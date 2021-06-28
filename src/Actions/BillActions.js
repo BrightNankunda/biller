@@ -12,7 +12,10 @@ import {
    USER_BILLS_FETCH_REQUEST, 
    USER_BILLS_FETCH_SUCCESS, 
    USER_BILLS_FETCH_ERROR, 
-   BILL_SAVE_FINISHED
+   BILL_SAVE_FINISHED,
+   FETCH_A_BILL_REQUEST,
+   FETCH_A_BILL_SUCCESS,
+   FETCH_A_BILL_FAILURE
 } from '../Constants/BillConstants'
 
 const SaveBill = ({clientId, propertyType,landValue,scale,rentalType,advocate,registered,total}) => async (dispatch, getState) => {
@@ -57,7 +60,7 @@ const AllClientBills = () => async (dispatch, getState) => {
 
    try {
       dispatch({type: CLIENT_BILLS_FETCH_REQUEST})
-      const {data} = await axios.get('http://localhost:7000/api/bill/user', {
+      const {data} = await axios.get('http://localhost:7000/api/bill/client', {
          headers: {'Authorization': 'Bearer ' + user.token}
       })
       console.log(data);
@@ -73,7 +76,7 @@ const AllUserBills = () => async (dispatch, getState) => {
 
    try {
       dispatch({type: USER_BILLS_FETCH_REQUEST})
-      const {data} = await axios.get('http://localhost:7000/api/bill/client', {
+      const {data} = await axios.get('http://localhost:7000/api/bill/user', {
          headers: {'Authorization': 'Bearer ' + user.token}
       })
       console.log('ALL USER BILLS', data);
@@ -84,20 +87,21 @@ const AllUserBills = () => async (dispatch, getState) => {
    }
 }
 
-// const FetchABill = ({billId}) => async (dispatch, getState) => {
-//    try {
-//       dispatch({type: FETCH_SINGLE_CLIENT_REQUEST})
-//       const {user} = getState()
-//       const {data} = await axios.get("http://localhost:7000/api/client/" + clientId, {
-//          headers: {'Authorization': 'Bearer ' + user.token}
-//       })
-//       console.log('FETCH SINGLE CLIENT REDUX', data)
-//       dispatch({type: FETCH_SINGLE_CLIENT_SUCCESS, payload: data})
-//    } catch(error) {
-//       console.log(error.message)
-//       dispatch({type: FETCH_SINGLE_CLIENT_FAILURE, payload: error.message})
-//    }
-// }
+const FetchABill = (billId) => async (dispatch, getState) => {
+   console.log('FROM REDUX', billId)
+   try {
+      dispatch({type: FETCH_A_BILL_REQUEST})
+      const {user} = getState()
+      const {data} = await axios.get("http://localhost:7000/api/bill/" + billId, {
+         headers: {'Authorization': 'Bearer ' + user.token}
+      })
+      console.log('FETCH SINGLE BILL REDUX', data)
+      dispatch({type: FETCH_A_BILL_SUCCESS, payload: data})
+   } catch(error) {
+      console.log(error.message)
+      dispatch({type: FETCH_A_BILL_FAILURE, payload: error.message})
+   }
+}
 
 // const DeleteABill = ({billId}) => async (dispatch, getState) => {
 //    try {
@@ -132,4 +136,8 @@ const AllUserBills = () => async (dispatch, getState) => {
    
 // }
 
-export {SaveBill, AllBills, AllUserBills, AllClientBills}
+export {
+   SaveBill, AllBills, 
+   AllUserBills, AllClientBills, 
+   FetchABill
+}

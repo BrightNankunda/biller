@@ -11,7 +11,10 @@ import {
    USER_BILLS_FETCH_ERROR, 
    CLIENT_BILLS_FETCH_REQUEST, 
    CLIENT_BILLS_FETCH_SUCCESS, 
-   CLIENT_BILLS_FETCH_ERROR
+   CLIENT_BILLS_FETCH_ERROR,
+   FETCH_A_BILL_REQUEST,
+   FETCH_A_BILL_SUCCESS,
+   FETCH_A_BILL_FAILURE
 } from '../Constants/BillConstants'
 
 function SaveBillReducer(state={loading: false, newBill: null, redirectBillCreator: false}, action) {
@@ -79,4 +82,23 @@ function FetchClientBillsReducer(state={bills: [], loading: false, billsCount: 0
    }
 }
 
-export {SaveBillReducer, FetchBillsReducer, FetchUserBillsReducer, FetchClientBillsReducer}
+function FetchABillReducer(state={bill: null, loading: false, }, action) {
+   switch(action.type) {
+      case FETCH_A_BILL_REQUEST:
+         return {...state, loading: true}
+      case FETCH_A_BILL_SUCCESS:
+         return {...state, loading: false, bill: action.payload}  
+      case FETCH_A_BILL_FAILURE:
+         return {...state, loading: true, error: action.payload}
+      default:
+         return state
+   }
+}
+
+export {
+   SaveBillReducer, 
+   FetchBillsReducer, 
+   FetchUserBillsReducer, 
+   FetchABillReducer,
+   FetchClientBillsReducer,
+}

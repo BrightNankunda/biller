@@ -63,7 +63,7 @@ const CreateClient = (props) => {
          <div className="col-lg-3 blue">
             <SideBar />
          </div>
-         <div className="col-lg-9 my-2 clientScreen full-height">
+         <div className="col-lg-9 clientScreen full-height">
          <div className="clientScreen w-100 rounded border">
             <div className="client-header my-2 d-flex justify-content-between">
                <button className="btn btn-primary" onClick={goBack}>BACK</button>

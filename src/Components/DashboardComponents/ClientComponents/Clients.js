@@ -72,16 +72,16 @@ const Clients = (props) => {
             {clients && clients.map(client => 
                <div className="m-2 rounded bg-white w-95 d-flex justify-content-between" key={client._id}>
                   <div className="col-lg-6 m-1" >
-                     <Link to={"/schedule/client/" + client._id}><h4 className="text-center p-2">{client.firstName.toUpperCase() + ' ' + client.lastName.toUpperCase()}</h4></Link>
+                     <Link to={"/reports/client/" + client._id}><h4 className="text-center p-2">{client.firstName.toUpperCase() + ' ' + client.lastName.toUpperCase()}</h4></Link>
                      
                      <h4 className="text-center">{client.phoneNumber}</h4>
                      <h4 className="text-center">{client.occupation.toUpperCase()}</h4>
                   </div>
                   <div className="my-auto mr-3">
-                     <Link className="update-link" to={"/schedules/clientToUpdate/" + client._id}>
+                     <Link className="update-link" to={"/reports/clientToUpdate/" + client._id}>
                         <PencilFill />
                      </Link>
-                     {/* <Link className="update-link" to={"/schedules/clientToUpdate?Update=" + client._id}>
+                     {/* <Link className="update-link" to={"/reports/clientToUpdate?Update=" + client._id}>
                         <PencilFill />
                      </Link> */}
                         {!loadingDelete && <span  className="delete-btn text-danger">

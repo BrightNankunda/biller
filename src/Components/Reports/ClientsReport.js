@@ -57,7 +57,7 @@ const ClientsReport = (props) => {
    const history = useHistory()
 
    const createClientLink = () => {
-      history.push('/schedules/addClient')
+      history.push('/reports/addClient')
    }
    return (
       <div>
@@ -109,16 +109,16 @@ const ClientsReport = (props) => {
 
                            <tr className="border-bottom border-dark" key={client._id}>
                               <td>1</td>
-                              <td>{client.firstName}</td>
+                              <td><Link to={"/reports/client/" + client._id}>{client.firstName}</Link></td>
                               <td>{client.lastName}</td>
                               <td>
-                                 <Link to={"/schedules/client/" + client._id} title="ADD A SCHEDULE"  className="add-schedule-icon px-2">
+                                 <Link to={"/reports/client/" + client._id} title="ADD A SCHEDULE"  className="add-schedule-icon px-2">
                                  <PlusLg className="two-times" 
                                   /></Link>
                                  
                               </td>
                               <td>
-                                 <Link className="update-link-client" to={"/schedules/clientToUpdate/" + client._id}>
+                                 <Link className="update-link-client" to={"/reports/clientToUpdate/" + client._id}>
                                  <PencilFill />
                                  </Link>
                               </td>

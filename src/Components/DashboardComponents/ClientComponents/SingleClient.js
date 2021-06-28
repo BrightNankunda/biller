@@ -22,7 +22,7 @@ const SingleClient = (props) => {
 
    useEffect(() => {
       if(redirectDeletor) {
-         props.history.replace('/schedules/clients')
+         props.history.replace('/reports/clients')
       }
       return () => {
          // cleanup
@@ -63,8 +63,8 @@ const SingleClient = (props) => {
                      <h4 className="text-center list-group-item">{client.address.toUpperCase()}</h4>
                   </div>
                   <div className="actions w-60 d-flex justify-content-between">
-                     <Link className="bill-btn text-success py-2 px-4" to={"/schedules/clientToUpdate/" + client._id}>UPDATE</Link>
-                     {/* <Link className="bill-btn update-btn" to={"/schedules/clientToUpdate?Update=" + client._id}>UPDATE</Link> */}
+                     <Link className="bill-btn text-success py-2 px-4" to={"/reports/clientToUpdate/" + client._id}>UPDATE</Link>
+                     {/* <Link className="bill-btn update-btn" to={"/reports/clientToUpdate?Update=" + client._id}>UPDATE</Link> */}
                      {!loadingDelete && <span >
                         <button className="bill-btn delete-btn text-danger" onClick={() => deleteClient(client._id)}>DELETE</button>
                         </span> }

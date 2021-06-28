@@ -39,12 +39,12 @@ function App() {
   return (
     <div>
       <Router>
-          <ProtectedRoute path="/schedules/client/:clientId/rent" component={RentBilling} />
-          <ProtectedRoute path="/schedules/client/:clientId/land" component={LandBilling} />
-          <ProtectedRoute path="/schedules/client/:clientId" component={ScheduleHome} />
-          <ProtectedRoute path="/schedules/clientToUpdate/:clientId" component={UpdateClient} />
-          <ProtectedRoute path="/schedules/billToUpdate/:billId" component={UpdateBill} />
-          <ProtectedRoute path="/schedule/bill/:billId" component={SingleSchedule} />
+          <ProtectedRoute path="/reports/client/:clientId/rent" component={RentBilling} />
+          <ProtectedRoute path="/reports/client/:clientId/land" component={LandBilling} />
+          <ProtectedRoute path="/reports/client/:clientId" component={SingleClient} />
+          <ProtectedRoute path="/reports/clientToUpdate/:clientId" component={UpdateClient} />
+          <ProtectedRoute path="/reports/billToUpdate/:billId" component={UpdateBill} />
+          <ProtectedRoute path="/reports/bill/:billId" component={SingleSchedule} />
           <ProtectedRoute path="/schedule/client/:clientId" component={SingleClient} />
           <ProtectedRoute path="/billing/land" component={LandBilling} />
           <ProtectedRoute path="/billing/rent" component={RentBilling} />
@@ -52,7 +52,7 @@ function App() {
           <ProtectedRoute path="/reports/advocates" component={AdvocatesReport} />
           <ProtectedRoute path="/reports/bills" component={BillsReport} />
           <ProtectedRoute path="/reports/projects" component={ProjectsReport} />
-          <ProtectedRoute path="/schedules/addClient" component={CreateClient} />
+          <ProtectedRoute path="/reports/addClient" component={CreateClient} />
           <ProtectedRoute path="/protectedRoute" component={ProtectedComponent} />
           <ProtectedRoute path="/settings" component={Settings} />
           <ProtectedRoute path="/schedules" component={ScheduleHome} />
@@ -64,7 +64,6 @@ function App() {
           <ProtectedRoute path="/bill" component={Billing} />
           <ProtectedRoute path="/logout" component={Logout} />
           <ProtectedRoute path="/billing" component={Biller} />
-          <ProtectedRoute path="/schedules/clients" component={Clients} />
           {/* <Route exact path="/not-found" component={PageNotFound} /> */}
           <Route exact path="/" component={User} />
 

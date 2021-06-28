@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
+import { PencilFill, Trash } from 'react-bootstrap-icons';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { AllUserBills } from '../../Actions/BillActions';
 import AppNavbar from '../AppNavbar';
 import SideBar from '../BillComponents/SideBar';
@@ -52,18 +54,29 @@ const BillsReport = () => {
                               <th>CLIENT ID</th>
                               <th>SCHEDULE</th>
                               <th>LAND VALUE</th>
-                              <th>TOTAL</th>
+                              <th>ACTIONS</th>
                            </tr>
                         </thead>
                         <tbody>
                         {bills && bills.map(bill => (
-                           <tr className="border-bottom border-dark" key={bill._id}>
-                              <td>{bill._id}</td>
-                              <td>{bill.createdBy}</td>
-                              <td>{bill.propertyType} SCHEDULE</td>
-                              <td>{bill.landValue}</td>
-                              <td>{bill.total}</td>
-                           </tr>
+                              <tr className="border-bottom border-dark" key={bill._id}>
+                                 <td>
+                                    <Link to={"/reports/bill/" + bill._id} className="bill-link">
+                                       {bill._id}
+                                    </Link>
+                                 </td>
+                                 <td>{bill.createdBy}</td>
+                                 <td>{bill.propertyType} SCHEDULE</td>
+                                 <td>{bill.landValue}</td>
+                                 <td>
+                                 <Link className="update-link-client m-1" to={"/reports/billToUpdate/" + bill._id}>
+                                    <PencilFill />
+                                 </Link>
+                                 <span  className="delete-btn-client text-danger m-1">
+                                    <Trash onClick={() => deleteBill(bill._id)}/>
+                                 </span>
+                                 </td>
+                              </tr>
 
                         ))}
                         </tbody>

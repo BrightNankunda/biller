@@ -16,6 +16,7 @@ const BillForm = ({match}) => {
    
    return (
       <div className="w-100 bg-light">
+         
          <form onSubmit={submitHandler}>
             <div className="d-flex advanced-input-wrapper flex-col w-90 m-2">
                <div className="d-flex flex-col m-2">

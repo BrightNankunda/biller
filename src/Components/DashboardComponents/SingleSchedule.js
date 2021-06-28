@@ -1,13 +1,35 @@
-import React from 'react';
-import { useDispatch } from 'react-redux';
+import React, {useEffect} from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { FetchABill } from '../../Actions/BillActions';
 import AppNavbar from '../AppNavbar';
 import SideBar from '../BillComponents/SideBar';
  
 const SingleSchedule = (props) => {
 
    const dispatch = useDispatch()
-   const param = props.match.params.scheduleId
-   
+
+   useEffect(() => {
+      dispatch(FetchABill(props.match.params.billId))
+      console.log('BILL ID', props.match.params.billId)
+      return () => {
+         // cleanup
+      }
+   }, [])
+
+   const {loading, bill} = useSelector(state => state.singleBill)
+   console.log('LOADING', loading, 'BILL', bill)
+
+   // const {loading: loadingDelete, redirectDeletor} = useSelector(state => state.deletedClient)
+
+   // useEffect(() => {
+   //    if(redirectDeletor) {
+   //       props.history.replace('/reports/clients')
+   //    }
+   //    return () => {
+   //       // cleanup
+   //    }
+   // }, [redirectDeletor])
    return (
       <div>
          <AppNavbar />
@@ -19,13 +41,28 @@ const SingleSchedule = (props) => {
                <div className="schedule-header">
                   <h3>Schedules/LandSchedule/Bill</h3>
                </div>
-               <div className="light-color p-2">
-                  <h5>CLIENTS NAME</h5>
-                  <h5>VALUE OF LAND</h5>
-                  <h6>Scale of charges on sales, purchases, mortgages, debentures.</h6>
-                  <h5>VENDORS ADVOCATE</h5>
-                  <h5>FINAL AMOUNT AFTER CALCULATION</h5>
+               {loading && <div className="w-100">
+                  <div className="d-flex justify-content-center my-auto align-content-center">
+                     <div className="spinner-border text-primary" role="status">
+                        <span className="sr-only">Loading...</span>
+                     </div>
+                  </div>
                </div>
+               }
+
+               {!loading && bill &&
+               <div className="light-color p-2">
+                  <h5>CLIENT ID: {bill.createdFor}</h5>
+                  <h5>SCHEDULE TYPE: {bill.propertyType}</h5>
+                  <h5>SCALE: {bill.scaleOrRentalType}</h5>
+                  <h5>ADVOCATE CATEGORY: {' ' + bill.advocate}</h5>
+                  <h5>TOTAL: USH.<span>{' ' + bill.total}</span></h5>
+                  <h5>LAND VALUE: USH.<span>{' ' + bill.landValue}</span></h5>
+                  <div className="d-flex justify-content-between mt-2 mb-1">
+                     <Link to={"/reports/billToUpdate/" + bill._id} className="update-link">UPDATE</Link>
+                     <button className="btn delete-btn">DELETE</button>
+                  </div>
+               </div> }
             </div>
          </div>
       </div>

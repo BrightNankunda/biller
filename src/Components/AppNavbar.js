@@ -7,7 +7,7 @@ const AppNavbar = (props) => {
   const history = useHistory()
 
   const createClientLink = () => {
-    history.push('/schedules/addClient')
+    history.push('/reports/addClient')
   }
  
   const logout = () => {

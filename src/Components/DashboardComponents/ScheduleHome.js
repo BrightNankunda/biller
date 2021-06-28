@@ -9,9 +9,9 @@ const ScheduleHome = (props) => {
       let url = props.match.url
       let path = props.match.path
       // path + LAND
-      // "/schedules/client/:clientId/land"
+      // "/reports/client/:clientId/land"
       // and we match the client id and pass it to redux in the back end
-      if(path === "/schedules/client/:clientId") {
+      if(path === "/reports/client/:clientId") {
          props.history.push( url + routeName)
       } else {
          props.history.push('/billing' + routeName)
@@ -70,10 +70,10 @@ const ScheduleHome = (props) => {
             </div>
             <div className="w-100 d-flex m-2 mx-auto">
                <h6 className="d-flex justify-content-center p-4 bg-white">
-                  <Link to="/schedules/addClient">CREATE CLIENT</Link>
+                  <Link to="/reports/addClient">CREATE CLIENT</Link>
                </h6>
                <h6 className="d-flex justify-content-center p-4 bg-white">
-                  <Link to="/schedules/clients">CLIENTS</Link>
+                  <Link to="/reports/clients">CLIENTS</Link>
                </h6>
                <h6 className="d-flex justify-content-center p-4 bg-white">
                   <Link to="/allschedules">ALL BILLS</Link>
