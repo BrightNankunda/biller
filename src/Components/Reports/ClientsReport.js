@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import {  PencilFill, PlusLg, Trash } from 'react-bootstrap-icons';
 import { useDispatch, useSelector } from 'react-redux';
 import {Link} from 'react-router-dom'
+import {useHistory} from 'react-router'
 import { DeleteSingleClient, FetchClients } from '../../Actions/ClientActions';
 
 import AppNavbar from '../AppNavbar';
@@ -53,6 +54,11 @@ const ClientsReport = (props) => {
       console.log('DELETE ID', deletedId)
       // clients.filter(client => client._id != deletedId)
    }
+   const history = useHistory()
+
+   const createClientLink = () => {
+      history.push('/schedules/addClient')
+   }
    return (
       <div>
          <AppNavbar />
@@ -79,8 +85,8 @@ const ClientsReport = (props) => {
                   {loading && 
                      <div className="w-100">
                         <div className="d-flex justify-content-center my-auto align-content-center">
-                           <div class="spinner-border text-primary" role="status">
-                              <span class="sr-only">Loading...</span>
+                           <div className="spinner-border text-primary" role="status">
+                              <span className="sr-only">Loading...</span>
                            </div>
                         </div>
                      </div>
@@ -101,12 +107,12 @@ const ClientsReport = (props) => {
                         <tbody>
                         { clients && clients.map(client => (
 
-                           <tr className="border-bottom border-dark">
+                           <tr className="border-bottom border-dark" key={client._id}>
                               <td>1</td>
                               <td>{client.firstName}</td>
                               <td>{client.lastName}</td>
                               <td>
-                                 <Link to="/schedules/addClient" title="ADD A SCHEDULE"  className="add-schedule-icon px-2">
+                                 <Link to={"/schedules/client/" + client._id} title="ADD A SCHEDULE"  className="add-schedule-icon px-2">
                                  <PlusLg className="two-times" 
                                   /></Link>
                                  

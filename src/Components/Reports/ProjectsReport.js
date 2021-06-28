@@ -1,5 +1,4 @@
 import React from 'react';
-import { PlusLg } from 'react-bootstrap-icons';
 import AppNavbar from '../AppNavbar';
 import SideBar from '../BillComponents/SideBar';
  

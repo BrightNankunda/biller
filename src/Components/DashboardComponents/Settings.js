@@ -1,9 +1,11 @@
 import React from 'react';
+import AppNavbar from '../AppNavbar';
+import SideBar from '../BillComponents/SideBar';
  
 const Settings = () => {
    return (
       <div>
-         <AppNavBar />
+         <AppNavbar />
          <div className="d-flex">
             <div className="col-lg-3 blue">
                <SideBar />

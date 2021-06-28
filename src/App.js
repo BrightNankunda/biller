@@ -39,7 +39,9 @@ function App() {
   return (
     <div>
       <Router>
-
+          <ProtectedRoute path="/schedules/client/:clientId/rent" component={RentBilling} />
+          <ProtectedRoute path="/schedules/client/:clientId/land" component={LandBilling} />
+          <ProtectedRoute path="/schedules/client/:clientId" component={ScheduleHome} />
           <ProtectedRoute path="/schedules/clientToUpdate/:clientId" component={UpdateClient} />
           <ProtectedRoute path="/schedules/billToUpdate/:billId" component={UpdateBill} />
           <ProtectedRoute path="/schedule/bill/:billId" component={SingleSchedule} />

@@ -2,12 +2,20 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import AppNavbar from '../AppNavbar';
 import SideBar from '../BillComponents/SideBar';
-import AllSchedules from './AllSchedules';
  
 const ScheduleHome = (props) => {
 
    const goToRoute = (routeName) => {
-      props.history.push('/billing' + routeName)
+      let url = props.match.url
+      let path = props.match.path
+      // path + LAND
+      // "/schedules/client/:clientId/land"
+      // and we match the client id and pass it to redux in the back end
+      if(path === "/schedules/client/:clientId") {
+         props.history.push( url + routeName)
+      } else {
+         props.history.push('/billing' + routeName)
+      }
    }
 
    return (

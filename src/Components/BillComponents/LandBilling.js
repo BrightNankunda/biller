@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ArrowLeft} from 'react-bootstrap-icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { SaveBill } from '../../Actions/BillActions';
@@ -17,11 +17,20 @@ const LandBilling = (props) => {
    const dispatch = useDispatch()
    const propertyType = 'LAND'
 
-   const newBill = useSelector(state => state.newBill)
-   console.log(newBill)
+   const {loading, redirectBillCreator} = useSelector(state => state.newBill)
+   console.log('LAND BILLING', 'loading', loading, 'REDIRECT CREATOR', redirectBillCreator)
 
-
+   useEffect(() => {
+      if(redirectBillCreator) {
+         props.history.push('/reports/bills')
+      }
+      return () => {
+         // cleanup
+      }
+   }, [redirectBillCreator])
+   
    const calculate = () => {
+      const clientId = props.match.params.clientId
          if(parseInt(scale) === 1) {
             if(parseInt(advocate) === 1) {
                if(landValue < 11000000) {
@@ -33,7 +42,7 @@ const LandBilling = (props) => {
                   
                   // REGISTRATION FUNCTION TAKES TOTAL AND REGISTRATION VALUE AND SETS TOTAL
                   checkRegistrationStatus(total, registered)
-                  dispatch(SaveBill({propertyType, landValue,rentalType,scale,advocate,registered,total}))
+                  dispatch(SaveBill({clientId,propertyType, landValue,rentalType,scale,advocate,registered,total}))
                } else {
                   // DETERMINE TOTAL
                   const a = 1000000 * 0.15  
@@ -44,7 +53,7 @@ const LandBilling = (props) => {
 
                   // REGISTRATION FUNCTION TAKES TOTAL AND REGISTRATION VALUE AND SETS TOTAL
                   checkRegistrationStatus(total)
-                 dispatch(SaveBill({propertyType, landValue,rentalType,scale,advocate,registered,total}))
+                 dispatch(SaveBill({clientId, propertyType, landValue,rentalType,scale,advocate,registered,total}))
                }
             } else if(parseInt(advocate) === 2) {
                
@@ -54,7 +63,7 @@ const LandBilling = (props) => {
                   const a = 1000000 * 0.15  
                   const total = a + b;
                   checkRegistrationStatus(total)
-                  dispatch(SaveBill({propertyType, landValue,rentalType,scale,advocate,registered,total}))
+                  dispatch(SaveBill({clientId, propertyType, landValue,rentalType,scale,advocate,registered,total}))
                } else {
                   const a = 10000000 * 0.15  
                   const y = landValue - 11000000  
@@ -62,7 +71,7 @@ const LandBilling = (props) => {
                   const d = (.05 * y)
                   const total = (a + b + d)
                   checkRegistrationStatus(total)
-                  dispatch(SaveBill({propertyType, landValue,rentalType,scale,advocate,registered,total}))
+                  dispatch(SaveBill({clientId, propertyType, landValue,rentalType,scale,advocate,registered,total}))
                }
             } else if(parseInt(advocate) === 3) {
                if(landValue < 11000000) {
@@ -71,7 +80,7 @@ const LandBilling = (props) => {
                   const a = 1000000 * 0.15  
                   const total = a + b;
                   checkRegistrationStatus(total)
-                  dispatch(SaveBill({propertyType, landValue,rentalType,scale,advocate,registered,total}))
+                  dispatch(SaveBill({clientId, propertyType, landValue,rentalType,scale,advocate,registered,total}))
                } else {
                   
                   const a = 1000000 * 0.15  
@@ -80,7 +89,7 @@ const LandBilling = (props) => {
                   const d = (.05 * y)
                   const total = (a + b + d)
                   checkRegistrationStatus(total)
-                  dispatch(SaveBill({propertyType, landValue,rentalType,scale,advocate,registered,total}))
+                  dispatch(SaveBill({clientId, propertyType, landValue,rentalType,scale,advocate,registered,total}))
                }
             } else if(parseInt(advocate) === 4) {
                if(landValue < 11000000) {
@@ -89,7 +98,7 @@ const LandBilling = (props) => {
                   const a = 1000000 * 0.15  
                   const total = a + b;
                   checkRegistrationStatus(total)
-                  dispatch(SaveBill({propertyType, landValue,rentalType,scale,advocate,registered,total}))
+                  dispatch(SaveBill({clientId, propertyType, landValue,rentalType,scale,advocate,registered,total}))
                } else {
                   const a = 1000000 * 0.15  
                   const y = landValue - 11000000  
@@ -97,7 +106,7 @@ const LandBilling = (props) => {
                   const d = (.05 * y)
                   const total = (a + b + d)
                   checkRegistrationStatus(total)
-                  dispatch(SaveBill({propertyType, landValue,rentalType,scale,advocate,registered,total}))
+                  dispatch(SaveBill({clientId, propertyType, landValue,rentalType,scale,advocate,registered,total}))
                }
             }
          } else if(parseInt(scale) === 2) {
@@ -110,7 +119,7 @@ const LandBilling = (props) => {
                   const total = a + b;
                   console.log(total)
                   setTotal(total)
-                  dispatch(SaveBill({propertyType, landValue,rentalType,scale,advocate,registered,total}))
+                  dispatch(SaveBill({clientId, propertyType, landValue,rentalType,scale,advocate,registered,total}))
                } else {
                   
                   const a = 1000000 * 0.15  
@@ -120,7 +129,7 @@ const LandBilling = (props) => {
                   const total = (a + b + d)
                   console.log(total)
                   setTotal(total)
-                  dispatch(SaveBill({propertyType, landValue,rentalType,scale,advocate,registered,total}))
+                  dispatch(SaveBill({clientId, propertyType, landValue,rentalType,scale,advocate,registered,total}))
                }
             } else if(parseInt(advocate) === 2) {
                if(landValue < 21000000) {
@@ -130,7 +139,7 @@ const LandBilling = (props) => {
                   const total = a + b;
                   console.log(total)
                   setTotal(total)
-                  dispatch(SaveBill({propertyType, landValue,rentalType,scale,advocate,registered,total}))
+                  dispatch(SaveBill({clientId, propertyType, landValue,rentalType,scale,advocate,registered,total}))
                } else {
                   const a = 1000000 * 0.15  
                   const y = landValue - 21000000  
@@ -139,7 +148,7 @@ const LandBilling = (props) => {
                   const total = (a + b + d)
                   console.log(total)
                   setTotal(total)
-                  dispatch(SaveBill({propertyType, landValue,rentalType,scale,advocate,registered,total}))
+                  dispatch(SaveBill({clientId, propertyType, landValue,rentalType,scale,advocate,registered,total}))
                }
             } else if(parseInt(advocate) === 3) {
                if(landValue < 21000000) {
@@ -149,7 +158,7 @@ const LandBilling = (props) => {
                   const total = a + b;
                   console.log(total)
                   setTotal(total)
-                  dispatch(SaveBill({propertyType, landValue,rentalType,scale,advocate,registered,total}))
+                  dispatch(SaveBill({clientId, propertyType, landValue,rentalType,scale,advocate,registered,total}))
                } else {
                   const a = 1000000 * 0.15  
                   const y = landValue - 21000000  
@@ -158,7 +167,7 @@ const LandBilling = (props) => {
                   const total = (a + b + d)
                   console.log(total)
                   setTotal(total)
-                  dispatch(SaveBill({propertyType, landValue,rentalType,scale,advocate,registered,total}))
+                  dispatch(SaveBill({clientId, propertyType, landValue,rentalType,scale,advocate,registered,total}))
                }
             } else if(parseInt(advocate) === 4) {
                if(landValue < 21000000) {
@@ -168,7 +177,7 @@ const LandBilling = (props) => {
                   const total = a + b;
                   console.log(total)
                   setTotal(total)
-                  dispatch(SaveBill({propertyType, landValue,rentalType,scale,advocate,registered,total}))
+                  dispatch(SaveBill({clientId, propertyType, landValue,rentalType,scale,advocate,registered,total}))
                } else {
                   const a = 1000000 * 0.15  
                   const y = landValue - 21000000  
@@ -176,7 +185,7 @@ const LandBilling = (props) => {
                   const d = (.05 * y)
                   const total = (a + b + d)
                   setTotal(total)
-                  dispatch(SaveBill({propertyType, landValue,rentalType,scale,advocate,registered,total}))
+                  dispatch(SaveBill({clientId, propertyType, landValue,rentalType,scale,advocate,registered,total}))
                }
             }
          }
@@ -199,7 +208,7 @@ const LandBilling = (props) => {
       e.preventDefault();
       calculate()
    }
-
+   
    const goBack = () => {
       props.history.goBack()
    }
