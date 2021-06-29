@@ -8,7 +8,7 @@ import {LOGOUT_USER_FAILURE, LOGOUT_USER_REQUEST, LOGOUT_USER_SUCCESS, USER_LOGI
 const initialState = {
    loading: false,
    user: {AuthedUser: null, token: null},
-   error: null
+   error: null,
 }
 function UserLoginReducer(state=initialState, action) {
    switch (action.type) {

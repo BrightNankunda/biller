@@ -13,16 +13,25 @@ export default function Login(props) {
    const [loggingIn, setLoggingIn] = useState(false)
    const [email, setEmail] = useState('')
    const [password, setPassword] = useState('')
+   const [emailErr, setEmailErr] = useState(null)
+   const [passwordErr, setPasswordErr] = useState(null)
 
    const handleSubmit = (e) => {
       e.preventDefault()
-      
-      dispatch(UserLogin({email, password}))
+      if(email.trim() === '') {
+         setEmailErr('Email is Required!')
+      } else if(password.trim() === '') {
+         setPasswordErr('Password is Required!')
+      } else if(password.trim().length < 5) {
+         setPasswordErr('Password Must be atleast 5 characters!')
+      } else {
+         dispatch(UserLogin({email, password}))   
+      }
    }
 
    const isAuthenticated = (JSON.parse(localStorage.getItem('UgBillUser')) === null || undefined) ? false : true
-   const {loading} = useSelector(state => state.userLoggingIn)
-   console.log('LOADING FROM LOGIN', loading)
+   const {loading, error} = useSelector(state => state.userLoggingIn)
+   console.log('LOADING FROM LOGIN', loading, 'Error', error)
    
    useEffect(() => {
       if(isAuthenticated) {
@@ -34,7 +43,15 @@ export default function Login(props) {
       }
    }, [loading, isAuthenticated])
    
-   
+   const handleEmailChange = (e) => {
+      setEmail(e.target.value)
+      setEmailErr(null)
+   }
+
+   const handlePasswordChange = (e) => {
+      setPassword(e.target.value)
+      setPasswordErr(null)
+   }
    return (
       <div className="login row d-flex flex-col bg-primary full-height">
          <div className="">
@@ -48,17 +65,20 @@ export default function Login(props) {
             <div className="form-group">
                <input type="email" 
                value={email}
-               onChange={(e)=>setEmail(e.target.value)}
+               onChange={handleEmailChange}
                className="email form-control" 
                placeholder="Email"/>
+               {emailErr && <p className="pl-1 rounded bg-white my-2 text-danger">{emailErr}</p>}
             </div>
 
             <div className="form-group">
                <input type="password" 
                className="password form-control" 
                value={password}
-               onChange={(e)=> setPassword(e.target.value)}
+               onChange={handlePasswordChange}
+               // onChange={(e)=> setPassword(e.target.value)}
                placeholder="Password"/>
+               {passwordErr && <p className="pl-1 rounded bg-white my-2 text-danger">{passwordErr}</p>}
             </div>
 
             <div className="d-flex justify-content-center mt-5">
