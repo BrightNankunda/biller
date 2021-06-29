@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { FetchABill } from '../../Actions/BillActions';
+import { FetchABill, DeleteABill } from '../../Actions/BillActions';
 import AppNavbar from '../AppNavbar';
 import SideBar from '../BillComponents/SideBar';
  
@@ -20,16 +20,22 @@ const SingleSchedule = (props) => {
    const {loading, bill} = useSelector(state => state.singleBill)
    console.log('LOADING', loading, 'BILL', bill)
 
-   // const {loading: loadingDelete, redirectDeletor} = useSelector(state => state.deletedClient)
+   const {loading: loadingBillDelete, redirectBillDeletor} = useSelector(state => state.deletedBill)
+   console.log('DELETED BILL', 'REDIRECT BILL DELETOR', redirectBillDeletor)
 
-   // useEffect(() => {
-   //    if(redirectDeletor) {
-   //       props.history.replace('/reports/clients')
-   //    }
-   //    return () => {
-   //       // cleanup
-   //    }
-   // }, [redirectDeletor])
+   useEffect(() => {
+      if(redirectBillDeletor) {
+         props.history.push('/reports/bills')
+      }
+      return () => {
+               // cleanup
+      }
+   },[redirectBillDeletor])
+
+   const DeleteBill = (billId) => {
+      dispatch(DeleteABill({billId}))
+   }
+
    return (
       <div>
          <AppNavbar />
@@ -60,7 +66,7 @@ const SingleSchedule = (props) => {
                   <h5>LAND VALUE: USH.<span>{' ' + bill.landValue}</span></h5>
                   <div className="d-flex justify-content-between mt-2 mb-1">
                      <Link to={"/reports/billToUpdate/" + bill._id} className="update-link">UPDATE</Link>
-                     <button className="btn delete-btn">DELETE</button>
+                     <button className="btn delete-btn" onClick={() => DeleteBill(bill._id)}>DELETE</button>
                   </div>
                </div> }
             </div>

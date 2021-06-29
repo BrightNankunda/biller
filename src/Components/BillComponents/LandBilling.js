@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { ArrowLeft} from 'react-bootstrap-icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { SaveBill } from '../../Actions/BillActions';
+import { FetchClients } from '../../Actions/ClientActions';
 import AppNavbar from '../AppNavbar';
 import SideBar from './SideBar';
  
@@ -13,6 +14,7 @@ const LandBilling = (props) => {
    const [registered, setRegistered] = useState('')
    const [landValue, setLandValue] = useState('')
    const [total, setTotal] = useState('')
+   const [client, setClient] = useState('')
 
    const dispatch = useDispatch()
    const propertyType = 'LAND'
@@ -28,6 +30,14 @@ const LandBilling = (props) => {
          // cleanup
       }
    }, [redirectBillCreator])
+
+   useEffect(() => {
+      dispatch(FetchClients())
+      return () => {
+         // cleanup
+      }
+   }, [])
+   const {loading: loadingClients, clients} = useSelector(state => state.clients)
    
    const calculate = () => {
       const clientId = props.match.params.clientId
@@ -228,6 +238,20 @@ const LandBilling = (props) => {
                <h1></h1>
             </div>
             <form onSubmit={submitHandler}>
+               <div className="d-flex advanced-input-wrapper flex-col w-90 m-2">
+                  <div className="d-flex flex-col m-2">
+                     <select type="select" className="bill-input px-2" id="rental" 
+                        value={rentalType}
+                        onChange={(e) => setClient(e.target.value)}
+                        name="rental">
+                        <option disabled value="">SCHEDULE OWNER</option>
+                        {clients.map(client => (
+                           <option value={client._id}>{client.firstName + ' ' + client.lastName}</option>
+                        ))}
+                     </select>
+                     
+                  </div>
+               </div>
                <div className="d-flex advanced-input-wrapper flex-col w-90 m-2">
                   <div className="d-flex flex-col m-2">
                      <select type="select" className="bill-input px-2" id="rental" 

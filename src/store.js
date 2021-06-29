@@ -1,7 +1,7 @@
 import {applyMiddleware, createStore, compose, combineReducers} from 'redux'
 import thunk from 'redux-thunk'
 
-import { FetchABillReducer, FetchBillsReducer, FetchClientBillsReducer, FetchUserBillsReducer, SaveBillReducer } from './Reducers/BillReducers'
+import { DeleteABillReducer, FetchABillReducer, UpdateABillReducer, FetchBillsReducer, FetchClientBillsReducer, FetchUserBillsReducer, SaveBillReducer } from './Reducers/BillReducers'
 import { CreateNewClientReducer, DeleteClientReducer, FetchAllClientsReducer, FetchSingleClientReducer, UpdateClientReducer } from './Reducers/ClientsReducers';
 import { LogoutUserReducer, UserLoginReducer, UserSigninReducer } from './Reducers/UserReducers'
 
@@ -21,6 +21,8 @@ const reducer = combineReducers({
    clients: FetchAllClientsReducer,
    userLoggedOut: LogoutUserReducer,
    singleClient: FetchSingleClientReducer,
+   updatedBill: UpdateABillReducer,
+   deletedBill: DeleteABillReducer,
    createdClient: CreateNewClientReducer,
    updatedClient: UpdateClientReducer,
    deletedClient: DeleteClientReducer,

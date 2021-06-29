@@ -2,7 +2,8 @@ import React, { useEffect } from 'react';
 import { PencilFill, Trash } from 'react-bootstrap-icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { AllUserBills } from '../../Actions/BillActions';
+import { AllUserBills, DeleteABill } from '../../Actions/BillActions';
+import { FetchClients } from '../../Actions/ClientActions';
 import AppNavbar from '../AppNavbar';
 import SideBar from '../BillComponents/SideBar';
  
@@ -14,16 +15,32 @@ const BillsReport = () => {
    console.log(billsCount, 'USERBILLS', bills)
    useEffect(() => {
       dispatch(AllUserBills())
+      dispatch(FetchClients())
       return () => {
          // cleanup
       }
    }, [])
 
+   const {loading: loadingClients, clients} = useSelector(state => state.clients)
+
    console.log('LOADING', loading, 'BILLS', bills, 'NUMBER OF BILLS', billsCount)
 
+   const {loading: loadingBillDelete, redirectBillDeletor} = useSelector(state => state.deletedBill)
+   console.log('DELETED BILL', 'REDIRECT BILL DELETOR', redirectBillDeletor)
+
+   useEffect(() => {
+      if(redirectBillDeletor) {
+          dispatch(AllUserBills())
+      }
+      return () => {
+               // cleanup
+      }
+   },[redirectBillDeletor])
+
    const deleteBill = (billId) => {
-      console.log('DELETE BUTTON BILL ID', billId)
+      dispatch(DeleteABill({billId}))
    }
+
    return (
       <div>
          <AppNavbar />

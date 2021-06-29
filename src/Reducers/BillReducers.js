@@ -14,7 +14,15 @@ import {
    CLIENT_BILLS_FETCH_ERROR,
    FETCH_A_BILL_REQUEST,
    FETCH_A_BILL_SUCCESS,
-   FETCH_A_BILL_FAILURE
+   FETCH_A_BILL_FAILURE,
+   BILL_UPDATE_REQUEST,
+   BILL_UPDATE_SUCCESS,
+   BILL_UPDATE_FINISHED,
+   BILL_UPDATE_ERROR,
+   DELETE_A_BILL_REQUEST,
+   DELETE_A_BILL_SUCCESS,
+   DELETE_A_BILL_FINISHED,
+   DELETE_A_BILL_FAILURE
 } from '../Constants/BillConstants'
 
 function SaveBillReducer(state={loading: false, newBill: null, redirectBillCreator: false}, action) {
@@ -82,13 +90,43 @@ function FetchClientBillsReducer(state={bills: [], loading: false, billsCount: 0
    }
 }
 
-function FetchABillReducer(state={bill: null, loading: false, }, action) {
+function FetchABillReducer(state={bill: null, loading: false}, action) {
    switch(action.type) {
       case FETCH_A_BILL_REQUEST:
          return {...state, loading: true}
       case FETCH_A_BILL_SUCCESS:
-         return {...state, loading: false, bill: action.payload}  
+         return {...state, loading: false, bill: action.payload} 
       case FETCH_A_BILL_FAILURE:
+         return {...state, loading: true, error: action.payload}
+      default:
+         return state
+   }
+}
+
+function DeleteABillReducer(state={redirectBillDeletor: false, loading: false, }, action) {
+   switch(action.type) {
+      case DELETE_A_BILL_REQUEST:
+         return {...state, loading: true}
+      case DELETE_A_BILL_SUCCESS:
+         return {...state, loading: false, redirectBillDeletor: true}
+      case DELETE_A_BILL_FINISHED:
+         return {...state, loading: false, redirectBillDeletor: false}  
+      case DELETE_A_BILL_FAILURE:
+         return {...state, loading: true, error: action.payload}
+      default:
+         return state
+   }
+}
+
+function UpdateABillReducer(state={redirectBillDeletor: false, loading: false, }, action) {
+   switch(action.type) {
+      case DELETE_A_BILL_REQUEST:
+         return {...state, loading: true}
+      case DELETE_A_BILL_SUCCESS:
+         return {...state, loading: false, redirectBillDeletor: true}
+      case DELETE_A_BILL_FINISHED:
+         return {...state, loading: false, redirectBillDeletor: false}  
+      case DELETE_A_BILL_FAILURE:
          return {...state, loading: true, error: action.payload}
       default:
          return state
@@ -101,4 +139,6 @@ export {
    FetchUserBillsReducer, 
    FetchABillReducer,
    FetchClientBillsReducer,
+   UpdateABillReducer,
+   DeleteABillReducer
 }

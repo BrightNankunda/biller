@@ -12,6 +12,7 @@ const ClientsReport = (props) => {
 
    const dispatch = useDispatch()
    const [deletedId, setDeletedId] = useState(null)
+   const [clientSearch, setClientSearch] = useState('')
    
    // DISPATCH GET CLIENTS ON INITIAL RENDER
    useEffect(() => {
@@ -59,6 +60,13 @@ const ClientsReport = (props) => {
    const createClientLink = () => {
       history.push('/reports/addClient')
    }
+   const clientLostFocus = () => {
+      console.log('LOST FOCUS')
+   }
+   const focusedClientSearch = () => {
+      console.log('GAINED FOCUS')
+   }
+
    return (
       <div>
          <AppNavbar />
@@ -72,7 +80,12 @@ const ClientsReport = (props) => {
                      <h5>Reports/Clients</h5>
                   </div>
                   <div className="d-flex justify-content-between ">
-                     <input className="search-client-input my-3 light-color py-2 px-1 col-lg-5" 
+                     <input 
+                     value={clientSearch}
+                     onBlur={() => clientLostFocus()}
+                     onFocus={() => focusedClientSearch()}
+                     onChange={(e) => setClientSearch(e.target.value)}
+                     className="search-client-input my-3 light-color py-2 px-1 col-lg-5" 
                      placeholder="SEARCH A CLIENT "
                      type="text"/>
 
@@ -112,14 +125,14 @@ const ClientsReport = (props) => {
                               <td><Link to={"/reports/client/" + client._id}>{client.firstName}</Link></td>
                               <td>{client.lastName}</td>
                               <td>
-                                 <Link to={"/reports/client/" + client._id} title="ADD A SCHEDULE"  className="add-schedule-icon px-2">
-                                 <PlusLg className="two-times" 
+                                 <Link to={"/schedule/createBill/" + client._id} title="ADD A SCHEDULE"  className="add-schedule-icon px-2">
+                                    <PlusLg className="two-times" 
                                   /></Link>
                                  
                               </td>
                               <td>
                                  <Link className="update-link-client" to={"/reports/clientToUpdate/" + client._id}>
-                                 <PencilFill />
+                                    <PencilFill />
                                  </Link>
                               </td>
                               <td className="mb-2">{!loadingDelete && <span  className="delete-btn-client text-danger">
