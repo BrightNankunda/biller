@@ -40,7 +40,7 @@ const LandBilling = (props) => {
    const {loading: loadingClients, clients} = useSelector(state => state.clients)
    
    const calculate = () => {
-      const clientId = props.match.params.clientId
+      const clientId = props.match.params.clientId || client
          if(parseInt(scale) === 1) {
             if(parseInt(advocate) === 1) {
                if(landValue < 11000000) {
@@ -238,20 +238,20 @@ const LandBilling = (props) => {
                <h1></h1>
             </div>
             <form onSubmit={submitHandler}>
-               <div className="d-flex advanced-input-wrapper flex-col w-90 m-2">
+               {!props.match.params.clientId && <div className="d-flex advanced-input-wrapper flex-col w-90 m-2">
                   <div className="d-flex flex-col m-2">
                      <select type="select" className="bill-input px-2" id="rental" 
                         value={rentalType}
                         onChange={(e) => setClient(e.target.value)}
                         name="rental">
                         <option disabled value="">SCHEDULE OWNER</option>
-                        {clients.map(client => (
-                           <option value={client._id}>{client.firstName + ' ' + client.lastName}</option>
+                        {clients && clients.map(client => (
+                           <option value={client._id} key={client._id}>{client.firstName + ' ' + client.lastName}</option>
                         ))}
                      </select>
                      
                   </div>
-               </div>
+               </div>}
                <div className="d-flex advanced-input-wrapper flex-col w-90 m-2">
                   <div className="d-flex flex-col m-2">
                      <select type="select" className="bill-input px-2" id="rental" 

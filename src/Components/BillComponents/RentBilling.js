@@ -19,8 +19,8 @@ const RentBilling = (props) => {
    const dispatch = useDispatch()
    const propertyType = 'RENT'
 
-   const {loading, redirectBillCreator} = useSelector(state => state.newBill)
-   console.log('RENT BILLING', 'loading', loading, 'REDIRECT CREATOR', redirectBillCreator)
+   const {loading, newBill, redirectBillCreator} = useSelector(state => state.newBill)
+   console.log('RENT BILLING', 'NEW BILL FROM RENT BILLING', newBill, 'loading', loading, 'REDIRECT CREATOR', redirectBillCreator)
 
    useEffect(() => {
       dispatch(FetchClients())
@@ -41,7 +41,7 @@ const RentBilling = (props) => {
    }, [redirectBillCreator])
 
    const calculate = () => {
-      const clientId = props.match.params.clientId
+      const clientId = props.match.params.clientId || client
       if(parseInt(rentalType) === 1) {
             //RACK RENT
             if(parseInt(advocate) === 1) {
@@ -302,7 +302,7 @@ const RentBilling = (props) => {
                <h1></h1>
             </div>
             <form onSubmit={submitHandler}>
-               <div className="d-flex advanced-input-wrapper flex-col w-90 m-2">
+               {!props.match.params.clientId && <div className="d-flex advanced-input-wrapper flex-col w-90 m-2">
                   <div className="d-flex flex-col m-2">
                      <select type="select" className="bill-input px-2" id="client" 
                         value={client}
@@ -310,12 +310,12 @@ const RentBilling = (props) => {
                         name="client">
                         <option disabled value="">SCHEDULE OWNER/CLIENT</option>
                         {clients && clients.map(client => (
-                           <option value={client._id}>{client.firstName + ' ' + client.lastName}</option>
+                           <option value={client._id} key={client._id}>{client.firstName + ' ' + client.lastName}</option>
                         ))}
                      </select>
                      
                   </div>
-               </div>
+               </div>}
 
                <div className="d-flex advanced-input-wrapper flex-col w-90 m-2">
                   <div className="d-flex flex-col m-2">

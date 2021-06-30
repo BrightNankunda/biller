@@ -26,22 +26,22 @@ const CreateClient = (props) => {
 
    useEffect(() => {
       if(redirectUpdator) {
-         props.history.push(`/schedule/client/${client._id}`)
+         props.history.push(`/reports/client/${client._id}`)
       }
-      console.log('LOADING UPDATE CLIENT', loading, 'CREATED CLIENT', client)
+      console.log('LOADING UPDATE CLIENT', loading, 'UPDATED CLIENT', client)
       return () => {
          // cleanup
       }
    }, [redirectUpdator])
 
-   const id = client._id
+   const id = props.match.params.clientId
 
    useEffect(() => {
       dispatch(FetchSingleClient(props.match.params.clientId))
       return () => {
          // cleanup
       }
-   }, [])
+   }, [id])
 
    const goBack = () => {
       props.history.goBack()
@@ -63,22 +63,26 @@ const CreateClient = (props) => {
          <div className="col-lg-3 blue">
             <SideBar />
          </div>
+
          <div className="col-lg-9 clientScreen full-height">
+
          <div className="clientScreen w-100 rounded border">
             <div className="client-header my-2 d-flex justify-content-between">
                <button className="btn btn-primary" onClick={goBack}>BACK</button>
                <h3 className="text-center">UPDATE CLIENTS INFORMATION</h3>
+               <h4></h4>
             </div>
-            <div className="client-body my-auto">
-               {loading && 
-                     <div className="w-100">
-                        <div className="d-flex justify-content-center my-auto align-content-center">
-                           <div class="spinner-border text-primary" role="status">
-                              <span class="sr-only">Loading...</span>
-                           </div>
-                        </div>
+
+            {loading && 
+               <div className="w-100">
+                  <div className="d-flex justify-content-center my-auto align-content-center">
+                     <div className="spinner-border text-primary" role="status">
+                        <span className="sr-only">Loading...</span>
                      </div>
-                  }
+                  </div>
+               </div>
+            }
+            <div className="client-body my-auto">
                {client && !loading && <form className="w-100 my-4 p-4" onSubmit={submitHandler}>
 
                   <div className="col-lg-10 d-flex justify-content-center form-group mt-2 d-flex mx-auto">

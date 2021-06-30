@@ -118,14 +118,14 @@ function DeleteABillReducer(state={redirectBillDeletor: false, loading: false, }
    }
 }
 
-function UpdateABillReducer(state={redirectBillDeletor: false, loading: false, }, action) {
+function UpdateABillReducer(state={redirectBillUpdator: false, loading: false, }, action) {
    switch(action.type) {
       case DELETE_A_BILL_REQUEST:
          return {...state, loading: true}
       case DELETE_A_BILL_SUCCESS:
-         return {...state, loading: false, redirectBillDeletor: true}
+         return {...state, loading: false, redirectBillUpdator: true}
       case DELETE_A_BILL_FINISHED:
-         return {...state, loading: false, redirectBillDeletor: false}  
+         return {...state, loading: false, redirectBillUpdator: false}  
       case DELETE_A_BILL_FAILURE:
          return {...state, loading: true, error: action.payload}
       default:

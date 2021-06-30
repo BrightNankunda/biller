@@ -11,7 +11,7 @@ const ScheduleHome = (props) => {
       // path + LAND
       // "/reports/client/:clientId/land"
       // and we match the client id and pass it to redux in the back end
-      if(path === "/reports/client/:clientId") {
+      if(path === "/schedules/createBill/:clientId") {
          props.history.push( url + routeName)
       } else {
          props.history.push('/billing' + routeName)

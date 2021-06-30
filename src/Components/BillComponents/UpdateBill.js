@@ -12,7 +12,7 @@ const LandBilling = (props) => {
    const [propertyType, setPropertyType] = useState(bill.propertyType)
    const [rent, setRent] = useState(bill.scaleOrRentalType)
    const [advocate, setAdvocate] = useState(bill.advocate)
-   const [scale, setScale] = useState(bill.scale)
+   const [scale, setScale] = useState(bill.scaleOrRentalType)
    const [landRegistration, setLandRegistration] = useState(bill.registered)
    const [landValue, setLandValue] = useState(bill.landValue)
 
@@ -28,10 +28,10 @@ const LandBilling = (props) => {
       {choice: "4", value : "Mortgagee's Advocate: For investigating title to freehold or lease hold property and completing"}
    ]
 
-   const scaleOptions = {
-      "1": "Scale of charges on sales, purchases, mortgages and debentures",
-      "2": "Scale of charges for commission on sales, purchases and loans affecting land registered in the land titles registry or unregistered"
-   }
+   const scaleOptions = [
+      {choice: "1", value : "Scale of charges on sales, purchases, mortgages and debentures"},
+      {choice: "2", value : "Scale of charges for commission on sales, purchases and loans affecting land registered in the land titles registry or unregistered"}
+   ]
 
    const landRegistrationOptions = {
       "0": "YES",
@@ -44,6 +44,8 @@ const LandBilling = (props) => {
    }
 
    const dispatch = useDispatch()
+
+   const id = props.match.params.billId
    useEffect(() => {
       dispatch(FetchABill(props.match.params.billId))
       return () => {
@@ -55,8 +57,6 @@ const LandBilling = (props) => {
    const goBack = () => {
       props.history.goBack()
    }
-
-   const param = props.match.params.billId
    
    return (
       <div>
@@ -72,6 +72,15 @@ const LandBilling = (props) => {
                <ArrowLeft onClick={() => goBack()} className="cursor-pointer my-auto two-times mx-1"/>
                
             </div>
+            {loading && 
+               <div className="w-100">
+                  <div className="d-flex justify-content-center my-auto align-content-center">
+                     <div className="spinner-border text-primary" role="status">
+                        <span className="sr-only">Loading...</span>
+                     </div>
+                  </div>
+               </div>
+            }
             {bill && <form onSubmit={submitHandler}>
                <div className="d-flex advanced-input-wrapper flex-col w-90 m-2">
                   <div className="d-flex flex-col m-2">

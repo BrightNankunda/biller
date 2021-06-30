@@ -48,7 +48,7 @@ const FetchAllClientsReducer = (state={}, action) => {
    }
 }
 
-const FetchSingleClientReducer = (state={loading: false}, action) => {
+const FetchSingleClientReducer = (state={loading: false, client: null}, action) => {
    switch(action.type) {
       case FETCH_SINGLE_CLIENT_REQUEST:
          return {...state, loading: true}

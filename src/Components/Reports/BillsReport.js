@@ -22,7 +22,7 @@ const BillsReport = () => {
    }, [])
 
    const {loading: loadingClients, clients} = useSelector(state => state.clients)
-
+   console.log('LOADING CLIENTS', loadingClients, 'CLIENTS FROM BILLS REPORT', clients)
    console.log('LOADING', loading, 'BILLS', bills, 'NUMBER OF BILLS', billsCount)
 
    const {loading: loadingBillDelete, redirectBillDeletor} = useSelector(state => state.deletedBill)
@@ -39,6 +39,11 @@ const BillsReport = () => {
 
    const deleteBill = (billId) => {
       dispatch(DeleteABill({billId}))
+   }
+
+   // FUNCTION TO FIND AND RETURN BILL OWNER DETAILS
+   const getClientDetails = (id) => {
+      return clients.find(client => client._id === id)
    }
 
    return (
@@ -68,21 +73,26 @@ const BillsReport = () => {
                         <thead>
                            <tr>
                               <th>#</th>
-                              <th>CLIENT ID</th>
+                              <th>CLIENT NAME</th>
                               <th>SCHEDULE</th>
                               <th>LAND VALUE</th>
                               <th>ACTIONS</th>
                            </tr>
                         </thead>
                         <tbody>
-                        {bills && bills.map(bill => (
+                        {bills && clients && bills.map(bill => (
                               <tr className="border-bottom border-dark" key={bill._id}>
                                  <td>
                                     <Link to={"/reports/bill/" + bill._id} className="bill-link">
                                        {bill._id}
                                     </Link>
                                  </td>
-                                 <td>{bill.createdBy}</td>
+
+                                 <td>
+                                    <Link to={"/reports/bill/" + bill._id} className="bill-link">
+                                       {getClientDetails(bill.createdFor).firstName}       
+                                    </Link>
+                                 </td>
                                  <td>{bill.propertyType} SCHEDULE</td>
                                  <td>{bill.landValue}</td>
                                  <td>

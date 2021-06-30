@@ -45,22 +45,23 @@ const SingleClient = (props) => {
             <SideBar />
          </div>
       
-         <div className="col-lg-9 d-flex justify-content-center flex-col full-height bg-light">
-            {loading && <div className="w-100 full-height d-flex justify-content-center">
-
-               <div className="spinner-border text-primary" role="status">
-                  <span className="sr-only">Loading...</span>
-               </div>
+         <div className="col-lg-9 d-flex full-height bg-light">
+            {loading && <div 
+            className="col-lg-12 d-flex justify-content-center align-content-center align-items-center">
+                  <div className="spinner-border text-primary " role="status">
+                     <span className="sr-only">Loading...</span>
+                  </div>
             </div>}
-            <div className="w-60 d-flex justify-content-center">
+            <div className="col-lg-12 d-flex mx-auto mt-3">
                {!loading && client && <div className=" w-100">
                
-                  <div className="bg light list-group">
-                     <h4 className="text-center list-group-item">{client.firstName + ' ' + client.lastName}</h4>
-                     <h4 className="text-center list-group-item">{client.email}</h4>
-                     <h4 className="text-center list-group-item">{client.phoneNumber}</h4>
-                     <h4 className="text-center list-group-item">{client.occupation}</h4>
-                     <h4 className="text-center list-group-item">{client.address.toUpperCase()}</h4>
+                  <div className="light-color p-3">
+                     <h4 className="text-center"> NAMES: {client.firstName + ' ' + client.lastName}</h4>
+                  
+                     <h4 className="text-center">EMAIL: {client.email}</h4>
+                     <h4 className="text-center">PHONE NUMBER: {client.phoneNumber}</h4>
+                     <h4 className="text-center">OCCUPATION: {client.occupation}</h4>
+                     <h4 className="text-center">ADDRESS: {client.address.toUpperCase()}</h4>
                   </div>
                   <div className="actions w-60 d-flex justify-content-between">
                      <Link className="bill-btn text-success py-2 px-4" to={"/reports/clientToUpdate/" + client._id}>UPDATE</Link>

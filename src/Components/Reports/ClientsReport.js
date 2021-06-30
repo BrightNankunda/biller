@@ -125,7 +125,7 @@ const ClientsReport = (props) => {
                               <td><Link to={"/reports/client/" + client._id}>{client.firstName}</Link></td>
                               <td>{client.lastName}</td>
                               <td>
-                                 <Link to={"/schedule/createBill/" + client._id} title="ADD A SCHEDULE"  className="add-schedule-icon px-2">
+                                 <Link to={"/schedules/createBill/" + client._id} title="ADD A SCHEDULE"  className="add-schedule-icon px-2">
                                     <PlusLg className="two-times" 
                                   /></Link>
                                  
