@@ -1,21 +1,21 @@
 import React, { useEffect } from 'react';
 import { Files, ForwardFill, People, PeopleFill, PersonFill } from 'react-bootstrap-icons';
 import { useDispatch, useSelector } from 'react-redux';
-import { AllBills } from '../../Actions/BillActions';
+import { AllUserBills } from '../../Actions/BillActions';
 import { FetchClients } from '../../Actions/ClientActions';
 import AppNavbar from '../AppNavbar';
 import SideBar from '../BillComponents/SideBar';
 import Calendar from './Calendar';
 import LineGraph from './LineGraph';
- 
+
 const Dashboard = (props) => {
-   const {billsCount} = useSelector(state => state.bills)
-   const {clients} = useSelector(state => state.clients)
+   const {billsCount} = useSelector(state => state.userBills)
+   const {loading, clients} = useSelector(state => state.clients)
 
    const dispatch = useDispatch()
 
    useEffect(() => {
-      dispatch(AllBills())
+      dispatch(AllUserBills())
       dispatch(FetchClients())
       return () => {
          // cleanup
@@ -38,7 +38,16 @@ const Dashboard = (props) => {
                   <h3 className="lead mx-1 my-2" >ADMIN DASHBOARD</h3>
                   <ForwardFill className="my-auto mx-2 two-times"/>
                </div>
-               {billsCount && clients && <div className="d-flex w-100">
+               {loading && 
+                  <div className="w-100">
+                     <div className="d-flex justify-content-center my-auto align-content-center">
+                        <div className="spinner-border text-primary" role="status">
+                           <span className="sr-only">Loading...</span>
+                        </div>
+                     </div>
+                  </div>
+               }
+               {!loading && <div className="d-flex w-100">
                   <div className="clients-count col-lg-4 m-2 bg-white d-flex flex-col">
                      <PeopleFill className="my-2 two-times"/>
                      <h4>{clients.length} CLIENTS</h4>

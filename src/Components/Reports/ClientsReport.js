@@ -13,6 +13,7 @@ const ClientsReport = (props) => {
    const dispatch = useDispatch()
    const [deletedId, setDeletedId] = useState(null)
    const [clientSearch, setClientSearch] = useState('')
+   const [searchedClient, setSearchedClient] = useState(null)
    
    // DISPATCH GET CLIENTS ON INITIAL RENDER
    useEffect(() => {
@@ -60,6 +61,27 @@ const ClientsReport = (props) => {
    const createClientLink = () => {
       history.push('/reports/addClient')
    }
+
+   // SEARCH FUNCTION
+   const SearchForClient = (e) => {
+      if(clientSearch.trim() === '') return;
+      if(e.key === 'Enter') {
+         const searches = clients.find(client => client.firstName.toLowerCase() === clientSearch.toLowerCase())
+         setSearchedClient(searches)
+      }
+   }
+
+   const noSearchedClient = () => {
+      return (searchedClient === null) ? true : false
+   }
+
+   const handleClientSearchChange = (e) => {
+      if(e.target.value.trim() === '') {
+         setSearchedClient(null)
+      }
+      setClientSearch(e.target.value)
+   }
+
    const clientLostFocus = () => {
       console.log('LOST FOCUS')
    }
@@ -82,9 +104,10 @@ const ClientsReport = (props) => {
                   <div className="d-flex justify-content-between ">
                      <input 
                      value={clientSearch}
+                     onKeyPress={SearchForClient}
                      onBlur={() => clientLostFocus()}
                      onFocus={() => focusedClientSearch()}
-                     onChange={(e) => setClientSearch(e.target.value)}
+                     onChange={handleClientSearchChange}
                      className="search-client-input my-3 light-color py-2 px-1 col-lg-5" 
                      placeholder="SEARCH A CLIENT "
                      type="text"/>
@@ -118,7 +141,7 @@ const ClientsReport = (props) => {
                            </tr>
                         </thead>
                         <tbody>
-                        { clients && clients.map(client => (
+                        { clients  && noSearchedClient() && clients.map(client => (
 
                            <tr className="border-bottom border-dark" key={client._id}>
                               <td>1</td>
@@ -143,10 +166,38 @@ const ClientsReport = (props) => {
                                  <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                                  <span className="sr-only">Loading...</span>
                               </button>}
+                              
                         </td>
                            </tr>
             
                         ))}
+                        { clients  && !noSearchedClient() && searchedClient && <tr 
+                           className="border-bottom border-dark" key={searchedClient._id}>
+                              <td>1</td>
+                              <td><Link to={"/reports/client/" + searchedClient._id}>{searchedClient.firstName}</Link></td>
+                              <td>{searchedClient.lastName}</td>
+                              <td>
+                                 <Link to={"/schedules/createBill/" + searchedClient._id} title="ADD A SCHEDULE"  className="add-schedule-icon px-2">
+                                    <PlusLg className="two-times" 
+                                  /></Link>
+                                 
+                              </td>
+                              <td>
+                                 <Link className="update-link-client" to={"/reports/clientToUpdate/" + searchedClient._id}>
+                                    <PencilFill />
+                                 </Link>
+                              </td>
+                              <td className="mb-2">{!loadingDelete && <span  className="delete-btn-client text-danger">
+                              <Trash onClick={() => deleteClient(searchedClient._id)}/>
+                              </span> }
+
+                              {loadingDelete && <button className="btn btn-danger" type="button" disabled>
+                                 <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                 <span className="sr-only">Loading...</span>
+                              </button>}
+                              
+                           </td>
+                        </tr>}
                         </tbody>
 
                      </table>

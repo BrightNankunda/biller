@@ -68,7 +68,7 @@ const BillsReport = () => {
                      </div>
                   }
                   
-                  {!loading && <div className="light-color my-1 pb-3 pt-2 px-5 bills-table">
+                  {bills && clients && !loading && <div className="light-color my-1 pb-3 pt-2 px-5 clientss-table">
                      <table className="w-100">
                         <thead>
                            <tr>
@@ -80,7 +80,7 @@ const BillsReport = () => {
                            </tr>
                         </thead>
                         <tbody>
-                        {bills && clients && bills.map(bill => (
+                        {bills.map(bill => (
                               <tr className="border-bottom border-dark" key={bill._id}>
                                  <td>
                                     <Link to={"/reports/bill/" + bill._id} className="bill-link">
@@ -90,7 +90,7 @@ const BillsReport = () => {
 
                                  <td>
                                     <Link to={"/reports/bill/" + bill._id} className="bill-link">
-                                       {getClientDetails(bill.createdFor).firstName}       
+                                       { bills && getClientDetails(bill.createdFor).firstName}       
                                     </Link>
                                  </td>
                                  <td>{bill.propertyType} SCHEDULE</td>

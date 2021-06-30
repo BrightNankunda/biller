@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { ArrowLeft} from 'react-bootstrap-icons';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { SaveBill } from '../../Actions/BillActions';
 import { FetchClients } from '../../Actions/ClientActions';
 import AppNavbar from '../AppNavbar';
@@ -33,6 +34,7 @@ const LandBilling = (props) => {
 
    useEffect(() => {
       dispatch(FetchClients())
+      hasAtleastOneClient()
       return () => {
          // cleanup
       }
@@ -222,6 +224,12 @@ const LandBilling = (props) => {
    const goBack = () => {
       props.history.goBack()
    }
+
+   const hasAtleastOneClient = () => {
+      return true
+      // console.log('CLIENTID', props.match.params.clientId)
+      // return ((clients.length === null || undefined || 0) && (props.match.params.clientId != undefined)) ? true : false
+   }
    
    return (
       <div>
@@ -237,7 +245,7 @@ const LandBilling = (props) => {
                <h2 className="text-center">LAND SCHEDULE</h2>
                <h1></h1>
             </div>
-            <form onSubmit={submitHandler}>
+            {hasAtleastOneClient() && <form onSubmit={submitHandler}>
                {!props.match.params.clientId && <div className="d-flex advanced-input-wrapper flex-col w-90 m-2">
                   <div className="d-flex flex-col m-2">
                      <select type="select" className="bill-input px-2" id="rental" 
@@ -316,11 +324,24 @@ const LandBilling = (props) => {
                   <button className="btn reset-btn py-2 px-3 bg-white">RESET</button>
                   <button className="btn submit-btn py-2 px-3 bg-white">SUBMIT</button>
                </div>
-            </form>
+            </form>}
+            {!hasAtleastOneClient() && 
+            <div className="alert alert-danger forty-height w-100 d-flex justify-content-center">
+               <div className="my-auto">
+                  <h3 
+                  className="text-danger text-center my-auto">
+                  YOU CURRENTLY HAVE NO CLIENT, PLEASE ADD ONE!</h3> 
+                  <div className="d-flex justify-content-center">
+                     <Link to="/reports/addClient" 
+                        className="text-primary text-center my-auto">ADD A CLIENT</Link>
+                  </div>
+               </div>
+            </div>
+            }
             
          </div>
          </div>
-      </div>
+      </div> 
    );
 }
  
