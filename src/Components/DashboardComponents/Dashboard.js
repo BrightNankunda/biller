@@ -47,7 +47,7 @@ const Dashboard = (props) => {
                      </div>
                   </div>
                }
-               {!loading && <div className="d-flex w-100">
+               {!loading && clients && <div className="d-flex w-100">
                   <div className="clients-count col-lg-4 m-2 bg-white d-flex flex-col">
                      <PeopleFill className="my-2 two-times"/>
                      <h4>{clients.length} CLIENTS</h4>

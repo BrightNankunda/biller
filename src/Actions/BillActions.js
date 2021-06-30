@@ -129,8 +129,8 @@ const DeleteABill = ({billId}) => async (dispatch, getState) => {
 
 }
 
-const UpdateABill = ({billId, propertyType,landValue,scale,rentalType,advocate,registered,total}) => async (dispatch, getState) => {
-   console.log('UPDATE BILL REDUX SAYS', billId, propertyType,landValue,scale,rentalType,advocate,registered,total)
+const UpdateABill = ({billId, clientId, propertyType,landValue,scale,rentalType,advocate,registered,total}) => async (dispatch, getState) => {
+   console.log('UPDATE BILL REDUX SAYS', billId,clientId, propertyType,landValue,scale,rentalType,advocate,registered,total)
    // try {
    //    dispatch({type: BILL_UPDATE_REQUEST})
    //    const {user} = getState()

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { ArrowLeft} from 'react-bootstrap-icons';
 import { useDispatch, useSelector } from 'react-redux';
-import { FetchABill } from '../../Actions/BillActions';
+import { FetchABill, UpdateABill } from '../../Actions/BillActions';
 import AppNavbar from '../AppNavbar';
 import SideBar from './SideBar';
  
@@ -9,12 +9,15 @@ const LandBilling = (props) => {
    const {loading, bill} = useSelector(state => state.singleBill)
    console.log(bill)
 
+   const [billId, setBillId] = useState('')
+   const [clientId, setClientId] = useState(bill.createdFor)
    const [propertyType, setPropertyType] = useState(bill.propertyType)
    const [rent, setRent] = useState(bill.scaleOrRentalType)
    const [advocate, setAdvocate] = useState(bill.advocate)
    const [scale, setScale] = useState(bill.scaleOrRentalType)
    const [landRegistration, setLandRegistration] = useState(bill.registered)
    const [landValue, setLandValue] = useState(bill.landValue)
+   const [total, setTotal] = useState(bill.total)
 
    const rentOptions = [
       {choice: "1", value : "Rack rent means rent representing the value of the land and buildings"},
@@ -38,20 +41,22 @@ const LandBilling = (props) => {
       "1": "NO"
    }
 
-   const submitHandler = (e) => {
-      e.preventDefault();
-      console.log(rent, advocate, scale, landRegistration, landValue)
-   }
-
    const dispatch = useDispatch()
 
-   const id = props.match.params.billId
+   // HANDLE UPDATE FUNCTION
+   const submitHandler = (e) => {
+      e.preventDefault();
+      dispatch(UpdateABill({billId, propertyType, rentalType: rent, advocate, scale, registered: landRegistration, landValue, total, clientId}))
+   }
+
+
    useEffect(() => {
       dispatch(FetchABill(props.match.params.billId))
+      setBillId(props.match.params.billId)
       return () => {
          // cleanup
       }
-   }, [])
+   }, [props.match.params.billId])
 
 
    const goBack = () => {
@@ -81,7 +86,7 @@ const LandBilling = (props) => {
                   </div>
                </div>
             }
-            {bill && <form onSubmit={submitHandler}>
+            {!loading && bill && <form onSubmit={submitHandler}>
                <div className="d-flex advanced-input-wrapper flex-col w-90 m-2">
                   <div className="d-flex flex-col m-2">
                      <select type="select" className="bill-input px-2" id="rental" 
