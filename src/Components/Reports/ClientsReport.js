@@ -66,22 +66,13 @@ const ClientsReport = (props) => {
    const SearchForClients = (e) => {
       if(clientSearch.trim() === '') return;
       if(e.key === 'Enter') {
-         return clients.filter(client => {
-            return client.firstName.search(clientSearch) !== -1
+         const searches = clients.filter(client => {
+            return (client.firstName.toLowerCase().search(clientSearch.toLowerCase()) !== -1) || (client.lastName.toLowerCase().search(clientSearch.toLowerCase()) !== -1)
          })
-         // const searches = clients.find(client => client.firstName.toLowerCase() === clientSearch.toLowerCase())
-         // setSearchedClients({...searches})
-         // console.log('SEARCHES', searchedClients, searches)
+         return setSearchedClients([...searches])
       }
       
    }
-
-   useEffect(() => {
-      console.log('FUNCTION SEARCHED CLIENTS', SearchForClients())
-      return () => {
-         // cleanup
-      }
-   })
 
    const noSearchedClient = () => {
       return (searchedClients === null) ? true : false
@@ -112,7 +103,7 @@ const ClientsReport = (props) => {
                      onKeyPress={SearchForClients}
                      onChange={handleClientSearchChange}
                      className="search-client-input my-3 light-color py-2 px-1 col-lg-5" 
-                     placeholder="SEARCH A CLIENT "
+                     placeholder="SEARCH A CLIENT BY FIRST NAME OR LAST NAME"
                      type="text"/>
 
                      <button 
@@ -174,8 +165,7 @@ const ClientsReport = (props) => {
                            </tr>
             
                         ))}
-                        {/* { clients  && !noSearchedClient() && 
-                        searchedClients.map((searchedClient, index) => (
+                        { clients  && !noSearchedClient() && searchedClients && searchedClients.map((searchedClient, index) => (
                            <tr 
                            className="border-bottom border-dark" key={searchedClient._id}>
                               <td>{index + 1}</td>
@@ -202,7 +192,7 @@ const ClientsReport = (props) => {
                               </button>}
                               
                            </td>
-                        </tr>))} */}
+                        </tr>))}
                         </tbody>
 
                      </table>

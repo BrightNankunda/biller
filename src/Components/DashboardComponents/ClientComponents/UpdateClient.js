@@ -33,7 +33,7 @@ const CreateClient = (props) => {
       return () => {
          // cleanup
       }
-   }, [props.match.params.clientId])
+   }, [client])
 
    const dispatch = useDispatch()
 

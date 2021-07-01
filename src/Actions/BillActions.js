@@ -130,20 +130,21 @@ const DeleteABill = ({billId}) => async (dispatch, getState) => {
 }
 
 const UpdateABill = ({billId, clientId, propertyType,landValue,scale,rentalType,advocate,registered,total}) => async (dispatch, getState) => {
-   console.log('UPDATE BILL REDUX SAYS', billId,clientId, propertyType,landValue,scale,rentalType,advocate,registered,total)
-   // try {
-   //    dispatch({type: BILL_UPDATE_REQUEST})
-   //    const {user} = getState()
-   //    const {data} = await axios.put("http://localhost:7000/api/bill/" + billId, {firstName, lastName, middleName, email, phoneNumber, occupation, address}, {
-   //       headers: {'Authorization': 'Bearer ' + user.token}
-   //    })
-   //    console.log('UPDATE SINGLE BILL REDUX', data)
-   //    dispatch({type: BILL_UPDATE_SUCCESS, payload: data})
-   //    dispatch({type: BILL_UPDATE_FINISHED})
-   // } catch(error) {
-   //    console.log(error.message)
-   //    dispatch({type: BILL_UPDATE_ERROR, payload: error.message})
-   // }
+   // console.log('UPDATE BILL REDUX SAYS', billId,clientId, propertyType,landValue,scale,rentalType,advocate,registered,total)
+   try {
+      dispatch({type: BILL_UPDATE_REQUEST})
+      const {user} = getState()
+      const {data} = await axios.put("http://localhost:7000/api/bill/" + billId, 
+      {billId, clientId, propertyType,landValue,scale,rentalType,advocate,registered,total}, {
+         headers: {'Authorization': 'Bearer ' + user.token}
+      })
+      console.log('UPDATE SINGLE BILL REDUX', data)
+      dispatch({type: BILL_UPDATE_SUCCESS, payload: data})
+      dispatch({type: BILL_UPDATE_FINISHED})
+   } catch(error) {
+      console.log(error.message)
+      dispatch({type: BILL_UPDATE_ERROR, payload: error.message})
+   }
    
 }
 

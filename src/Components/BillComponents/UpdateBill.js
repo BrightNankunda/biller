@@ -46,8 +46,8 @@ const LandBilling = (props) => {
    // HANDLE UPDATE FUNCTION
    const submitHandler = (e) => {
       e.preventDefault();
-      // dispatch(UpdateABill({billId, propertyType, rentalType: rent, advocate, scale, registered: landRegistration, landValue, total, clientId}))
-      console.log(billId, propertyType, rent, advocate, scale, landRegistration, landValue, total, clientId)
+      dispatch(UpdateABill({billId, propertyType, rentalType: rent, advocate, scale, registered: landRegistration, landValue, total, clientId}))
+      // console.log(billId, propertyType, rent, advocate, scale, landRegistration, landValue, total, clientId)
    }
 
    useEffect(() => {
@@ -71,7 +71,7 @@ const LandBilling = (props) => {
       }
       return () => {
       }
-   }, [props.match.params.billId])
+   }, [loading, bill])
 
    const goBack = () => {
       props.history.goBack()
