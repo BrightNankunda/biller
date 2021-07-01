@@ -50,6 +50,7 @@ const LandBilling = (props) => {
       // console.log(billId, propertyType, rent, advocate, scale, landRegistration, landValue, total, clientId)
    }
 
+   // FETCH A SINGLE BILL DISPATCH FUNCTION
    useEffect(() => {
       dispatch(FetchABill(props.match.params.billId))
       setBillId(props.match.params.billId)
@@ -58,6 +59,7 @@ const LandBilling = (props) => {
       }
    }, [props.match.params.billId])
 
+   // SET BILL DATA FUCNTION WHEN IT'S READY
    useEffect(() => {
       if(!loading && bill != null) {
          setPropertyType(bill.propertyType)
@@ -73,8 +75,24 @@ const LandBilling = (props) => {
       }
    }, [loading, bill])
 
+   // GET UPDATE STATE
+   const {loading: loadingBillUpdate, redirectBillUpdator} = useSelector(state => state.updatedBill)
+
+   // HANDLE UPDATE STATE
+   useEffect(() => {
+      if(!loadingBillUpdate && redirectBillUpdator) {
+         props.history.push('/reports/bill/' + bill._id)
+      }
+      return () => {
+         // cleanup
+      }
+   }, [loadingBillUpdate, redirectBillUpdator])
    const goBack = () => {
       props.history.goBack()
+   }
+
+   const registeredStyles = (registeredValue) => {
+      return (registeredValue === landRegistration) ? "green" : null
    }
    
    return (
@@ -116,12 +134,12 @@ const LandBilling = (props) => {
                <div className="advanced-input-wrapper m-2 w-90 my-3">
                   <div className="d-flex flex-col m-2">
                      <select type="select" className="bill-input px-2" id="rental" 
-                        value={rent.rentalOptions}
+                        value={rent}
                         onChange={(e) => setRent(e.target.value)}
                         name="rental">
                         <option disabled value="">CHOOSE RENT TYPE</option>
                         {rentOptions.map(rentOption => (
-                           <option value={rentOption.choice} key={rentOption}>{rentOption.value}</option>
+                           <option value={rentOption.choice} key={rentOption.choice}>{rentOption.value}</option>
                         ))}
                      </select>
                      
@@ -131,12 +149,12 @@ const LandBilling = (props) => {
                <div className="advanced-input-wrapper m-2 w-90 my-3">
                   <div className="d-flex flex-col m-2">
                      <select type="select" className="bill-input px-2" id="advocate" 
-                        value={advocate.advocateOptions}
+                        value={advocate}
                         onChange={(e) => setAdvocate(e.target.value)}
                         name="rental">
                         <option disabled value="">CHOOSE ADVOCATE TYPE</option>
                         {advocateOptions.map(advocateOption => (
-                           <option value={advocateOption.choice} key={advocateOption}>{advocateOption.value}</option>
+                           <option value={advocateOption.choice} key={advocateOption.choice}>{advocateOption.value}</option>
                         ))}
                      </select>
                   </div>
@@ -144,13 +162,13 @@ const LandBilling = (props) => {
                <div className="advanced-input-wrapper w-90 m-2">
                   <div className="d-flex flex-col m-2">
                      <select type="select" 
-                     className="bill-input px-2" 
-                     id="scale" 
-                     value={scale.scaleOptions}
-                     onChange={(e) => setScale(e.target.value)}>
+                        className="bill-input px-2" 
+                        id="scale" 
+                        value={scale}
+                        onChange={(e) => setScale(e.target.value)}>
                         <option disabled value="">CHOOSE SCALE TYPE</option>
                         {scaleOptions.map(scaleOption => (
-                           <option value={scaleOption.choice} key={scaleOption}>{scaleOption.value}</option>
+                           <option value={parseInt(scaleOption.choice)} key={scaleOption.choice}>{scaleOption.value}</option>
                         ))}
                      </select>
                   </div>
@@ -159,8 +177,10 @@ const LandBilling = (props) => {
                   <div className="d-flex m-2">
                      <h4 className="mx-3">IS LAND REGISTERED?</h4>
                      <div className="col-lg-3 d-flex justify-content-between bg-light p-1">
-                        <h4 className="lead land-registration-choice bg-white ml-1" onClick={() => setLandRegistration('0')}>YES</h4>
-                        <h4 className="lead land-registration-choice bg-white mr-1" onClick={() => setLandRegistration('1')}>NO</h4>
+                        <h4 className="lead land-registration-choice bg-white ml-1" 
+                        style={{"background": registeredStyles('0')}} onClick={() => setLandRegistration('0')}>YES</h4>
+                        <h4 className="lead land-registration-choice bg-white mr-1" 
+                        styles={{"background": registeredStyles('1')}} onClick={() => setLandRegistration('1')}>NO</h4>
                      </div>
                   </div>
                </div>

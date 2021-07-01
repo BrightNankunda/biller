@@ -36,6 +36,28 @@ const SingleSchedule = (props) => {
       dispatch(DeleteABill({billId}))
    }
 
+   const rentOptions = [
+      {choice: "1", value : "Rack rent means rent representing the value of the land and buildings"},
+      {choice: "2", value : "Ground rent means rent representing the value of the land without buildings on it"}
+   ]
+
+   const advocateOptions = [
+      {choice: "1", value : "Vendor's Advocate: For deducting title to freehold or leasehold property and perusing and completing conveyance"},
+      {choice: "2", value : "Purchase's Advocate: For investigating title to freehold or leasehold property and preparing and completing conveyance"},
+      {choice: "3", value : "Mortgagor's Advocate: For deducting title to freehold or lease property, perusing mortagage and completing"},
+      {choice: "4", value : "Mortgagee's Advocate: For investigating title to freehold or lease hold property and completing"}
+   ]
+
+   const scaleOptions = [
+      {choice: "1", value : "Scale of charges on sales, purchases, mortgages and debentures"},
+      {choice: "2", value : "Scale of charges for commission on sales, purchases and loans affecting land registered in the land titles registry or unregistered"}
+   ]
+
+   const landRegistrationOptions = [
+      {choice : "YES"},
+      {choice : "NO"}
+   ]
+
    return (
       <div>
          <AppNavbar />
@@ -60,8 +82,10 @@ const SingleSchedule = (props) => {
                <div className="light-color p-2">
                   <h5>CLIENT ID: {bill.createdFor}</h5>
                   <h5>SCHEDULE TYPE: {bill.propertyType}</h5>
-                  <h5>SCALE: {bill.scaleOrRentalType}</h5>
-                  <h5>ADVOCATE CATEGORY: {' ' + bill.advocate}</h5>
+                  <h5>SCALE: {rentOptions[parseInt(bill.scaleOrRentalType)].value}</h5>
+                  <h5>ADVOCATE CATEGORY: {advocateOptions[parseInt(bill.advocate) - 1].value}</h5>
+                  <h5>PROPERTY REGISTERED: {landRegistrationOptions[parseInt(bill.registered)].choice}
+                  </h5>
                   <h5>TOTAL: USH.<span>{' ' + bill.total}</span></h5>
                   <h5>LAND VALUE: USH.<span>{' ' + bill.landValue}</span></h5>
                   <div className="d-flex justify-content-between mt-2 mb-1">
