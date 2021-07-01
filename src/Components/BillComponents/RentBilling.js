@@ -360,10 +360,10 @@ const RentBilling = (props) => {
                </div>
                <div className="advanced-input-wrapper m-2 w-90 my-3">
                   <div className="d-flex m-2">
-                     <h4 className="mx-3">IS LAND REGISTERED?</h4>
+                     <h4 className="mx-3 my-auto">IS LAND REGISTERED?</h4>
                      <div className="col-lg-3 d-flex justify-content-between bg-light p-1">
-                        <h4 className="lead land-registration-choice bg-white ml-1" onClick={() => setRegistered('1')}>YES</h4>
-                        <h4 className="lead land-registration-choice bg-white mr-1" onClick={() => setRegistered('2')}>NO</h4>
+                        <h4 className="lead land-registration-choice bg-white ml-1 cursor-pointer p-2" onClick={() => setRegistered('1')}>YES</h4>
+                        <h4 className="lead land-registration-choice bg-white mr-1 cursor-pointer p-2" onClick={() => setRegistered('2')}>NO</h4>
                      </div>
                   </div>
                </div>

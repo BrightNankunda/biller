@@ -9,6 +9,7 @@ import SideBar from '../BillComponents/SideBar';
  
 const BillsReport = () => {
    const dispatch = useDispatch()
+   
 
    const {loading, bills, billsCount} = useSelector(state => state.userBills)
    
@@ -100,7 +101,7 @@ const BillsReport = () => {
                                     <PencilFill />
                                  </Link>
                                  <span  className="delete-btn-client text-danger m-1">
-                                    <Trash onClick={() => deleteBill(bill._id)}/>
+                                    <Trash onClick={() => deleteBill(bill._id, index)}/>
                                  </span>
                                  </td>
                               </tr>

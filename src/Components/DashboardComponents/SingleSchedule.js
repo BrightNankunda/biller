@@ -82,7 +82,7 @@ const SingleSchedule = (props) => {
                <div className="light-color p-2">
                   <h5>CLIENT ID: {bill.createdFor}</h5>
                   <h5>SCHEDULE TYPE: {bill.propertyType}</h5>
-                  <h5>SCALE: {rentOptions[parseInt(bill.scaleOrRentalType)].value}</h5>
+                  <h5>SCALE: {rentOptions[parseInt(bill.scaleOrRentalType) - 1].value}</h5>
                   <h5>ADVOCATE CATEGORY: {advocateOptions[parseInt(bill.advocate) - 1].value}</h5>
                   <h5>PROPERTY REGISTERED: {landRegistrationOptions[parseInt(bill.registered)].choice}
                   </h5>

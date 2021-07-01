@@ -11,10 +11,22 @@ import SideBar from '../BillComponents/SideBar';
 const ClientsReport = (props) => {
 
    const dispatch = useDispatch()
+   // const [deletingIndex, setDeletingIndex] = useState(null)
+   // const [loadingDeletingIndex, setLoadingDeletingIndex] = useState(false)
    const [deletedId, setDeletedId] = useState(null)
    const [clientSearch, setClientSearch] = useState('')
    const [searchedClients, setSearchedClients] = useState(null)
+   // const [clientsData, setClientsData] = useState()
    
+   // SET LOADING DELETE WHEN DELETING
+   // useEffect(() => {
+   //    if(deletingIndex !== null) {
+   //       setLoadingDelete(true)
+   //    }
+   //    return () => {
+   //             // cleanup
+   //    }
+   // },[deletingIndex])
    // DISPATCH GET CLIENTS ON INITIAL RENDER
    useEffect(() => {
       dispatch(FetchClients())
@@ -23,6 +35,11 @@ const ClientsReport = (props) => {
          // cleanup
       }
    }, [])
+
+   // DELETING CODE
+   // const deleting = (index) => {
+   //    return (index === deletingIndex) ? true : false
+   // }
 
    // LOADING CLIENTS STATE GETTER FUNCTION
    const {loading, clients} = useSelector(state => state.clients)
@@ -39,6 +56,7 @@ const ClientsReport = (props) => {
    useEffect(() => {
       if(redirectDeletor) {
          dispatch(FetchClients())
+         // clientsData.filter(client => client.id != clientId)
          // removeDeletedClient(deletedId)
       }
       return () => {
@@ -47,15 +65,16 @@ const ClientsReport = (props) => {
    }, [redirectDeletor])
 
    // DELETE A SINGLE CLIENT FUNCTION ON CLICKING DELETE BUTTON
-   const deleteClient = (clientId) => {
-      setDeletedId(clientId)
+   const deleteClient = (clientId, idex) => {
+      // setDeletingIndex(parseInt(index))
+      // setDeletedId(clientId)
       dispatch(DeleteSingleClient({clientId}))
    }
 
-   const removeDeletedClient = (deletedId) => {
-      console.log('DELETE ID', deletedId)
-      // clients.filter(client => client._id != deletedId)
-   }
+   // const removeDeletedClient = (deletedId) => {
+   //    console.log('DELETE ID', deletedId)
+   //    // clients.filter(client => client._id != deletedId)
+   // }
    const history = useHistory()
 
    const createClientLink = () => {
@@ -112,7 +131,7 @@ const ClientsReport = (props) => {
                         <PlusLg className="my-auto nav-icon mx-2"/>CREATE NEW CLIENT
                      </button>
                   </div>
-                  {loading && 
+                  {(loading || loadingDelete) &&
                      <div className="w-100">
                         <div className="d-flex justify-content-center my-auto align-content-center">
                            <div className="spinner-border text-primary" role="status">
@@ -122,7 +141,7 @@ const ClientsReport = (props) => {
                      </div>
                   }
 
-                  {!loading && <div className="light-color clients-table my-1 pb-3 pt-3 px-4">
+                  {!loading && !loadingDelete && <div className="light-color clients-table my-1 pb-3 pt-3 px-4">
                      <table className="w-100 ">
                         <thead>
                            <tr>
@@ -156,10 +175,11 @@ const ClientsReport = (props) => {
                               <Trash onClick={() => deleteClient(client._id)}/>
                               </span> }
 
-                              {loadingDelete && <button className="btn btn-danger" type="button" disabled>
+                              {/* deleting(index) */}
+                              {/* {loadingDelete && <button className="btn btn-danger" type="button" disabled>
                                  <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                                  <span className="sr-only">Loading...</span>
-                              </button>}
+                              </button>} */}
                               
                         </td>
                            </tr>
@@ -186,10 +206,11 @@ const ClientsReport = (props) => {
                               <Trash onClick={() => deleteClient(searchedClient._id)}/>
                               </span> }
 
-                              {loadingDelete && <button className="btn btn-danger" type="button" disabled>
+                              {/* deleting(index)  */}
+                              {/* {loadingDelete && <button className="btn btn-danger" type="button" disabled>
                                  <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                                  <span className="sr-only">Loading...</span>
-                              </button>}
+                              </button>} */}
                               
                            </td>
                         </tr>))}
