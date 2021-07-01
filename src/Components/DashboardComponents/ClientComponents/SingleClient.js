@@ -33,6 +33,10 @@ const SingleClient = (props) => {
       dispatch(DeleteSingleClient({clientId}))
    }
 
+   const goBack = () => {
+      props.history.goBack()
+   }
+
    const isClientEmpty = client === null ? true : false
    
 
@@ -52,12 +56,13 @@ const SingleClient = (props) => {
                      <span className="sr-only">Loading...</span>
                   </div>
             </div>}
-            <div className="col-lg-12 d-flex mx-auto mt-3">
+            <div className="col-lg-12  mx-auto mt-3">
+               <button className="btn btn-primary my-2" onClick={goBack}>BACK</button>
                {!loading && client && <div className=" w-100">
                
                   <div className="light-color p-3">
                      <h4 className="text-center"> NAMES: {client.firstName + ' ' + client.lastName}</h4>
-                  
+                     <h4 className="text-center"> MIDDLE NAME: {client.middleName}</h4>
                      <h4 className="text-center">EMAIL: {client.email}</h4>
                      <h4 className="text-center">PHONE NUMBER: {client.phoneNumber}</h4>
                      <h4 className="text-center">OCCUPATION: {client.occupation}</h4>

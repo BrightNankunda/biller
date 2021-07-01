@@ -80,11 +80,11 @@ const BillsReport = () => {
                            </tr>
                         </thead>
                         <tbody>
-                        {bills.map(bill => (
+                        {bills.map((bill, index) => (
                               <tr className="border-bottom border-dark" key={bill._id}>
                                  <td>
                                     <Link to={"/reports/bill/" + bill._id} className="bill-link">
-                                       {bill._id}
+                                       {index + 1}
                                     </Link>
                                  </td>
 

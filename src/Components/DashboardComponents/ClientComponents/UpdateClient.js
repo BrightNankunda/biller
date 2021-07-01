@@ -7,17 +7,33 @@ import SideBar from '../../BillComponents/SideBar';
 import ClientsLink from './ClientsLink';
  
 const CreateClient = (props) => {
+   const id = props.match.params.clientId
    
    const {loading, client} = useSelector(state => state.singleClient)
    console.log('LOADING', loading, 'CLIENT', client)
 
-   const [firstName, setFirstName] = useState(client.firstName)
-   const [middleName, setMiddleName] = useState(client.middleName)
-   const [lastName, setLastName] = useState(client.lastName)
-   const [email, setEmail] = useState(client.email)
-   const [phoneNumber, setPhoneNumber] = useState(client.phoneNumber)
-   const [occupation, setOccupation] = useState(client.occupation)
-   const [address, setAddress] = useState(client.address)
+   const [firstName, setFirstName] = useState('')
+   const [middleName, setMiddleName] = useState('')
+   const [lastName, setLastName] = useState('')
+   const [email, setEmail] = useState('')
+   const [phoneNumber, setPhoneNumber] = useState('')
+   const [occupation, setOccupation] = useState('')
+   const [address, setAddress] = useState('')
+
+   useEffect(() => {
+      if(!loading && client !== null) {
+         setFirstName(client.firstName)
+         setMiddleName(client.middleName)
+         setLastName(client.lastName)
+         setEmail(client.email)
+         setPhoneNumber(client.phoneNumber)
+         setOccupation(client.occupation)
+         setAddress(client.address)
+      } 
+      return () => {
+         // cleanup
+      }
+   }, [props.match.params.clientId])
 
    const dispatch = useDispatch()
 
@@ -34,14 +50,13 @@ const CreateClient = (props) => {
       }
    }, [redirectUpdator])
 
-   const id = props.match.params.clientId
 
    useEffect(() => {
       dispatch(FetchSingleClient(props.match.params.clientId))
       return () => {
          // cleanup
       }
-   }, [id])
+   }, [props.match.params.clientId])
 
    const goBack = () => {
       props.history.goBack()

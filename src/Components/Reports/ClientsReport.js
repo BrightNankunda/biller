@@ -13,7 +13,7 @@ const ClientsReport = (props) => {
    const dispatch = useDispatch()
    const [deletedId, setDeletedId] = useState(null)
    const [clientSearch, setClientSearch] = useState('')
-   const [searchedClient, setSearchedClient] = useState(null)
+   const [searchedClients, setSearchedClients] = useState(null)
    
    // DISPATCH GET CLIENTS ON INITIAL RENDER
    useEffect(() => {
@@ -63,30 +63,35 @@ const ClientsReport = (props) => {
    }
 
    // SEARCH FUNCTION
-   const SearchForClient = (e) => {
+   const SearchForClients = (e) => {
       if(clientSearch.trim() === '') return;
       if(e.key === 'Enter') {
-         const searches = clients.find(client => client.firstName.toLowerCase() === clientSearch.toLowerCase())
-         setSearchedClient(searches)
+         return clients.filter(client => {
+            return client.firstName.search(clientSearch) !== -1
+         })
+         // const searches = clients.find(client => client.firstName.toLowerCase() === clientSearch.toLowerCase())
+         // setSearchedClients({...searches})
+         // console.log('SEARCHES', searchedClients, searches)
       }
+      
    }
 
+   useEffect(() => {
+      console.log('FUNCTION SEARCHED CLIENTS', SearchForClients())
+      return () => {
+         // cleanup
+      }
+   })
+
    const noSearchedClient = () => {
-      return (searchedClient === null) ? true : false
+      return (searchedClients === null) ? true : false
    }
 
    const handleClientSearchChange = (e) => {
       if(e.target.value.trim() === '') {
-         setSearchedClient(null)
+         setSearchedClients(null)
       }
       setClientSearch(e.target.value)
-   }
-
-   const clientLostFocus = () => {
-      console.log('LOST FOCUS')
-   }
-   const focusedClientSearch = () => {
-      console.log('GAINED FOCUS')
    }
 
    return (
@@ -104,9 +109,7 @@ const ClientsReport = (props) => {
                   <div className="d-flex justify-content-between ">
                      <input 
                      value={clientSearch}
-                     onKeyPress={SearchForClient}
-                     onBlur={() => clientLostFocus()}
-                     onFocus={() => focusedClientSearch()}
+                     onKeyPress={SearchForClients}
                      onChange={handleClientSearchChange}
                      className="search-client-input my-3 light-color py-2 px-1 col-lg-5" 
                      placeholder="SEARCH A CLIENT "
@@ -141,10 +144,10 @@ const ClientsReport = (props) => {
                            </tr>
                         </thead>
                         <tbody>
-                        { clients  && noSearchedClient() && clients.map(client => (
+                        { clients  && noSearchedClient() && clients.map((client, index) => (
 
                            <tr className="border-bottom border-dark" key={client._id}>
-                              <td>1</td>
+                              <td>{index + 1}</td>
                               <td><Link to={"/reports/client/" + client._id}>{client.firstName}</Link></td>
                               <td>{client.lastName}</td>
                               <td>
@@ -171,9 +174,11 @@ const ClientsReport = (props) => {
                            </tr>
             
                         ))}
-                        { clients  && !noSearchedClient() && searchedClient && <tr 
+                        {/* { clients  && !noSearchedClient() && 
+                        searchedClients.map((searchedClient, index) => (
+                           <tr 
                            className="border-bottom border-dark" key={searchedClient._id}>
-                              <td>1</td>
+                              <td>{index + 1}</td>
                               <td><Link to={"/reports/client/" + searchedClient._id}>{searchedClient.firstName}</Link></td>
                               <td>{searchedClient.lastName}</td>
                               <td>
@@ -197,7 +202,7 @@ const ClientsReport = (props) => {
                               </button>}
                               
                            </td>
-                        </tr>}
+                        </tr>))} */}
                         </tbody>
 
                      </table>

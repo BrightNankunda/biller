@@ -10,14 +10,14 @@ const LandBilling = (props) => {
    console.log(bill)
 
    const [billId, setBillId] = useState('')
-   const [clientId, setClientId] = useState(bill.createdFor)
-   const [propertyType, setPropertyType] = useState(bill.propertyType)
-   const [rent, setRent] = useState(bill.scaleOrRentalType)
-   const [advocate, setAdvocate] = useState(bill.advocate)
-   const [scale, setScale] = useState(bill.scaleOrRentalType)
-   const [landRegistration, setLandRegistration] = useState(bill.registered)
-   const [landValue, setLandValue] = useState(bill.landValue)
-   const [total, setTotal] = useState(bill.total)
+   const [clientId, setClientId] = useState('')
+   const [propertyType, setPropertyType] = useState('')
+   const [rent, setRent] = useState('')
+   const [advocate, setAdvocate] = useState('')
+   const [scale, setScale] = useState('')
+   const [landRegistration, setLandRegistration] = useState('')
+   const [landValue, setLandValue] = useState('')
+   const [total, setTotal] = useState('')
 
    const rentOptions = [
       {choice: "1", value : "Rack rent means rent representing the value of the land and buildings"},
@@ -46,9 +46,9 @@ const LandBilling = (props) => {
    // HANDLE UPDATE FUNCTION
    const submitHandler = (e) => {
       e.preventDefault();
-      dispatch(UpdateABill({billId, propertyType, rentalType: rent, advocate, scale, registered: landRegistration, landValue, total, clientId}))
+      // dispatch(UpdateABill({billId, propertyType, rentalType: rent, advocate, scale, registered: landRegistration, landValue, total, clientId}))
+      console.log(billId, propertyType, rent, advocate, scale, landRegistration, landValue, total, clientId)
    }
-
 
    useEffect(() => {
       dispatch(FetchABill(props.match.params.billId))
@@ -58,6 +58,20 @@ const LandBilling = (props) => {
       }
    }, [props.match.params.billId])
 
+   useEffect(() => {
+      if(!loading && bill != null) {
+         setPropertyType(bill.propertyType)
+         setClientId(bill.createdFor)
+         setRent(bill.scaleOrRentalType)
+         setScale(bill.scaleOrRentalType)
+         setLandValue(bill.landValue)
+         setLandRegistration(bill.registered)
+         setAdvocate(bill.advocate)
+         setTotal(bill.total)
+      }
+      return () => {
+      }
+   }, [props.match.params.billId])
 
    const goBack = () => {
       props.history.goBack()
