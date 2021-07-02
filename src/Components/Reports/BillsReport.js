@@ -82,7 +82,7 @@ const BillsReport = () => {
                               <th>#</th>
                               <th>CLIENT NAME</th>
                               <th>SCHEDULE</th>
-                              <th>LAND VALUE</th>
+                              <th>TOTAL</th>
                               <th>ACTIONS</th>
                            </tr>
                         </thead>
@@ -100,7 +100,7 @@ const BillsReport = () => {
                                     <Link to={"/reports/bill/" + bill._id} className="bill-link">
                                        {bill.propertyType} SCHEDULE</Link>
                                  </td>
-                                 <td>{bill.landValue}</td>
+                                 <td>{bill.total}</td>
                                  <td>
                                  <Link className="update-link-client m-1" to={"/reports/billToUpdate/" + bill._id}>
                                     <PencilFill />
