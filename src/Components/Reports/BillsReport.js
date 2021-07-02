@@ -10,8 +10,14 @@ import SideBar from '../BillComponents/SideBar';
 const BillsReport = () => {
    const dispatch = useDispatch()
    
-
    const {loading, bills, billsCount} = useSelector(state => state.userBills)
+   const {loading: loadingClients, clients} = useSelector(state => state.clients)
+   console.log('LOADING CLIENTS', loadingClients, 'CLIENTS FROM BILLS REPORT', clients)
+   console.log('LOADING', loading, 'BILLS', bills, 'NUMBER OF BILLS', billsCount)
+   
+   const {loading: loadingBillDelete, redirectBillDeletor} = useSelector(state => state.deletedBill)
+   console.log('DELETED BILL', 'REDIRECT BILL DELETOR', redirectBillDeletor)
+
    
    console.log(billsCount, 'USERBILLS', bills)
    useEffect(() => {
@@ -22,16 +28,11 @@ const BillsReport = () => {
       }
    }, [])
 
-   const {loading: loadingClients, clients} = useSelector(state => state.clients)
-   console.log('LOADING CLIENTS', loadingClients, 'CLIENTS FROM BILLS REPORT', clients)
-   console.log('LOADING', loading, 'BILLS', bills, 'NUMBER OF BILLS', billsCount)
-
-   const {loading: loadingBillDelete, redirectBillDeletor} = useSelector(state => state.deletedBill)
-   console.log('DELETED BILL', 'REDIRECT BILL DELETOR', redirectBillDeletor)
 
    useEffect(() => {
       if(redirectBillDeletor) {
-          dispatch(AllUserBills())
+         dispatch(AllUserBills())
+         dispatch(FetchClients())
       }
       return () => {
                // cleanup
@@ -44,7 +45,12 @@ const BillsReport = () => {
 
    // FUNCTION TO FIND AND RETURN BILL OWNER DETAILS
    const getClientDetails = (id) => {
-      return clients.find(client => client._id === id)
+      console.log('ID', typeof(id) )
+      if(id === null) return
+      // return clients.find(client => client._id === id)
+      return clients.find(client => client._id === id).firstName
+      // return (id !== null) ? clients.find(client => client._id === id) : ''
+
    }
 
    return (
@@ -91,7 +97,7 @@ const BillsReport = () => {
 
                                  <td>
                                     <Link to={"/reports/bill/" + bill._id} className="bill-link">
-                                       { bills && getClientDetails(bill.createdFor).firstName}       
+                                       { clients && bills  && getClientDetails(bill.createdFor)}       
                                     </Link>
                                  </td>
                                  <td>{bill.propertyType} SCHEDULE</td>

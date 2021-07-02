@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {Link} from 'react-router-dom'
 import {useHistory} from 'react-router'
 import { DeleteSingleClient, FetchClients } from '../../Actions/ClientActions';
+import { AllUserBills } from '../../Actions/BillActions';
 
 import AppNavbar from '../AppNavbar';
 import SideBar from '../BillComponents/SideBar';
@@ -56,6 +57,7 @@ const ClientsReport = (props) => {
    useEffect(() => {
       if(redirectDeletor) {
          dispatch(FetchClients())
+         dispatch(AllUserBills())
          // clientsData.filter(client => client.id != clientId)
          // removeDeletedClient(deletedId)
       }
