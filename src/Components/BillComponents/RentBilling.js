@@ -11,6 +11,7 @@ const RentBilling = (props) => {
 
    const [rentalType, setRentalType] = useState('')
    const [advocate, setAdvocate] = useState('')
+   const [scale, setScale] = useState('')
    const [registered, setRegistered] = useState('')
    const [landValue, setLandValue] = useState('')
    const [total, setTotal] = useState('')
@@ -63,24 +64,29 @@ const RentBilling = (props) => {
                   if(parseInt(registered) === 1) {
                      const total = parseInt(landValue) *  0.15
                      setTotal(total)
-                     dispatch(SaveBill({clientId, propertyType, landValue,rentalType,advocate,registered, total}))
                      // THEN DISPATCH
+                     // dispatch(SaveBill({clientId, propertyType, landValue,rentalType,advocate,registered, total}))
+                     toLocalStorageAndRedirect(clientId,propertyType, landValue,scale, rentalType,advocate,registered,total)
                   } else if(parseInt(registered) === 2) {
                      const total = parseInt(landValue) *  0.15 + 100000
                      setTotal(total)
-                     dispatch(SaveBill({clientId, propertyType, landValue,rentalType,advocate,registered, total}))
+                     // dispatch(SaveBill({clientId, propertyType, landValue,rentalType,advocate,registered, total}))
                      // THEN DISPATCH
+                     toLocalStorageAndRedirect(clientId,propertyType, landValue,scale, rentalType,advocate,registered,total)
+
                   }
                } else if(parseInt(landValue) < 20000000) {
                  if(parseInt(registered) === 1) {
                      const total = parseInt(landValue) *  0.1
                      setTotal(total)
-                     dispatch(SaveBill({clientId, propertyType, landValue,rentalType,advocate,registered, total}))
+                     // dispatch(SaveBill({clientId, propertyType, landValue,rentalType,advocate,registered, total}))
+                     toLocalStorageAndRedirect(clientId,propertyType, landValue,scale, rentalType,advocate,registered,total)
                      // THEN DISPATCH
                   } else if(parseInt(registered) === 2) {
                      const total = parseInt(landValue) *  0.1 + 100000
                      setTotal(total)
-                     dispatch(SaveBill({clientId, propertyType, landValue,rentalType,advocate,registered, total}))
+                     // dispatch(SaveBill({clientId, propertyType, landValue,rentalType,advocate,registered, total}))
+                     toLocalStorageAndRedirect(clientId,propertyType, landValue,scale, rentalType,advocate,registered,total)
                      // THEN DISPATCH
                   }
 
@@ -88,12 +94,14 @@ const RentBilling = (props) => {
                   if(parseInt(registered) === 1) {
                         const total = parseInt(landValue) *  0.05
                         setTotal(total)
-                        dispatch(SaveBill({clientId, propertyType, landValue,rentalType,advocate,registered, total}))
+                        // dispatch(SaveBill({clientId, propertyType, landValue,rentalType,advocate,registered, total}))
+                        toLocalStorageAndRedirect(clientId,propertyType, landValue,scale, rentalType,advocate,registered,total)
                         // THEN DISPATCH
                      } else if(parseInt(registered) === 2) {
                         const total = parseInt(landValue) *  0.05 + 100000
                         setTotal(total)
-                        dispatch(SaveBill({clientId, propertyType, landValue,rentalType,advocate,registered,total}))
+                        toLocalStorageAndRedirect(clientId,propertyType, landValue,scale, rentalType,advocate,registered,total)
+                        // dispatch(SaveBill({clientId, propertyType, landValue,rentalType,advocate,registered,total}))
                         // THEN DISPATCH
                      }
                   }
@@ -103,22 +111,26 @@ const RentBilling = (props) => {
                      const total = (parseInt(landValue) *  0.15 * 1.5)
                      if(total < 100000) {
                         setTotal(100000)
-                        dispatch(SaveBill({clientId, propertyType, landValue,rentalType,advocate,registered,total}))
+                        // dispatch(SaveBill({clientId, propertyType, landValue,rentalType,advocate,registered,total}))
+                        toLocalStorageAndRedirect(clientId,propertyType, landValue,scale, rentalType,advocate,registered,total)
                      } else {
 
                         setTotal(total)
-                        dispatch(SaveBill({clientId, propertyType, landValue,rentalType,advocate,registered,total}))
+                        // dispatch(SaveBill({clientId, propertyType, landValue,rentalType,advocate,registered,total}))
+                        toLocalStorageAndRedirect(clientId,propertyType, landValue,scale, rentalType,advocate,registered,total)
                      } 
                      // THEN DISPATCH
                   } else if(parseInt(registered) === 2) {
                      const total = (parseInt(landValue) *  0.15 * 1.5) 
                      if(total < 100000) {
                         setTotal(100000)
-                        dispatch(SaveBill({clientId, propertyType, landValue,rentalType,advocate,registered,total}))
+                        // dispatch(SaveBill({clientId, propertyType, landValue,rentalType,advocate,registered,total}))
+                        toLocalStorageAndRedirect(clientId,propertyType, landValue,scale, rentalType,advocate,registered,total)
                      } else {
 
                         setTotal(total + 100000)
-                        dispatch(SaveBill({clientId, propertyType, landValue,rentalType,advocate,registered,total}))
+                        // dispatch(SaveBill({clientId, propertyType, landValue,rentalType,advocate,registered,total}))
+                        toLocalStorageAndRedirect(clientId,propertyType, landValue,scale, rentalType,advocate,registered,total)
                      }
                      // THEN DISPATCH
                   }
@@ -127,22 +139,26 @@ const RentBilling = (props) => {
                      const total = (parseInt(landValue) *  0.1 * 1.5)
                      if(total < 100000) {
                         setTotal(100000)
-                        dispatch(SaveBill({clientId, propertyType, landValue,rentalType,advocate,registered,total}))
+                        // dispatch(SaveBill({clientId, propertyType, landValue,rentalType,advocate,registered,total}))
+                        toLocalStorageAndRedirect(clientId,propertyType, landValue,scale, rentalType,advocate,registered,total)
                      } else {
 
                         setTotal(total)
-                        dispatch(SaveBill({clientId, propertyType, landValue,rentalType,advocate,registered,total}))
+                        // dispatch(SaveBill({clientId, propertyType, landValue,rentalType,advocate,registered,total}))
+                        toLocalStorageAndRedirect(clientId,propertyType, landValue,scale, rentalType,advocate,registered,total)
                      } 
                      // THEN DISPATCH
                   } else if(parseInt(registered) === 2) {
                      const total = (parseInt(landValue) *  0.1 * 1.5) 
                      if(total < 100000) {
                         setTotal(100000)
-                        dispatch(SaveBill({clientId, propertyType, landValue,rentalType,advocate,registered,total}))
+                        // dispatch(SaveBill({clientId, propertyType, landValue,rentalType,advocate,registered,total}))
+                        toLocalStorageAndRedirect(clientId,propertyType, landValue,scale, rentalType,advocate,registered,total)
                      } else {
 
                         setTotal(total + 100000)
-                        dispatch(SaveBill({clientId, propertyType, landValue,rentalType,advocate,registered,total}))
+                        // dispatch(SaveBill({clientId, propertyType, landValue,rentalType,advocate,registered,total}))
+                        toLocalStorageAndRedirect(clientId,propertyType, landValue,scale, rentalType,advocate,registered,total)
                      }
                      // THEN DISPATCH
                   }
@@ -151,22 +167,26 @@ const RentBilling = (props) => {
                      const total = (parseInt(landValue) *  0.05 * 1.5)
                      if(total < 100000) {
                         setTotal(100000)
-                        dispatch(SaveBill({clientId, propertyType, landValue,rentalType,advocate,registered,total}))
+                        // dispatch(SaveBill({clientId, propertyType, landValue,rentalType,advocate,registered,total}))
+                        toLocalStorageAndRedirect(clientId,propertyType, landValue,scale, rentalType,advocate,registered,total)
                      } else {
 
                         setTotal(total)
-                        dispatch(SaveBill({clientId, propertyType, landValue,rentalType,advocate,registered,total}))
+                        // dispatch(SaveBill({clientId, propertyType, landValue,rentalType,advocate,registered,total}))
+                        toLocalStorageAndRedirect(clientId,propertyType, landValue,scale, rentalType,advocate,registered,total)
                      } 
                      // THEN DISPATCH
                   } else if(parseInt(registered) === 2) {
                      const total = (parseInt(landValue) *  0.05 * 1.5) 
                      if(total < 100000) {
                         setTotal(100000)
-                        dispatch(SaveBill({clientId, propertyType, landValue,rentalType,advocate,registered,total}))
+                        // dispatch(SaveBill({clientId, propertyType, landValue,rentalType,advocate,registered,total}))
+                        toLocalStorageAndRedirect(clientId,propertyType, landValue,scale, rentalType,advocate,registered,total)
                      } else {
 
                         setTotal(total + 100000)
-                        dispatch(SaveBill({clientId, propertyType, landValue,rentalType,advocate,registered,total}))
+                        // dispatch(SaveBill({clientId, propertyType, landValue,rentalType,advocate,registered,total}))
+                        toLocalStorageAndRedirect(clientId,propertyType, landValue,scale, rentalType,advocate,registered,total)
                      }
                      // THEN DISPATCH
                   }
@@ -180,12 +200,14 @@ const RentBilling = (props) => {
                   if(parseInt(registered) === 1) {
                      const total = parseInt(landValue) *  0.3
                      setTotal(total)
-                     dispatch(SaveBill({clientId, propertyType, landValue,rentalType,advocate,registered,total}))
+                     // dispatch(SaveBill({clientId, propertyType, landValue,rentalType,advocate,registered,total}))
+                     toLocalStorageAndRedirect(clientId,propertyType, landValue,scale, rentalType,advocate,registered,total)
                      // THEN DISPATCH
                   } else if(parseInt(registered) === 2) {
                      const total = parseInt(landValue) *  0.3 + 100000
                      setTotal(total)
-                     dispatch(SaveBill({clientId, propertyType, landValue,rentalType,advocate,registered,total}))
+                     // dispatch(SaveBill({clientId, propertyType, landValue,rentalType,advocate,registered,total}))
+                     toLocalStorageAndRedirect(clientId,propertyType, landValue,scale, rentalType,advocate,registered,total)
                      // THEN DISPATCH
                   }
                } else if(parseInt(landValue) < 4500000) {
@@ -195,7 +217,8 @@ const RentBilling = (props) => {
                      const r3 = (r2 * 0.05)
                      const total = r1 + r3
                      setTotal(total)
-                     dispatch(SaveBill({clientId, propertyType, landValue,rentalType,advocate,registered,total}))
+                     // dispatch(SaveBill({clientId, propertyType, landValue,rentalType,advocate,registered,total}))
+                     toLocalStorageAndRedirect(clientId,propertyType, landValue,scale, rentalType,advocate,registered,total)
                      // THEN DISPATCH
                   } else if(parseInt(registered) === 2) {
                      const r1 = 1500000 * 0.3
@@ -203,7 +226,8 @@ const RentBilling = (props) => {
                      const r3 = (r2 * 0.05)
                      const total = r1 + r3 + 100000
                      setTotal(total)
-                     dispatch(SaveBill({clientId, propertyType, landValue,rentalType,advocate,registered,total}))
+                     // dispatch(SaveBill({clientId, propertyType, landValue,rentalType,advocate,registered,total}))
+                     toLocalStorageAndRedirect(clientId,propertyType, landValue,scale, rentalType,advocate,registered,total)
                      // THEN DISPATCH
                   }
 
@@ -217,7 +241,8 @@ const RentBilling = (props) => {
                      const rt3 = r3 * 0.02
                      const total = rt1 + rt2 + rt3
                      setTotal(total)
-                     dispatch(SaveBill({clientId, propertyType, landValue,rentalType,advocate,registered,total}))
+                     // dispatch(SaveBill({clientId, propertyType, landValue,rentalType,advocate,registered,total}))
+                     toLocalStorageAndRedirect(clientId,propertyType, landValue,scale, rentalType,advocate,registered,total)
                      // THEN DISPATCH
                   } else if(parseInt(registered) === 2) {
                      const rt1 = 1500000 * 0.3
@@ -227,7 +252,8 @@ const RentBilling = (props) => {
                      const rt3 = r3 * 0.02
                      const total = rt1 + rt2 + rt3 + 100000
                      setTotal(total)
-                     dispatch(SaveBill({clientId, propertyType, landValue,rentalType,advocate,registered,total}))
+                     // dispatch(SaveBill({clientId, propertyType, landValue,rentalType,advocate,registered,total}))
+                     toLocalStorageAndRedirect(clientId,propertyType, landValue,scale, rentalType,advocate,registered,total)
                      // THEN DISPATCH
                   }
                }
@@ -237,12 +263,14 @@ const RentBilling = (props) => {
                   if(parseInt(registered) === 1) {
                      const total = parseInt(landValue) *  0.3 * 0.5
                      setTotal(total)
-                     dispatch(SaveBill({clientId, propertyType, landValue,rentalType,advocate,registered,total}))
+                     // dispatch(SaveBill({clientId, propertyType, landValue,rentalType,advocate,registered,total}))
+                     toLocalStorageAndRedirect(clientId,propertyType, landValue,scale, rentalType,advocate,registered,total)
                      // THEN DISPATCH
                   } else if(parseInt(registered) === 2) {
                      const total = parseInt(landValue) *  0.3 * 0.5 + 100000
                      setTotal(total)
-                     dispatch(SaveBill({clientId, propertyType, landValue,rentalType,advocate,registered,total}))
+                     // dispatch(SaveBill({clientId, propertyType, landValue,rentalType,advocate,registered,total}))
+                     toLocalStorageAndRedirect(clientId,propertyType, landValue,scale, rentalType,advocate,registered,total)
                      // THEN DISPATCH
                   }
                } else if(parseInt(landValue) < 4500000) {
@@ -252,7 +280,8 @@ const RentBilling = (props) => {
                      const r3 = (r2 * 0.05)
                      const total = ((r1 + r3) * 0.5)
                      setTotal(total)
-                     dispatch(SaveBill({clientId, propertyType, landValue,rentalType,advocate,registered,total}))
+                     // dispatch(SaveBill({clientId, propertyType, landValue,rentalType,advocate,registered,total}))
+                     toLocalStorageAndRedirect(clientId,propertyType, landValue,scale, rentalType,advocate,registered,total)
                      // THEN DISPATCH
                   } else if(parseInt(registered) === 2) {
                      const r1 = 1500000 * 0.3
@@ -260,7 +289,8 @@ const RentBilling = (props) => {
                      const r3 = (r2 * 0.05)
                      const total = ((r1 + r3) * 0.05) + 100000
                      setTotal(total)
-                     dispatch(SaveBill({clientId, propertyType, landValue,rentalType,advocate,registered,total}))
+                     // dispatch(SaveBill({clientId, propertyType, landValue,rentalType,advocate,registered,total}))
+                     toLocalStorageAndRedirect(clientId,propertyType, landValue,scale, rentalType,advocate,registered,total)
                      // THEN DISPATCH
                   }
 
@@ -273,7 +303,8 @@ const RentBilling = (props) => {
                      const rt3 = r3 * 0.02
                      const total = ((rt1 + rt2 + rt3) * 0.5)
                      setTotal(total)
-                     dispatch(SaveBill({clientId, propertyType, landValue,rentalType,advocate,registered,total}))
+                     // dispatch(SaveBill({clientId, propertyType, landValue,rentalType,advocate,registered,total}))
+                     toLocalStorageAndRedirect(clientId,propertyType, landValue,scale, rentalType,advocate,registered,total)
                      // THEN DISPATCH
                   } else if(parseInt(registered) === 2) {
                      const rt1 = 1500000 * 0.3
@@ -283,7 +314,8 @@ const RentBilling = (props) => {
                      const rt3 = r3 * 0.02
                      const total = ((rt1 + rt2 + rt3) * 0.5) + 100000
                      setTotal(total)
-                     dispatch(SaveBill({clientId, propertyType, landValue,rentalType,advocate,registered,total}))
+                     // dispatch(SaveBill({clientId, propertyType, landValue,rentalType,advocate,registered,total}))
+                     toLocalStorageAndRedirect(clientId,propertyType, landValue,scale, rentalType,advocate,registered,total)
                      // THEN DISPATCH
                   }
                }
@@ -298,6 +330,17 @@ const RentBilling = (props) => {
 
    const goBack = () => {
       props.history.goBack()
+   }
+
+   // STORE TO LOCALSTORAGE
+   const toLocalStorageAndRedirect = (clientId,propertyType, landValue,scale, rentalType,advocate,registered,total) => {
+      localStorage.setItem("Schedule Data", JSON.stringify(
+         {"clientId": clientId, "propertyType": propertyType, 
+         "landValue": landValue, "scale": scale, "advocate": advocate,
+         "registered": registered,"rentalType": rentalType, "total": total
+      }))
+      // console.log({"clientId": clientId, "propertyType": propertyType, "landValue": landValue, "scale": scale, "advocate": advocate,"registered": registered, "total": total})
+      props.history.push('/schedules/billOutput')
    }
    
    return (
