@@ -6,6 +6,10 @@ const AppNavbar = (props) => {
 
   const history = useHistory()
 
+  const goHome = () => {
+    history.push('/')
+  } 
+
   const createClientLink = () => {
     history.push('/reports/addClient')
   }
@@ -16,7 +20,9 @@ const AppNavbar = (props) => {
 
   return (
     <div className="col-lg-12 blue d-flex justify-content-between align-content-center align-items-center">
-      <div className="col-lg-2 mr-2 justify-content-center align-content-center align-items-center">
+      <div 
+      onClick={goHome}
+      className="col-lg-2 mr-2 justify-content-center align-content-center align-items-center">
         <h3 className="cursor-pointer text-center text-white" >UG BILL</h3>
       </div>
 

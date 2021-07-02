@@ -358,21 +358,20 @@ const RentBilling = (props) => {
                </div>
                
                <div className="advanced-input-wrapper m-2 w-90 my-3 bg-light">
-                  <div className="d-flex mr-2">
-                     <h4 className="px-3 py-2 my-auto lead bg-white">IS THE LEASE REGISTERED?</h4>
-                     <div className="col-lg-3 d-flex justify-content-between bg-light p-1">
-                        <h4 
-                        className="lead land-registration-choice my-auto bg-white ml-1 cursor-pointer p-2" 
-                        onClick={() => setRegistered('1')}>YES</h4>
-                        <h4 
-                        className="lead land-registration-choice my-auto bg-white mr-1 cursor-pointer p-2" 
-                        onClick={() => setRegistered('2')}>NO</h4>
-                     </div>
+                  <div className="d-flex flex-col m-2">
+                     <select type="select" 
+                     className="bill-input px-2" 
+                     value={registered}
+                     id="registered" onChange={(e) => setRegistered(e.target.value)}>
+                        <option disabled value="">IS THE LEASE REGISTERED?</option>
+                        <option value="1">YES</option>
+                        <option value="2">NO</option>
+                     </select>
                   </div>
                </div>
                <div className="advanced-input-wrapper m-2 my-3 w-90">
                   <div className="d-flex justify-content-between">
-                     <h4 className="mx-3 lead">INPUT VALUE OF LAND</h4>
+                     <h4 className="mx-3 lead my-auto">INPUT VALUE OF LAND</h4>
                      <input type="number"
                      value={landValue}
                      onChange={(e) => setLandValue(e.target.value)}
