@@ -35,7 +35,7 @@ const CreateNewClientReducer = (state={loading: false, redirectCreator: false}, 
    }
 }
 
-const FetchAllClientsReducer = (state={}, action) => {
+const FetchAllClientsReducer = (state={clients: null}, action) => {
    switch(action.type) {
       case FETCH_CLIENTS_REQUEST:
          return { ...state, loading: true}

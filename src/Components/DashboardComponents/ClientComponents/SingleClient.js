@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import { Link } from 'react-router-dom'
-import { DeleteSingleClient, FetchSingleClient } from '../../../Actions/ClientActions'
+import { AllUserBills } from '../../../Actions/BillActions'
+import { DeleteSingleClient, FetchClients, FetchSingleClient } from '../../../Actions/ClientActions'
 import AppNavbar from '../../AppNavbar'
 import SideBar from '../../BillComponents/SideBar'
 
@@ -22,6 +23,8 @@ const SingleClient = (props) => {
 
    useEffect(() => {
       if(redirectDeletor) {
+         dispatch(FetchClients())
+         dispatch(AllUserBills())
          props.history.replace('/reports/clients')
       }
       return () => {

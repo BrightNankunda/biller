@@ -1,7 +1,8 @@
 import React, {useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { FetchABill, DeleteABill } from '../../Actions/BillActions';
+import { FetchABill, DeleteABill, AllUserBills } from '../../Actions/BillActions';
+import { FetchClients } from '../../Actions/ClientActions';
 import AppNavbar from '../AppNavbar';
 import SideBar from '../BillComponents/SideBar';
  
@@ -25,6 +26,8 @@ const SingleSchedule = (props) => {
 
    useEffect(() => {
       if(redirectBillDeletor) {
+         dispatch(AllUserBills())
+         dispatch(FetchClients())
          props.history.push('/reports/bills')
       }
       return () => {
@@ -55,7 +58,8 @@ const SingleSchedule = (props) => {
 
    const landRegistrationOptions = [
       {choice : "YES"},
-      {choice : "NO"}
+      {choice: "YES"},
+      {choice : "NO"},
    ]
 
    return (
@@ -82,12 +86,13 @@ const SingleSchedule = (props) => {
                <div className="light-color p-2">
                   <h5>CLIENT ID: {bill.createdFor}</h5>
                   <h5>SCHEDULE TYPE: {bill.propertyType}</h5>
-                  <h5>SCALE: {rentOptions[parseInt(bill.scaleOrRentalType) - 1].value}</h5>
+                  {bill.propertyType === "LAND" && <h5>SCALE: {scaleOptions[parseInt(bill.scaleOrRentalType) - 1].value}</h5>}
+                  {bill.propertyType === "RENT" && <h5>RENT: {rentOptions[parseInt(bill.scaleOrRentalType) - 1].value}</h5>}
                   <h5>ADVOCATE CATEGORY: {advocateOptions[parseInt(bill.advocate) - 1].value}</h5>
                   <h5>PROPERTY REGISTERED: {landRegistrationOptions[parseInt(bill.registered)].choice}
                   </h5>
-                  <h5>TOTAL: USH.<span>{' ' + bill.total}</span></h5>
                   <h5>LAND VALUE: USH.<span>{' ' + bill.landValue}</span></h5>
+                  <h5>TOTAL: USH.<span>{' ' + bill.total}</span></h5>
                   <div className="d-flex justify-content-between mt-2 mb-1">
                      <Link to={"/reports/billToUpdate/" + bill._id} className="update-link">UPDATE</Link>
                      <button className="btn delete-btn" onClick={() => DeleteBill(bill._id)}>DELETE</button>

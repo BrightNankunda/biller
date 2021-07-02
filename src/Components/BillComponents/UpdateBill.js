@@ -173,20 +173,20 @@ const LandBilling = (props) => {
                      </select>
                   </div>
                </div>
-               <div className="advanced-input-wrapper m-2 w-90 my-3">
-                  <div className="d-flex m-2">
-                     <h4 className="mx-3 my-auto">IS LAND REGISTERED?</h4>
+               <div className="advanced-input-wrapper m-2 w-90 my-3 bg-light">
+                  <div className="d-flex mr-2">
+                     <h4 className="px-3 py-2 my-auto lead bg-white">IS LAND REGISTERED?</h4>
                      <div className="col-lg-3 d-flex justify-content-between bg-light p-1">
-                        <h4 className="cursor-pointer p-2 lead land-registration-choice bg-white ml-1" 
+                        <h4 className="cursor-pointer my-auto p-2 lead land-registration-choice bg-white ml-1" 
                         style={{"background": registeredStyles('0')}} onClick={() => setLandRegistration('0')}>YES</h4>
-                        <h4 className="cursor-pointer p-2 lead land-registration-choice bg-white mr-1" 
+                        <h4 className="cursor-pointer my-auto p-2 lead land-registration-choice bg-white mr-1" 
                         styles={{"background": registeredStyles('1')}} onClick={() => setLandRegistration('1')}>NO</h4>
                      </div>
                   </div>
                </div>
                <div className="advanced-input-wrapper m-2 my-3 w-90">
                   <div className="d-flex justify-content-between">
-                     <h4 className="mx-3">INPUT VALUE OF LAND</h4>
+                     <h4 className="mx-3 lead">INPUT VALUE OF LAND</h4>
                      <input type="number"
                      value={landValue}
                      onChange={(e) => setLandValue(e.target.value)}
