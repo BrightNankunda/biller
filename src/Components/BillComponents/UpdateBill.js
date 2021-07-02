@@ -185,15 +185,6 @@ const LandBilling = (props) => {
                         <option value="2">NO</option>
                      </select>
                   </div>
-                  <div className="d-flex mr-2">
-                     <h4 className="px-3 py-2 my-auto lead bg-white"></h4>
-                     <div className="col-lg-3 d-flex justify-content-between bg-light p-1">
-                        <h4 className="cursor-pointer my-auto p-2 lead land-registration-choice bg-white ml-1" 
-                        style={{"background": registeredStyles('0')}} onClick={() => setLandRegistration('0')}>YES</h4>
-                        <h4 className="cursor-pointer my-auto p-2 lead land-registration-choice bg-white mr-1" 
-                        styles={{"background": registeredStyles('1')}} onClick={() => setLandRegistration('1')}>NO</h4>
-                     </div>
-                  </div>
                </div>
                <div className="advanced-input-wrapper m-2 my-3 w-90">
                   <div className="d-flex justify-content-between">

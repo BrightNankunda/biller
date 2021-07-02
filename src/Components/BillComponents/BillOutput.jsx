@@ -95,17 +95,39 @@ const BillOutput = (props) => {
             <div className="col-lg-9">
                <h3 className="tect-center">BILL OUTPUT DATA</h3>
                
-               {scheduleData && <div className="my-2 d-flex justify-content-center full-height light-color">
+               {scheduleData && <div className="my-2 d-flex justify-content-center forty-height light-color">
                   <div className="col-lg-10 p-2">
-                     <h5 className="text-center">PROPERTY TYPE: {scheduleData.propertyType}</h5>
-                     <h5 className="text-center">ADVOCATE: {advocateOptions[parseInt(scheduleData.advocate) - 1].value}</h5>
+                     <h5 className="row d-flex border-bottom border-dark">
+                        <span className="col-50 mr-2">CLIENT NAME: </span>
+                        <span className="col-50">{scheduleData.clientName}</span></h5>
+                     <h5 className="row d-flex border-bottom border-dark">
+                        <span className="col-50 mr-2">PROPERTY TYPE: </span> 
+                        <span className="col-50">{scheduleData.propertyType}</span>
+                     </h5>
+                     <h5 className="row d-flex border-bottom border-dark"><span className="col-50 mr-2">ADVOCATE: </span>
+                           <span className="col-50">{advocateOptions[parseInt(scheduleData.advocate) - 1].value}</span></h5>
                      {scheduleData.propertyType === "LAND" && 
-                     <h5 className="text-center">SCALE: {scaleOptions[parseInt(scheduleData.scale) - 1].value}</h5>}
+                     <h5 className="row d-flex border-bottom border-dark">
+                        <span className="col-50 mr-2">SCALE: </span>
+                        <span>
+                           {scaleOptions[parseInt(scheduleData.scale) - 1].value}
+                        </span></h5>}
                      {scheduleData.propertyType === "RENT" && 
-                     <h5 className="text-center">RENTAL TYPE: {rentOptions[parseInt(scheduleData.rentalType) - 1].value}</h5>}
-                     <h5 className="text-center">REGISTERATION STATUS: {scheduleData.propertyType}</h5>
-                     <h5 className="text-center">LAND VALUE: {scheduleData.landValue}</h5>
-                     <h5 className="text-center">TOTAL: {scheduleData.total}</h5>
+                     <h5 className="row d-flex border-bottom border-dark">
+                        <span className="col-50 mr-2">RENTAL TYPE: </span>
+                        <span className="col-50">{rentOptions[parseInt(scheduleData.rentalType) - 1].value}</span>
+                     </h5>}
+                     <h5 className="row d-flex border-bottom border-dark">
+                        <span className="col-50 mr-2">REGISTERATION STATUS: </span>
+                        <span className="col-50">{scheduleData.propertyType}</span>
+                     </h5>
+                     <h5 className="row d-flex border-bottom border-dark">
+                        <span className="col-50 mr-2">LAND VALUE: </span>
+                        <span className="col-50">{scheduleData.landValue}</span></h5>
+                     <h5 className="row d-flex border-bottom border-dark">
+                        <span className="col-50 mr-2">TOTAL: </span>
+                        <span className="col-50">{scheduleData.total}</span>
+                     </h5>
                      <div className="d-flex justify-content-center my-2">
                         <button className="btn submit-btn py-2 px-3 bg-white" onClick={SaveBillData}>SAVE BILL DATA</button>
                      </div>

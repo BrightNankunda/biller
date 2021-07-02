@@ -332,12 +332,20 @@ const RentBilling = (props) => {
       props.history.goBack()
    }
 
+   // GET CLIENT FIRST NAME
+   const getClientDetails = (id) => {
+      if(id === null) return
+      return clients.find(client => client._id === id).firstName
+
+   }
+
    // STORE TO LOCALSTORAGE
    const toLocalStorageAndRedirect = (clientId,propertyType, landValue,scale, rentalType,advocate,registered,total) => {
       localStorage.setItem("Schedule Data", JSON.stringify(
          {"clientId": clientId, "propertyType": propertyType, 
          "landValue": landValue, "scale": scale, "advocate": advocate,
-         "registered": registered,"rentalType": rentalType, "total": total
+         "registered": registered,"rentalType": rentalType, 
+         "total": total, "clientName": getClientDetails(clientId)
       }))
       // console.log({"clientId": clientId, "propertyType": propertyType, "landValue": landValue, "scale": scale, "advocate": advocate,"registered": registered, "total": total})
       props.history.push('/schedules/billOutput')

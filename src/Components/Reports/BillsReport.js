@@ -95,12 +95,11 @@ const BillsReport = () => {
                                     </Link>
                                  </td>
 
+                                 <td>{ clients && bills  && getClientDetails(bill.createdFor)}</td>
                                  <td>
                                     <Link to={"/reports/bill/" + bill._id} className="bill-link">
-                                       { clients && bills  && getClientDetails(bill.createdFor)}       
-                                    </Link>
+                                       {bill.propertyType} SCHEDULE</Link>
                                  </td>
-                                 <td>{bill.propertyType} SCHEDULE</td>
                                  <td>{bill.landValue}</td>
                                  <td>
                                  <Link className="update-link-client m-1" to={"/reports/billToUpdate/" + bill._id}>
