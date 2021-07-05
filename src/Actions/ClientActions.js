@@ -23,7 +23,7 @@ const CreateNewClient = ({firstName, lastName, middleName, email, phoneNumber, o
    try {
       dispatch({type: CREATE_CLIENT_REQUEST, payload: firstName, lastName, middleName, email, phoneNumber, occupation, address})
       const {user} = getState()
-      const {data} = await axios.post("http://localhost:7000/api/client", {firstName, lastName, middleName, email, phoneNumber, occupation, address}, {
+      const {data} = await axios.post(process.env.REACT_APP_API_URL + "/api/client", {firstName, lastName, middleName, email, phoneNumber, occupation, address}, {
          headers: {'Authorization': 'Bearer ' + user.token}
       })
       console.log(data);
@@ -41,7 +41,7 @@ const FetchClients = () => async (dispatch, getState) => {
    try {
       dispatch({type: FETCH_CLIENTS_REQUEST})
       const {user} = getState()
-      const {data} = await axios.get("http://localhost:7000/api/client", {
+      const {data} = await axios.get(process.env.REACT_APP_API_URL + "/api/client", {
          headers: {'Authorization': 'Bearer ' + user.token}
       })
       console.log(data)
@@ -57,7 +57,7 @@ const FetchSingleClient = (clientId) => async (dispatch, getState) => {
    try {
       dispatch({type: FETCH_SINGLE_CLIENT_REQUEST})
       const {user} = getState()
-      const {data} = await axios.get("http://localhost:7000/api/client/" + clientId, {
+      const {data} = await axios.get(process.env.REACT_APP_API_URL + "/api/client/" + clientId, {
          headers: {'Authorization': 'Bearer ' + user.token}
       })
       console.log('FETCH SINGLE CLIENT REDUX', data)
@@ -72,7 +72,7 @@ const DeleteSingleClient = ({clientId}) => async (dispatch, getState) => {
    try {
       dispatch({type: DELETE_SINGLE_CLIENT_REQUEST})
       const {user} = getState()
-      const {data} = await axios.delete("http://localhost:7000/api/client/" + clientId, {
+      const {data} = await axios.delete(process.env.REACT_APP_API_URL + "/api/client/" + clientId, {
          headers: {'Authorization': 'Bearer ' + user.token}
       })
       console.log('DELETE SINGLE CLIENT REDUX', data)
@@ -89,7 +89,7 @@ const UpdateSingleClient = ({id, firstName, lastName, middleName, email, phoneNu
    try {
       dispatch({type: UPDATE_SINGLE_CLIENT_REQUEST})
       const {user} = getState()
-      const {data} = await axios.put("http://localhost:7000/api/client/" + id, {firstName, lastName, middleName, email, phoneNumber, occupation, address}, {
+      const {data} = await axios.put(process.env.REACT_APP_API_URL + "/api/client/" + id, {firstName, lastName, middleName, email, phoneNumber, occupation, address}, {
          headers: {'Authorization': 'Bearer ' + user.token}
       })
       console.log('UPDATE SINGLE CLIENT REDUX', data)

@@ -33,7 +33,7 @@ const SaveBill = ({clientId, propertyType,landValue,scale,rentalType,advocate,re
       dispatch({type: BILL_SAVE_REQUEST, payload: {
          propertyType,landValue,scale,rentalType,advocate,registered,total
       } })
-      const {data} = await axios.post('http://localhost:7000/api/bill', {
+      const {data} = await axios.post(process.env.REACT_APP_API_URL + '/api/bill', {
          clientId, propertyType,landValue,scale,rentalType,advocate,registered,total
       }, {
          headers: {'Authorization': 'Bearer ' + user.token}
@@ -52,7 +52,7 @@ const AllBills = () => async (dispatch, getState) => {
 
    try {
       dispatch({type:BILLS_FETCH_REQUEST})
-      const {data} = await axios.get('http://localhost:7000/api/bill', {
+      const {data} = await axios.get(process.env.REACT_APP_API_URL + '/api/bill', {
          headers: {'Authorization': 'Bearer ' + user.token}
       })
       console.log(data);
@@ -68,7 +68,7 @@ const AllClientBills = () => async (dispatch, getState) => {
 
    try {
       dispatch({type: CLIENT_BILLS_FETCH_REQUEST})
-      const {data} = await axios.get('http://localhost:7000/api/bill/client', {
+      const {data} = await axios.get(process.env.REACT_APP_API_URL + '/api/bill/client', {
          headers: {'Authorization': 'Bearer ' + user.token}
       })
       console.log(data);
@@ -84,7 +84,7 @@ const AllUserBills = () => async (dispatch, getState) => {
 
    try {
       dispatch({type: USER_BILLS_FETCH_REQUEST})
-      const {data} = await axios.get('http://localhost:7000/api/bill/user', {
+      const {data} = await axios.get(process.env.REACT_APP_API_URL + '/api/bill/user', {
          headers: {'Authorization': 'Bearer ' + user.token}
       })
       console.log('ALL USER BILLS', data);
@@ -100,7 +100,7 @@ const FetchABill = (billId) => async (dispatch, getState) => {
    try {
       dispatch({type: FETCH_A_BILL_REQUEST})
       const {user} = getState()
-      const {data} = await axios.get("http://localhost:7000/api/bill/" + billId, {
+      const {data} = await axios.get(process.env.REACT_APP_API_URL + "/api/bill/" + billId, {
          headers: {'Authorization': 'Bearer ' + user.token}
       })
       console.log('FETCH SINGLE BILL REDUX', data)
@@ -116,7 +116,7 @@ const DeleteABill = ({billId}) => async (dispatch, getState) => {
    try {
       dispatch({type: DELETE_A_BILL_REQUEST})
       const {user} = getState()
-      const {data} = await axios.delete("http://localhost:7000/api/bill/" + billId, {
+      const {data} = await axios.delete(process.env.REACT_APP_API_URL + "/api/bill/" + billId, {
          headers: {'Authorization': 'Bearer ' + user.token}
       })
       console.log('DELETE SINGLE BILL REDUX', data)
@@ -134,7 +134,7 @@ const UpdateABill = ({billId, clientId, propertyType,landValue,scale,rentalType,
    try {
       dispatch({type: BILL_UPDATE_REQUEST})
       const {user} = getState()
-      const {data} = await axios.put("http://localhost:7000/api/bill/" + billId, 
+      const {data} = await axios.put(process.env.REACT_APP_API_URL + "/api/bill/" + billId, 
       {billId, clientId, propertyType,landValue,scale,rentalType,advocate,registered,total}, {
          headers: {'Authorization': 'Bearer ' + user.token}
       })

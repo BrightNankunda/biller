@@ -16,7 +16,7 @@ const UserLogin = ({email, password}) => async (dispatch) => {
 
    try {
       dispatch({type: USER_LOGIN_REQUEST, payload: {email, password}})
-      const {data} = await axios.post('http://localhost:7000/api/user/login', {email, password})
+      const {data} = await axios.post(process.env.REACT_APP_API_URL + '/api/user/login', {email, password})
       if(data.token != undefined) {
          localStorage.setItem('UgBillUser', JSON.stringify(data))
          console.log(data.token)
@@ -33,7 +33,7 @@ const UserSignin = ({email, password}) => async (dispatch) => {
 
    try {
       dispatch({type: USER_SIGNIN_REQUEST, payload: {email, password}})
-      const {data} = await axios.post('http://localhost:7000/api/user/signin', {email, password})
+      const {data} = await axios.post(process.env.REACT_APP_API_URL + '/api/user/signin', {email, password})
       if(data.token != undefined) {
          localStorage.setItem('UgBillUser', JSON.stringify(data))
          console.log(data.token)
