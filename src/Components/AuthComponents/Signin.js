@@ -52,7 +52,7 @@ export default function Signin(props) {
    }
    
    return (
-      <div className="row d-flex justify-content-center full-height" >
+      <div className="row d-flex justify-content-center full-screen" >
          <div className="col-lg-6 signup ">
             <div className="d-flex justify-content-center">
                <h2 className="text-center text-white my-4">Sign Up</h2>

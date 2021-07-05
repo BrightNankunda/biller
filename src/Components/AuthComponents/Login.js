@@ -53,7 +53,7 @@ export default function Login(props) {
       setPasswordErr(null)
    }
    return (
-      <div className="login row d-flex flex-col bg-primary full-height">
+      <div className="login row d-flex flex-col bg-primary full-screen">
          <div className="">
             <h2 className="text-center text-white my-4">Login</h2>
          </div>
