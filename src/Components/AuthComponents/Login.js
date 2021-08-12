@@ -35,8 +35,7 @@ export default function Login(props) {
    
    useEffect(() => {
       if(isAuthenticated) {
-         history.replace('/dashboard')
-         console.log('AUTHENTICATED FROM LOGIN COMPONENT');
+         history.push('/dashboard')
       }
       return () => {
          // cleanup

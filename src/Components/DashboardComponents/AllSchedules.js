@@ -20,6 +20,9 @@ const AllSchedules = () => {
    }, [])
 
    const deleteBill = (billId) => {
+      // const todos = allTodos
+      // todos.splice(billId, 1)
+      // return setAllTodos([...todos])
       console.log('DELETE BUTTON BILL ID', billId)
    }
 

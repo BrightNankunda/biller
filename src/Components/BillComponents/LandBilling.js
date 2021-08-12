@@ -70,9 +70,10 @@ const LandBilling = (props) => {
                   // dispatch(SaveBill({clientId,propertyType, landValue,scale, rentalType,advocate,registered,total}))
                } else {
                   // DETERMINE TOTAL
-                  const a = 1000000 * 0.15  
+                  const a = 1000000 * 0.15 
+
                   const y = landValue - 11000000  
-                  const b = 0.10 * y
+                  const b = 0.10 * 10000000
                   const d = (.05 * y)
                   const total = (a + b + d)
 
@@ -239,9 +240,9 @@ const LandBilling = (props) => {
          console.log(total)
          return setTotal(total)
       } else if (parseInt(registered) === 2) {
-         total += 600000
-         console.log(total)
-         return setTotal(total)
+         const newTotal = total + 600000
+         console.log(newTotal)
+         return setTotal(newTotal)
       }
    }
    const submitHandler = (e) => {

@@ -8,7 +8,7 @@ import SideBar from '../BillComponents/SideBar';
 import Calendar from './Calendar';
 import LineGraph from './LineGraph';
 
-const Dashboard = (props) => {
+const Dashboard = () => {
    const {billsCount} = useSelector(state => state.userBills)
    const {loading, clients} = useSelector(state => state.clients)
 
@@ -32,7 +32,7 @@ const Dashboard = (props) => {
          </div>
          <div className="col-lg-9 w-100 bg-light">
             <div className="w-100">
-               <div className="w-105 bg-white z-index-ten row top-bar d-flex justify-content-end align-content-center">
+               <div className="w-100 mt-1 ml-auto bg-white z-index-ten row top-bar d-flex justify-content-end align-content-center">
 
                   <PersonFill className="my-auto mx-2 two-times"/>
                   <h3 className="lead mx-1 my-2" >ADMIN DASHBOARD</h3>

@@ -11,6 +11,7 @@ const Logout = (props) => {
    useEffect(() => {
       dispatch(LogoutUser())
       if(!isAuthenticated) {
+         localStorage.removeItem('Schedule Data')
          props.history.push('/login')
       }
       

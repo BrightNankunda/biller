@@ -8,7 +8,9 @@ import {
    USER_SIGNIN_SUCCESS,
    LOGOUT_USER_REQUEST,
    LOGOUT_USER_SUCCESS,
-   LOGOUT_USER_FAILURE
+   LOGOUT_USER_FAILURE,
+   USER_SIGNIN_FINISHED,
+   USER_LOGIN_FINISHED
 } from '../Constants/UserConstants'
 
 
@@ -22,6 +24,7 @@ const UserLogin = ({email, password}) => async (dispatch) => {
          console.log(data.token)
       }
       dispatch({type: USER_LOGIN_SUCCESS, payload: data})
+      dispatch({type: USER_LOGIN_FINISHED})
    } catch(err) {
       console.log(err.message)
       dispatch({type: USER_LOGIN_FAILURE, payload: err.message})
@@ -39,6 +42,7 @@ const UserSignin = ({email, password}) => async (dispatch) => {
          console.log(data.token)
       }
       dispatch({type: USER_SIGNIN_SUCCESS, payload: data})
+      dispatch({type: USER_SIGNIN_FINISHED})
    } catch(err) {
       console.log(err.message)
       dispatch({type: USER_SIGNIN_REQUEST, payload: err.message})

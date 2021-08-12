@@ -1,11 +1,15 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import {Redirect, Route} from 'react-router-dom'
  
 const ProtectedRoute = (props) => {
-
-   const isAuthenticated = (JSON.parse(localStorage.getItem('UgBillUser')) === null || undefined) ? false : true
+   const user = useSelector(state => state.user) 
    
-   console.log('ISAUTHENTICATED', isAuthenticated);
+   const isAuthenticated = () => {
+      return ((JSON.parse(localStorage.getItem('UgBillUser')) === null || undefined)) ? true: false 
+      // return (JSON.parse(localStorage.getItem('UgBillUser')) === null || undefined) ? false : true
+   }
+   
 
    return isAuthenticated  ? (<Route exact={true} {...props} />) : (<Redirect to={{pathname: '/login'}} />);
 }

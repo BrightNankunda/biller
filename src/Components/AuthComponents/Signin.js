@@ -7,27 +7,51 @@ import { UserSignin } from '../../Actions/UserActions'
 export default function Signin(props) {
    const dispatch = useDispatch()
    const history = useHistory()
+
    const [email, setEmail] = useState('')
    const [password, setPassword] = useState('')
    const [emailErr, setEmailErr] = useState(null)
    const [passwordErr, setPasswordErr] = useState(null)
+   const [newUser, setNewUser] = useState(null)
 
    // CHECKING FOR STATE CHANGE AND RESPONDING WITH ROUTE CHANGE
-   const {loading} = useSelector(state => state.userSigningIn)
+   const {loading, redirectUser, user} = useSelector(state => state.userSigningIn)
+   const authedUser = user.AuthedUser 
    const isAuthenticated = (JSON.parse(localStorage.getItem('UgBillUser')) === null || undefined) ? false : true
-   console.log('LOADING FROM SIGNIN', loading)
+   
+   console.log('LOADING FROM SIGNIN', loading, 'SIGNIN REDIRECT USER', redirectUser)
 
-   // CHECK FUNCTION
    useEffect(() => {
-      if(isAuthenticated) {
-         history.replace('/dashboard')
-         console.log('AUTHENTICATED FROM SIGNIN COMPONENT');
+      if(authedUser !== null) {
+         setNewUser(user.authedUser)
+      }
+      return () => {
+         // cleanup
+      }
+   }, [user])
+
+   //REDIRECT NEW USER AFTER SUCCESSFULLY SIGNING IN
+   useEffect(() => {
+      if(isAuthenticated && (newUser !== null)) {
+         console.log('SIGN IN NEW USER DATA', authedUser)
+         history.push('/')
       }
       return () => {
          // cleanup
       }
    }, [loading, isAuthenticated])
 
+   // REDIRECT
+   useEffect(() => {
+      if(authedUser !== null) {
+         props.history.push('/')
+      }
+      return () => {
+         // cleanup
+      }
+   }, [authedUser])
+
+   // SUBMIT HANDLE FUNCTION
    const submitHandler = (e) => {
       e.preventDefault()
       if(email.trim() === '') {
