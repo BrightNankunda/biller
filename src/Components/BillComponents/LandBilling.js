@@ -258,7 +258,6 @@ const LandBilling = (props) => {
    const getClientDetails = (id) => {
       if(id === null) return
       return clients.find(client => client._id === id).firstName
-
    }
    
    const toLocalStorageAndRedirect = (clientId,propertyType, landValue,scale, rentalType,advocate,registered,total) => {
