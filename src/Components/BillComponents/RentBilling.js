@@ -119,7 +119,7 @@ const RentBilling = (props) => {
                      // dispatch(SaveBill({clientId, propertyType, landValue,rentalType,advocate,registered,total}))
                      toLocalStorageAndRedirect(clientId,propertyType, landValue,scale, rentalType,advocate,registered,total)
                }
-         }
+         
          }else if(parseInt(advocate) === 22) {
                if(parseInt(landValue) < 10000000) {
                   const total = parseInt(landValue) *  0.1 * 0.3
