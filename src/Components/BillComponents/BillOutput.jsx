@@ -17,6 +17,8 @@ const BillOutput = (props) => {
    const [scale, setScale] = useState('')
    const [clientId, setClientId] = useState('')
    const [rentalType, setRentalType] = useState('')
+   const [advocateData, setAdvocateData] = useState('')
+   const [scaleData, setScaleData] = useState('')
 
    // SET LOCALSTORAGE DATA
    useEffect(() => {
@@ -48,22 +50,55 @@ const BillOutput = (props) => {
       {choice: "2", value : "Ground rent means rent representing the value of the land without buildings on it"}
    ]
 
-   const advocateOptions = [
-      {choice: "1", value : "Vendor's Advocate: For deducting title to freehold or leasehold property and perusing and completing conveyance"},
-      {choice: "2", value : "Purchase's Advocate: For investigating title to freehold or leasehold property and preparing and completing conveyance"},
-      {choice: "3", value : "Mortgagor's Advocate: For deducting title to freehold or lease property, perusing mortagage and completing"},
-      {choice: "4", value : "Mortgagee's Advocate: For investigating title to freehold or lease hold property and completing"}
-   ]
+   // ADVOCATE OPTION FUNCTION TO SIMULATE BETWEEN RENT AND LAND TO RETURN CORRECT OPTION
+   const advocateOptions = () => {
+      if(propertyType === 'LAND') {
+         return [
+         {choice: "1", value : "Vendor's Advocate: For deducting title to freehold or leasehold property and perusing and completing conveyance"},
+         {choice: "2", value : "Purchase's Advocate: For investigating title to freehold or leasehold property and preparing and completing conveyance"},
+         {choice: "3", value : "Mortgagor's Advocate: For deducting title to freehold or lease property, perusing mortagage and completing"},
+         {choice: "4", value : "Mortgagee's Advocate: For investigating title to freehold or lease hold property and completing"}
+      ]
+      } else if(propertyType === 'RENT') {
+         return [
+         {choice: "1", value : "To advocate for preparing, settling and completing a lease or agreement for a lease and counterpart lease or agreement or lease"},
+         {choice: "2", value : "To Advocate for registering a lease or agreement for a lease"},
+         {choice: "3", value : "To advocate for preparing, settling, completing a lease and counterpart lease"},
+         {choice: "4", value : "To advocate registering a lease or agreement of lease"}
+      ]
+      }
+   }
 
-   const scaleOptions = [
-      {choice: "1", value : "Scale of charges on sales, purchases, mortgages and debentures"},
-      {choice: "2", value : "Scale of charges for commission on sales, purchases and loans affecting land registered in the land titles registry or unregistered"}
-   ]
+   // SCALE FUNCTION TO RETURN APPROPRIATE OPTION
+   const scaleOptions = () => {
+      if(propertyType === 'RENT') {
+         return [
+         {choice: "1", value : "Scale of charges for leases and agreements at rack rent"},
+         {choice: "2", value : "Scale of charges for leases and agreements at ground rent"}
+      ]
+      } else if(propertyType === 'LAND') {
+         return [
+         {choice: "1", value : "Scale of charges on sales, purchases, mortgages and debentures"},
+         {choice: "2", value : "Scale of charges for commission on sales, purchases and loans affecting land registered in the land titles registry or unregistered"}
+      ]
+      }
+   } 
+
+   // const scaleOptions = [
+   //    {choice: "1", value : "Scale of charges on sales, purchases, mortgages and debentures"},
+   //    {choice: "2", value : "Scale of charges for commission on sales, purchases and loans affecting land registered in the land titles registry or unregistered"}
+   // ]
 
    const landRegistrationOptions = {
       "0": "YES",
       "1": "NO"
    }
+   const criminalOptions = [
+      {},
+      {},
+      {},
+      {}
+   ]
    useEffect(() => {
       if(scheduleData !== null) {
          const {propertyType, landValue, advocate, scale,rentalType, registered, total,clientId} = scheduleData
@@ -85,6 +120,25 @@ const BillOutput = (props) => {
       console.log(propertyType, landValue, scale,rentalType, registered, total,clientId)
       dispatch(SaveBill({clientId, propertyType, landValue,scale,rentalType,advocate,registered,total}))
    }
+
+
+   useEffect(() => {
+      if(scale !== '' && advocate !== '') {
+         // console.log('NUMBERS', advocateOptions())
+         setAdvocateData(advocateOptions()[parseInt(advocate) - 1].value)
+         setScaleData(scaleOptions()[parseInt(scale) - 1].value)
+      }
+      return () => {
+         // cleanup
+      }
+   }, [advocate, scale])
+   
+   // useEffect(() => {
+   //    console.log('DATA', advocateData, scaleData)
+   //    return () => {
+   //       // cleanup
+   //    }
+   // }, [advocateData, scaleData])
    return (
       <div>
          <AppNavbar />
@@ -95,7 +149,7 @@ const BillOutput = (props) => {
             <div className="col-lg-9">
                <h3 className="tect-center">BILL OUTPUT DATA</h3>
                
-               {scheduleData && <div className="my-2 d-flex justify-content-center forty-height light-color">
+                {scheduleData && <div className="my-2 d-flex justify-content-center forty-height light-color">
                   <div className="col-lg-10 p-2">
                      <h5 className="row d-flex border-bottom border-dark">
                         <span className="col-50 mr-2">CLIENT NAME: </span>
@@ -105,22 +159,23 @@ const BillOutput = (props) => {
                         <span className="col-50">{scheduleData.propertyType}</span>
                      </h5>
                      <h5 className="row d-flex border-bottom border-dark"><span className="col-50 mr-2">ADVOCATE: </span>
-                           <span className="col-50">{advocateOptions[parseInt(scheduleData.advocate) - 1].value}</span></h5>
-                     {scheduleData.propertyType === "LAND" && 
+                           <span className="col-50">{advocateData}</span></h5>
+                     {/* {scheduleData.propertyType === "LAND" &&   */}
                      <h5 className="row d-flex border-bottom border-dark">
                         <span className="col-50 mr-2">SCALE: </span>
                         <span>
-                           {scaleOptions[parseInt(scheduleData.scale) - 1].value}
-                        </span></h5>}
-                     {scheduleData.propertyType === "RENT" && 
+                           {scaleData}
+                        </span></h5>
+                        {/* }  */}
+                     {scheduleData.propertyType === "REN" && 
                      <h5 className="row d-flex border-bottom border-dark">
                         <span className="col-50 mr-2">RENTAL TYPE: </span>
                         <span className="col-50">{rentOptions[parseInt(scheduleData.rentalType) - 1].value}</span>
                      </h5>}
-                     <h5 className="row d-flex border-bottom border-dark">
+                     {scheduleData.propertyType === 'LAND' && <h5 className="row d-flex border-bottom border-dark">
                         <span className="col-50 mr-2">REGISTERATION STATUS: </span>
                         <span className="col-50">{scheduleData.propertyType}</span>
-                     </h5>
+                     </h5>}
                      <h5 className="row d-flex border-bottom border-dark">
                         <span className="col-50 mr-2">LAND VALUE: </span>
                         <span className="col-50">{scheduleData.landValue}</span></h5>
@@ -133,7 +188,7 @@ const BillOutput = (props) => {
                      </div>
                   </div>
 
-               </div>}
+               </div>} 
             </div>
          </div>
       </div>

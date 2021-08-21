@@ -43,9 +43,18 @@ const ScheduleHome = (props) => {
                      <h4>RENT</h4>
                   </div>
                </div>
-               <div onClick={() => goToRoute('/companies')} className="rounded-mid m-2 my-2 cursor-pointer py-2 bg-white d-flex w-100 px-3">
+               <div onClick={() => goToRoute('/criminal')} className="rounded-mid m-2 my-2 cursor-pointer py-2 bg-white d-flex w-100 px-3">
                   <div className="col-lg-4" >
                      <h4 className="mx-2">THIRD SCHEDULE</h4>
+                  </div>
+                  <div className="col-lg-8 ">
+                     <h4>CRIMINAL SCHEDULE</h4>
+                  </div>
+               </div>
+
+               <div onClick={() => goToRoute('/companies')} className="rounded-mid m-2 my-2 cursor-pointer py-2 bg-white d-flex w-100 px-3">
+                  <div className="col-lg-4" >
+                     <h4 className="mx-2">FORTH SCHEDULE</h4>
                   </div>
                   <div className="col-lg-8 ">
                      <h4>COMPANIES</h4>
@@ -53,7 +62,7 @@ const ScheduleHome = (props) => {
                </div>
                <div onClick={() => goToRoute('/tradeMarks')} className="rounded-mid m-2 my-2 cursor-pointer py-2 bg-white d-flex w-100 px-3">
                   <div className="col-lg-4">
-                     <h4 className="mx-2">FORTH SCHEDULE</h4>
+                     <h4 className="mx-2">FIFTH SCHEDULE</h4>
                   </div>
                   <div className="col-lg-8 ">
                      <h4>TRADEMARKS, PATENTS AND CHATTELS TRANSFER</h4>
@@ -61,7 +70,7 @@ const ScheduleHome = (props) => {
                </div>
                <div onClick={() => goToRoute('/business')} className="rounded-mid m-2 my-2 cursor-pointer py-2 bg-white d-flex w-100 px-3">
                   <div className="col-lg-4">
-                     <h4 className="mx-2">FIFTH SCHEDULE</h4>
+                     <h4 className="mx-2">SIXTH SCHEDULE</h4>
                   </div>
                   <div className="col-lg-8 ">
                      <h4>BUSINESS</h4>
