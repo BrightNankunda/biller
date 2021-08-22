@@ -357,3 +357,9 @@ Button:hover {
 .full-screen {
   height: 100vh;
 }
+
+.sub-form {
+  background: #c4c4c4;
+  border: none !important;
+  border-radius: 15px;
+}
