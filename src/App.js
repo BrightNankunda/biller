@@ -34,6 +34,7 @@ import BillsReport from './Components/Reports/BillsReport';
 import ProjectsReport from './Components/Reports/ProjectsReport';
 import BillOutput from './Components/BillComponents/BillOutput';
 import Criminal from './Components/BillComponents/Criminal';
+import CriminalOutput from './Components/BillComponents/CriminalOutput';
 
 
 function App() {
@@ -49,6 +50,7 @@ function App() {
           <ProtectedRoute path="/reports/clientToUpdate/:clientId" component={UpdateClient} />
           <ProtectedRoute path="/reports/billToUpdate/:billId" component={UpdateBill} />
           <ProtectedRoute path="/schedules/BillOutput" component={BillOutput}/>
+          <ProtectedRoute path="/schedules/criminalOutput" component={CriminalOutput}/>
           <ProtectedRoute path="/reports/bill/:billId" component={SingleSchedule} />
           <ProtectedRoute path="/schedule/client/:clientId" component={SingleClient} />
           <ProtectedRoute path="/billing/land" component={LandBilling} />
