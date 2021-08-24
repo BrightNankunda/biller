@@ -9,61 +9,72 @@ const Criminal = (props) => {
    // const {loading: loadingClients, clients} = useSelector(state => state.clients)
    // const dispatch = useDispatch()
 
-   // const [caseValue, setCaseValue] = useState(1) //ENUM [1, 2, 3, 4]
-   // const [subjectValue, setSubjectValue] = useState(100000000) //MIN 2 MILLION
-   const [values, handleChange] = useForm({clientName: '', assignedTo: '', status: '', 
+   const [values, handleChange] = useForm({clientName: 'Nankunda', assignedTo: '', status: '', 
    court:'1', offence: '', remand:'', notes:'', subjectValue:'2000000', 
-   firmExpenses:'', advocateExpense:'', closeDate:'', openDate:''})
+   firmExpenses:'', advocateExpenses:'', closeDate:'', openDate:''})
    const [total, setTotal] = useState('')
 
    const calculateTotal = () => {
       const {court, subjectValue} = values
       if(parseInt(court) === 1 ) {
-         if(parseInt(subjectValue) <= 2000000) {
+         if(parseInt(subjectValue) <= 2000000) { // 2 Million
             const currentTotal = parseInt(subjectValue) * 0.15
             toLocalStorageAndRedirect(currentTotal)
          } else if(parseInt(subjectValue) <= 5000000) { // < 5 Million
             const currentTotal = (2000000 * 0.15) +((parseInt(subjectValue) - 2000000 ) *0.14) 
-            setTotal(currentTotal)
-         } else if(parseInt(subjectValue) <= 10000000) {
+            toLocalStorageAndRedirect(currentTotal)
+            
+         } else if(parseInt(subjectValue) <= 10000000) { // 10 Million
             const currentTotal = (2000000*0.15)+(3000000*0.14)+((parseInt(subjectValue)-5000000)*0.12)
-            setTotal(currentTotal)
-         } else if(parseInt(subjectValue) <= 20000000) {
+            toLocalStorageAndRedirect(currentTotal)
+            
+         } else if(parseInt(subjectValue) <= 20000000) { // 20 Million
             const currentTotal = (2000000*0.15)+(3000000*0.14)+(5000000*0.12)+((parseInt(subjectValue)-10000000)*0.10) 
-            setTotal(currentTotal)
-         } else if(parseInt(subjectValue) <= 50000000) {
+            toLocalStorageAndRedirect(currentTotal)
+            
+         } else if(parseInt(subjectValue) <= 50000000) { // 50 Million
             const currentTotal = (2000000*0.15)+(3000000*0.14)+(5000000*0.12)+(10000000*0.10)+(parseInt(subjectValue)-20000000)*0.08
-            setTotal(currentTotal)
-         } else if(parseInt(subjectValue) <= 100000000) {
+            toLocalStorageAndRedirect(currentTotal)
+            
+         } else if(parseInt(subjectValue) <= 100000000) { // 100 Million
             const currentTotal = (2000000*0.15)+(3000000*0.14)+(5000000*0.12)+(10000000*0.10)+(20000000*0.08)+((parseInt(subjectValue)-50000000)*0.05)
-            setTotal(currentTotal)
-         } else{
+            toLocalStorageAndRedirect(currentTotal)
+            
+         } else{ // greater Than 100 Million
             const currentTotal = (2000000*0.15)+(3000000*0.14)+(5000000*0.12)+(10000000*0.10)+(20000000*0.08)+(50000000*0.05)+((parseInt(subjectValue)-50000000)*0.02)
-            setTotal(currentTotal)
+            toLocalStorageAndRedirect(currentTotal)
+            
          }
       } else if(parseInt(court) === 2 ){
          // to sue in ordinary suit in which no defense is filed or in a summary suit where no application for leave to appear and defend is made
-         if(parseInt(subjectValue) <= 2000000) {
+         if(parseInt(subjectValue) <= 2000000) { // 2 Million
             const currentTotal = (parseInt(subjectValue) * 0.15) * 0.65
-            setTotal(currentTotal)
-         } else if(parseInt(subjectValue) <= 5000000) {
+            toLocalStorageAndRedirect(currentTotal)
+            
+         } else if(parseInt(subjectValue) <= 5000000) { // 5 Million
             const currentTotal = ((2000000*0.15)+((parseInt(subjectValue)-2000000)*0.14))* 0.65
-            setTotal(currentTotal)
-         } else if(parseInt(subjectValue) <= 10000000) {
+            toLocalStorageAndRedirect(currentTotal)
+            
+         } else if(parseInt(subjectValue) <= 10000000) { // 10 Million
             const currentTotal = ((2000000*0.15)+(3000000*0.14)+((parseInt(subjectValue)-5000000)*0.12))* 0.65
-            setTotal(currentTotal)
-         } else if(parseInt(subjectValue) <= 20000000) {
+            toLocalStorageAndRedirect(currentTotal)
+            
+         } else if(parseInt(subjectValue) <= 20000000) { // 20 Million
             const currentTotal = ((2000000*0.15)+(3000000*0.14)+(5000000*0.12)+((parseInt(subjectValue)-10000000)*0.10))* 0.65
-            setTotal(currentTotal)
-         } else if(parseInt(subjectValue) <= 50000000) {
+            toLocalStorageAndRedirect(currentTotal)
+            
+         } else if(parseInt(subjectValue) <= 50000000) { // 30 Million
             const currentTotal = ((2000000*0.15)+(3000000*0.14)+(5000000*0.12)+(10000000*0.10)+((parseInt(subjectValue)-20000000)*0.08))* 0.65
-            setTotal(currentTotal)
-         } else if(parseInt(subjectValue) <= 100000000) {
+            toLocalStorageAndRedirect(currentTotal)
+            
+         } else if(parseInt(subjectValue) <= 100000000) { // 100 Million
             const currentTotal = ((2000000*0.15)+(3000000*0.14)+(5000000*0.12)+(10000000*0.10)+(20000000*0.08)+((parseInt(subjectValue)-50000000)*0.05))* 0.65
-            setTotal(currentTotal)
-         } else {
+            toLocalStorageAndRedirect(currentTotal)
+            
+         } else { //greater Than 100 Million
             const currentTotal = ((2000000*0.15)+(3000000*0.14)+(5000000*0.12)+(10000000*0.10)+(20000000*0.08)+(50000000*0.05)+((parseInt(subjectValue)-50000000)*0.02))* 0.65
-            setTotal(currentTotal)
+            toLocalStorageAndRedirect(currentTotal)
+            
          }
       } else if(parseInt(court) === 3) {
          // to sue or defend in summary suit in which an application for leave to appear and defend was made and refused
@@ -71,22 +82,28 @@ const Criminal = (props) => {
             setTotal((parseInt(subjectValue) * 0.15)* 0.75)
          } else if(parseInt(subjectValue) <= 5000000) { // < 5 Million
             const currentTotal = ((2000000*0.15)+((parseInt(subjectValue)-2000000)*0.14))* 0.75 
-            setTotal(currentTotal)
+            toLocalStorageAndRedirect(currentTotal)
+            
          } else if(parseInt(subjectValue) <= 10000000) { // < 10 Milliion
             const currentTotal = ((2000000*0.15)+(3000000*0.14)+((parseInt(subjectValue)-5000000)*0.12))* 0.75
-            setTotal(currentTotal)
+            toLocalStorageAndRedirect(currentTotal)
+            
          } else if(parseInt(subjectValue) <= 20000000) { // < 20 Million
             const currentTotal = ((2000000*0.15)+(3000000*0.14)+(5000000*0.12)+((parseInt(subjectValue)-10000000)*0.10))* 0.75
-            setTotal(currentTotal)
+            toLocalStorageAndRedirect(currentTotal)
+            
          } else if(parseInt(subjectValue) <= 50000000) { // < 50 Million
             const currentTotal = ((2000000*0.15)+(3000000*0.14)+(5000000*0.12)+(10000000*0.10)+((parseInt(subjectValue)-20000000)*0.08))* 0.75
-            setTotal(currentTotal)
+            toLocalStorageAndRedirect(currentTotal)
+            
          } else if(parseInt(subjectValue) <= 100000000) { // < 100 Million
             const currentTotal = ((2000000*0.15)+(3000000*0.14)+(5000000*0.12)+(10000000*0.10)+(20000000*0.08)+((parseInt(subjectValue)-50000000)*0.05))* 0.75
-            setTotal(currentTotal)
+            toLocalStorageAndRedirect(currentTotal)
+            
          } else{ // greater Than 100 Million
             const currentTotal = ((2000000*0.15)+(3000000*0.14)+(5000000*0.12)+(10000000*0.10)+(20000000*0.08)+(50000000*0.05)+((parseInt(subjectValue)-50000000)*0.02))* 0.75
-            setTotal(currentTotal)
+            toLocalStorageAndRedirect(currentTotal)
+            
          }
       } else if(parseInt(court) === 4) {
          // a suit where settlement is reached prior to confirmation of the first hearing date of the suit the fee
@@ -131,11 +148,11 @@ const Criminal = (props) => {
       localStorage.setItem("Schedule Data", JSON.stringify(
          {"clientId": "1", 
          "total": currentTotal, 
-         //"clientName": getClientDetails(clientId),
+         "clientName": values.clientName,//getClientDetails(clientId),
          "assignedTo": values.assignedTo, "status": values.status, 
          "court":values.court, "offence":values.offence, "remand":values.remand, 
          "notes":values.notes, "subjectValue":values.subjectValue, 
-         "firmExpenses":values.firmExpenses, "adovateExpenses":values.advocateExpense, 
+         "firmExpenses":values.firmExpenses, "advocateExpenses":values.advocateExpenses, 
          "closeDate":values.closeDate, "openDate":values.openDate
       }))
       props.history.push('/schedules/criminalOutput')
@@ -143,8 +160,8 @@ const Criminal = (props) => {
    return (
       <div>
          <AppNavbar />
-         <div className="d-flex">
-            <div className="col-lg-3 blue">
+         <div className="d-flex relative">
+            <div className="col-lg-3 blue sticky">
                <SideBar />
             </div>
          
@@ -157,6 +174,15 @@ const Criminal = (props) => {
                      <h5 className="text-center">ABOUT</h5>
                      <div className="my-1">
                         <label htmlFor="clientName">CLIENT NAME</label>
+                        {/* <select type="select" className="bill-input px-2" id="client" 
+                           value={client}
+                           onChange={(e) => setClient(e.target.value)}
+                           name="client">
+                           <option disabled value="">SCHEDULE OWNER/CLIENT</option>
+                           {clients && clients.map(client => (
+                              <option value={client._id} key={client._id}>{client.firstName + ' ' + client.lastName}</option>
+                           ))}
+                        </select> */}
                         <input type="text" name="clientName" 
                            value={values.clientName} onChange={handleChange}
                            id="clientName" className="bill-form-input ml-2 w-50" 
@@ -232,10 +258,10 @@ const Criminal = (props) => {
                            </div>
                            <div>
                            {/* FIRM EXPENSES */}
-                              <label htmlFor="firmExpense">AMOUNT OF CHARGE</label>
-                              <input type="text" name="firmExpenseS" 
-                              onChange={handleChange} value={values.firmExpense}
-                              className="bill-form-input w-100" placeholder="AMOUNT"/>
+                              <label htmlFor="firmExpense">FIRM EXPENSES</label>
+                              <input type="text" name="firmExpenses" 
+                              onChange={handleChange} value={values.firmExpenses}
+                              className="bill-form-input w-100" placeholder="AMOUNT OF CHARGE"/>
                            </div>
                         </div>
 

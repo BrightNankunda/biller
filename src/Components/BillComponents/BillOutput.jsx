@@ -153,35 +153,35 @@ const BillOutput = (props) => {
                   <div className="col-lg-10 p-2">
                      <h5 className="row d-flex border-bottom border-dark">
                         <span className="col-50 mr-2">CLIENT NAME: </span>
-                        <span className="col-50">{scheduleData.clientName}</span></h5>
+                        <span className="col-50 ml-2 text-primary">{scheduleData.clientName}</span></h5>
                      <h5 className="row d-flex border-bottom border-dark">
                         <span className="col-50 mr-2">PROPERTY TYPE: </span> 
-                        <span className="col-50">{scheduleData.propertyType}</span>
+                        <span className="col-50 ml-2 text-primary">{scheduleData.propertyType}</span>
                      </h5>
                      <h5 className="row d-flex border-bottom border-dark"><span className="col-50 mr-2">ADVOCATE: </span>
-                           <span className="col-50">{advocateData}</span></h5>
+                           <span className="col-50 ml-2 text-primary">{advocateData}</span></h5>
                      {/* {scheduleData.propertyType === "LAND" &&   */}
                      <h5 className="row d-flex border-bottom border-dark">
                         <span className="col-50 mr-2">SCALE: </span>
-                        <span>
+                        <span className="ml-2 text-primary">
                            {scaleData}
                         </span></h5>
                         {/* }  */}
                      {scheduleData.propertyType === "REN" && 
                      <h5 className="row d-flex border-bottom border-dark">
                         <span className="col-50 mr-2">RENTAL TYPE: </span>
-                        <span className="col-50">{rentOptions[parseInt(scheduleData.rentalType) - 1].value}</span>
+                        <span className="col-50 ml-2 text-primary">{rentOptions[parseInt(scheduleData.rentalType) - 1].value}</span>
                      </h5>}
                      {scheduleData.propertyType === 'LAND' && <h5 className="row d-flex border-bottom border-dark">
                         <span className="col-50 mr-2">REGISTERATION STATUS: </span>
-                        <span className="col-50">{scheduleData.propertyType}</span>
+                        <span className="col-50 ml-2 text-primary">{scheduleData.propertyType}</span>
                      </h5>}
                      <h5 className="row d-flex border-bottom border-dark">
                         <span className="col-50 mr-2">LAND VALUE: </span>
-                        <span className="col-50">{scheduleData.landValue}</span></h5>
+                        <span className="col-50 ml-2 text-primary">{scheduleData.landValue}</span></h5>
                      <h5 className="row d-flex border-bottom border-dark">
                         <span className="col-50 mr-2">TOTAL: </span>
-                        <span className="col-50">{scheduleData.total}</span>
+                        <span className="col-50 ml-2 text-primary">{scheduleData.total}</span>
                      </h5>
                      <div className="d-flex justify-content-center my-2">
                         <button className="btn submit-btn py-2 px-3 bg-white" onClick={SaveBillData}>SAVE BILL DATA</button>
