@@ -1,10 +1,16 @@
 import React, {useState, useEffect}from 'react';
+import {useDispatch} from 'react-redux'
+import { SaveCriminal } from '../../Actions/CriminalActions';
 import AppNavbar from '../AppNavbar';
 import SideBar from './SideBar';
  
 const CriminalOutput = () => {
 
+   const dispatch = useDispatch()
+
    const [scheduleData, setScheduleData] = useState(null)
+   const [assignedTo, setAssignedTo] = useState('')
+   const [notes, setNotes] = useState('')
    const [status, setStatus] = useState('')
    const [subjectValue, setSubjectValue] = useState('')
    const [clientName, setClientName] = useState('')
@@ -30,9 +36,11 @@ const CriminalOutput = () => {
 
    useEffect(() => {
       if(scheduleData !== null) {
-         const {status,subjectValue,clientName,total,advocateExpenses,court,clientId,remand,
-         committed,offence,openDate,closeDate, firmExpenses} = scheduleData
+         const {assignedTo, status,subjectValue,clientName,total,advocateExpenses,
+            court,clientId,remand,notes,
+            committed,offence,openDate,closeDate, firmExpenses} = scheduleData
          
+         setAssignedTo(assignedTo)
          setStatus(status)
          setSubjectValue(subjectValue)
          setAdvocateExpenses(advocateExpenses)
@@ -42,6 +50,7 @@ const CriminalOutput = () => {
          setTotal(total)
          setOffence(offence)
          setClientId(clientId)
+         setNotes(notes)
          setClientName(clientName)
          setCourt(court)
          setOpenDate(openDate)
@@ -51,6 +60,14 @@ const CriminalOutput = () => {
          // cleanup
       }
    }, [scheduleData])
+
+   const SaveCriminalData = () => {
+      dispatch(SaveCriminal({
+         clientId, assignedTo, status, subjectValue, advocateExpenses, 
+         firmExpenses, court, offence, notes,
+         committed, total, remand, openDate, closeDate
+      }))
+   }
 
    return (
       <div>
@@ -120,7 +137,7 @@ const CriminalOutput = () => {
                         <span className="col-50 ml-2 text-primary">{scheduleData.closeDate}</span></h5>
                      <div className="d-flex justify-content-center my-2">
                         <button className="btn submit-btn py-2 px-3 bg-white" 
-                        //onClick={SaveBillData}
+                        onClick={SaveCriminalData}
                         >SAVE BILL DATA</button>
                      </div>
                   </div>

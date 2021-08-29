@@ -1,4 +1,6 @@
-import React, {useState, useEffect, useDispatch} from 'react';
+import React, {useState, useEffect} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
+import {Link} from 'react-router-dom'
 import { useForm } from '../../Hooks/useForm';
 import AppNavbar from '../AppNavbar';
 import { FetchClients } from '../../Actions/ClientActions';
@@ -6,13 +8,16 @@ import SideBar from './SideBar';
  
 const Criminal = (props) => {
 
-   // const {loading: loadingClients, clients} = useSelector(state => state.clients)
-   // const dispatch = useDispatch()
+   const {loading: loadingClients, clients} = useSelector(state => state.clients)
+   console.log('LOADING CLIENTS', loadingClients, 'Clients', clients)
+   const dispatch = useDispatch()
 
-   const [values, handleChange] = useForm({clientName: 'Nankunda', assignedTo: '', status: '', 
-   court:'1', offence: '', remand:'', notes:'', subjectValue:'2000000', 
+   const [values, handleChange] = useForm({assignedTo: '', status: '',  
+   court:'1', offence: '', remand:'', notes:'', subjectValue:'2000000', committed: '',
    firmExpenses:'', advocateExpenses:'', closeDate:'', openDate:''})
    const [total, setTotal] = useState('')
+   const [client, setClient] = useState('')
+   const [showForm, setShowForm] = useState(true)
 
    const calculateTotal = () => {
       const {court, subjectValue} = values
@@ -112,23 +117,23 @@ const Criminal = (props) => {
       
    }
 
-   // useEffect(() => {
-   //    if(clients === null || undefined) {
-   //       setShowForm(false)
-   //    } else if(clients.length !== 0) {
-   //       setShowForm(true)
-   //    }
-   //    return () => {
-   //       // cleanup
-   //    }
-   // }, [clients])
+   useEffect(() => {
+      if(clients === null || undefined) {
+         setShowForm(false)
+      } else if(clients.length !== 0) {
+         setShowForm(true)
+      }
+      return () => {
+         // cleanup
+      }
+   }, [clients])
 
-   // useEffect(() => {
-   //    dispatch(FetchClients())
-   //    return () => {
-   //       // cleanup
-   //    }
-   // }, [])
+   useEffect(() => {
+      dispatch(FetchClients())
+      return () => {
+         // cleanup
+      }
+   }, [])
 
    const submitHandler = (e) => {
       e.preventDefault();
@@ -136,20 +141,25 @@ const Criminal = (props) => {
       calculateTotal()
    }
 
-   // const getClientDetails = (id) => {
-   //    if(id === null) return
-   //    return clients.find(client => client._id === id).firstName
+   const getClientDetails = (id) => {
+      if(id === null) return
+      return clients.find(client => client._id === id).firstName
 
-   // }
+   }
 
+   // FUNCTION TO STORE IN LOCAL STORAGE AND REDIRECT TO CRIMINAL OUTPUT
    const toLocalStorageAndRedirect = (currentTotal) => {
+      const clientId = props.match.params.clientId || client
+      if(clientId.trim() === '') {
+         return;
+      }
       // console.log('SYSTEM TOTAL', total) 
       // return
       localStorage.setItem("Schedule Data", JSON.stringify(
          {"clientId": "1", 
          "total": currentTotal, 
-         "clientName": values.clientName,//getClientDetails(clientId),
-         "assignedTo": values.assignedTo, "status": values.status, 
+         "clientName": getClientDetails(clientId), "clientId": clientId,
+         "assignedTo": values.assignedTo, "status": values.status, "committed": values.committed,
          "court":values.court, "offence":values.offence, "remand":values.remand, 
          "notes":values.notes, "subjectValue":values.subjectValue, 
          "firmExpenses":values.firmExpenses, "advocateExpenses":values.advocateExpenses, 
@@ -167,26 +177,30 @@ const Criminal = (props) => {
          
             <div className="w-100 bg-light col-lg-9 ">
                <h3 className="text-center">CRIMINAL MATTER</h3>
-               <form onSubmit={submitHandler}>
+               {showForm && <form onSubmit={submitHandler}>
                   
                   { /* ABOUT FORM */}
                   <div className="about sub-form my-4 p-3 ">
                      <h5 className="text-center">ABOUT</h5>
                      <div className="my-1">
-                        <label htmlFor="clientName">CLIENT NAME</label>
-                        {/* <select type="select" className="bill-input px-2" id="client" 
-                           value={client}
-                           onChange={(e) => setClient(e.target.value)}
-                           name="client">
-                           <option disabled value="">SCHEDULE OWNER/CLIENT</option>
-                           {clients && clients.map(client => (
-                              <option value={client._id} key={client._id}>{client.firstName + ' ' + client.lastName}</option>
-                           ))}
-                        </select> */}
-                        <input type="text" name="clientName" 
-                           value={values.clientName} onChange={handleChange}
-                           id="clientName" className="bill-form-input ml-2 w-50" 
-                           placeholder="CLIENT'S NAME..."/>
+                        
+                        {/* SELECT A CLIENT */}
+                        {!props.match.params.clientId && <div className="d-flex flex-col w-90">
+                           <div className="d-flex flex-col my-2">
+                              <label htmlFor="client">CLIENT NAME</label>                             
+                              <select type="select" className="bill-form-input px-2" 
+                              id="client" 
+                                 value={client}
+                                 onChange={(e) => setClient(e.target.value)}
+                                 name="client">
+                                 <option disabled value="">SCHEDULE OWNER/CLIENT</option>
+                                 {clients && clients.map(client => (
+                                    <option value={client._id} key={client._id}>{client.firstName + ' ' + client.lastName}</option>
+                                 ))}
+                              </select>
+                              
+                           </div>
+                        </div>}
                      </div>
                      <div className="my-1">
                         <label htmlFor="assignedTo">ASSIGNED TO</label>
@@ -300,7 +314,20 @@ const Criminal = (props) => {
                      <button className="btn reset-btn py-2 px-3 bg-white">RESET</button>
                      <button className="btn submit-btn py-2 px-3 bg-white" type="submit">SUBMIT</button>
                   </div>
-               </form>
+               </form>}
+               {!showForm && 
+               <div 
+               className="alert alert-danger forty-height w-100 d-flex justify-content-center">
+               <div className="my-auto">
+                  <h3 
+                  className="text-danger text-center my-auto">
+                  YOU CURRENTLY HAVE NO CLIENT, PLEASE ADD ONE!</h3> 
+                  <div className="d-flex justify-content-center">
+                     <Link to="/reports/addClient" 
+                        className="text-primary text-center my-auto">ADD A CLIENT</Link>
+                  </div>
+               </div>
+            </div>}
             </div>
          </div>
       </div>
