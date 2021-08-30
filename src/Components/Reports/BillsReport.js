@@ -49,13 +49,11 @@ const BillsReport = () => {
    // FUNCTION TO FIND AND RETURN BILL OWNER DETAILS
    const getClientDetails = (id) => {
       if(typeof(id) !== undefined) {
-         console.log(clients)
          console.log('ID', typeof(id) )
 
       }
-      // if(id === null) return
-      // return clients.find(client => client._id === id)
-      // return clients.find(client => client._id === id).firstName
+      if(id === null) return
+      return clients.find(client => client._id === id).firstName
       // return (id !== null) ? clients.find(client => client._id === id) : ''
 
    }

@@ -137,8 +137,8 @@ const Criminal = (props) => {
 
    const submitHandler = (e) => {
       e.preventDefault();
-      console.log(values)
-      // calculateTotal()
+      // console.log(values)
+      calculateTotal()
    }
 
    const getClientDetails = (id) => {
@@ -150,23 +150,22 @@ const Criminal = (props) => {
    // FUNCTION TO STORE IN LOCAL STORAGE AND REDIRECT TO CRIMINAL OUTPUT
    const toLocalStorageAndRedirect = (currentTotal) => {
       const clientId = props.match.params.clientId || client
-      console.log('submitted')
-      // if(clientId.trim() === '') {
-      //    return;
-      // }
+      // console.log('submitted')
+      if(clientId.trim() === '') {
+         return;
+      }
       // console.log('SYSTEM TOTAL', total) 
       // return
-      // localStorage.setItem("Schedule Data", JSON.stringify(
-      //    {"clientId": "1", 
-      //    "total": currentTotal, 
-      //    "clientName": getClientDetails(clientId), "clientId": clientId,
-      //    "assignedTo": values.assignedTo, "status": values.status, "committed": values.committed,
-      //    "court":values.court, "offence":values.offence, "remand":values.remand, 
-      //    "notes":values.notes, "subjectValue":values.subjectValue, 
-      //    "firmExpenses":values.firmExpenses, "advocateExpenses":values.advocateExpenses, 
-      //    "closeDate":values.closeDate, "openDate":values.openDate
-      // }))
-      // props.history.push('/schedules/criminalOutput')
+      localStorage.setItem("Schedule Data", JSON.stringify(
+         {"total": currentTotal, 
+         "clientName": getClientDetails(clientId), "clientId": clientId,
+         "assignedTo": values.assignedTo, "status": values.status, "committed": values.committed,
+         "court":values.court, "offence":values.offence, "remand":values.remand, 
+         "notes":values.notes, "subjectValue":values.subjectValue, 
+         "firmExpenses":values.firmExpenses, "advocateExpenses":values.advocateExpenses, 
+         "closeDate":values.closeDate, "openDate":values.openDate
+      }))
+      props.history.push('/schedules/criminalOutput')
    }
    return (
       <div>
