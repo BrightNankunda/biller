@@ -48,10 +48,14 @@ const BillsReport = () => {
 
    // FUNCTION TO FIND AND RETURN BILL OWNER DETAILS
    const getClientDetails = (id) => {
-      console.log('ID', typeof(id) )
-      if(id === null) return
+      if(typeof(id) !== undefined) {
+         console.log(clients)
+         console.log('ID', typeof(id) )
+
+      }
+      // if(id === null) return
       // return clients.find(client => client._id === id)
-      return clients.find(client => client._id === id).firstName
+      // return clients.find(client => client._id === id).firstName
       // return (id !== null) ? clients.find(client => client._id === id) : ''
 
    }
@@ -78,7 +82,7 @@ const BillsReport = () => {
                      </div>
                   }
                   
-                  {bills && clients && !loading && <div className="light-color my-1 pb-3 pt-2 px-5 clientss-table">
+                  {bills && criminals && clients && !loading && <div className="light-color my-1 pb-3 pt-2 px-5 clientss-table">
                      <table className="w-100">
                         <thead>
                            <tr>
@@ -125,8 +129,8 @@ const BillsReport = () => {
                                     </Link>
                                  </td>
 
-                                 <td>ID FOR CLIENT
-                                 {/* { clients && criminals  && getClientDetails(criminal.createdFor)} */}
+                                 <td>
+                                 { clients && criminals && getClientDetails(criminal.createdFor)}
                                  </td>
                                  <td>
                                     <Link to={"/reports/bill/" + criminal._id} className="bill-link">

@@ -1,10 +1,13 @@
 import React, {useState, useEffect}from 'react';
-import {useDispatch} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import { SaveCriminal } from '../../Actions/CriminalActions';
 import AppNavbar from '../AppNavbar';
 import SideBar from './SideBar';
  
-const CriminalOutput = () => {
+const CriminalOutput = (props) => {
+
+   const newCriminal = useSelector(state => state.newCriminal)
+   const {loading: loadingCriminalCreated, redirectCriminalCreator} = newCriminal
 
    const dispatch = useDispatch()
 
@@ -24,6 +27,16 @@ const CriminalOutput = () => {
    const [offence, setOffence] = useState('')
    const [openDate, setOpenDate] = useState('')
    const [closeDate, setCloseDate] = useState('')
+
+   useEffect(() => {
+      if(redirectCriminalCreator) {
+         localStorage.removeItem('Schedule Data')
+         props.history.push('/reports/bills')
+      }
+      return () => {
+         // cleanup
+      }
+   }, [redirectCriminalCreator])
 
    useEffect(() => {
       if(localStorage.getItem('Schedule Data') !== undefined || null) {

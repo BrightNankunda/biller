@@ -31,7 +31,6 @@ const BillOutput = (props) => {
    }, [])
 
    const {loading, redirectBillCreator} = useSelector(state => state.newBill)
-   console.log('LAND BILLING', 'loading', loading, 'REDIRECT CREATOR', redirectBillCreator)
 
    // REDIRECT BILL CREATOR AFTER THE CLIENT HAS BEEN CREATED
    useEffect(() => {
