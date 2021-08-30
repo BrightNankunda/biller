@@ -69,14 +69,14 @@ const AllCriminals = () => async (dispatch, getState) => {
    const {user} = getState()
 
    try {
-      dispatch({type:CRIMINAL_FETCH_REQUEST})
+      dispatch({type:CRIMINALS_FETCH_REQUEST})
       const {data} = await axios.get(process.env.REACT_APP_API_URL + '/api/criminal', {
          headers: {'Authorization': 'Bearer ' + user.token}
       })
       console.log(data);
-      dispatch({type: CRIMINAL_FETCH_SUCCESS, payload:data})
+      dispatch({type: CRIMINALS_FETCH_SUCCESS, payload:data})
    } catch (error) {
-      dispatch({type: CRIMINAL_FETCH_ERROR, payload: error.message})
+      dispatch({type: CRIMINALS_FETCH_ERROR, payload: error.message})
       console.log(error)
    }
 }
@@ -97,21 +97,21 @@ const AllCriminals = () => async (dispatch, getState) => {
 //    }
 // }
 
-// const AllUserCriminals = () => async (dispatch, getState) => {
-//    const {user} = getState()
+const AllUserCriminals = () => async (dispatch, getState) => {
+   const {user} = getState()
 
-//    try {
-//       dispatch({type: USER_CRIMINAL_FETCH_REQUEST})
-//       const {data} = await axios.get(process.env.REACT_APP_API_URL + '/api/criminal/user', {
-//          headers: {'Authorization': 'Bearer ' + user.token}
-//       })
-//       console.log('ALL USER CRIMINALS', data);
-//       dispatch({type: USER_CRIMINAL_FETCH_SUCCESS, payload:data})
-//    } catch (error) {
-//       dispatch({type: USER_CRIMINAL_FETCH_ERROR, payload: error.message})
-//       console.log(error)
-//    }
-// }
+   try {
+      dispatch({type: USER_CRIMINALS_FETCH_REQUEST})
+      const {data} = await axios.get(process.env.REACT_APP_API_URL + '/api/criminal/user', {
+         headers: {'Authorization': 'Bearer ' + user.token}
+      })
+      console.log('ALL USER CRIMINALS', data);
+      dispatch({type: USER_CRIMINALS_FETCH_SUCCESS, payload:data})
+   } catch (error) {
+      dispatch({type: USER_CRIMINALS_FETCH_ERROR, payload: error.message})
+      console.log(error)
+   }
+}
 
 
 // const DeleteACriminal = ({criminalId}) => async (dispatch, getState) => {
@@ -154,7 +154,7 @@ const AllCriminals = () => async (dispatch, getState) => {
 export {
    SaveCriminal, 
    AllCriminals, 
-   // AllUserCriminals, 
+   AllUserCriminals, 
    // AllClientCriminals, 
    FetchACriminal,
    // DeleteACriminal,

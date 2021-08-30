@@ -3,6 +3,7 @@ import thunk from 'redux-thunk'
 
 import { DeleteABillReducer, FetchABillReducer, UpdateABillReducer, FetchBillsReducer, FetchClientBillsReducer, FetchUserBillsReducer, SaveBillReducer } from './Reducers/BillReducers'
 import { CreateNewClientReducer, DeleteClientReducer, FetchAllClientsReducer, FetchSingleClientReducer, UpdateClientReducer } from './Reducers/ClientsReducers';
+import { SaveCriminalReducer, FetchCriminalsReducer, FetchUserCriminalsReducer, FetchClientCriminalsReducer } from './Reducers/CriminalReducer';
 import { LogoutUserReducer, UserLoginReducer, UserSigninReducer } from './Reducers/UserReducers'
 
 // const userInfo = localStorage.getItem("UgBillToken") || null;
@@ -15,6 +16,10 @@ const reducer = combineReducers({
    bills: FetchBillsReducer,
    userBills: FetchUserBillsReducer,
    clientBills: FetchClientBillsReducer,
+   newCriminal: SaveCriminalReducer,
+   criminals: FetchCriminalsReducer,
+   userCriminals: FetchUserCriminalsReducer,
+   clientCriminals: FetchClientCriminalsReducer,
    user:  UserLoginReducer || UserSigninReducer,
    userLoggingIn: UserLoginReducer,
    userSigningIn: UserSigninReducer,
