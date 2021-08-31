@@ -3,7 +3,7 @@ import { PencilFill, Trash } from 'react-bootstrap-icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { AllUserBills, DeleteABill } from '../../Actions/BillActions';
-import { AllUserCriminals } from '../../Actions/CriminalActions';
+import { AllUserCriminals, DeleteACriminal } from '../../Actions/CriminalActions';
 import { FetchClients } from '../../Actions/ClientActions';
 import AppNavbar from '../AppNavbar';
 import SideBar from '../BillComponents/SideBar';
@@ -16,10 +16,13 @@ const BillsReport = () => {
    
    const {loading: loadingCriminals, criminals, criminalsCount} = useSelector(state => state.userCriminals)
   
+   const {loading: loadingCriminalDelete, redirectCriminalDeletor} = useSelector(state => state.deletedCriminal)
+
    const {loading: loadingBillDelete, redirectBillDeletor} = useSelector(state => state.deletedBill)
    console.log('DELETED BILL', 'REDIRECT BILL DELETOR', redirectBillDeletor)
 
    console.log(billsCount, 'USERBILLS', bills)
+
    useEffect(() => {
       dispatch(AllUserBills())
       dispatch(AllUserCriminals())
@@ -31,7 +34,7 @@ const BillsReport = () => {
 
 
    useEffect(() => {
-      if(redirectBillDeletor) {
+      if(redirectBillDeletor || redirectCriminalDeletor) {
          dispatch(AllUserBills())
          dispatch(FetchClients())
          dispatch(AllUserCriminals())
@@ -39,11 +42,14 @@ const BillsReport = () => {
       return () => {
                // cleanup
       }
-   },[redirectBillDeletor])
-
+   },[redirectBillDeletor, redirectCriminalDeletor])
 
    const deleteBill = (billId) => {
       dispatch(DeleteABill({billId}))
+   }
+
+   const deleteCriminal = (criminalId) => {
+      dispatch(DeleteACriminal({criminalId}))
    }
 
    // FUNCTION TO FIND AND RETURN BILL OWNER DETAILS
@@ -122,7 +128,7 @@ const BillsReport = () => {
                         {criminals && criminals.map((criminal, index) => (
                               <tr className="border-bottom border-dark" key={criminal._id}>
                                  <td>
-                                    <Link to={"/reports/bill/" + criminal._id} className="bill-link">
+                                    <Link to={"/reports/criminal/" + criminal._id} className="bill-link">
                                        {billsCount + index + 1}
                                     </Link>
                                  </td>
@@ -131,17 +137,17 @@ const BillsReport = () => {
                                  { clients && criminals && getClientDetails(criminal.createdFor)}
                                  </td>
                                  <td>
-                                    <Link to={"/reports/bill/" + criminal._id} className="bill-link">
+                                    <Link to={"/reports/criminal/" + criminal._id} className="bill-link">
                                        CRIMINAL SCHEDULE</Link>
                                  </td>
                                  <td>{criminal.subjectValue}</td>
                                  <td>{criminal.total}</td>
                                  <td>
-                                 <Link className="update-link-client m-1" to={"/reports/billToUpdate/" + criminal._id}>
+                                 <Link className="update-link-client m-1" to={"/reports/criminalToUpdate/" + criminal._id}>
                                     <PencilFill />
                                  </Link>
                                  <span  className="delete-btn-client text-danger m-1">
-                                    <Trash onClick={() => deleteBill(criminal._id, index)}/>
+                                    <Trash onClick={() => deleteCriminal(criminal._id, index)}/>
                                  </span>
                                  </td>
                               </tr> 

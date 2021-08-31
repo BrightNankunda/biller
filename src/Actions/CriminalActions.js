@@ -114,23 +114,23 @@ const AllUserCriminals = () => async (dispatch, getState) => {
 }
 
 
-// const DeleteACriminal = ({criminalId}) => async (dispatch, getState) => {
-//    // console.log('FROM REDUX DELETE', criminalId)
-//    try {
-//       dispatch({type: DELETE_A_CRIMINAL_REQUEST})
-//       const {user} = getState()
-//       const {data} = await axios.delete(process.env.REACT_APP_API_URL + "/api/bill/" + criminalId, {
-//          headers: {'Authorization': 'Bearer ' + user.token}
-//       })
-//       console.log('DELETE SINGLE BILL REDUX', data)
-//       dispatch({type: DELETE_A_CRIMINAL_SUCCESS, payload: data})
-//       dispatch({type: DELETE_A_CRIMINAL_FINISHED})
-//    } catch(error) {
-//       console.log(error.message)
-//       dispatch({type: DELETE_A_CRIMINAL_FAILURE, payload: error.message})
-//    }
+const DeleteACriminal = ({criminalId}) => async (dispatch, getState) => {
+   // console.log('FROM REDUX DELETE', criminalId)
+   try {
+      dispatch({type: DELETE_A_CRIMINAL_REQUEST})
+      const {user} = getState()
+      const {data} = await axios.delete(process.env.REACT_APP_API_URL + "/api/criminal/" + criminalId, {
+         headers: {'Authorization': 'Bearer ' + user.token}
+      })
+      console.log('DELETE SINGLE CRIMINAL REDUX', data)
+      dispatch({type: DELETE_A_CRIMINAL_SUCCESS, payload: data})
+      dispatch({type: DELETE_A_CRIMINAL_FINISHED})
+   } catch(error) {
+      console.log(error.message)
+      dispatch({type: DELETE_A_CRIMINAL_FAILURE, payload: error.message})
+   }
 
-// }
+}
 
 // const UpdateACriminal = ({criminalId, clientId, propertyType,landValue,scale,rentalType,advocate,registered,total}) => async (dispatch, getState) => {
 //    // console.log('UPDATE BILL REDUX SAYS', criminalId,clientId, propertyType,landValue,scale,rentalType,advocate,registered,total)
@@ -157,6 +157,6 @@ export {
    AllUserCriminals, 
    // AllClientCriminals, 
    FetchACriminal,
-   // DeleteACriminal,
+   DeleteACriminal,
    // UpdateACriminal
 }

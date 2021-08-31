@@ -90,7 +90,7 @@ const CriminalOutput = (props) => {
                <SideBar />
             </div>
             <div className="col-lg-9">
-               <h3 className="tect-center">CRIMINAL OUTPUT DATA</h3>
+               <h3 className="text-center">CRIMINAL OUTPUT DATA</h3>
                
                 {scheduleData && <div className="my-2 d-flex justify-content-center forty-height light-color">
                   <div className="col-lg-10 p-2">
