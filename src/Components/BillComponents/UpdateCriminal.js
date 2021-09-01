@@ -237,7 +237,7 @@ const UpdateCriminal = (props) => {
       // console.log('SYSTEM TOTAL', total) 
       // return
       localStorage.setItem("Schedule Data", JSON.stringify(
-         {"total": currentTotal, 
+         {"total": currentTotal,
          "clientName": getClientDetails(clientId), "clientId": clientId,
          "assignedTo": assignedTo, "status": status, "committed": committed,
          "court":court, "offence":offence, "remand":remand, 
@@ -245,7 +245,7 @@ const UpdateCriminal = (props) => {
          "firmExpenses":firmExpenses, "advocateExpenses":advocateExpenses, 
          "closeDate":closeDate || criminal.closeDate, "openDate":openDate || criminal.openDate
       }))
-      props.history.push('/schedules/criminalOutput')
+      props.history.push(`/schedules/criminalOutput?update=true&criminalId=${props.match.params.criminalId}`)
    }
    return (
       <div>

@@ -1,17 +1,42 @@
 import React, {useState, useEffect}from 'react';
 import {useDispatch, useSelector} from 'react-redux'
-import { SaveCriminal } from '../../Actions/CriminalActions';
+import queryString from 'query-string'
+import { SaveCriminal, UpdateACriminal } from '../../Actions/CriminalActions';
 import AppNavbar from '../AppNavbar';
 import SideBar from './SideBar';
  
 const CriminalOutput = (props) => {
 
+   const locationParams = queryString.parse(props.location.search)
+
+   // DETERMINING DISPLAY STATUS FOR SAVING AND UPDATING BUTTONS 
+   useEffect(() => {
+      if(locationParams !== '') {
+         if(locationParams.save) {
+            setSaving(true)  
+         } else if(locationParams.update) {
+            setUpdating(true) 
+         }
+      } else {
+         return props.history.goBack()
+      }
+      
+      return () => {
+         // cleanup
+      }
+   }, [props.location.search, props.match.params.criminalId])
+
+   
    const newCriminal = useSelector(state => state.newCriminal)
    const {loading: loadingCriminalCreated, redirectCriminalCreator} = newCriminal
 
    const dispatch = useDispatch()
 
+   const [saving, setSaving] = useState(false)
+   const [updating, setUpdating] = useState(false)
    const [scheduleData, setScheduleData] = useState(null)
+   
+   // SETTING LOCAL STORAGE DATA TO REACTIVE DATA
    const [assignedTo, setAssignedTo] = useState('')
    const [notes, setNotes] = useState('')
    const [status, setStatus] = useState('')
@@ -28,6 +53,7 @@ const CriminalOutput = (props) => {
    const [openDate, setOpenDate] = useState('')
    const [closeDate, setCloseDate] = useState('')
 
+   // REDIRECTING TO ALL BILLS/CRIMINALS AFTER HITTING SAVE
    useEffect(() => {
       if(redirectCriminalCreator) {
          localStorage.removeItem('Schedule Data')
@@ -38,6 +64,7 @@ const CriminalOutput = (props) => {
       }
    }, [redirectCriminalCreator])
 
+   // RETRIEVING LOCAL STORAGE DATA
    useEffect(() => {
       if(localStorage.getItem('Schedule Data') !== undefined || null) {
          setScheduleData(JSON.parse(localStorage.getItem('Schedule Data')))
@@ -74,6 +101,7 @@ const CriminalOutput = (props) => {
       }
    }, [scheduleData])
 
+   // DISPATCHING A REDUX ACTION ON SAVE
    const SaveCriminalData = () => {
       dispatch(SaveCriminal({
          clientId, assignedTo, status, subjectValue, advocateExpenses, 
@@ -81,6 +109,16 @@ const CriminalOutput = (props) => {
          committed, total, remand, openDate, closeDate
       }))
    }
+   // DISPATCHING A REDUX ACTION ON UPDATE
+   const UpdateCriminalData = () => {
+      const criminalId = locationParams.criminalId
+      dispatch(UpdateACriminal({
+         clientId, assignedTo, status, subjectValue, advocateExpenses, 
+         firmExpenses, court, offence, notes, criminalId,
+         committed, total, remand, openDate, closeDate
+      }))
+   }
+   console.log('QUEERY PROPS', props, updating, saving)
 
    return (
       <div>
@@ -101,7 +139,8 @@ const CriminalOutput = (props) => {
                         <span className="col-50 mr-2">ASSIGNED TO: </span> 
                         <span className="col-50 ml-2 text-primary">{scheduleData.assignedTo}</span>
                      </h5>
-                     <h5 className="row d-flex border-bottom border-dark"><span className="col-50 mr-2">ADVOCATE: </span>
+                     <h5 className="row d-flex border-bottom border-dark">
+                     <span className="col-50 mr-2">COURT: </span>
                            <span className="col-50 ml-2 text-primary">{scheduleData.court}</span></h5>
                      <h5 className="row d-flex border-bottom border-dark">
                         <span className="col-50 mr-2">OFFENCE: </span>
@@ -148,15 +187,15 @@ const CriminalOutput = (props) => {
                      <h5 className="row d-flex border-bottom border-dark">
                         <span className="col-50 mr-2">CLOSE DATE: </span>
                         <span className="col-50 ml-2 text-primary">{scheduleData.closeDate}</span></h5>
-                     <div className="d-flex justify-content-center my-2">
+                     {saving && <div className="d-flex justify-content-center my-2">
                         <button className="btn submit-btn py-2 px-3 bg-white" 
                         onClick={SaveCriminalData}
                         >SAVE BILL DATA</button>
 
-                     </div>
-                     {false && <div className="d-flex justify-content-center my-2">
+                     </div>}
+                     {updating && <div className="d-flex justify-content-center my-2">
                         <button className="btn submit-btn py-2 px-3 bg-white" 
-                        onClick={SaveCriminalData}
+                        onClick={UpdateCriminalData}
                         >UPDATE BILL DATA</button>
                         
                      </div>}

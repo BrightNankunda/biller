@@ -22,6 +22,9 @@ const Criminal = (props) => {
    const calculateTotal = () => {
       const {court, subjectValue} = values
       if(parseInt(court) === 1 ) {
+         // `To sue or defend anycase, whether commenced by plaint ,statement of claim, petition, originating summons or originating motions 
+         //  or to present or oppose an appeal, where the claim or value of the subject matter can be determined from the pleading, settlement,
+         // a valuation or the judgement`
          if(parseInt(subjectValue) <= 2000000) { // 2 Million
             const currentTotal = parseInt(subjectValue) * 0.15
             toLocalStorageAndRedirect(currentTotal)
@@ -112,7 +115,33 @@ const Criminal = (props) => {
          }
       } else if(parseInt(court) === 4) {
          // a suit where settlement is reached prior to confirmation of the first hearing date of the suit the fee
-         console.log(4444)
+         if(parseInt(subjectValue) <= 2000000) {
+            setTotal((parseInt(subjectValue) * 0.15)* 0.85)
+         } else if(parseInt(subjectValue) <= 5000000) { // < 5 Million
+            const currentTotal = ((2000000*0.15)+((parseInt(subjectValue)-2000000)*0.14))* 0.85 
+            toLocalStorageAndRedirect(currentTotal)
+            
+         } else if(parseInt(subjectValue) <= 10000000) { // < 10 Milliion
+            const currentTotal = ((2000000*0.15)+(3000000*0.14)+((parseInt(subjectValue)-5000000)*0.12))* 0.85
+            toLocalStorageAndRedirect(currentTotal)
+            
+         } else if(parseInt(subjectValue) <= 20000000) { // < 20 Million
+            const currentTotal = ((2000000*0.15)+(3000000*0.14)+(5000000*0.12)+((parseInt(subjectValue)-10000000)*0.10))* 0.85
+            toLocalStorageAndRedirect(currentTotal)
+            
+         } else if(parseInt(subjectValue) <= 50000000) { // < 50 Million
+            const currentTotal = ((2000000*0.15)+(3000000*0.14)+(5000000*0.12)+(10000000*0.10)+((parseInt(subjectValue)-20000000)*0.08))* 0.85
+            toLocalStorageAndRedirect(currentTotal)
+            
+         } else if(parseInt(subjectValue) <= 100000000) { // < 100 Million
+            const currentTotal = ((2000000*0.15)+(3000000*0.14)+(5000000*0.12)+(10000000*0.10)+(20000000*0.08)+((parseInt(subjectValue)-50000000)*0.05))* 0.85
+            toLocalStorageAndRedirect(currentTotal)
+            
+         } else{ // greater Than 100 Million
+            const currentTotal = ((2000000*0.15)+(3000000*0.14)+(5000000*0.12)+(10000000*0.10)+(20000000*0.08)+(50000000*0.05)+((parseInt(subjectValue)-50000000)*0.02))* 0.85
+            toLocalStorageAndRedirect(currentTotal)
+            
+         }
       }
       
    }
@@ -165,7 +194,7 @@ const Criminal = (props) => {
          "firmExpenses":values.firmExpenses, "advocateExpenses":values.advocateExpenses, 
          "closeDate":values.closeDate, "openDate":values.openDate
       }))
-      props.history.push('/schedules/criminalOutput')
+      props.history.push('/schedules/criminalOutput?save=true')
    }
    return (
       <div>

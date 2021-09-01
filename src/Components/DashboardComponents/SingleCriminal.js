@@ -20,13 +20,23 @@ const SingleCriminal = (props) => {
    const {loading, criminal} = useSelector(state => state.singleCriminal)
    console.log('LOADING', loading, 'CRIMINAL', criminal)
 
-   const advocateOptions = [
-      "This option is not yet identified but this is option one",
-      "to sue in ordinary suit in which no defense is filed or in a summary suit where no application for leave to appear and defend is made",
-      "to sue or defend in summary suit in which an application for leave to appear and defend was made and refused",
-      "a suit where settlement is reached prior to confirmation of the first hearing date of the suit the fee"
-   ]
+   useEffect(() => {
+      if(criminal !== null) {
 
+         console.log('CRIMINAL OPEN DATE', criminal.closeDate);
+      }
+      return () => {
+         // cleanup
+      }
+   }, [criminal])
+   const advocateOptions = [
+      `To sue or defend anycase, whether commenced by plaint ,statement of claim, petition, originating summons or originating motions 
+       or to present or oppose an appeal, where the claim or value of the subject matter can be determined from the pleading, settlement,
+      a valuation or the judgement`,
+      "To sue in ordinary suit in which no defense is filed or in a summary suit where no application for leave to appear and defend is made",
+      "To sue or defend in summary suit in which an application for leave to appear and defend was made and refused",
+      "A suit where settlement is reached prior to confirmation of the first hearing date of the suit the fee"
+   ]
    return (
       <div>
          <AppNavbar />

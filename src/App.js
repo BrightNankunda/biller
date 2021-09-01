@@ -48,6 +48,7 @@ function App() {
           <ProtectedRoute path="/schedules/createBill/:clientId" component={ScheduleHome} />
           <ProtectedRoute path="/schedules/createBill/:clientId/rent" component={RentBilling} />
           <ProtectedRoute path="/schedules/createBill/:clientId/land" component={LandBilling} />
+          <ProtectedRoute path="/schedules/createBill/:clientId/criminal" component={Criminal} />
           <ProtectedRoute path="/reports/client/:clientId" component={SingleClient} />
           <ProtectedRoute path="/reports/clientToUpdate/:clientId" component={UpdateClient} />
           <ProtectedRoute path="/reports/billToUpdate/:billId" component={UpdateBill} />
@@ -83,6 +84,9 @@ function App() {
           <Route path="/login" component={LoginComponent} /> 
           {/* <Redirect to="/not-found" /> */}
       </Router>
+      <footer className="blue">
+        <p className="text-center text-white py-3">Jast Tech Ltd</p>
+      </footer>
     </div>
   );
 }
