@@ -152,7 +152,14 @@ const CriminalOutput = (props) => {
                         <button className="btn submit-btn py-2 px-3 bg-white" 
                         onClick={SaveCriminalData}
                         >SAVE BILL DATA</button>
+
                      </div>
+                     {false && <div className="d-flex justify-content-center my-2">
+                        <button className="btn submit-btn py-2 px-3 bg-white" 
+                        onClick={SaveCriminalData}
+                        >UPDATE BILL DATA</button>
+                        
+                     </div>}
                   </div>
 
                </div>} 
