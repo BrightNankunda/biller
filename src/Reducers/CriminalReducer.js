@@ -22,7 +22,10 @@ import {
    DELETE_A_CRIMINAL_REQUEST,
    DELETE_A_CRIMINAL_SUCCESS,
    DELETE_A_CRIMINAL_FINISHED,
-   DELETE_A_CRIMINAL_FAILURE
+   DELETE_A_CRIMINAL_FAILURE,
+   CRIMINALS_FETCH_EMPTY,
+   USER_CRIMINALS_EMPTY,
+   CLIENT_CRIMINALS_EMPTY
 } from '../Constants/CriminalConstants'
 
 function SaveCriminalReducer(state={loading: false, newCriminal: null, redirectCriminalCreator: false}, action) {
@@ -55,7 +58,8 @@ function FetchCriminalsReducer(state={criminals: [], loading: false, criminalsCo
       case CRIMINALS_FETCH_SUCCESS:
          return {...state, loading: false, 
             criminals: action.payload, criminalsCount: action.payload.length}
-         
+      case CRIMINALS_FETCH_EMPTY:
+         return {...state, criminals: [], loading: false, criminalsCount: 0} 
       case CRIMINALS_FETCH_ERROR:
          return {...state, loading: true, error: action.payload}
       default:
@@ -71,7 +75,8 @@ function FetchUserCriminalsReducer(state =
       case USER_CRIMINALS_FETCH_SUCCESS:
          return {...state, loading: false, criminals: action.payload, 
             criminalsCount: action.payload.length}
-         
+      case USER_CRIMINALS_EMPTY: 
+            return {...state, criminals: [], loading: false, criminalsCount: 0}
       case USER_CRIMINALS_FETCH_ERROR:
          return {...state, loading: true, error: action.payload}
       default:
@@ -86,7 +91,8 @@ function FetchClientCriminalsReducer(state={criminals: [], loading: false, crimi
       case CLIENT_CRIMINALS_FETCH_SUCCESS:
          return {...state, loading: false, criminals: action.payload, 
             criminalsCount: action.payload.length}
-         
+      case CLIENT_CRIMINALS_EMPTY:
+         return {...state, criminals: [], loading: false, criminalsCount: 0}   
       case CLIENT_CRIMINALS_FETCH_ERROR:
          return {...state, loading: true, error: action.payload}
       default:

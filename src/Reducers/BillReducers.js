@@ -22,7 +22,10 @@ import {
    DELETE_A_BILL_REQUEST,
    DELETE_A_BILL_SUCCESS,
    DELETE_A_BILL_FINISHED,
-   DELETE_A_BILL_FAILURE
+   DELETE_A_BILL_FAILURE,
+   USER_BILLS_EMPTY,
+   CLIENT_BILLS_EMPTY,
+   BILLS_FETCH_EMPTY
 } from '../Constants/BillConstants'
 
 function SaveBillReducer(state={loading: false, newBill: null, redirectBillCreator: false}, action) {
@@ -54,7 +57,8 @@ function FetchBillsReducer(state={bills: [], loading: false, billsCount: 0}, act
          return {...state, loading: true}
       case BILLS_FETCH_SUCCESS:
          return {...state, loading: false, bills: action.payload, billsCount: action.payload.length}
-         
+      case BILLS_FETCH_EMPTY:
+         return {...state, bills: [], loading: false, billsCount: 0}   
       case BILLS_FETCH_ERROR:
          return {...state, loading: true, error: action.payload}
       default:
@@ -68,7 +72,8 @@ function FetchUserBillsReducer(state={bills: [], loading: false, billsCount: 0},
          return {...state, loading: true}
       case USER_BILLS_FETCH_SUCCESS:
          return {...state, loading: false, bills: action.payload, billsCount: action.payload.length}
-         
+      case USER_BILLS_EMPTY:
+         return {...state, loading: false, bills: [], billsCount: 0}  
       case USER_BILLS_FETCH_ERROR:
          return {...state, loading: true, error: action.payload}
       default:
@@ -82,7 +87,8 @@ function FetchClientBillsReducer(state={bills: [], loading: false, billsCount: 0
          return {...state, loading: true}
       case CLIENT_BILLS_FETCH_SUCCESS:
          return {...state, loading: false, bills: action.payload, billsCount: action.payload.length}
-         
+      case CLIENT_BILLS_EMPTY:
+         return {...state, bills: [], loading: false, billsCount: 0}  
       case CLIENT_BILLS_FETCH_ERROR:
          return {...state, loading: true, error: action.payload}
       default:

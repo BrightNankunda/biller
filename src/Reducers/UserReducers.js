@@ -1,7 +1,8 @@
-import {LOGOUT_USER_FAILURE, LOGOUT_USER_REQUEST, LOGOUT_USER_SUCCESS, USER_LOGIN_FAILURE, 
+import {LOGOUT_USER_FAILURE, LOGOUT_USER_REQUEST, LOGOUT_USER_SUCCESS, USER_LOGIN_EMPTY, USER_LOGIN_FAILURE, 
    USER_LOGIN_FINISHED, 
    USER_LOGIN_REQUEST, 
    USER_LOGIN_SUCCESS, 
+   USER_SIGNIN_EMPTY, 
    USER_SIGNIN_FAILURE, 
    USER_SIGNIN_FINISHED, 
    USER_SIGNIN_REQUEST,
@@ -21,6 +22,8 @@ function UserLoginReducer(state=initialState, action) {
          return {...state, loading: false, user: action.payload, redirectUser: true}
       case USER_LOGIN_FINISHED:
          return {...state, loading: false, redirectUser: true}
+      case USER_LOGIN_EMPTY:
+         return {...state, loading: false, user: {AuthedUser: null, token: null}}
       case USER_LOGIN_FAILURE:
          return {...state, loading: false, error: action.payload}
       default:
@@ -36,6 +39,8 @@ function UserSigninReducer(state=initialState, action) {
          return {...state, loading: false, user: action.payload, redirectUser: true}
       case USER_SIGNIN_FINISHED:
          return {...state, loading: false, redirectUser: false}
+      case USER_SIGNIN_EMPTY: 
+      return {...state, loading: false, user: {AuthedUser: null, token: null}}
       case USER_SIGNIN_FAILURE:
          return {...state, loading: false, error: action.payload}
       default:

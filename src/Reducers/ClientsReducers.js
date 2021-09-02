@@ -16,7 +16,8 @@ import {
    UPDATE_SINGLE_CLIENT_SUCCESS,
    UPDATE_SINGLE_CLIENT_FAILURE,
    UPDATE_SINGLE_CLIENT_FINISHED,
-   DELETE_SINGLE_CLIENT_FINISHED
+   DELETE_SINGLE_CLIENT_FINISHED,
+   FETCH_CLIENTS_EMPTY
 } from "../Constants/ClientConstants"
 
 const CreateNewClientReducer = (state={loading: false, redirectCreator: false}, action) => {
@@ -41,6 +42,8 @@ const FetchAllClientsReducer = (state={clients: null}, action) => {
          return { ...state, loading: true}
       case FETCH_CLIENTS_SUCCESS:
          return {...state, loading: false, clients: action.payload}
+      case FETCH_CLIENTS_EMPTY: 
+         return {...state, loading: false, clients: []}
       case FETCH_CLIENTS_FAILURE:
          return {...state, loading:  false, error: action.payload}
       default:

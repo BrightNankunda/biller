@@ -3,6 +3,7 @@ import { Files, ForwardFill, People, PeopleFill, PersonFill } from 'react-bootst
 import { useDispatch, useSelector } from 'react-redux';
 import { AllUserBills } from '../../Actions/BillActions';
 import { FetchClients } from '../../Actions/ClientActions';
+import { AllUserCriminals } from '../../Actions/CriminalActions';
 import AppNavbar from '../AppNavbar';
 import SideBar from '../BillComponents/SideBar';
 import Calendar from './Calendar';
@@ -10,12 +11,14 @@ import LineGraph from './LineGraph';
 
 const Dashboard = () => {
    const {billsCount} = useSelector(state => state.userBills)
+   const {criminalsCount} = useSelector(state =>state.userCriminals)
    const {loading, clients} = useSelector(state => state.clients)
 
    const dispatch = useDispatch()
 
    useEffect(() => {
       dispatch(AllUserBills())
+      dispatch(AllUserCriminals())
       dispatch(FetchClients())
       return () => {
          // cleanup
@@ -54,7 +57,7 @@ const Dashboard = () => {
                   </div>
                   <div className="projects col-lg-4 m-2 bg-white d-flex flex-col">
                      <Files className="my-2 two-times"/>
-                     <h4>{billsCount} PROJECTS</h4>
+                     <h4>{billsCount + criminalsCount} PROJECTS</h4>
                   </div>
                   <div className="advocates col-lg-4 m-2 bg-white d-flex flex-col">
                      <People className="my-2 two-times"/>

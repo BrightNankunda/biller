@@ -1,4 +1,6 @@
 import axios from 'axios'
+import { BILLS_FETCH_EMPTY, CLIENT_BILLS_EMPTY, USER_BILLS_EMPTY } from '../Constants/BillConstants'
+import { CLIENT_CRIMINALS_EMPTY, CRIMINALS_FETCH_EMPTY, USER_CRIMINALS_EMPTY } from '../Constants/CriminalConstants'
 // import {useHistory} from 'react-router-dom'
 import {
    USER_LOGIN_REQUEST, 
@@ -10,7 +12,9 @@ import {
    LOGOUT_USER_SUCCESS,
    LOGOUT_USER_FAILURE,
    USER_SIGNIN_FINISHED,
-   USER_LOGIN_FINISHED
+   USER_LOGIN_FINISHED,
+   USER_LOGIN_EMPTY,
+   USER_SIGNIN_EMPTY
 } from '../Constants/UserConstants'
 
 
@@ -54,9 +58,17 @@ const LogoutUser = () => (dispatch, getState) => {
    // const user = getState()
 
    try {
+      dispatch({type: USER_BILLS_EMPTY})
+      dispatch({type: CLIENT_BILLS_EMPTY})
+      dispatch({type: BILLS_FETCH_EMPTY})
+      dispatch({type: CRIMINALS_FETCH_EMPTY})
+      dispatch({type: CLIENT_CRIMINALS_EMPTY})
+      dispatch({type: USER_CRIMINALS_EMPTY})
       dispatch({type: LOGOUT_USER_REQUEST})
       localStorage.setItem('UgBillUser', null)
       dispatch({type: LOGOUT_USER_SUCCESS})
+      dispatch({type: USER_LOGIN_EMPTY})
+      dispatch({type: USER_SIGNIN_EMPTY})
 
    } catch(error) {
       localStorage.setItem('UgBillUser', null)

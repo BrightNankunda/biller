@@ -134,20 +134,20 @@ const DeleteACriminal = ({criminalId}) => async (dispatch, getState) => {
 
 const UpdateACriminal = ({criminalId, clientId, assignedTo, subjectValue, status, court, remand, offence, committed, firmExpenses, notes, advocateExpenses, closeDate, openDate,total}) => async (dispatch, getState) => {
    console.log('UPDATE BILL REDUX SAYS', criminalId,clientId, assignedTo, subjectValue, status, court, remand, offence, committed, firmExpenses, notes, advocateExpenses, closeDate, openDate,total)
-   // try {
-   //    dispatch({type: CRIMINAL_UPDATE_REQUEST})
-   //    const {user} = getState()
-   //    const {data} = await axios.put(process.env.REACT_APP_API_URL + "/api/criminal/" + criminalId, 
-   //    {criminalId, clientId, propertyType,landValue,scale,rentalType,advocate,registered,total}, {
-   //       headers: {'Authorization': 'Bearer ' + user.token}
-   //    })
-   //    console.log('UPDATE SINGLE BILL REDUX', data)
-   //    dispatch({type: CRIMINAL_UPDATE_SUCCESS, payload: data})
-   //    dispatch({type: CRIMINAL_UPDATE_FINISHED})
-   // } catch(error) {
-   //    console.log(error.message)
-   //    dispatch({type: CRIMINAL_UPDATE_ERROR, payload: error.message})
-   // }
+   try {
+      dispatch({type: CRIMINAL_UPDATE_REQUEST})
+      const {user} = getState()
+      const {data} = await axios.put(process.env.REACT_APP_API_URL + "/api/criminal/" + criminalId, 
+      {criminalId, clientId, assignedTo, subjectValue, status, court, remand, offence, committed, firmExpenses, notes, advocateExpenses, closeDate, openDate,total}, {
+         headers: {'Authorization': 'Bearer ' + user.token}
+      })
+      console.log('UPDATE SINGLE BILL REDUX', data)
+      dispatch({type: CRIMINAL_UPDATE_SUCCESS, payload: data})
+      dispatch({type: CRIMINAL_UPDATE_FINISHED})
+   } catch(error) {
+      console.log(error.message)
+      dispatch({type: CRIMINAL_UPDATE_ERROR, payload: error.message})
+   }
    
 }
 

@@ -58,7 +58,7 @@ const SingleCriminal = (props) => {
                      </h5>
                      <h5 className="row d-flex border-bottom border-dark">
                      <span className="col-50 mr-2">ADVOCATE: </span>
-                           <span className="col-50 ml-2 text-primary">{advocateOptions[criminal.court]}</span></h5>
+                           <span className="col-50 ml-2 text-primary">{advocateOptions[criminal.court - 1]}</span></h5>
                      <h5 className="row d-flex border-bottom border-dark">
                         <span className="col-50 mr-2">OFFENCE: </span>
                         <span className="ml-2 text-primary">
