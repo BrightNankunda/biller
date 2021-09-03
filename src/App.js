@@ -37,6 +37,9 @@ import Criminal from './Components/BillComponents/Criminal';
 import CriminalOutput from './Components/BillComponents/CriminalOutput';
 import SingleCriminal from './Components/DashboardComponents/SingleCriminal';
 import UpdateCriminal from './Components/BillComponents/UpdateCriminal';
+import CompaniesBilling from './Components/BillComponents/CompaniesBilling';
+import FamilyBilling from './Components/BillComponents/FamilyBilling';
+import DebenturesBilling from './Components/BillComponents/DebenturesBilling';
 
 
 function App() {
@@ -61,6 +64,9 @@ function App() {
           <ProtectedRoute path="/billing/land" component={LandBilling} />
           <ProtectedRoute path="/billing/rent" component={RentBilling} />
           <ProtectedRoute path="/billing/criminal" component={Criminal} />
+          <ProtectedRoute path="/billing/companies" component={CompaniesBilling} />
+          <ProtectedRoute path="/billing/debentures" component={DebenturesBilling} />
+          <ProtectedRoute path="/billing/family" component={FamilyBilling} />
           <ProtectedRoute path="/reports/clients" component={ClientsReport} />
           <ProtectedRoute path="/reports/advocates" component={AdvocatesReport} />
           <ProtectedRoute path="/reports/bills" component={BillsReport} />

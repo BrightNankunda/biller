@@ -27,53 +27,38 @@ const ScheduleHome = (props) => {
          </div>
          <div className="col-lg-9 bg-light d-flex flex-col w-100">
             <div className="schedules d-flex flex-col justify-content-center">
-               <div onClick={() => goToRoute('/land')} className="row rounded-mid m-2 my-2 cursor-pointer py-2 bg-white d-flex w-100 px-3">
-                  <div className="col-lg-4"  >
-                     <h4 className="mx-2">FIRST SCHEDULE</h4>
-                  </div>
-                  <div className="col-lg-8 ">
-                     <h4>LAND</h4>
+               <div onClick={() => goToRoute('/land')} className="row rounded-mid m-2 my-3 cursor-pointer py-2 bg-white d-flex w-100 px-3">
+                  
+                  <div className="col-lg-12">
+                     <h4 className="text-center">LAND</h4>
                   </div>
                </div>
-               <div  onClick={() => goToRoute('/rent')} className="rounded-mid m-2 my-2 cursor-pointer py-2 bg-white d-flex w-100 px-3">
-                  <div className="col-lg-4">
-                     <h4 className="mx-2">SECOND SCHEDULE</h4>
-                  </div>
-                  <div className="col-lg-8 ">
-                     <h4>RENT</h4>
+               <div  onClick={() => goToRoute('/rent')} className="rounded-mid m-2 my-3 cursor-pointer py-2 bg-white d-flex w-100 px-3">
+                  
+                  <div className="col-lg-12 ">
+                     <h4 className="text-center">RENT</h4>
                   </div>
                </div>
-               <div onClick={() => goToRoute('/criminal')} className="rounded-mid m-2 my-2 cursor-pointer py-2 bg-white d-flex w-100 px-3">
-                  <div className="col-lg-4" >
-                     <h4 className="mx-2">THIRD SCHEDULE</h4>
-                  </div>
-                  <div className="col-lg-8 ">
-                     <h4>CRIMINAL SCHEDULE</h4>
+               <div onClick={() => goToRoute('/criminal')} className="rounded-mid m-2 my-3 cursor-pointer py-2 bg-white d-flex w-100 px-3">
+                  <div className="col-lg-12 ">
+                     <h4 className="text-center">CRIMINAL SCHEDULE</h4>
                   </div>
                </div>
 
-               <div onClick={() => goToRoute('/companies')} className="rounded-mid m-2 my-2 cursor-pointer py-2 bg-white d-flex w-100 px-3">
-                  <div className="col-lg-4" >
-                     <h4 className="mx-2">FORTH SCHEDULE</h4>
-                  </div>
-                  <div className="col-lg-8 ">
-                     <h4>COMPANIES</h4>
+               <div onClick={() => goToRoute('/companies')} className="rounded-mid m-2 my-3 cursor-pointer py-2 bg-white d-flex w-100 px-3">
+                  
+                  <div className="col-lg-12 ">
+                     <h4 className="text-center">COMPANIES</h4>
                   </div>
                </div>
-               <div onClick={() => goToRoute('/tradeMarks')} className="rounded-mid m-2 my-2 cursor-pointer py-2 bg-white d-flex w-100 px-3">
-                  <div className="col-lg-4">
-                     <h4 className="mx-2">FIFTH SCHEDULE</h4>
-                  </div>
-                  <div className="col-lg-8 ">
-                     <h4>TRADEMARKS, PATENTS AND CHATTELS TRANSFER</h4>
+               <div onClick={() => goToRoute('/debentures')} className="rounded-mid m-2 my-2 cursor-pointer py-2 bg-white d-flex w-100 px-3">
+                  <div className="col-lg-12 ">
+                     <h4 className="text-center">DEBENTURES</h4>
                   </div>
                </div>
-               <div onClick={() => goToRoute('/business')} className="rounded-mid m-2 my-2 cursor-pointer py-2 bg-white d-flex w-100 px-3">
-                  <div className="col-lg-4">
-                     <h4 className="mx-2">SIXTH SCHEDULE</h4>
-                  </div>
-                  <div className="col-lg-8 ">
-                     <h4>BUSINESS</h4>
+               <div onClick={() => goToRoute('/family')} className="rounded-mid m-2 my-3 cursor-pointer py-2 bg-white d-flex w-100 px-3">
+                  <div className="col-lg-12 ">
+                     <h4 className="text-center">FAMILY PRACTICE</h4>
                   </div>
                </div>
             </div>
