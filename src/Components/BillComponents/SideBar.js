@@ -53,9 +53,9 @@ const SideBar = () => {
             <span className="dashboard-icons"><CurrencyBitcoin /></span> 
             BILLING</NavLink>
 
-         <NavLink className="btn btn-outline my-3" to="/settings">
+         {/* <NavLink className="btn btn-outline my-3" to="/settings">
             <span className="dashboard-icons"><GearFill /></span>
-            SETTINGS</NavLink>
+            SETTINGS</NavLink> */}
       </div>
    );
 }

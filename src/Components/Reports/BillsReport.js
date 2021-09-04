@@ -15,7 +15,7 @@ const BillsReport = () => {
    const {loading: loadingClients, clients} = useSelector(state => state.clients)
    
    const {loading: loadingCriminals, criminals, criminalsCount} = useSelector(state => state.userCriminals)
-  
+
    const {loading: loadingCriminalDelete, redirectCriminalDeletor} = useSelector(state => state.deletedCriminal)
 
    const {loading: loadingBillDelete, redirectBillDeletor} = useSelector(state => state.deletedBill)

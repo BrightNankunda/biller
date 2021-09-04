@@ -23,7 +23,7 @@ const SingleCriminal = (props) => {
    useEffect(() => {
       if(criminal !== null) {
 
-         console.log('CRIMINAL OPEN DATE', criminal.closeDate);
+         console.log('CRIMINAL OPEN DATE', new Date(Date.parse(criminal.createdOn)).toLocaleDateString('en-GB'));
       }
       return () => {
          // cleanup
