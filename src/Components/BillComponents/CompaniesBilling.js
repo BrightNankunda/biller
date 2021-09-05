@@ -13,7 +13,8 @@ const CompaniesBilling = (props) => {
 
    const dispatch = useDispatch()
 
-   const [values, handleChange] = useForm({capital: 120000000, selection: '1', assignedTo: 'Bright'})
+   const [values, handleChange] = useForm({capital: 120000000, advocateExpenses: '', 
+   assignedTo: 'Bright', advocateInstructions: '', openDate: '', closeDate: ''})
    const [total, setTotal] = useState('')
 
    const [client, setClient] = useState('')
@@ -21,56 +22,67 @@ const CompaniesBilling = (props) => {
    const [showForm, setShowForm] = useState(true)
 
    const calculate = () => {
-      const {capital, selection} = values
+      const {capital, advocateInstructions} = values
 
-      if(parseInt(selection) === 1) {
+      if(parseInt(advocateInstructions) === 1) {
+
          // instructions fees for the formation and incorporation of a private company with limited liability and share capital
          if(parseInt(capital) <= 10000000) {
             let total = (parseInt(capital)*0.10)
 
             if(total<= 500000) {
-               setTotal(500000)
+               toLocalStorageAndRedirect(500000)
+               // setTotal()
             } else {
-               setTotal(total)
+               toLocalStorageAndRedirect(total)
+               // setTotal(total)
             }
 
          } else if(parseInt(capital) <= 50000000) {
             const  total=  ((10000000*0.10)+(parseInt(capital)-10000000)*0.03)
-            setTotal(total)
+            toLocalStorageAndRedirect(total)
+            // setTotal(total)
          } else if(parseInt(capital)<= 100000000) {
             const total=((10000000*0.10)+(40000000*0.03)+((parseInt(capital)-50000000)*0.02))
-            setTotal(total)
+            toLocalStorageAndRedirect(total)
+            // setTotal(total)
          } else {
             const total=((10000000*0.10)+(40000000*0.03)+(50000000*0.02)+(parseInt(capital)-100000000)*0.01)
-            setTotal(total)
+            toLocalStorageAndRedirect(total)
+            // setTotal(total)
 
          }
-      } else if(parseInt(selection) === 2) {
+      } else if(parseInt(advocateInstructions) === 2) {
          // instructions for the formation and incorporation of a public company 
          if(parseInt(capital) <= 10000000) {
             const total = (parseInt(capital) * 0.10)*1.5
             if(total <= 1000000) {
-               setTotal(1000000)
+               toLocalStorageAndRedirect(1000000)
+               // setTotal()
             } else {
-               setTotal(total)
+               toLocalStorageAndRedirect(total)
+               // setTotal(total)
             }
          } else if(parseInt(capital) <= 50000000) {
             const total=((10000000*0.10) + (parseInt(capital) -10000000) * 0.03)*1.5
-           setTotal(total)
+            toLocalStorageAndRedirect(total)
+         //   setTotal(total)
 
          } else if(parseInt(capital) <= 100000000) {
             const total=((10000000*0.10)+(40000000*0.03)+((parseInt(capital)-50000000)*0.02))*1.5
-            setTotal(total)
+            toLocalStorageAndRedirect(total)
+            // setTotal(total)
          } else {
-            total=((10000000*0.10) + (40000000*0.03) + (50000000*0.02) + ((parseInt(capital) - 100000000)*0.01))*1.5
-            setTotal(total)
+            const total=((10000000*0.10) + (40000000*0.03) + (50000000*0.02) + ((parseInt(capital) - 100000000)*0.01))*1.5
+            toLocalStorageAndRedirect(total)
+            // setTotal(total)
          }
-      } else if(parseInt(selection) === 3) {
+      } else if(parseInt(advocateInstructions) === 3) {
          // instruction for fees for the formation and incorpation of a new company without share capital
-         console.log(selection)
-      } else if(parseInt(selection) === 4) {
+         console.log(advocateInstructions)
+      } else if(parseInt(advocateInstructions) === 4) {
          // instructions for fees for the registering a foreign company
-         console.log(selection)
+         console.log(advocateInstructions)
       }
       
    }
@@ -126,7 +138,7 @@ const CompaniesBilling = (props) => {
       // console.log('SYSTEM TOTAL', total) 
       // return
       localStorage.setItem("Schedule Data", JSON.stringify(
-         {"total": currentTotal, 
+         {"total": currentTotal, "advocateExpenses": values.advocateExpenses,
          "clientName": getClientDetails(clientId), "clientId": clientId,
          "assignedTo": values.assignedTo, "capital":values.capital, 
          "advocateInstructions":values.advocateInstructions, 
@@ -212,7 +224,7 @@ const CompaniesBilling = (props) => {
                                     onChange={handleChange} name="advocateInstructions">
                                     <option disabled value="">CHOOSE ADVOCATE INSTRUCTIONS</option>
                                     {advocateInstructions.map(instruction => (
-                                       <option value={instruction.value}>{instruction.details}</option>
+                                       <option value={instruction.value} key={instruction.value}>{instruction.details}</option>
                                     ))}
                                  </select>
                               </div>

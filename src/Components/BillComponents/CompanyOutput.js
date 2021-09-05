@@ -1,9 +1,9 @@
 import React, {useState, useEffect}from 'react';
 import {useDispatch, useSelector} from 'react-redux'
 import queryString from 'query-string'
-import { SaveCriminal, UpdateACriminal } from '../../Actions/CriminalActions';
 import AppNavbar from '../AppNavbar';
 import SideBar from './SideBar';
+import { UpdateACompanyBill, SaveCompanyBill } from '../../Actions/CompanyActions';
  
 const CompanyOutput = (props) => {
 
@@ -38,18 +38,12 @@ const CompanyOutput = (props) => {
    
    // SETTING LOCAL STORAGE DATA TO REACTIVE DATA
    const [assignedTo, setAssignedTo] = useState('')
-   const [notes, setNotes] = useState('')
-   const [status, setStatus] = useState('')
-   const [subjectValue, setSubjectValue] = useState('')
+   const [capital, setCapital] = useState('')
+   const [clientId, setClientId] = useState('')
    const [clientName, setClientName] = useState('')
    const [total, setTotal] = useState('')
+   const [advocateInstructions, setAdvocateInstructions] = useState('')
    const [advocateExpenses, setAdvocateExpenses] = useState('')
-   const [firmExpenses, setFirmExpenses] = useState('')
-   const [court, setCourt] = useState('')
-   const [clientId, setClientId] = useState('')
-   const [remand, setRemand] = useState('')
-   const [committed, setCommitted] = useState('')
-   const [offence, setOffence] = useState('')
    const [openDate, setOpenDate] = useState('')
    const [closeDate, setCloseDate] = useState('')
 
@@ -74,25 +68,25 @@ const CompanyOutput = (props) => {
       }
    }, [])
 
+   const advocateInstructionsArray = [
+      {"value": "1", "details": "instructions fees for the formation and incorporation of a private company with limited liability and share capital"},
+      {"value": "2", "details": "instructions for the formation and incorporation of a public company "},
+      {"value": "3", "details": "instruction for fees for the formation and incorpation of a new company without share capital"},
+      {"value": "4", "details": "instructions for fees for the registering a foreign company"}
+   ]
+
    useEffect(() => {
       if(scheduleData !== null) {
-         const {assignedTo, status,subjectValue,clientName,total,advocateExpenses,
-            court,clientId,remand,notes,
-            committed,offence,openDate,closeDate, firmExpenses} = scheduleData
+         const {assignedTo, capital,clientName,total,advocateExpenses,clientId,
+            openDate,closeDate, advocateInstructions} = scheduleData
          
          setAssignedTo(assignedTo)
-         setStatus(status)
-         setSubjectValue(subjectValue)
+         setCapital(capital)
          setAdvocateExpenses(advocateExpenses)
-         setFirmExpenses(firmExpenses)
-         setRemand(remand)
-         setCommitted(committed)
+         setAdvocateInstructions(advocateInstructions)
          setTotal(total)
-         setOffence(offence)
          setClientId(clientId)
-         setNotes(notes)
          setClientName(clientName)
-         setCourt(court)
          setOpenDate(openDate)
          setCloseDate(closeDate)
       }
@@ -103,19 +97,17 @@ const CompanyOutput = (props) => {
 
    // DISPATCHING A REDUX ACTION ON SAVE
    const SaveCriminalData = () => {
-      dispatch(SaveCriminal({
-         clientId, assignedTo, status, subjectValue, advocateExpenses, 
-         firmExpenses, court, offence, notes,
-         committed, total, remand, openDate, closeDate
+      dispatch(SaveCompanyBill({
+         clientId, assignedTo, capital, advocateInstructions, advocateExpenses, 
+         total, openDate, closeDate
       }))
    }
    // DISPATCHING A REDUX ACTION ON UPDATE
    const UpdateCriminalData = () => {
       const criminalId = locationParams.criminalId
-      dispatch(UpdateACriminal({
-         clientId, assignedTo, status, subjectValue, advocateExpenses, 
-         firmExpenses, court, offence, notes, criminalId,
-         committed, total, remand, openDate, closeDate
+      dispatch(UpdateACompanyBill({
+         clientId, assignedTo, capital, advocateInstructions, advocateExpenses, 
+         total, openDate, closeDate,
       }))
    }
    console.log('QUEERY PROPS', props, updating, saving)
@@ -130,7 +122,7 @@ const CompanyOutput = (props) => {
             <div className="col-lg-9">
                <h3 className="text-center">COMPANY OUTPUT DATA</h3>
                
-                {scheduleData && <div className="my-2 d-flex justify-content-center forty-height light-color">
+                {scheduleData && advocateInstructions && <div className="my-2 d-flex justify-content-center forty-height light-color">
                   <div className="col-lg-10 p-2">
                      <h5 className="row d-flex border-bottom border-dark">
                         <span className="col-50 mr-2">CLIENT NAME: </span>
@@ -139,10 +131,18 @@ const CompanyOutput = (props) => {
                         <span className="col-50 mr-2">ASSIGNED TO: </span> 
                         <span className="col-50 ml-2 text-primary">{scheduleData.assignedTo}</span>
                      </h5>
-                     
                      <h5 className="row d-flex border-bottom border-dark">
-                        <span className="col-50 mr-2">VALUE OF SUBJECT MATTER: </span>
-                        <span className="col-50 ml-2 text-primary">{scheduleData.subjectValue}</span></h5>
+                        <span className="col-50 mr-2">ADVOCATE EXPENSES: </span>
+                        <span className="col-50 ml-2 text-primary">{scheduleData.advocateExpenses}</span></h5>
+                     <h5 className="row d-flex border-bottom border-dark">
+                        <span className="col-50 mr-2">ADVOCATE INSTRUCTIONS: </span>
+                        <span className="col-50 ml-2 text-primary">
+                        {advocateInstructionsArray[parseInt(advocateInstructions)].details}
+                        </span></h5>
+                    
+                     <h5 className="row d-flex border-bottom border-dark">
+                        <span className="col-50 mr-2">AMOUNT OF CAPITAL: </span>
+                        <span className="col-50 ml-2 text-primary">{scheduleData.capital}</span></h5>
                      <h5 className="row d-flex border-bottom border-dark">
                         <span className="col-50 mr-2">TOTAL: </span>
                         <span className="col-50 ml-2 text-primary">{scheduleData.total}</span>
