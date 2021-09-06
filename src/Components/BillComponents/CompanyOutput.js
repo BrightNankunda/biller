@@ -24,11 +24,11 @@ const CompanyOutput = (props) => {
       return () => {
          // cleanup
       }
-   }, [props.location.search, props.match.params.criminalId])
+   }, [props.location.search, props.match.params.companyId])
 
    
-   const newCriminal = useSelector(state => state.newCriminal)
-   const {loading: loadingCriminalCreated, redirectCriminalCreator} = newCriminal
+   const newCompanyBill = useSelector(state => state.newCompanyBill)
+   const {loading: loadingCompanyBillCreated, redirectCompanyBillCreator} = newCompanyBill
 
    const dispatch = useDispatch()
 
@@ -47,16 +47,16 @@ const CompanyOutput = (props) => {
    const [openDate, setOpenDate] = useState('')
    const [closeDate, setCloseDate] = useState('')
 
-   // REDIRECTING TO ALL BILLS/CRIMINALS AFTER HITTING SAVE
+   // REDIRECTING TO ALL USER BILLS/CRIMINALS/COMPANY BILLS AFTER HITTING SAVE
    useEffect(() => {
-      if(redirectCriminalCreator) {
+      if(redirectCompanyBillCreator) {
          localStorage.removeItem('Schedule Data')
          props.history.push('/reports/bills')
       }
       return () => {
          // cleanup
       }
-   }, [redirectCriminalCreator])
+   }, [redirectCompanyBillCreator])
 
    // RETRIEVING LOCAL STORAGE DATA
    useEffect(() => {
@@ -96,7 +96,8 @@ const CompanyOutput = (props) => {
    }, [scheduleData])
 
    // DISPATCHING A REDUX ACTION ON SAVE
-   const SaveCriminalData = () => {
+   const SaveCompanyBillData = () => {
+      console.log('Saving');
       dispatch(SaveCompanyBill({
          clientId, assignedTo, capital, advocateInstructions, advocateExpenses, 
          total, openDate, closeDate
@@ -110,7 +111,6 @@ const CompanyOutput = (props) => {
          total, openDate, closeDate,
       }))
    }
-   console.log('QUEERY PROPS', props, updating, saving)
 
    return (
       <div>
@@ -155,7 +155,7 @@ const CompanyOutput = (props) => {
                         <span className="col-50 ml-2 text-primary">{scheduleData.closeDate}</span></h5>
                      {saving && <div className="d-flex justify-content-center my-2">
                         <button className="btn submit-btn py-2 px-3 bg-white" 
-                        onClick={SaveCriminalData}
+                        onClick={SaveCompanyBillData}
                         >SAVE COMPANY DATA</button>
 
                      </div>}

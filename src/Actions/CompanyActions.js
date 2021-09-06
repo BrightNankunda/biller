@@ -31,7 +31,7 @@ import {
 
 const SaveCompanyBill = ({clientId, assignedTo, capital, advocateInstructions, advocateExpenses, 
          total, openDate, closeDate}) => async (dispatch, getState) => {
-   // console.log(clientId, assignedTo, capital, advocateInstructions, advocateExpenses, total, openDate, closeDate)
+   console.log(clientId, assignedTo, capital, advocateInstructions, advocateExpenses, total, openDate, closeDate)
    const {user} = getState()
    try {
       dispatch({type: COMPANY_SAVE_REQUEST, payload: {
@@ -135,20 +135,20 @@ const DeleteACompanyBill = ({companyId}) => async (dispatch, getState) => {
 
 const UpdateACompanyBill = ({companyId, clientId, assignedTo, subjectValue, status, court, remand, offence, committed, firmExpenses, notes, advocateExpenses, closeDate, openDate,total}) => async (dispatch, getState) => {
    console.log('UPDATE BILL REDUX SAYS', companyId,clientId, assignedTo, subjectValue, status, court, remand, offence, committed, firmExpenses, notes, advocateExpenses, closeDate, openDate,total)
-   try {
-      dispatch({type: COMPANY_UPDATE_REQUEST})
-      const {user} = getState()
-      const {data} = await axios.put(process.env.REACT_APP_API_URL + "/api/company/" + companyId, 
-      {companyId, clientId, assignedTo, subjectValue, status, court, remand, offence, committed, firmExpenses, notes, advocateExpenses, closeDate, openDate,total}, {
-         headers: {'Authorization': 'Bearer ' + user.token}
-      })
-      console.log('UPDATE SINGLE BILL REDUX', data)
-      dispatch({type: COMPANY_UPDATE_SUCCESS, payload: data})
-      dispatch({type: COMPANY_UPDATE_FINISHED})
-   } catch(error) {
-      console.log(error.message)
-      dispatch({type: COMPANY_UPDATE_ERROR, payload: error.message})
-   }
+   // try {
+   //    dispatch({type: COMPANY_UPDATE_REQUEST})
+   //    const {user} = getState()
+   //    const {data} = await axios.put(process.env.REACT_APP_API_URL + "/api/company/" + companyId, 
+   //    {companyId, clientId, assignedTo, subjectValue, status, court, remand, offence, committed, firmExpenses, notes, advocateExpenses, closeDate, openDate,total}, {
+   //       headers: {'Authorization': 'Bearer ' + user.token}
+   //    })
+   //    console.log('UPDATE SINGLE BILL REDUX', data)
+   //    dispatch({type: COMPANY_UPDATE_SUCCESS, payload: data})
+   //    dispatch({type: COMPANY_UPDATE_FINISHED})
+   // } catch(error) {
+   //    console.log(error.message)
+   //    dispatch({type: COMPANY_UPDATE_ERROR, payload: error.message})
+   // }
    
 }
 

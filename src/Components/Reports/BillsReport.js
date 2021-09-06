@@ -7,6 +7,7 @@ import { AllUserCriminals, DeleteACriminal } from '../../Actions/CriminalActions
 import { FetchClients } from '../../Actions/ClientActions';
 import AppNavbar from '../AppNavbar';
 import SideBar from '../BillComponents/SideBar';
+import { AllUserCompanyBills, DeleteACompanyBill } from '../../Actions/CompanyActions';
  
 const BillsReport = () => {
    const dispatch = useDispatch()
@@ -14,12 +15,13 @@ const BillsReport = () => {
    const {loading, bills, billsCount} = useSelector(state => state.userBills)
    const {loading: loadingClients, clients} = useSelector(state => state.clients)
    
+   const {loading: loadingCompanyBills, companyBills, companyBillsCount} = useSelector(state => state.userCompanyBills)
+
    const {loading: loadingCriminals, criminals, criminalsCount} = useSelector(state => state.userCriminals)
 
    const {loading: loadingCriminalDelete, redirectCriminalDeletor} = useSelector(state => state.deletedCriminal)
 
    const {loading: loadingBillDelete, redirectBillDeletor} = useSelector(state => state.deletedBill)
-   console.log('DELETED BILL', 'REDIRECT BILL DELETOR', redirectBillDeletor)
 
    console.log(billsCount, 'USERBILLS', bills)
 
@@ -27,6 +29,7 @@ const BillsReport = () => {
       dispatch(AllUserBills())
       dispatch(AllUserCriminals())
       dispatch(FetchClients())
+      dispatch(AllUserCompanyBills())
       return () => {
          // cleanup
       }
@@ -50,6 +53,10 @@ const BillsReport = () => {
 
    const deleteCriminal = (criminalId) => {
       dispatch(DeleteACriminal({criminalId}))
+   }
+
+   const deleteCompanyBill = (companyId) => {
+      dispatch(DeleteACompanyBill({companyId}))
    }
 
    // FUNCTION TO FIND AND RETURN BILL OWNER DETAILS
@@ -148,6 +155,34 @@ const BillsReport = () => {
                                  </Link>
                                  <span  className="delete-btn-client text-danger m-1">
                                     <Trash onClick={() => deleteCriminal(criminal._id, index)}/>
+                                 </span>
+                                 </td>
+                              </tr> 
+
+                        ))}
+                        {companyBills && companyBills.map((company, index) => (
+                              <tr className="border-bottom border-dark" key={company._id}>
+                                 <td>
+                                    <Link to={"/reports/company/" + company._id} className="bill-link">
+                                       {billsCount + criminalsCount + index + 1}
+                                    </Link>
+                                 </td>
+
+                                 <td>
+                                 { clients && companyBills && getClientDetails(company.createdFor)}
+                                 </td>
+                                 <td>
+                                    <Link to={"/reports/company/" + company._id} className="bill-link">
+                                       COMPANY SCHEDULE</Link>
+                                 </td>
+                                 <td>{company.capital}</td>
+                                 <td>{company.total}</td>
+                                 <td>
+                                 <Link className="update-link-client m-1" to={"/reports/companyToUpdate/" + company._id}>
+                                    <PencilFill />
+                                 </Link>
+                                 <span  className="delete-btn-client text-danger m-1">
+                                    <Trash onClick={() => deleteCompanyBill(company._id, index)}/>
                                  </span>
                                  </td>
                               </tr> 

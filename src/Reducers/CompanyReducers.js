@@ -26,7 +26,7 @@ import {
    COMPANIES_FETCH_EMPTY,
    USER_COMPANIES_EMPTY,
    CLIENT_COMPANIES_EMPTY
-} from '../Constants/companyConstants'
+} from '../Constants/CompanyConstants'
 
 function SaveCompanyBillReducer(state={loading: false, newCompanyBill: null, redirectCompanyBillCreator: false}, action) {
    switch(action.type) {
@@ -51,15 +51,15 @@ function SaveCompanyBillReducer(state={loading: false, newCompanyBill: null, red
    }
 }
 
-function FetchCompanyBillsReducer(state={companies: [], loading: false, companiesCount: 0}, action) {
+function FetchCompanyBillsReducer(state={companyBills: [], loading: false, companyBillsCount: 0}, action) {
    switch(action.type) {
       case COMPANIES_FETCH_REQUEST:
          return {...state, loading: true}
       case COMPANIES_FETCH_SUCCESS:
          return {...state, loading: false, 
-            companies: action.payload, companiesCount: action.payload.length}
+            companyBills: action.payload, companyBillsCount: action.payload.length}
       case COMPANIES_FETCH_EMPTY:
-         return {...state, companies: [], loading: false, companiesCount: 0} 
+         return {...state, companyBills: [], loading: false, companyBillsCount: 0} 
       case COMPANIES_FETCH_ERROR:
          return {...state, loading: true, error: action.payload}
       default:
@@ -68,15 +68,15 @@ function FetchCompanyBillsReducer(state={companies: [], loading: false, companie
 }
 
 function FetchUserCompanyBillsReducer(state = 
-   {companies: [], loading: false, companiesCount: 0}, action) {
+   {companyBills: [], loading: false, companyBillsCount: 0}, action) {
    switch(action.type) {
       case USER_COMPANIES_FETCH_REQUEST:
          return {...state, loading: true}
       case USER_COMPANIES_FETCH_SUCCESS:
-         return {...state, loading: false, companies: action.payload, 
-            companiesCount: action.payload.length}
+         return {...state, loading: false, companyBills: action.payload, 
+            companyBillsCount: action.payload.length}
       case USER_COMPANIES_EMPTY: 
-            return {...state, companies: [], loading: false, companiesCount: 0}
+            return {...state, companyBills: [], loading: false, companyBillsCount: 0}
       case USER_COMPANIES_FETCH_ERROR:
          return {...state, loading: true, error: action.payload}
       default:
@@ -84,15 +84,15 @@ function FetchUserCompanyBillsReducer(state =
    }
 }
 
-function FetchClientCompanyBillsReducer(state={companies: [], loading: false, companiesCount: 0}, action) {
+function FetchClientCompanyBillsReducer(state={companyBills: [], loading: false, companyBillsCount: 0}, action) {
    switch(action.type) {
       case CLIENT_COMPANIES_FETCH_REQUEST:
          return {...state, loading: true}
       case CLIENT_COMPANIES_FETCH_SUCCESS:
-         return {...state, loading: false, companies: action.payload, 
-            companiesCount: action.payload.length}
+         return {...state, loading: false, companyBills: action.payload, 
+            companyBillsCount: action.payload.length}
       case CLIENT_COMPANIES_EMPTY:
-         return {...state, companies: [], loading: false, companiesCount: 0}   
+         return {...state, companyBills: [], loading: false, companyBillsCount: 0}   
       case CLIENT_COMPANIES_FETCH_ERROR:
          return {...state, loading: true, error: action.payload}
       default:
@@ -100,12 +100,12 @@ function FetchClientCompanyBillsReducer(state={companies: [], loading: false, co
    }
 }
 
-function FetchACompanyBillReducer(state={company: null, loading: false}, action) {
+function FetchACompanyBillReducer(state={companyBill: null, loading: false}, action) {
    switch(action.type) {
       case FETCH_A_COMPANY_REQUEST:
          return {...state, loading: true}
       case FETCH_A_COMPANY_SUCCESS:
-         return {...state, loading: false, company: action.payload} 
+         return {...state, loading: false, companyBill: action.payload} 
       case FETCH_A_COMPANY_FAILURE:
          return {...state, loading: true, error: action.payload}
       default:

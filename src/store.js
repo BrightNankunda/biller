@@ -3,6 +3,7 @@ import thunk from 'redux-thunk'
 
 import { DeleteABillReducer, FetchABillReducer, UpdateABillReducer, FetchBillsReducer, FetchClientBillsReducer, FetchUserBillsReducer, SaveBillReducer } from './Reducers/BillReducers'
 import { CreateNewClientReducer, DeleteClientReducer, FetchAllClientsReducer, FetchSingleClientReducer, UpdateClientReducer } from './Reducers/ClientsReducers';
+import { DeleteACompanyBillReducer, FetchACompanyBillReducer, FetchClientCompanyBillsReducer, FetchCompanyBillsReducer, FetchUserCompanyBillsReducer, SaveCompanyBillReducer } from './Reducers/CompanyReducers';
 import { SaveCriminalReducer, FetchCriminalsReducer, 
    FetchUserCriminalsReducer, FetchClientCriminalsReducer, FetchACriminalReducer, DeleteACriminalReducer } from './Reducers/CriminalReducer';
 import { LogoutUserReducer, UserLoginReducer, UserSigninReducer } from './Reducers/UserReducers'
@@ -23,6 +24,12 @@ const reducer = combineReducers({
    criminals: FetchCriminalsReducer,
    userCriminals: FetchUserCriminalsReducer,
    clientCriminals: FetchClientCriminalsReducer,
+   newCompanyBill: SaveCompanyBillReducer,
+   singleCompanyBill: FetchACompanyBillReducer,
+   deletedCompanyBill: DeleteACompanyBillReducer,
+   companyBills: FetchCompanyBillsReducer,
+   userCompanyBills: FetchUserCompanyBillsReducer,
+   clientCompanyBills: FetchClientCompanyBillsReducer,
    user:  UserLoginReducer || UserSigninReducer,
    userLoggingIn: UserLoginReducer,
    userSigningIn: UserSigninReducer,
