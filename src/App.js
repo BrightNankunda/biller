@@ -42,6 +42,7 @@ import FamilyBilling from './Components/BillComponents/FamilyBilling';
 import DebenturesBilling from './Components/BillComponents/DebenturesBilling';
 import CompanyOutput from './Components/BillComponents/CompanyOutput';
 import SingleCompanyBill from './Components/DashboardComponents/SingleCompanyBill';
+import UpdateCompanyBill from './Components/BillComponents/UpdateCompanyBill';
 
 
 function App() {
@@ -57,6 +58,7 @@ function App() {
           <ProtectedRoute path="/reports/client/:clientId" component={SingleClient} />
           <ProtectedRoute path="/reports/clientToUpdate/:clientId" component={UpdateClient} />
           <ProtectedRoute path="/reports/billToUpdate/:billId" component={UpdateBill} />
+          <ProtectedRoute path="/reports/companyBillToUpdate/:companyBillId" component={UpdateCompanyBill} />
           <ProtectedRoute path="/schedules/BillOutput" component={BillOutput}/>
           <ProtectedRoute path="/schedules/criminalOutput" component={CriminalOutput}/>
           <ProtectedRoute path="/schedules/companyOutput" component={CompanyOutput}/>

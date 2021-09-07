@@ -104,10 +104,10 @@ const CompanyOutput = (props) => {
       }))
    }
    // DISPATCHING A REDUX ACTION ON UPDATE
-   const UpdateCriminalData = () => {
-      const criminalId = locationParams.criminalId
+   const UpdateCompanyBillData = () => {
+      const companyBillId = locationParams.cBId
       dispatch(UpdateACompanyBill({
-         clientId, assignedTo, capital, advocateInstructions, advocateExpenses, 
+         clientId,companyBillId, assignedTo, capital, advocateInstructions, advocateExpenses, 
          total, openDate, closeDate,
       }))
    }
@@ -161,7 +161,7 @@ const CompanyOutput = (props) => {
                      </div>}
                      {updating && <div className="d-flex justify-content-center my-2">
                         <button className="btn submit-btn py-2 px-3 bg-white" 
-                        onClick={UpdateCriminalData}
+                        onClick={UpdateCompanyBillData}
                         >UPDATE COMPANY DATA</button>
                         
                      </div>}

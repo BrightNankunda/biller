@@ -51,12 +51,12 @@ const SaveCompanyBill = ({clientId, assignedTo, capital, advocateInstructions, a
    }
 }
 
-const FetchACompanyBill = (companyId) => async (dispatch, getState) => {
-   console.log('FROM REDUX', companyId)
+const FetchACompanyBill = (companyBillId) => async (dispatch, getState) => {
+   console.log('FROM REDUX', companyBillId)
    try {
       dispatch({type: FETCH_A_COMPANY_REQUEST})
       const {user} = getState()
-      const {data} = await axios.get(process.env.REACT_APP_API_URL + "/api/company/" + companyId, {
+      const {data} = await axios.get(process.env.REACT_APP_API_URL + "/api/company/" + companyBillId, {
          headers: {'Authorization': 'Bearer ' + user.token}
       })
       console.log('FETCH SINGLE COMPANY REDUX', data)
@@ -115,12 +115,12 @@ const AllUserCompanyBills = () => async (dispatch, getState) => {
 }
 
 
-const DeleteACompanyBill = ({companyId}) => async (dispatch, getState) => {
-   // console.log('FROM REDUX DELETE', companyId)
+const DeleteACompanyBill = ({companyBillId}) => async (dispatch, getState) => {
+   // console.log('FROM REDUX DELETE', companyBillId)
    try {
       dispatch({type: DELETE_A_COMPANY_REQUEST})
       const {user} = getState()
-      const {data} = await axios.delete(process.env.REACT_APP_API_URL + "/api/company/" + companyId, {
+      const {data} = await axios.delete(process.env.REACT_APP_API_URL + "/api/company/" + companyBillId, {
          headers: {'Authorization': 'Bearer ' + user.token}
       })
       console.log('DELETE SINGLE COMPANY REDUX', data)
@@ -133,22 +133,22 @@ const DeleteACompanyBill = ({companyId}) => async (dispatch, getState) => {
 
 }
 
-const UpdateACompanyBill = ({companyId, clientId, assignedTo, subjectValue, status, court, remand, offence, committed, firmExpenses, notes, advocateExpenses, closeDate, openDate,total}) => async (dispatch, getState) => {
-   console.log('UPDATE BILL REDUX SAYS', companyId,clientId, assignedTo, subjectValue, status, court, remand, offence, committed, firmExpenses, notes, advocateExpenses, closeDate, openDate,total)
-   // try {
-   //    dispatch({type: COMPANY_UPDATE_REQUEST})
-   //    const {user} = getState()
-   //    const {data} = await axios.put(process.env.REACT_APP_API_URL + "/api/company/" + companyId, 
-   //    {companyId, clientId, assignedTo, subjectValue, status, court, remand, offence, committed, firmExpenses, notes, advocateExpenses, closeDate, openDate,total}, {
-   //       headers: {'Authorization': 'Bearer ' + user.token}
-   //    })
-   //    console.log('UPDATE SINGLE BILL REDUX', data)
-   //    dispatch({type: COMPANY_UPDATE_SUCCESS, payload: data})
-   //    dispatch({type: COMPANY_UPDATE_FINISHED})
-   // } catch(error) {
-   //    console.log(error.message)
-   //    dispatch({type: COMPANY_UPDATE_ERROR, payload: error.message})
-   // }
+const UpdateACompanyBill = ({companyBillId, clientId, assignedTo, capital, advocateExpenses, advocateInstructions, closeDate, openDate,total}) => async (dispatch, getState) => {
+   console.log('UPDATE BILL REDUX SAYS', companyBillId,clientId, assignedTo, capital, advocateExpenses, advocateInstructions, closeDate, openDate,total)
+   try {
+      dispatch({type: COMPANY_UPDATE_REQUEST})
+      const {user} = getState()
+      const {data} = await axios.put(process.env.REACT_APP_API_URL + "/api/company/" + companyBillId, 
+      {companyBillId, clientId, assignedTo, capital, advocateExpenses, advocateInstructions, closeDate, openDate,total}, {
+         headers: {'Authorization': 'Bearer ' + user.token}
+      })
+      console.log('UPDATE SINGLE BILL REDUX', data)
+      dispatch({type: COMPANY_UPDATE_SUCCESS, payload: data})
+      dispatch({type: COMPANY_UPDATE_FINISHED})
+   } catch(error) {
+      console.log(error.message)
+      dispatch({type: COMPANY_UPDATE_ERROR, payload: error.message})
+   }
    
 }
 

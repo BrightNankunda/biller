@@ -10,12 +10,12 @@ const SingleCompanyBill = (props) => {
    const dispatch = useDispatch()
 
    useEffect(() => {
-      dispatch(FetchACompanyBill(props.match.params.companyId))
-      console.log('BILL ID', props.match.params.companyId)
+      dispatch(FetchACompanyBill(props.match.params.companyBillId))
+      console.log('BILL ID', props.match.params.companyBillId)
       return () => {
          // cleanup
       }
-   }, [props.match.params.companyId])
+   }, [props.match.params.companyBillId])
      
    const {loading, companyBill} = useSelector(state => state.singleCompanyBill)
 

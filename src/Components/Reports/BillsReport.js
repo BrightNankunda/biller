@@ -21,6 +21,7 @@ const BillsReport = () => {
 
    const {loading: loadingCriminalDelete, redirectCriminalDeletor} = useSelector(state => state.deletedCriminal)
 
+   const {loading: loadingCompanyBillDelete, redirectCompanyBillDeletor} = useSelector(state => state.deletedCompanyBill)
    const {loading: loadingBillDelete, redirectBillDeletor} = useSelector(state => state.deletedBill)
 
    console.log(billsCount, 'USERBILLS', bills)
@@ -37,15 +38,16 @@ const BillsReport = () => {
 
 
    useEffect(() => {
-      if(redirectBillDeletor || redirectCriminalDeletor) {
+      if(redirectBillDeletor || redirectCriminalDeletor || redirectCompanyBillDeletor) {
          dispatch(AllUserBills())
          dispatch(FetchClients())
          dispatch(AllUserCriminals())
+         dispatch(AllUserCompanyBills())
       }
       return () => {
                // cleanup
       }
-   },[redirectBillDeletor, redirectCriminalDeletor])
+   },[redirectBillDeletor, redirectCriminalDeletor, redirectCompanyBillDeletor])
 
    const deleteBill = (billId) => {
       dispatch(DeleteABill({billId}))
@@ -55,8 +57,8 @@ const BillsReport = () => {
       dispatch(DeleteACriminal({criminalId}))
    }
 
-   const deleteCompanyBill = (companyId) => {
-      dispatch(DeleteACompanyBill({companyId}))
+   const deleteCompanyBill = (companyBillId) => {
+      dispatch(DeleteACompanyBill({companyBillId}))
    }
 
    // FUNCTION TO FIND AND RETURN BILL OWNER DETAILS
@@ -178,7 +180,7 @@ const BillsReport = () => {
                                  <td>{company.capital}</td>
                                  <td>{company.total}</td>
                                  <td>
-                                 <Link className="update-link-client m-1" to={"/reports/companyToUpdate/" + company._id}>
+                                 <Link className="update-link-client m-1" to={"/reports/companyBillToUpdate/" + company._id}>
                                     <PencilFill />
                                  </Link>
                                  <span  className="delete-btn-client text-danger m-1">
