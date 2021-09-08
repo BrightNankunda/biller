@@ -156,7 +156,7 @@ export {
    SaveCompanyBill, 
    AllCompanyBills, 
    AllUserCompanyBills, 
-   // AllClientCOMPANYs, 
+   // AllClientCompanyBills, 
    FetchACompanyBill,
    DeleteACompanyBill,
    UpdateACompanyBill

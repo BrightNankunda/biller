@@ -62,6 +62,8 @@ function App() {
           <ProtectedRoute path="/schedules/BillOutput" component={BillOutput}/>
           <ProtectedRoute path="/schedules/criminalOutput" component={CriminalOutput}/>
           <ProtectedRoute path="/schedules/companyOutput" component={CompanyOutput}/>
+          <ProtectedRoute path="/schedules/debentureOutput" component={DebentureBillOutput}/>
+          <ProtectedRoute path="/schedules/familyOutput" component={FamilyBillOutput}/>
           <ProtectedRoute path="/reports/bill/:billId" component={SingleSchedule} />
           <ProtectedRoute path="/reports/criminal/:criminalId" component={SingleCriminal} />
           <ProtectedRoute path="/reports/company/:companyId" component={SingleCompanyBill} />
