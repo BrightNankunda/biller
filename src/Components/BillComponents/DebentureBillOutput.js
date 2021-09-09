@@ -5,7 +5,7 @@ import AppNavbar from '../AppNavbar';
 import SideBar from './SideBar';
 import { UpdateACompanyBill, SaveCompanyBill } from '../../Actions/CompanyActions';
  
-const DebentureOutput = (props) => {
+const DebentureBillOutput = (props) => {
 
    const locationParams = queryString.parse(props.location.search)
 
@@ -127,4 +127,4 @@ const DebentureOutput = (props) => {
    );
 }
  
-export default DebentureOutput;
+export default DebentureBillOutput;

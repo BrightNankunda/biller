@@ -43,6 +43,8 @@ import DebenturesBilling from './Components/BillComponents/DebenturesBilling';
 import CompanyOutput from './Components/BillComponents/CompanyOutput';
 import SingleCompanyBill from './Components/DashboardComponents/SingleCompanyBill';
 import UpdateCompanyBill from './Components/BillComponents/UpdateCompanyBill';
+import DebentureBillOutput from './Components/BillComponents/DebentureBillOutput';
+import FamilyBillOutput from './Components/BillComponents/FamilyBillOutput';
 
 
 function App() {

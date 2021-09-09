@@ -41,8 +41,9 @@ const Dashboard = () => {
                   <h3 className="lead mx-1 my-2" >ADMIN DASHBOARD</h3>
                   <ForwardFill className="my-auto mx-2 two-times"/>
                </div>
+
                {loading && 
-                  <div className="w-100">
+                  <div className="w-100 my-2" style={{"minHeight": "100px"}}>
                      <div className="d-flex justify-content-center my-auto align-content-center">
                         <div className="spinner-border text-primary" role="status">
                            <span className="sr-only">Loading...</span>
