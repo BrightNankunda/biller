@@ -209,15 +209,16 @@ const Criminal = (props) => {
                {showForm && <form onSubmit={submitHandler}>
                   
                   { /* ABOUT FORM */}
-                  <div className="about sub-form my-4 p-3 ">
+                  <div className="about sub-form my-4 p-3">
                      <h5 className="text-center">ABOUT</h5>
-                     <div className="my-1">
+                     
+                     <div className="my-2">
                         
                         {/* SELECT A CLIENT */}
-                        {!props.match.params.clientId && <div className="d-flex flex-col w-90">
-                           <div className="d-flex flex-col my-2">
-                              <label htmlFor="client">CLIENT NAME</label>                             
-                              <select type="select" className="bill-form-input px-2" 
+                        {!props.match.params.clientId && <div className="row d-flex justify-content-center">
+                           <div className="my-2 col-lg-10">
+                              <label htmlFor="client" className="my-auto">CLIENT NAME</label>                             
+                              <select type="select" className="bill-form-input px-2 ml-2 col-lg-8" 
                               id="client" 
                                  value={client}
                                  onChange={(e) => setClient(e.target.value)}
@@ -230,13 +231,16 @@ const Criminal = (props) => {
                               
                            </div>
                         </div>}
-                     </div>
-                     <div className="my-1">
-                        <label htmlFor="assignedTo">ASSIGNED TO</label>
-                        <input type="text" className="bill-form-input ml-2 w-50"
-                           name="assignedTo" id="assignedTo"
-                           value={values.assignedTo} onChange={handleChange}
-                           placeholder="ASSIGNED TO..."/>
+                     
+                        <div className="my-1 row d-flex justify-content-center ">
+                           <div className="my-2 col-lg-10">
+                              <label htmlFor="assignedTo" className="my-auto">ASSIGNED TO</label>
+                              <input type="text" className="bill-form-input ml-2 col-lg-8"
+                                 name="assignedTo" id="assignedTo"
+                                 value={values.assignedTo} onChange={handleChange}
+                                 placeholder="ASSIGNED TO..."/>
+                           </div>
+                        </div>
                      </div>
                   </div>
 
@@ -279,7 +283,7 @@ const Criminal = (props) => {
                         <div className="notes col-lg-6">
                            <label>NOTES</label>
                            <textarea className="bill-form-input w-100" name="notes"
-                           onChange={handleChange} value={values.notes}
+                           onChange={handleChange} value={values.notes} rows={10}
                            placeholder="ANY NOTES"/>
                         </div>
                      </div>
@@ -324,22 +328,24 @@ const Criminal = (props) => {
                   {/* DATES */}
                   <div className="dates sub-form my-4 p-3">
                      <h5 className="text-center">DATES</h5>
-                     <div className="">
-                        <label htmlFor="openDate">OPEN DATE</label>
-                        <input type="date" id="openDate" name="openDate" 
-                        onChange={handleChange} value={values.openDate}
-                        className="bill-form-input ml-2 col-lg-8" placeholder="OPEN DATE"/>
-                     </div>
-                     <div className="">
-                        <label>CLOSE DATE</label>
-                        <input type="date" name="closeDate" 
-                        onChange={handleChange} value={values.closeDate}
-                        className="bill-form-input ml-2 col-lg-8" placeholder="CLOSE DATE"/>
+                     <div className="row d-flex justify-content-center">
+                        <div className="col-lg-5 ml-2">
+                              <label htmlFor="openDate">OPEN DATE</label>
+                              <input type="date" id="openDate" name="openDate" 
+                              onChange={handleChange} value={values.openDate}
+                              className="bill-form-input  w-100" placeholder="OPEN DATE"/>
+                        </div>
+                        <div className="col-lg-5 ml-2">
+                           <label htmlFor="closeDate">CLOSE DATE</label>
+                           <input type="date" name="closeDate" 
+                           onChange={handleChange} value={values.closeDate}
+                           className="bill-form-input  w-100" placeholder="CLOSE DATE"/>
+                        </div>
                      </div>
                   </div>
 
                   {/* SUBMIT STATUS BUTTONS */}
-                  <div className="d-flex justify-content-between mx-2 mt-3">
+                  <div className="d-flex justify-content-between mx-2 mb-3 mt-3">
                      <button className="btn reset-btn py-2 px-3 bg-white">RESET</button>
                      <button className="btn submit-btn py-2 px-3 bg-white" type="submit">SUBMIT</button>
                   </div>

@@ -2,7 +2,6 @@ import {React} from 'react';
 import {BrowserRouter as Router, Route, Redirect} from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import './App.css'
 import AppNavbar from './Components/AppNavbar';
 import LoginComponent from './Components/AuthComponents/LoginComponent'
 import Signin from './Components/AuthComponents/Signin'

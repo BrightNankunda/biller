@@ -7,7 +7,6 @@ const ProtectedRoute = (props) => {
    
    const isAuthenticated = () => {
       return ((JSON.parse(localStorage.getItem('UgBillUser')) === null || undefined)) ? true: false 
-      // return (JSON.parse(localStorage.getItem('UgBillUser')) === null || undefined) ? false : true
    }
    
 

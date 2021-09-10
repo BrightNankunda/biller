@@ -146,44 +146,45 @@ const BillOutput = (props) => {
                <SideBar />
             </div>
             <div className="col-lg-9">
-               <h3 className="tect-center">BILL OUTPUT DATA</h3>
+               <h3 className="text-center">BILL OUTPUT DATA</h3>
                
-                {scheduleData && <div className="my-2 d-flex justify-content-center forty-height light-color">
+                {scheduleData && <div 
+                className="my-2 py-2 d-flex justify-content-center forty-height light-color">
                   <div className="col-lg-10 p-2">
-                     <h5 className="row d-flex border-bottom border-dark">
+                     <h5 className="row d-flex border-bottom border-dark mb-3">
                         <span className="col-50 mr-2">CLIENT NAME: </span>
                         <span className="col-50 ml-2 text-primary">{scheduleData.clientName}</span></h5>
-                     <h5 className="row d-flex border-bottom border-dark">
+                     <h5 className="row d-flex border-bottom border-dark mb-3">
                         <span className="col-50 mr-2">PROPERTY TYPE: </span> 
                         <span className="col-50 ml-2 text-primary">{scheduleData.propertyType}</span>
                      </h5>
-                     <h5 className="row d-flex border-bottom border-dark"><span className="col-50 mr-2">ADVOCATE: </span>
+                     <h5 className="row d-flex border-bottom border-dark mb-3"><span className="col-50 mr-2">ADVOCATE: </span>
                            <span className="col-50 ml-2 text-primary">{advocateData}</span></h5>
                      {/* {scheduleData.propertyType === "LAND" &&   */}
-                     <h5 className="row d-flex border-bottom border-dark">
+                     <h5 className="row d-flex border-bottom border-dark mb-3">
                         <span className="col-50 mr-2">SCALE: </span>
                         <span className="ml-2 text-primary">
                            {scaleData}
                         </span></h5>
                         {/* }  */}
                      {scheduleData.propertyType === "REN" && 
-                     <h5 className="row d-flex border-bottom border-dark">
+                     <h5 className="row d-flex border-bottom border-dark mb-3">
                         <span className="col-50 mr-2">RENTAL TYPE: </span>
                         <span className="col-50 ml-2 text-primary">{rentOptions[parseInt(scheduleData.rentalType) - 1].value}</span>
                      </h5>}
-                     {scheduleData.propertyType === 'LAND' && <h5 className="row d-flex border-bottom border-dark">
+                     {scheduleData.propertyType === 'LAND' && <h5 className="row d-flex border-bottom border-dark mb-3">
                         <span className="col-50 mr-2">REGISTERATION STATUS: </span>
                         <span className="col-50 ml-2 text-primary">{scheduleData.propertyType}</span>
                      </h5>}
-                     <h5 className="row d-flex border-bottom border-dark">
+                     <h5 className="row d-flex border-bottom border-dark mb-3">
                         <span className="col-50 mr-2">LAND VALUE: </span>
                         <span className="col-50 ml-2 text-primary">{scheduleData.landValue}</span></h5>
-                     <h5 className="row d-flex border-bottom border-dark">
+                     <h5 className="row d-flex border-bottom border-dark mb-3">
                         <span className="col-50 mr-2">TOTAL: </span>
                         <span className="col-50 ml-2 text-primary">{scheduleData.total}</span>
                      </h5>
-                     <div className="d-flex justify-content-center my-2">
-                        <button className="btn submit-btn py-2 px-3 bg-white" onClick={SaveBillData}>SAVE BILL DATA</button>
+                     <div className="d-flex justify-content-center my-4">
+                        <button className="btn submit-btn py-2 px-3 my-4 bg-white" onClick={SaveBillData}>SAVE BILL DATA</button>
                      </div>
                   </div>
 

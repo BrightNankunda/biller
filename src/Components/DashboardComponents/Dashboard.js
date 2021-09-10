@@ -35,11 +35,15 @@ const Dashboard = () => {
          </div>
          <div className="col-lg-9 w-100 bg-light">
             <div className="w-100">
-               <div className="w-100 mt-1 ml-auto bg-white z-index-ten row top-bar d-flex justify-content-end align-content-center">
+               <div className="w-100 mt-1 ml-2 bg-white z-index-ten row top-bar d-flex align-content-center">
+                  <h3 className="text-bold mx-1 my-2 text-primary" >Tony Advocates</h3>
+                  
+                  <div className="d-flex ml-auto">
+                     {/* <PersonFill className="my-auto mx-2 two-times"/> */}
+                     <h3 className="lead mx-1 my-auto text-primary" >ADMIN DASHBOARD</h3>
+                     {/* <ForwardFill className="my-auto mx-2 two-times"/> */}
 
-                  <PersonFill className="my-auto mx-2 two-times"/>
-                  <h3 className="lead mx-1 my-2" >ADMIN DASHBOARD</h3>
-                  <ForwardFill className="my-auto mx-2 two-times"/>
+                  </div>
                </div>
 
                {loading && 
@@ -52,21 +56,30 @@ const Dashboard = () => {
                   </div>
                }
                {!loading && clients && <div className="d-flex w-100">
-                  <div className="clients-count col-lg-4 m-2 bg-white d-flex flex-col">
+                  <div className="clients-count col-lg-4 m-2 bg-white d-flex flex-col cursor-pointer">
                      <PeopleFill className="my-2 two-times"/>
-                     <h4>{clients.length} CLIENTS</h4>
+                     <h4 >{clients.length} CLIENTS</h4>
+                     <div className="border-top">
+                        <p className="text-primary">Company Clients</p>
+                     </div>
                   </div>
-                  <div className="projects col-lg-4 m-2 bg-white d-flex flex-col">
+                  <div className="projects col-lg-4 m-2 bg-white d-flex flex-col cursor-pointer">
                      <Files className="my-2 two-times"/>
                      <h4>{billsCount + criminalsCount} PROJECTS</h4>
+                     <div className="border-top">
+                        <p className="text-primary">Company Projects</p>
+                     </div>
                   </div>
-                  <div className="advocates col-lg-4 m-2 bg-white d-flex flex-col">
+                  <div className="advocates col-lg-4 m-2 bg-white d-flex flex-col cursor-pointer">
                      <People className="my-2 two-times"/>
                      <h4>42 ADVOCATES</h4>
+                     <div className="border-top">
+                        <p className="text-primary">Company Advocates</p>
+                     </div>
                   </div>
                </div>}
             </div>
-            <div className="d-flex m-1 forty-height">
+            <div className="d-flex my-1 forty-height">
                <div className="col-lg-7 bg-white m-2">
                   <LineGraph />
                </div>

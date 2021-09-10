@@ -106,7 +106,10 @@ const LandBilling = (props) => {
             <div className="w-100 bg-light col-lg-9 ">
             <h4 className="text-center">UPDATE BILL DATA</h4>
             <div className="bg-white w-120 py-2 mx-2 d-flex justify-content-center">
-               <ArrowLeft onClick={() => goBack()} className="cursor-pointer my-auto two-times mx-1"/>
+               <button className="cursor-pointer my-auto btn btn-back">
+                  <ArrowLeft onClick={() => goBack()} className="two-times mx-1"/>
+                  Back
+               </button>
                
             </div>
             {loading && 
