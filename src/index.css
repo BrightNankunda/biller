@@ -377,3 +377,13 @@ input:focus {
   border: none !important;
   border-radius: 15px;
 }
+
+.confirmPassword {
+  position: relative;
+}
+
+.confirmPasswordCheck, .confirmPasswordCancel {
+  position: absolute;
+  right: 20px;
+  top: 30%;
+}

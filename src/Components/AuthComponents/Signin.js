@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react'
+import { Check } from 'react-bootstrap-icons'
 import {useDispatch, useSelector} from 'react-redux'
 import { useHistory } from 'react-router'
 import { Link } from 'react-router-dom'
@@ -12,6 +13,8 @@ export default function Signin(props) {
    const [password, setPassword] = useState('')
    const [emailErr, setEmailErr] = useState(null)
    const [passwordErr, setPasswordErr] = useState(null)
+   const [confirmPassword, setConfirmPassword] = useState('')
+   const [isPasswordConfirmed, setIsPasswordConfirmed] = useState('')
    const [newUser, setNewUser] = useState(null)
 
    // CHECKING FOR STATE CHANGE AND RESPONDING WITH ROUTE CHANGE
@@ -60,7 +63,7 @@ export default function Signin(props) {
          setPasswordErr('Password is Required!')
       } else if(password.trim().length < 5) {
          setPasswordErr('Password Must be atleast 5 characters!')
-      } else {
+      }else {
          dispatch(UserSignin({email, password}))
       }
    }
@@ -73,6 +76,15 @@ export default function Signin(props) {
    const handlePasswordChange = (e) => {
       setPassword(e.target.value)
       setPasswordErr(null)
+   }
+
+   const handleConfirmPasswordChange = (e) => {
+      setConfirmPassword(e.target.value)
+      if(password.trim() === confirmPassword.trim()) {
+         setIsPasswordConfirmed(true)
+      } else if(password.trim() !== '' && confirmPassword.trim() !== '') {
+         setIsPasswordConfirmed(false)
+      }
    }
    
    return (
@@ -89,7 +101,7 @@ export default function Signin(props) {
                      value={email}
                      onChange={handleEmailChange}
                      className="email form-control" 
-                     placeholder="Email"/>
+                     placeholder="Email" required/>
                      {emailErr && <p className="pl-1 rounded bg-white my-2 text-danger">{emailErr}</p>}
                   </div>
                   <div className="form-group">
@@ -97,11 +109,16 @@ export default function Signin(props) {
                      className="password form-control" 
                      value={password}
                      onChange={handlePasswordChange}
-                     placeholder="Password"/>
+                     placeholder="Password" required/>
                      {passwordErr && <p className="pl-1 rounded bg-white my-2 text-danger">{passwordErr}</p>}
                   </div>
-                  <div className="form-group">
-                     <input type="password" className="password form-control mb-5" placeholder="Confirm Password"/>
+                  <div className="form-group confirmPassword">
+                     <input type="password" value={confirmPassword}
+                     onChange={handleConfirmPasswordChange}
+                     className="password form-control mb-5" 
+                     placeholder="Confirm Password" required/>
+                     {isPasswordConfirmed && <Check className="text-success confirmPasswordCheck two-times"/>}
+                     {/* {!isPasswordConfirmed && <span className="text-danger confirmPasswordCancel two-times">x</span>} */}
                   </div>
 
                   <div className="d-flex justify-content-center mt-5">

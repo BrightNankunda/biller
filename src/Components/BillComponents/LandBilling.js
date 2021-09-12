@@ -329,7 +329,7 @@ const LandBilling = (props) => {
                   </div>
                </div>
                <div className="advanced-input-wrapper m-2 w-90 my-3 bg-light">
-                  <div className="d-flex flex-col m-2">
+                  <div className="d-flex flex-col">
                      <select type="select" 
                      className="bill-input px-2" 
                      id="registered" 
