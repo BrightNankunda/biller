@@ -44,6 +44,7 @@ import SingleCompanyBill from './Components/DashboardComponents/SingleCompanyBil
 import UpdateCompanyBill from './Components/BillComponents/UpdateCompanyBill';
 import DebentureBillOutput from './Components/BillComponents/DebentureBillOutput';
 import FamilyBillOutput from './Components/BillComponents/FamilyBillOutput';
+import UIComponents from './Components/UI-Components/UIComponents';
 
 
 function App() {
@@ -92,6 +93,7 @@ function App() {
           <ProtectedRoute path="/bill" component={Billing} />
           <ProtectedRoute path="/logout" component={Logout} />
           <ProtectedRoute path="/billing" component={Biller} />
+          <ProtectedRoute path="/ui-components" component={UIComponents} />
           {/* <Route exact path="/not-found" component={PageNotFound} /> */}
           <Route exact path="/" component={User} />
 

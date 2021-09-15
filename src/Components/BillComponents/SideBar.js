@@ -5,7 +5,7 @@ import {NavLink} from 'react-router-dom'
 import { BookFill, 
    Calendar2DateFill, 
    CurrencyBitcoin, GearFill, GiftFill, 
-   HouseDoorFill, PersonFill } from 'react-bootstrap-icons';
+   HouseDoorFill, Keyboard, PersonFill } from 'react-bootstrap-icons';
 // import jwtDecode from 'jwt-decode';
  
 const SideBar = () => {
@@ -52,6 +52,10 @@ const SideBar = () => {
          <NavLink className="btn btn-outline my-3" to="/billing">
             <span className="dashboard-icons"><CurrencyBitcoin /></span> 
             BILLING</NavLink>
+         
+         <NavLink className="btn btn-outline my-3 d-flex flex-align-content-center justify-content-around align-items-center" to="/ui-components">
+            <span className="dashboard-icons"><Keyboard  /> UI Components</span> 
+            </NavLink>
 
          {/* <NavLink className="btn btn-outline my-3" to="/settings">
             <span className="dashboard-icons"><GearFill /></span>
