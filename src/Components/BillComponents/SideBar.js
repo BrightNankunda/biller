@@ -33,28 +33,28 @@ const SideBar = () => {
                {loggedIn.AuthedUser.email}</h6>
             </div>}
 
-         <NavLink className="btn btn-outline my-3" to="/dashboard">
+         <NavLink className="btn btn-outline my-3 flex-col align-content-center justify-content-center" to="/dashboard">
             <span className="dashboard-icons"><HouseDoorFill /></span>
             DASHBORAD</NavLink>
 
-         <NavLink className="btn btn-outline my-3" to="/schedules">
+         <NavLink className="btn btn-outline my-3 flex-col align-content-center justify-content-center" to="/schedules">
             <span className="dashboard-icons"><GiftFill/></span> 
          SHEDULES</NavLink>
 
-         <NavLink className="btn btn-outline my-3" to="/calendar">
+         <NavLink className="btn btn-outline my-3 flex-col align-content-center justify-content-center" to="/calendar">
             <span className="dashboard-icons"><Calendar2DateFill /></span>
             CALENDAR</NavLink>
 
-         <NavLink className="btn btn-outline my-3" to="/reports">
+         <NavLink className="btn btn-outline my-3 flex-col align-content-center justify-content-center" to="/reports">
             <span className="dashboard-icons"><BookFill /></span>
             REPORTS</NavLink>
 
-         <NavLink className="btn btn-outline my-3" to="/billing">
+         <NavLink className="btn btn-outline my-3 flex-col align-content-center justify-content-center" to="/billing">
             <span className="dashboard-icons"><CurrencyBitcoin /></span> 
             BILLING</NavLink>
          
-         <NavLink className="btn btn-outline my-3 d-flex flex-align-content-center justify-content-around align-items-center" to="/ui-components">
-            <span className="dashboard-icons"><Keyboard  /> UI Components</span> 
+         <NavLink className="btn btn-outline my-3 flex-col align-content-center justify-content-around align-items-center" to="/ui-components">
+            <span className="dashboard-icons"><Keyboard  /></span> UI COMPONENTS
             </NavLink>
 
          {/* <NavLink className="btn btn-outline my-3" to="/settings">
