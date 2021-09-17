@@ -387,3 +387,45 @@ input:focus {
   right: 20px;
   top: 30%;
 }
+
+.custom-blue-button {
+  color: white;
+  background: blue;
+  border-radius:none !important;
+  border: 1px solid blue !important;
+  padding: 10px 20px;
+}
+
+.custom-blue-button:hover {
+  color:blue;
+  background: white;
+  border: 1px solid blue !important;
+}
+
+.custom-green-button {
+  color: white;
+  background: rgb(6, 206, 6);
+  border-radius: none !important;
+  border: 1px solid green !important;
+  padding: 10px 20px;
+}
+
+.custom-green-button:hover {
+  color:green;
+  background: white;
+  border: 1px solid green !important;
+}
+.custom-green-bordered-button {
+  color:green;
+  background: white;
+  border-radius: none !important;
+  border: 1px solid green !important;
+  padding: 10px 20px;
+}
+
+.custom-green-bordered-button:hover {
+  color:white;
+  background: rgb(92, 136, 41);
+  border: 1px solid green !important;
+}
+
