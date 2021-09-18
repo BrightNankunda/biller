@@ -33,7 +33,8 @@ const SideBar = () => {
                {loggedIn.AuthedUser.email}</h6>
             </div>}
 
-         <NavLink className="btn btn-outline my-3 flex-col align-content-center justify-content-center" to="/dashboard">
+         <NavLink 
+         className="btn btn-outline my-3 flex-col align-content-center justify-content-center" to="/dashboard">
             <span className="dashboard-icons"><HouseDoorFill /></span>
             DASHBORAD</NavLink>
 

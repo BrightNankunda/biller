@@ -428,4 +428,25 @@ input:focus {
   background: rgb(92, 136, 41);
   border: 1px solid green !important;
 }
+.new-navbar-icon {
+  font-size:110%;
+}
+.xs-font {
+  font-size: 80%;
+}
+.md-font {
+  font-size: 90%;
+}
+
+.new-navbar-search:focus {
+  background: white !important;
+}
+
+.user-initials {
+  border: 1px solid gray;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  overflow: hidden !important;
+}
 
