@@ -437,6 +437,15 @@ input:focus {
 .md-font {
   font-size: 90%;
 }
+.l-font {
+  font-size: 104%;
+}
+.font-weight-450 {
+  font-weight: 450;
+}
+.font-weight-370 {
+  font-weight: 370;
+}
 
 .new-navbar-search:focus {
   background: white !important;
@@ -449,4 +458,50 @@ input:focus {
   border-radius: 50%;
   overflow: hidden !important;
 }
+.new-search-form {
+  position: relative;
+}
+.new-search-icon {
+  position: absolute;
+  top: 7px;
+  right: 24px;
+  color: gray !important;
+}
+.position-relative {
+  position: relative;
+}
+.auth-user-navbar-position-absolute {
+  /* position: absolute; */
+  top: 0;
+  z-index: 100;
+}
+.m-zero {
+  margin: 0 !important;
+}
+.p-zero {
+  padding: 0 !important;
+}
+.connection-button {
+  border: 1px solid white !important;
+  border-radius: 7px;
+  background: white !important;
+  padding: 3px 5px;
+  /* color: blue; */
+}
+.connection-button:hover {
+  border: 1px solid #007bff !important;
+  border-radius: 7px ;
+  padding: 3px 5px;
+  /* color: blue; */
+}
 
+.user-image {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+
+}
+
+.overflow-hidden {
+  overflow: hidden !important;
+}

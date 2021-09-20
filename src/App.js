@@ -45,6 +45,8 @@ import UpdateCompanyBill from './Components/BillComponents/UpdateCompanyBill';
 import DebentureBillOutput from './Components/BillComponents/DebentureBillOutput';
 import FamilyBillOutput from './Components/BillComponents/FamilyBillOutput';
 import UIComponents from './Components/UI-Components/UIComponents';
+import UserPage from './Components/UI-Components/UserPage';
+import UserProfile from './Components/UI-Components/UserProfile';
 
 
 function App() {
@@ -94,16 +96,14 @@ function App() {
           <ProtectedRoute path="/logout" component={Logout} />
           <ProtectedRoute path="/billing" component={Biller} />
           <ProtectedRoute path="/ui-components" component={UIComponents} />
+          <ProtectedRoute path="/user-page" component={UserPage} />
+          <ProtectedRoute path="/user-profile" component={UserProfile} />
           {/* <Route exact path="/not-found" component={PageNotFound} /> */}
           <Route exact path="/" component={User} />
-
           <Route path="/signin" component={Signin} /> 
           <Route path="/login" component={LoginComponent} /> 
           {/* <Redirect to="/not-found" /> */}
       </Router>
-      <footer className="blue">
-        <p className="text-center text-white py-3">Jast Tech Ltd</p>
-      </footer>
     </div>
   );
 }

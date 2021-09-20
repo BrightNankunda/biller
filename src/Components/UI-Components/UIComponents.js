@@ -2,6 +2,7 @@ import React from 'react';
 import Buttons from './Buttons';
 import Cards from './Cards';
 import Forms from './Forms';
+import FriendsSidebar from './FriendsSidebar';
 import LandingPage from './LandingPage';
 import Modals from './Modals';
 import Navbars from './Navbars';
@@ -23,7 +24,10 @@ const UIComponents = () => {
          </div>
          <div className="w-100 my-3">
             <h5 className="text-center">SIDE BARS</h5>
-            <SideBars />
+            <div className="d-flex">
+               <SideBars />
+               <FriendsSidebar />
+            </div>
          </div>
          <div className="w-100 my-3">
             <h5 className="text-center">BUTTONS</h5>

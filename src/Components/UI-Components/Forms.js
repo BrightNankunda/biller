@@ -21,7 +21,7 @@ const Forms = () => {
                   <div className="card m-3">
                      {/* CARD LAYOUT */}
                      <div className="card-header">
-                        <p>Enter Your Data</p>
+                        <p>Login</p>
                      </div>
                      <div className="card-body">
                      {/* FORM INPUTS, CHECKBOXES */}
@@ -29,26 +29,16 @@ const Forms = () => {
                            <label for="email">Email address</label>
                            <input type="email" class="form-control" id="email" placeholder="name@ugbill.com"/>
                         </div>
+                        
                         <div class="form-group">
-                           <label for="exampleFormControlSelect1">Select Me</label>
-                           <select class="form-control" id="exampleFormControlSelect1">
-                              <option>1</option>
-                              <option>2</option>
-                              <option>3</option>
-                           </select>
+                           <label for="password">Password</label>
+                           <input type="password" class="form-control" id="password" placeholder="Enter Password"/>
                         </div>
-                        <div class="form-group">
-                           <label for="exampleFormControlSelect2">Select You</label>
-                           <select multiple class="form-control" id="exampleFormControlSelect2">
-                              <option>1</option>
-                              <option>2</option>
-                              <option>3</option>
-                           </select>
-                        </div>
+
                         <div class="form-check">
                            <input class="form-check-input" type="checkbox" value={checked} onChange={handleChecked} id="check"/>
                            <label class="form-check-label" for="check">
-                              Check me To Enable Button
+                              Check me To Enable Button, Keep me logged In?
                            </label>
                         </div>
                      </div>
@@ -63,31 +53,34 @@ const Forms = () => {
                <form className="border rounded-sm p-3">
                      {/* FORM INPUTS, CHECKBOXES */}
                         <div class="form-group">
+                           <label htmlFor="fname">First Name</label>
+                           <input type="fname" class="form-control form-control-sm" id="fname" placeholder="Enter first name"/>
+                        </div>
+                        <div class="form-group">
+                           <label for="lname">Last Name</label>
+                           <input type="lname" class="form-control form-control-sm" id="lname" placeholder="Enter last name"/>
+                        </div>
+                        <div class="form-group">
+                           <label for="uname">User Name</label>
+                           <input type="uname" class="form-control form-control-sm" id="uname" placeholder="Enter your User name"/>
+                        </div>
+                        <div class="form-group">
                            <label for="email">Email address</label>
-                           <p>Small inputs with text/description</p>
                            <input type="email" class="form-control form-control-sm" id="email" placeholder="name@ugbill.com"/>
                         </div>
                         <div class="form-group">
-                           <label for="exampleFormControlSelect1">Select Me</label>
-                           <select class="form-control form-control-sm" id="exampleFormControlSelect1">
-                              <option>1</option>
-                              <option>2</option>
-                              <option>3</option>
-                           </select>
+                           <label for="password">Password</label>
+                           <input type="password" class="form-control form-control-sm" id="password" placeholder="Enter Password"/>
                         </div>
                         <div class="form-group">
-                           <label for="exampleFormControlSelect2">Select You</label>
-                           <p>Small inputs with text/description</p>
-                           <select multiple class="form-control form-control-sm" id="exampleFormControlSelect2">
-                              <option>1</option>
-                              <option>2</option>
-                              <option>3</option>
-                           </select>
+                           <label for="password">Confirm Password</label>
+                           <input type="password" class="form-control form-control-sm" id="password" placeholder="Enter Password"/>
                         </div>
+                        
                         <div class="form-check">
                            <input class="form-check-input" type="checkbox" value={checked} onChange={handleChecked} id="check"/>
                            <label class="form-check-label" for="check">
-                              Check me To Enable Button
+                              Check me To Enable Button, Keep me logged In?
                            </label>
                         </div>
                      

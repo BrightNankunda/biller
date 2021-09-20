@@ -1,13 +1,14 @@
 import React from 'react';
-import { BagCheck, HouseDoor, Messenger, PersonCircle, PersonFill } from 'react-bootstrap-icons';
+import { BagCheck, HouseDoor, Messenger, PersonCircle, PersonFill, Search } from 'react-bootstrap-icons';
  
 const Navbars = () => {
    return (
       <div className="fluid-container">
-         <div className="d-flex border-bottom">
-            <h4 className="text-primary">Suitors</h4>
-            <form className="ml-2 col-lg-3">
+         <div className="d-flex border-bottom shadow-sm">
+            <h4 className="text-primary my-auto">Suitors</h4>
+            <form className="new-search-form ml-2 col-lg-3 my-2">
                <input type="text" className="form-control form-control-sm new-navbar-search bg-light" placeholder="search" />
+               <Search className="new-search-icon"/>
             </form>
             <div className="mx-auto d-flex"> 
                <p className="text-primary mx-2 my-auto d-flex justify-content-center ">
