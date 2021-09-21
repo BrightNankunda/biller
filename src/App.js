@@ -47,6 +47,7 @@ import FamilyBillOutput from './Components/BillComponents/FamilyBillOutput';
 import UIComponents from './Components/UI-Components/UIComponents';
 import UserPage from './Components/UI-Components/UserPage';
 import UserProfile from './Components/UI-Components/UserProfile';
+import GuestPage from './Components/UI-Components/GuestPage';
 
 
 function App() {
@@ -98,6 +99,7 @@ function App() {
           <ProtectedRoute path="/ui-components" component={UIComponents} />
           <ProtectedRoute path="/user-page" component={UserPage} />
           <ProtectedRoute path="/user-profile" component={UserProfile} />
+          <Route path="/guest-page" component={GuestPage} />
           {/* <Route exact path="/not-found" component={PageNotFound} /> */}
           <Route exact path="/" component={User} />
           <Route path="/signin" component={Signin} /> 

@@ -505,3 +505,14 @@ input:focus {
 .overflow-hidden {
   overflow: hidden !important;
 }
+
+.banner {
+  position: relative;
+}
+
+.banner-image-wrapper {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  z-index: -10;
+}
