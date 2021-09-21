@@ -7,6 +7,7 @@ import LandingPage from './LandingPage';
 import Modals from './Modals';
 import Navbars from './Navbars';
 import SearchForms from './SearchForms';
+import SidebarProfile from './SidebarProfile';
 import SideBars from './SideBars';
 import Tables from './Tables';
  
@@ -27,6 +28,7 @@ const UIComponents = () => {
             <div className="d-flex">
                <SideBars />
                <FriendsSidebar />
+               <SidebarProfile />
             </div>
          </div>
          <div className="w-100 my-3">
@@ -49,10 +51,7 @@ const UIComponents = () => {
             <h5 className="text-center">MODALS</h5>
             <Modals />
          </div>
-         <div className="w-100 my-3">
-            <h5 className="text-center">LAND SCREEN</h5>
-            <LandingPage />
-         </div>
+         
       </div>
    );
 }
