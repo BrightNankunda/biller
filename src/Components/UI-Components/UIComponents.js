@@ -3,10 +3,10 @@ import Buttons from './Buttons';
 import Cards from './Cards';
 import Forms from './Forms';
 import FriendsSidebar from './FriendsSidebar';
-import LandingPage from './LandingPage';
 import Modals from './Modals';
 import Navbars from './Navbars';
 import SearchForms from './SearchForms';
+import SidebarAdvocate from './SidebarAdvocate';
 import SidebarProfile from './SidebarProfile';
 import SideBars from './SideBars';
 import Tables from './Tables';
@@ -29,6 +29,7 @@ const UIComponents = () => {
                <SideBars />
                <FriendsSidebar />
                <SidebarProfile />
+               <SidebarAdvocate />
             </div>
          </div>
          <div className="w-100 my-3">

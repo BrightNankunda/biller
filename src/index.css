@@ -440,6 +440,9 @@ input:focus {
 .l-font {
   font-size: 104%;
 }
+.xl-font {
+  font-size: 120%;
+}
 .font-weight-450 {
   font-weight: 450;
 }
