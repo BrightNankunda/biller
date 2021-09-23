@@ -30,50 +30,71 @@ const GuestPage = () => {
          </div>
          {/* WHY JOIN SUITORS */}
          <div className="mt-4 row b-1 shadow-sm p-4 d-flex">
-            <div className="col-lg-4 my-5 p-3 border-right">
-               <div className="w-100 d-flex justify-content-center flex-col align-items-center">
-                  <ArrowsFullscreen className="two-times mb-2 text-primary mx-auto" />
-                  <p className="l-font">Connect</p>
-                  <p className="xl-font font-weight-450 text-primary">Connect with the best Legal experts</p>
-                  
+            <div className="col-lg-4 my-5">
+               <div className="w-100 h-100 p-3 border rounded border-primary">
+                  <div className="w-100 d-flex justify-content-center flex-col align-items-center">
+                     <ArrowsFullscreen className="two-times mb-2 text-primary mx-auto" />
+                     <p className="l-font">Connect</p>
+                     <p className="xl-font font-weight-450 text-primary">Connect with the best Legal experts</p>
+                     
+                  </div>
                </div>
             </div>
-            <div className="col-lg-4 my-5 p-3 border-right">
-               <div className="w-100 d-flex justify-content-center flex-col align-items-center">
-                  <ArrowsCollapse className="two-times mb-2 text-primary mx-auto" />
-                  <p className="l-font">Find Counsel</p>
-                  <p className="xl-font font-weight-450 text-primary">Seek counsel from legal experts</p>
+            <div className="col-lg-4 my-5">
+               <div className="w-100 h-100 p-3 border rounded border-primary">
+                  <div className="w-100 d-flex justify-content-center flex-col align-items-center">
+                     <ArrowsCollapse className="two-times mb-2 text-primary mx-auto" />
+                     <p className="l-font">Find Counsel</p>
+                     <p className="xl-font font-weight-450 text-primary">Seek counsel from legal experts</p>
+                  </div>
                </div>
             </div>
-            <div className="col-lg-4 my-5 p-3">
-               <div className="w-100 d-flex justify-content-center flex-col align-items-center">
-                  <ArrowLeftRight className="two-times mb-2 text-primary mx-auto" />
-                  <p className="l-font">Share Advice</p>
-                  <p className="xl-font font-weight-450 text-primary">Share Legal expertise with the ones in need</p>   
+            <div className="col-lg-4 my-5">
+               <div className="w-100 h-100 p-3 border rounded border-primary">
+                  <div className="w-100 d-flex justify-content-center flex-col align-items-center">
+                     <ArrowLeftRight className="two-times mb-2 text-primary mx-auto" />
+                     <p className="l-font">Share Advice</p>
+                     <p className="xl-font font-weight-450 text-primary">Share Legal expertise with the ones in need</p>   
+                  </div>
                </div>
             </div>
          </div>
          <div className="mt-3 row b-1 shadow-sm p-2 d-flex">
-            <div className="col-lg-4 my-5 p-3 border-right">
-               <div className="w-100 d-flex justify-content-center flex-col align-items-center">
-                  <CloudArrowUp className="two-times mb-2 text-primary mx-auto" />
-                  <p className="l-font">Inform the public about your Sevices</p>
-                  <p className="xl-font font-weight-450 text-primary">List your firm and display your services</p>
-                  
+            <div className="col-lg-4 my-5">
+               <div className="w-100 h-100 p-3 border rounded border-primary">
+                  <div className="w-100 d-flex justify-content-center flex-col align-items-center">
+                     <CloudArrowUp className="two-times mb-2 text-primary mx-auto" />
+                     <p className="l-font">Inform the public about your Sevices</p>
+                     <p className="xl-font font-weight-450 text-primary">List your firm and display your services</p>
+                  </div>
                </div>
             </div>
-            <div className="col-lg-4 my-5 p-3 border-right">
-               <div className="w-100 d-flex justify-content-center flex-col align-items-center">
-                  <Table className="two-times mb-2 text-primary mx-auto" />
-                  <p className="l-font">Unify your Billing scale</p>
-                  <p className="xl-font font-weight-450 text-primary">Stream line your firm's legal billing requirements</p>
+            <div className="col-lg-4 my-5">
+               <div className="w-100  p-3 border rounded border-primary">
+                  <div className="w-100 d-flex justify-content-center flex-col align-items-center">
+                     <Table className="two-times mb-2 text-primary mx-auto" />
+                     <p className="l-font">Unify your Billing scale</p>
+                     <p className="xl-font font-weight-450 text-primary">Stream line your firm's legal billing requirements</p>
+                  </div>
                </div>
             </div>
-            <div className="col-lg-4 my-5 p-3">
-               <div className="w-100 d-flex justify-content-center flex-col align-items-center">
-                  <GraphUp className="two-times mb-2 text-primary mx-auto" />
-                  <p className="l-font">Firm Performance</p>
-                  <p className="xl-font font-weight-450 text-primary">Track your firm's advocates performance</p>   
+            {/* <div className="col-lg-4 p-2">
+                        <div className="border rounded border-primary w-100 h-100 d-flex justify-content-center align-items-center flex-col">
+                           <CardChecklist className="three-times text-primary mt-2"/>
+                           <p className="l-font d-block my-0">5</p>
+                           <p className="xl-font d-block text-primary">PROJECTS</p>
+                           <p className="my-0">PERSONAL: 3</p>
+                           <p className="my-0">ASSIGNED: 2</p>
+                           <p className="three-times font-weight-650 text-primary d-block cursor-pointer" title="ADD A PROJECT">+</p>
+                        </div>                    
+                     </div> */}
+            <div className="col-lg-4 my-5">
+               <div className="w-100 h-100 p-3 border rounded border-primary">
+                  <div className="w-100 d-flex justify-content-center flex-col align-items-center">
+                     <GraphUp className="two-times mb-2 text-primary mx-auto" />
+                     <p className="l-font">Firm Performance</p>
+                     <p className="xl-font font-weight-450 text-primary">Track your firm's advocates performance</p>   
+                  </div>
                </div>
             </div>
          </div>

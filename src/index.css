@@ -255,6 +255,10 @@ input:focus {
   font-size: 140%;
 }
 
+.three-times {
+  font-size: 200%;
+}
+
 .z-index-ten {
   z-index: 10;
 }
@@ -448,6 +452,9 @@ input:focus {
 }
 .font-weight-370 {
   font-weight: 370;
+}
+.font-weight-650 {
+  font-weight: 650;
 }
 
 .new-navbar-search:focus {

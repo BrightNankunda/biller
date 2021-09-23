@@ -1,5 +1,5 @@
 import React from 'react';
-import { CardChecklist, JournalRichtext, PencilFill, PencilSquare, QuestionDiamond } from 'react-bootstrap-icons';
+import { CardChecklist, JournalRichtext, List, PencilFill, PencilSquare, QuestionDiamond } from 'react-bootstrap-icons';
  
 const SidebarAdvocate = () => {
    return (
@@ -33,6 +33,11 @@ const SidebarAdvocate = () => {
                         <span className="d-flex justify-content-center align-items-center px-2">
                            <PencilFill className="new-navbar-icon"/>
                         </span>Notes
+                     </p>
+               <p className="text-primary mx-2 mt-1 d-flex">
+                        <span className="d-flex justify-content-center align-items-center px-2">
+                           <List className="new-navbar-icon"/>
+                        </span>Tasks
                      </p>
                <p className="text-primary mx-2 mt-1 d-flex">
                         <span className="d-flex justify-content-center align-items-center px-2">
