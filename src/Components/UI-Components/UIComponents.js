@@ -9,7 +9,9 @@ import SearchForms from './SearchForms';
 import SidebarAdvocate from './SidebarAdvocate';
 import SidebarProfile from './SidebarProfile';
 import SideBars from './SideBars';
+import VerificationForms from './VerificationForms';
 import Tables from './Tables';
+import CreateCompanyForm from './CreateCompanyForm';
  
 const UIComponents = () => {
    return (
@@ -31,6 +33,11 @@ const UIComponents = () => {
                <SidebarProfile />
                <SidebarAdvocate />
             </div>
+         </div>
+         <div className="w-100 my-3">
+            <h5 className="text-center">VERIFICATION FORMS</h5>
+            <VerificationForms />
+            <CreateCompanyForm />
          </div>
          <div className="w-100 my-3">
             <h5 className="text-center">BUTTONS</h5>

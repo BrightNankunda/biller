@@ -24,7 +24,7 @@ const GuestPage = () => {
             </div>
          </div>
          {/* QOUTE */}
-         <div className="container bg-light shadow-sm my-3 p-4 rounded-lg">
+         <div className="container bg-light shadow-sm my-3 p-5 rounded-lg">
             <h5>"I am a goal oriented Full stack developer working for Suitors Inc with JS, Python, PHP, Laravel, React, jQuery, Vue, Express, Django, Flask, CSS"</h5>
             <h4 className="text-primary"><em>- Nankunda Bright</em></h4>
          </div>
