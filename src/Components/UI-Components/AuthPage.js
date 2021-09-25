@@ -3,19 +3,21 @@ import AppArticle from './AppArticle';
 import ArticleForm from './ArticleForm';
 import FriendsSidebar from './FriendsSidebar'
 import Navbars from './Navbars';
-import SidebarProfile from './SidebarProfile';
+import SideBars from './SideBars';
  
-const UserProfile = () => {
+const AuthPage = () => {
    return (
       <div className="fluid-container">
          <Navbars />
          <div className="d-flex mt-3 d-flex justify-content-center">
             <div className="mx-2 px-2 mt-2" style={{minWidth: 250 + 'px', maxWidth: 270 + 'px'}}>
-               <SidebarProfile />
+               <SideBars />
             </div>
             <div>
                <div className="px-2 rounded-lg " style={{minWidth: 580 + 'px', maxWidth: 620 + 'px'}}>
                   <div className="w-100">
+                     <ArticleForm />
+                     <AppArticle />
                      <AppArticle />
                      <AppArticle />
                      <AppArticle />
@@ -35,4 +37,4 @@ const UserProfile = () => {
    );
 }
  
-export default UserProfile;
+export default AuthPage;

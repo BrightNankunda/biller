@@ -49,6 +49,7 @@ import UserPage from './Components/UI-Components/UserPage';
 import UserProfile from './Components/UI-Components/UserProfile';
 import GuestPage from './Components/UI-Components/GuestPage';
 import AdvocateDashboard from './Components/UI-Components/AdvocateDashboard';
+import AuthPage from './Components/UI-Components/AuthPage';
 
 
 function App() {
@@ -101,6 +102,7 @@ function App() {
           <ProtectedRoute path="/user-page" component={UserPage} />
           <ProtectedRoute path="/user-profile" component={UserProfile} />
           <ProtectedRoute path="/advocate-dashboard" component={AdvocateDashboard} />
+          <ProtectedRoute path="/auth-page" component={AuthPage} />
           <Route path="/guest-page" component={GuestPage} />
           {/* <Route exact path="/not-found" component={PageNotFound} /> */}
           <Route exact path="/" component={User} />

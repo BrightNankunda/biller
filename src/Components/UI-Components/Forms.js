@@ -92,17 +92,7 @@ const Forms = () => {
             </div>
          </div>
 
-         <div className="row my-2">
-            <h4 className="text-center">ARTICLE FORM</h4>
-            <div className="w-100 border rounded-lg pb-3 px-2 pt-2">
-               <form className="m-3">
-                  <div class="form-group">
-                     <label for="article">Create an article</label>
-                     <textarea type="text" className="form-control" rows="3" placeholder="CREATE AN ARTICLE"/>
-                  </div>
-               </form>
-            </div>
-         </div>
+         
       </div>
    );
 }

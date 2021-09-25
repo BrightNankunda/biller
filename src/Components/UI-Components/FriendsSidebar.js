@@ -2,9 +2,9 @@ import React from 'react';
  
 const FriendsSidebar = () => {
    return (
-      <div className="fluid-container">
+      <div className="fluid-container position-relative">
          <div className="" style={{minHeight: 97+'vh'}}>
-            <div className="w-100 p-4">
+            <div className="w-100">
                <div className="h-100 border rounded overflow-hidden" style={{minHeight: 45 + 'vh'}}>
                
                   <div>
@@ -40,7 +40,7 @@ const FriendsSidebar = () => {
                   </div>
                </div>
             </div>
-            <div className="w-100 p-4">
+            <div className="w-100 mt-3 position-sticky-150">
                <div className="h-100 w-100 border rounded" style={{minHeight: 45 + 'vh'}}>
                
                   <div>

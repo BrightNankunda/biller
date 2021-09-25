@@ -526,3 +526,8 @@ input:focus {
   left: 50%;
   z-index: -10;
 }
+
+.position-sticky-150 {
+  position: sticky;
+  top: 150px;
+}
