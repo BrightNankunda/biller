@@ -531,3 +531,6 @@ input:focus {
   position: sticky;
   top: 150px;
 }
+.bg-dark-purpple {
+  background: #007bff;
+}

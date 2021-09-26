@@ -1,4 +1,5 @@
 import React from 'react';
+import { People } from 'react-bootstrap-icons';
  
 const FriendsSidebar = () => {
    return (
@@ -8,6 +9,11 @@ const FriendsSidebar = () => {
                <div className="h-100 border rounded overflow-hidden" style={{minHeight: 45 + 'vh'}}>
                
                   <div>
+                     <div className="d-flex justify-content-center">
+                        <p className="xl-font text-secondary "><span className="my-auto">
+                           <People className="new-navbar-icon"/>
+                        </span>Friends</p>
+                     </div>
                      <div className="d-flex justify-content-center">
                         <img src="../../logo512.png" className="user-image" alt="user" />
                      </div>

@@ -7,6 +7,7 @@ import Modals from './Modals';
 import Navbars from './Navbars';
 import SearchForms from './SearchForms';
 import SidebarAdvocate from './SidebarAdvocate';
+import NewSidebar from './NewSidebar'
 import SidebarProfile from './SidebarProfile';
 import SideBars from './SideBars';
 import VerificationForms from './VerificationForms';
@@ -32,6 +33,7 @@ const UIComponents = () => {
                <FriendsSidebar />
                <SidebarProfile />
                <SidebarAdvocate />
+               <NewSidebar />
             </div>
          </div>
          <div className="w-100 my-3">

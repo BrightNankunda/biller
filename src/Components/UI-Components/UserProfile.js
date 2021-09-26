@@ -9,23 +9,24 @@ const UserProfile = () => {
    return (
       <div className="fluid-container">
          <Navbars />
-         <div className="d-flex mt-3 d-flex justify-content-center">
-            <div className="mx-2 px-2 mt-2" style={{minWidth: 250 + 'px', maxWidth: 270 + 'px'}}>
+         <div className="d-flex justify-content-center">
+         {/* style={{minWidth: 250 + 'px', maxWidth: 270 + 'px'}} */}
+            <div className="bg-dark-purpple col-lg-2" >
                <SidebarProfile />
             </div>
             <div>
-               <div className="px-2 rounded-lg " style={{minWidth: 580 + 'px', maxWidth: 620 + 'px'}}>
-                  <div className="w-100">
+            {/* style={{minWidth: 580 + 'px', maxWidth: 620 + 'px'}} */}
+               <div className="px-2 rounded-lg col-lg-12">
                      <AppArticle />
                      <AppArticle />
                      <AppArticle />
                      <AppArticle />
                      <AppArticle />
                      <AppArticle />
-                  </div>
                </div>
             </div>
-            <div className="mx-2 px-2 mt-2 position relative" style={{minWidth: 250 + 'px', maxWidth: 270 + 'px'}}>
+            {/* style={{minWidth: 250 + 'px', maxWidth: 270 + 'px'}} */}
+            <div className="mx-2 mt-2 px-2 position relative col-lg-3" >
                <div className="w-100">
                   <FriendsSidebar />
                </div>

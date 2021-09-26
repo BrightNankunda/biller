@@ -5,7 +5,7 @@ const AppArticle = () => {
    return (
       <div className="fluid-container p-2">
          
-         <div className="post card">
+         <div className="card">
             <div className="card-header p-zero">
                <div className="d-flex">
                   <img src="/logo192.png" className="rounded-circle" 

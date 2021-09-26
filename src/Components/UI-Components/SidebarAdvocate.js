@@ -21,6 +21,17 @@ const SidebarAdvocate = () => {
                <p className="text-primary mx-2 mt-1 d-flex">
                         <span className="d-flex justify-content-center align-items-center px-2">
                            <CardChecklist className="new-navbar-icon"/>
+                        </span>Home
+                     </p>
+               <p className="text-primary mx-2 mt-1 d-flex">
+                  <span className="d-flex justify-content-center align-items-center px-2">
+                     <CardChecklist className="new-navbar-icon"/>
+                  </span>Dashboard
+               </p>
+
+               <p className="text-primary mx-2 mt-1 d-flex">
+                        <span className="d-flex justify-content-center align-items-center px-2">
+                           <CardChecklist className="new-navbar-icon"/>
                         </span>Projects
                      </p>
                <p className="text-primary mx-2 mt-1 d-flex">
