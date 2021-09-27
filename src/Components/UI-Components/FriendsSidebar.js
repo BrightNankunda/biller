@@ -6,7 +6,7 @@ const FriendsSidebar = () => {
       <div className="fluid-container position-relative">
          <div className="" style={{minHeight: 97+'vh'}}>
             <div className="w-100">
-               <div className="h-100 border rounded overflow-hidden" style={{minHeight: 45 + 'vh'}}>
+               <div className="h-100 border rounded overflow-hidden bg-white" style={{minHeight: 45 + 'vh'}}>
                
                   <div>
                      <div className="d-flex justify-content-center">

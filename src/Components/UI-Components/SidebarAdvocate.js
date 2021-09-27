@@ -1,31 +1,16 @@
 import React from 'react';
-import { CardChecklist, JournalRichtext, List, PencilFill, PencilSquare, QuestionDiamond } from 'react-bootstrap-icons';
+import { CardChecklist, House, JournalRichtext, List, PencilFill, PencilSquare, QuestionDiamond } from 'react-bootstrap-icons';
  
 const SidebarAdvocate = () => {
    return (
-      <div className="fluid-container" style={{height: 94 + 'vh'}}>
-         <div className="px-3 py-2 rounded border">
-            <div className="w-100 d-flex justify-content-center">
-               <img src="/logo192.png" alt="company logo"
-                  className="rounded-circle"
-                  style={{height: 60 + 'px', width: 60 + 'px'}}/>
-            </div>
-            
-            <div className="d-flex flex-col justify-content-center align-items-center border-bottom ">
-               <p className="xl-font font-weight-450">KK Advocates</p>
-               <p className="xl-font font-weight-450">Managing Partner</p>
-               <p className="xl-font font-weight-450">Nankunda BRIGHT</p>
-            </div>
+      <div className="fluid-container " style={{height: 94 + 'vh'}}>
+         <div className="px-3 py-2 rounded border bg-white">
 
             <div className="my-2 px-3">
-               <p className="text-primary mx-2 mt-1 d-flex">
-                        <span className="d-flex justify-content-center align-items-center px-2">
-                           <CardChecklist className="new-navbar-icon"/>
-                        </span>Home
-                     </p>
+               
                <p className="text-primary mx-2 mt-1 d-flex">
                   <span className="d-flex justify-content-center align-items-center px-2">
-                     <CardChecklist className="new-navbar-icon"/>
+                     <House className="new-navbar-icon"/>
                   </span>Dashboard
                </p>
 

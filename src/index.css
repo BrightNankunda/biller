@@ -534,3 +534,26 @@ input:focus {
 .bg-dark-purpple {
   background: #007bff;
 }
+
+.new-user-profile {
+  position: absolute;
+  bottom: -50px;
+  left:0;
+}
+.bg-dashboard-bars {
+  border: none;
+  border-radius: 15px;
+  /* background: rgb(107, 97, 250); */
+}
+
+.opacity-9 {
+  opacity: 0.9;
+}
+.user-community-section {
+  position: absolute;
+  top: 99%;
+  right: 0;
+}
+.position-fixed {
+  position: fixed;
+}
