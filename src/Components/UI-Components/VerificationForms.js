@@ -21,51 +21,51 @@ const VerificationForms = () => {
 
                      <div className="mt-2">
                         <h2 className="text-center text-primary">CHOOSE STATUS</h2>
-                        <div class="form-check">
-                           <input class="form-check-input" type="checkbox" id="check"/>
-                           <label class="form-check-label" for="check">
+                        <div className="form-check">
+                           <input className="form-check-input" type="checkbox" id="check"/>
+                           <label className="form-check-label" htmlFor="check">
                               Firm Adminstrator
                            </label>
                         </div>
-                        <div class="form-check">
-                           <input class="form-check-input" type="checkbox" id="check"/>
-                           <label class="form-check-label" for="check">
+                        <div className="form-check">
+                           <input className="form-check-input" type="checkbox" id="check"/>
+                           <label className="form-check-label" htmlFor="check">
                               Advocate
                            </label>
                         </div>
-                        <div class="form-check">
-                           <input class="form-check-input" type="checkbox" id="check"/>
-                           <label class="form-check-label" for="check">
+                        <div className="form-check">
+                           <input className="form-check-input" type="checkbox" id="check"/>
+                           <label className="form-check-label" htmlFor="check">
                               Coporate seeking legal experts
                            </label>
                         </div>
-                        <div class="form-check">
-                           <input class="form-check-input" type="checkbox" id="check"/>
-                           <label class="form-check-label" for="check">
+                        <div className="form-check">
+                           <input className="form-check-input" type="checkbox" id="check"/>
+                           <label className="form-check-label" htmlFor="check">
                               Student
                            </label>
                         </div>
-                        <div class="form-check">
-                           <input class="form-check-input" type="checkbox" id="check"/>
-                           <label class="form-check-label" for="check">
+                        <div className="form-check">
+                           <input className="form-check-input" type="checkbox" id="check"/>
+                           <label className="form-check-label" htmlFor="check">
                               Law Ethuaist
                            </label>
                         </div>
-                        <div class="form-check">
-                           <input class="form-check-input" type="checkbox" id="check"/>
-                           <label class="form-check-label" for="check">
+                        <div className="form-check">
+                           <input className="form-check-input" type="checkbox" id="check"/>
+                           <label className="form-check-label" htmlFor="check">
                               Law Enforcement
                            </label>
                         </div>
-                        <div class="form-check">
-                           <input class="form-check-input" type="checkbox" id="check"/>
-                           <label class="form-check-label" for="check">
+                        <div className="form-check">
+                           <input className="form-check-input" type="checkbox" id="check"/>
+                           <label className="form-check-label" htmlFor="check">
                               Law Practitioner
                            </label>
                         </div>
-                        <div class="form-check">
-                           <input class="form-check-input" type="checkbox" id="check"/>
-                           <label class="form-check-label" for="check">
+                        <div className="form-check">
+                           <input className="form-check-input" type="checkbox" id="check"/>
+                           <label className="form-check-label" htmlFor="check">
                               User
                            </label>
                         </div>

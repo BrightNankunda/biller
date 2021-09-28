@@ -3,6 +3,7 @@ import AppArticle from './AppArticle';
 import ArticleForm from './ArticleForm';
 import FriendsSidebar from './FriendsSidebar'
 import Navbars from './Navbars';
+import NewArticle from './NewArticle';
 import SideBars from './SideBars';
  
 const AuthPage = () => {
@@ -17,13 +18,13 @@ const AuthPage = () => {
                <div className="px-2 rounded-lg " style={{minWidth: 580 + 'px', maxWidth: 620 + 'px'}}>
                   <div className="w-100">
                      <ArticleForm />
-                     <AppArticle />
-                     <AppArticle />
-                     <AppArticle />
-                     <AppArticle />
-                     <AppArticle />
-                     <AppArticle />
-                     <AppArticle />
+                     <NewArticle />
+                     <NewArticle />
+                     <NewArticle />
+                     <NewArticle />
+                     <NewArticle />
+                     <NewArticle />
+                     <NewArticle />
                   </div>
                </div>
             </div>

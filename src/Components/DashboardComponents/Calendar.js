@@ -1,3 +1,4 @@
+import FullCalendar from '@fullcalendar/react';
 import React from 'react';
 import AppNavbar from '../AppNavbar';
 import SideBar from '../BillComponents/SideBar';
@@ -12,6 +13,7 @@ const Calendar = () => {
             </div>
             <div className="col-lg-9">
                <h3>CALENDAR</h3>
+               <FullCalendar displayEventEnd="true" />
             </div>
          </div>
       </div>

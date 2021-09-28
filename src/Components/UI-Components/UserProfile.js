@@ -41,12 +41,63 @@ const UserProfile = () => {
                         </div>
                      </div>
                   </div>
+                  
+                  <div className="mt-5">
+                     <div className="my-2">
+                        <h3 className="opacity-9 text-center">Events</h3>
+                        <div className="events w-100 d-flex">
+                           <div className="rounded border p-5">
+                              <p>Event one</p>
+                           </div>
+                           <div className="rounded border p-5">
+                              <p>Event two</p>
+                           </div>
+                           <div className="rounded border p-5">
+                              <p>Event three</p>
+                           </div>
+                           <div className="rounded border p-5">
+                              <p>Event four</p>
+                           </div>
+                        </div>
+                     </div>
+                     <div className="my-2">
+                        <h3 className="opacity-9 text-center">Tips</h3>
+                        <div className="events w-100 d-flex">
+                           <div className="rounded border p-5">
+                              <p>Tip one</p>
+                           </div>
+                           <div className="rounded border p-5">
+                              <p>Tip two</p>
+                           </div>
+                           <div className="rounded border p-5">
+                              <p>Tip three</p>
+                           </div>
+                           <div className="rounded border p-5">
+                              <p>Tip four</p>
+                           </div>
+                           
+                        </div>
+                     </div>
+                     <div className="my-2">
+                        <h3 className="opacity-9 text-center">Education</h3>
+                        <div className="events w-100">
+                           <div className="rounded border p-2">
+                              <p>Education Institution  one</p>
+                           </div>
+                           <div className="rounded border p-2 my-1">
+                              <p>Education Institution  two</p>
+                           </div>
+                           
+                        </div>
+                     </div>
+                     
                      <AppArticle />
                      <AppArticle />
                      <AppArticle />
                      <AppArticle />
                      <AppArticle />
                      <AppArticle />
+                  </div>
                </div>
             </div>
             <div className="px-3 pt-2 position relative col-lg-3 bg-light" >
