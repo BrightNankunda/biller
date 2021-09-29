@@ -1,9 +1,12 @@
-import FullCalendar from '@fullcalendar/react';
 import React from 'react';
+// import FullCalendar, {dayGridPlugin} from 'fullcalendar'
+import FullCalendar from '@fullcalendar/react';
+import dayGridPlugin from '@fullcalendar/react'
 import AppNavbar from '../AppNavbar';
 import SideBar from '../BillComponents/SideBar';
  
 const Calendar = () => {
+   console.log('Day grid plugin', dayGridPlugin)
    return (
       <div>
          <AppNavbar />
@@ -13,7 +16,8 @@ const Calendar = () => {
             </div>
             <div className="col-lg-9">
                <h3>CALENDAR</h3>
-               <FullCalendar displayEventEnd="true" />
+               
+               <FullCalendar plugins={[dayGridPlugin]} initialView="dayGridMonth" />
             </div>
          </div>
       </div>
