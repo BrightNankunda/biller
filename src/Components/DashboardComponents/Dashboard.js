@@ -6,7 +6,8 @@ import { FetchClients } from '../../Actions/ClientActions';
 import { AllUserCriminals } from '../../Actions/CriminalActions';
 import AppNavbar from '../AppNavbar';
 import SideBar from '../BillComponents/SideBar';
-import Calendar from './Calendar';
+import FullCalendar from '@fullcalendar/react'
+import dayGridPlugin from '@fullcalendar/daygrid'
 import LineGraph from './LineGraph';
 
 const Dashboard = () => {
@@ -85,6 +86,14 @@ const Dashboard = () => {
                </div>
                <div className="col-lg-5 bg-white m-2 forty-height">
                   <h3>CALENDAR</h3>
+                  <FullCalendar
+                     plugins={[ dayGridPlugin ]}
+                     initialView="dayGridMonth"
+                     events={[
+                        { title: 'event 1', date: '2021-09-30' },
+                        { title: 'event 2', date: '2019-09-10' }
+                     ]}
+                     />
                </div>
             </div>
          </div>

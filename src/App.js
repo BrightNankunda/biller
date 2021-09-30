@@ -94,7 +94,6 @@ function App() {
           <ProtectedRoute path="/reports" component={Reports} />
           <ProtectedRoute path="/dashboard" component={Dashboard}/>
           <ProtectedRoute path="/calendar" component={Calendar} />
-          <ProtectedRoute path="/calendar" component={Calendar} />
           <ProtectedRoute path="/bill" component={Billing} />
           <ProtectedRoute path="/logout" component={Logout} />
           <ProtectedRoute path="/billing" component={Biller} />
