@@ -50,7 +50,7 @@ import UserProfile from './Components/UI-Components/UserProfile';
 import GuestPage from './Components/UI-Components/GuestPage';
 import AdvocateDashboard from './Components/UI-Components/AdvocateDashboard';
 import AuthPage from './Components/UI-Components/AuthPage';
-
+import Notes from './Components/TextComponents/Notes';
 
 function App() {
   
@@ -103,6 +103,8 @@ function App() {
           <ProtectedRoute path="/advocate-dashboard" component={AdvocateDashboard} />
           <ProtectedRoute path="/auth-page" component={AuthPage} />
           <Route path="/guest-page" component={GuestPage} />
+          {/* TEXT PAGES */}
+          <ProtectedRoute path="/notes" component={Notes} />
           {/* <Route exact path="/not-found" component={PageNotFound} /> */}
           <Route exact path="/" component={User} />
           <Route path="/signin" component={Signin} /> 
