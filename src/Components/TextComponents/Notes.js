@@ -1,17 +1,22 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import FriendsSidebar from '../UI-Components/FriendsSidebar'
 import Navbars from '../UI-Components/Navbars';
 import NewArticle from '../UI-Components/NewArticle';
 import SideBars from '../UI-Components/SideBars';
 import { Modal, Button } from 'react-bootstrap';
 import { PlusSquareDotted } from 'react-bootstrap-icons';
-import { SaveNewNote } from '../../Actions/NotesActions';
-import { useDispatch } from 'react-redux';
+import { FetchAllUserNotes, SaveNewNote } from '../../Actions/NotesActions';
+import { useDispatch, useSelector } from 'react-redux';
  
 const Notes = () => {
    // REDUX SPECIFIC
    const dispatch = useDispatch()
-   
+   const {notes, loading: loadingNotes}  = useSelector(state => state.allUserNotes)
+   console.log(notes, loadingNotes)
+
+   const {loading, redirectNoteCreator} = useSelector(state => state.newNote)
+   console.log(newNote, redirectNoteCreator)
+
    // NOTE SAVING STATE
    const [loading, setLoding] = useState(false)
    const [noteHeader, setNoteHeader] = useState('')
@@ -31,6 +36,13 @@ const Notes = () => {
 
    const handleClose = () => setShow(false);
    const handleShow = () => setShow(true);
+
+   useEffect(() => {
+      dispatch(FetchAllUserNotes())
+      return () => {
+         // cleanup
+      }
+   }, [])
 
    return (
       <div className="fluid-container">
@@ -85,6 +97,7 @@ const Notes = () => {
                            </Modal.Footer>
                         </Modal>
                      </div>
+                     {/* FOR EACH RETURN THE NOTECOMPNENT, THAT HAS DELETE, UPDATE OPTIONS */}
                      <NewArticle />
                      <NewArticle />
                      <NewArticle />

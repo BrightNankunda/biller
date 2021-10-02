@@ -1,12 +1,19 @@
 import {applyMiddleware, createStore, compose, combineReducers} from 'redux'
 import thunk from 'redux-thunk'
 
-import { DeleteABillReducer, FetchABillReducer, UpdateABillReducer, FetchBillsReducer, FetchClientBillsReducer, FetchUserBillsReducer, SaveBillReducer } from './Reducers/BillReducers'
-import { CreateNewClientReducer, DeleteClientReducer, FetchAllClientsReducer, FetchSingleClientReducer, UpdateClientReducer } from './Reducers/ClientsReducers';
-import { DeleteACompanyBillReducer, FetchACompanyBillReducer, FetchClientCompanyBillsReducer, FetchCompanyBillsReducer, FetchUserCompanyBillsReducer, SaveCompanyBillReducer } from './Reducers/CompanyReducers';
+import { DeleteABillReducer, FetchABillReducer, UpdateABillReducer, FetchBillsReducer, 
+   FetchClientBillsReducer, FetchUserBillsReducer, SaveBillReducer } from './Reducers/BillReducers'
+import { CreateNewClientReducer, DeleteClientReducer, FetchAllClientsReducer, 
+   FetchSingleClientReducer, UpdateClientReducer } from './Reducers/ClientsReducers';
+import { DeleteACompanyBillReducer, FetchACompanyBillReducer, FetchClientCompanyBillsReducer, 
+   FetchCompanyBillsReducer, FetchUserCompanyBillsReducer, SaveCompanyBillReducer 
+} from './Reducers/CompanyReducers';
 import { SaveCriminalReducer, FetchCriminalsReducer, 
-   FetchUserCriminalsReducer, FetchClientCriminalsReducer, FetchACriminalReducer, DeleteACriminalReducer } from './Reducers/CriminalReducer';
-import { LogoutUserReducer, UserLoginReducer, UserSigninReducer } from './Reducers/UserReducers'
+   FetchUserCriminalsReducer, FetchClientCriminalsReducer, FetchACriminalReducer, 
+   DeleteACriminalReducer } from './Reducers/CriminalReducer';
+import { FetchAllUserNotesReducer, SaveNewNoteReducer } from './Reducers/NotesReducers';
+import { LogoutUserReducer, UserLoginReducer, UserSigninReducer 
+} from './Reducers/UserReducers'
 
 // const userInfo = localStorage.getItem("UgBillToken") || null;
 const initialState = { 
@@ -14,6 +21,8 @@ const initialState = {
 }
 
 const reducer = combineReducers({
+   newNote: SaveNewNoteReducer,
+   allUserNotes: FetchAllUserNotesReducer,
    newBill: SaveBillReducer,
    bills: FetchBillsReducer,
    userBills: FetchUserBillsReducer,
