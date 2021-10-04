@@ -5,16 +5,17 @@ import NewArticle from '../UI-Components/NewArticle';
 import SideBars from '../UI-Components/SideBars';
 import { Modal, Button } from 'react-bootstrap';
 import { PlusSquareDotted } from 'react-bootstrap-icons';
-import { FetchAllUserNotes, SaveNewNote } from '../../Actions/NotesActions';
+import { FetchAllUserNotes, SaveNewNote, DeleteANote } from '../../Actions/NotesActions';
 import { useDispatch, useSelector } from 'react-redux';
+import SingleNote from './SingleNote';
  
 const Notes = () => {
    // REDUX SPECIFIC
    const dispatch = useDispatch()
-   const {notes, loading: loadingNotes}  = useSelector(state => state.allUserNotes)
-   console.log(notes, loadingNotes)
+   const {loading: loadingNotes,notes}  = useSelector(state => state.allUserNotes)
+   console.log('NOTES', notes, loadingNotes)
 
-   const {loading, redirectNoteCreator} = useSelector(state => state.newNote)
+   const {loading: loadingNoteCreateion, newNote, redirectNoteCreator} = useSelector(state => state.newNote)
    console.log(newNote, redirectNoteCreator)
 
    // NOTE SAVING STATE
@@ -31,12 +32,21 @@ const Notes = () => {
       console.log(noteBody, noteHeader)
    }
 
-   // MODAL STATE
+   // ADD NOTE MODAL STATE
    const [show, setShow] = useState(false);
 
    const handleClose = () => setShow(false);
    const handleShow = () => setShow(true);
 
+   // SINGLE NOTE MODAL STATE
+   const [showNoteModal, setShowNoteModal] = useState(false);
+   const [singleNoteId, setSingleNoteId] = useState('')
+
+   const handleNoteModalClose = () => setShowNoteModal(false);
+   const handleShowNoteModal = (noteId) => {
+      setSingleNoteId(noteId)
+      setShowNoteModal(true);
+   }
    useEffect(() => {
       dispatch(FetchAllUserNotes())
       return () => {
@@ -44,6 +54,9 @@ const Notes = () => {
       }
    }, [])
 
+   const deleteNote = (noteId) => {
+      dispatch(DeleteANote({noteId}))
+   }
    return (
       <div className="fluid-container">
          <Navbars />
@@ -97,8 +110,36 @@ const Notes = () => {
                            </Modal.Footer>
                         </Modal>
                      </div>
+
+                     <Modal show={showNoteModal} onHide={handleNoteModalClose}>
+                           <Modal.Header closeButton>
+                              <Modal.Title>Note data</Modal.Title>
+                           </Modal.Header>
+                           <Modal.Body>
+                              {!loading && <SingleNote noteId={singleNoteId}/>}
+
+                              {loading && <div className="w-100" style={{"height": '150px'}}>
+                                 <h2>LOADING ....</h2>
+                              </div>}
+                           </Modal.Body>
+                           <Modal.Footer>
+                              <Button variant="warning" onClick={handleNoteModalClose}>
+                                 Close
+                              </Button>
+                           </Modal.Footer>
+                        </Modal>
                      {/* FOR EACH RETURN THE NOTECOMPNENT, THAT HAS DELETE, UPDATE OPTIONS */}
-                     <NewArticle />
+                        {!loadingNotes && notes.map(note => (
+                           <div className="w-30" key={note._id}  
+                                 className="m-2 cursor-pointer p-1 rounded border">
+                                 <div className="w-100" onClick={() => handleShowNoteModal(note._id)}>
+                                    <h3 className="text-center">{note.noteHeader}</h3>
+                              
+                                    <p>{note.noteBody}</p>
+                                 </div>
+                              <button className="btn btn-danger" onClick={()=>deleteNote(note._id)}>Delete</button>
+                           </div>
+                        ))}
                      <NewArticle />
                      <NewArticle />
                      <NewArticle />

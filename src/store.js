@@ -11,7 +11,7 @@ import { DeleteACompanyBillReducer, FetchACompanyBillReducer, FetchClientCompany
 import { SaveCriminalReducer, FetchCriminalsReducer, 
    FetchUserCriminalsReducer, FetchClientCriminalsReducer, FetchACriminalReducer, 
    DeleteACriminalReducer } from './Reducers/CriminalReducer';
-import { FetchAllUserNotesReducer, SaveNewNoteReducer } from './Reducers/NotesReducers';
+import { DeleteANoteReducer, FetchAllUserNotesReducer, FetchANoteReducer, SaveNewNoteReducer } from './Reducers/NotesReducers';
 import { LogoutUserReducer, UserLoginReducer, UserSigninReducer 
 } from './Reducers/UserReducers'
 
@@ -21,6 +21,8 @@ const initialState = {
 }
 
 const reducer = combineReducers({
+   deletedNote: DeleteANoteReducer,
+   singleNote: FetchANoteReducer,
    newNote: SaveNewNoteReducer,
    allUserNotes: FetchAllUserNotesReducer,
    newBill: SaveBillReducer,
